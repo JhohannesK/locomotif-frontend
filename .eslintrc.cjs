@@ -10,5 +10,7 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
+    'react-hooks/exhaustive-deps': 'warn',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
 }

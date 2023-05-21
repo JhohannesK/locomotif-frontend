@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install",
+    "ts-check": "tsc --noEmit"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.6.1",
@@ -15,6 +17,7 @@
     "@emotion/styled": "^11.11.0",
     "@tanstack/react-query": "^4.29.7",
     "framer-motion": "^10.12.12",
+    "husky": "^8.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -27,6 +30,7 @@
     "eslint": "^8.38.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
+    "prettier": "2.8.8",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"
   }
