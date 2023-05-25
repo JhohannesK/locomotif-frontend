@@ -2,7 +2,7 @@
 
 - [React](https://reactjs.org/) for the frontend
 - [Typescript](https://www.typescriptlang.org/) for type safety
-- [ChakraUI](https://chakra-ui.com/) as the UI framework
+- [MaterialUI](https://mui.com/) as the UI framework
 - [Zod](https://zod.dev/?id=strings) for validation
 - [React Query](https://tanstack.com/query/v3/) for data fetching
 - [ React Hook Form](https://react-hook-form.com/) for form handling
