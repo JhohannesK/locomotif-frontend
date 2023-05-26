@@ -1,30 +1,33 @@
 import Button from '@mui/material/Button'
 import { colors } from '../../colors'
-import { ButtonWrapper } from './landingPageStyles'
+import { ContentWrapper, PageWrapper } from './landingPageStyles'
+import GeneralButton from '../../general/Button'
 
 function LandingPage() {
   return (
-    <ButtonWrapper>
-      <h1>How do you like to get in?</h1>
-      <Button
-        variant="contained"
-        sx={{ backgroundColor: colors.aquamarine, color: 'black' }}
-      >
-        Practioner
-      </Button>
-      <Button
-        sx={{
-          backgroundColor: colors.pineGreen,
-          color: colors.aquamarine,
-          borderColor: colors.aquamarine,
-          height: '7rem',
-        }}
-        variant="outlined"
-        size="large"
-      >
-        Institution
-      </Button>
-    </ButtonWrapper>
+    <PageWrapper>
+      <ContentWrapper>
+        <h1>How do you like to get in?</h1>
+        <Button
+          variant="contained"
+          sx={{ backgroundColor: colors.button.aquamarine, color: 'black' }}
+        >
+          Practioner
+        </Button>
+        <Button
+          sx={{
+            // backgroundColor: colors.button.pineGreen,
+            color: colors.button.aquamarine,
+            borderColor: colors.button.aquamarine,
+            height: '7rem',
+          }}
+          variant="outlined"
+          size="large"
+        >
+          Institution
+        </Button>
+      </ContentWrapper>
+    </PageWrapper>
   )
 }
 
