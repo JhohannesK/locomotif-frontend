@@ -5,6 +5,7 @@ import { ButtonWrapper } from './landingPageStyles'
 function LandingPage() {
   return (
     <ButtonWrapper>
+      <h1>How do you like to get in?</h1>
       <Button
         variant="contained"
         sx={{ backgroundColor: colors.aquamarine, color: 'black' }}
@@ -16,6 +17,7 @@ function LandingPage() {
           backgroundColor: colors.pineGreen,
           color: colors.aquamarine,
           borderColor: colors.aquamarine,
+          height: '7rem',
         }}
         variant="outlined"
         size="large"
