@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button'
 import { colors } from '../../colors'
-import { ContentWrapper, PageWrapper } from './landingPageStyles'
+import { ContentWrapper, PageWrapper } from './styles'
 
 function LandingPage() {
   return (

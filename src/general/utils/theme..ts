@@ -20,5 +20,19 @@ export const theme = createTheme({
         },
       },
     },
+
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Raleway',
+          gap: '1rem',
+        },
+        input: {
+          '::placeholder': {
+            fontSize: '12px',
+          },
+        },
+      },
+    },
   },
 })

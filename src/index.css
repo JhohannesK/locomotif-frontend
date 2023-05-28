@@ -3,16 +3,13 @@
   src: url(/fonts/Raleway/Raleway-VariableFont_wght.ttf);
 }
 
-* {
+body {
+  font-family: 'Raleway';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
-  font-family: 'Raleway';
-}
-
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) and (max-device-width: 480px) {
