@@ -12,10 +12,7 @@ type GeneralBtnProps = {
 
 const GeneralButton = ({ variantText, sx, title }: GeneralBtnProps) => {
   return (
-    <Button
-      variant={variantText}
-      sx={{ ...sx, fontFamily: 'Raleway', fontWeight: 'bold' }}
-    >
+    <Button variant={variantText} sx={{ ...sx }}>
       {title}
     </Button>
   )
