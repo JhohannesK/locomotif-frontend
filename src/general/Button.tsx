@@ -1,4 +1,9 @@
-import { Button, ButtonPropsVariantOverrides, SxProps } from '@mui/material'
+import {
+  Button,
+  ButtonPropsVariantOverrides,
+  SxProps,
+  ButtonPropsSizeOverrides,
+} from '@mui/material'
 import { OverridableStringUnion } from '@mui/types'
 
 type GeneralBtnProps = {
@@ -8,11 +13,15 @@ type GeneralBtnProps = {
   >
   sx?: SxProps
   title: string
+  size?: OverridableStringUnion<
+    'small' | 'medium' | 'large',
+    ButtonPropsSizeOverrides
+  >
 }
 
-const GeneralButton = ({ variantText, sx, title }: GeneralBtnProps) => {
+const GeneralButton = ({ variantText, sx, title, size }: GeneralBtnProps) => {
   return (
-    <Button variant={variantText} sx={{ ...sx }}>
+    <Button variant={variantText} sx={{ ...sx }} size={size}>
       {title}
     </Button>
   )
