@@ -1,12 +1,15 @@
 import Button from '@mui/material/Button'
 import { colors } from '../../colors'
 import { ContentWrapper, PageWrapper } from './styles'
+import GeneralInput from '../../general/Input'
 
 function LandingPage() {
   return (
     <PageWrapper>
       <ContentWrapper>
         <h1>How do you like to get in?</h1>
+
+        <GeneralInput icon={<>a</>} label="My name" placeholder="Use this" />
         <Button
           variant="contained"
           sx={{ backgroundColor: colors.button.aquamarine, color: 'black' }}
@@ -15,7 +18,7 @@ function LandingPage() {
         </Button>
         <Button
           sx={{
-            // backgroundColor: colors.button.pineGreen,
+            backgroundColor: colors.button.pineGreen,
             color: colors.button.aquamarine,
             borderColor: colors.button.aquamarine,
             height: '7rem',

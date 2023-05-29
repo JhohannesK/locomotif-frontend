@@ -26,6 +26,7 @@ export const theme = createTheme({
         root: {
           fontFamily: 'Raleway',
           gap: '1rem',
+          width: '100%',
         },
         input: {
           '::placeholder': {
@@ -34,5 +35,13 @@ export const theme = createTheme({
         },
       },
     },
+
+    // MuiInputBase: {
+    //   styleOverrides: {
+    //     root: {
+    //       width: '100%',
+    //     },
+    //   },
+    // },
   },
 })
