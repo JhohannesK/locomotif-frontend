@@ -11,11 +11,12 @@ const GeneralInput = ({ sx, icon, placeholder, label }: GeneralInputType) => {
   return (
     <>
       <TextField
-        id="outlined-textarea"
+        id="outlined-basic"
         label={label}
+        variant="outlined"
         placeholder={placeholder}
-        multiline
-        sx={sx}
+        type="text"
+        sx={{ ...sx }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">{icon}</InputAdornment>
