@@ -1,14 +1,7 @@
-import { IconButton, InputAdornment, SxProps, TextField } from '@mui/material'
+import { IconButton, InputAdornment, TextField } from '@mui/material'
 import { useState } from 'react'
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md'
-
-type GeneralInputType = {
-  sx?: SxProps
-  icon: React.ReactNode
-  placeholder: string
-  label: string
-  type?: 'text' | 'password'
-}
+import { GeneralInputType } from './@types'
 
 const GeneralInput = ({
   sx,
