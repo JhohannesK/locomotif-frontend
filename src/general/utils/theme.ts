@@ -35,13 +35,5 @@ export const theme = createTheme({
         },
       },
     },
-
-    // MuiInputBase: {
-    //   styleOverrides: {
-    //     root: {
-    //       width: '100%',
-    //     },
-    //   },
-    // },
   },
 })
