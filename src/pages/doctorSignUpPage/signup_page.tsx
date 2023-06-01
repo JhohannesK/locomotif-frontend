@@ -31,7 +31,7 @@ const SignUpPage = () => {
           <GeneralInput
             label="E-mail"
             icon={<AiOutlineUser />}
-            placeholder="mardar@ewiase.com"
+            placeholder="mardar@gmail.com"
           />
           <GeneralInput
             label="Password"
