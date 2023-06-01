@@ -2,7 +2,6 @@ import { IconButton, InputAdornment, TextField } from '@mui/material'
 import { useState } from 'react'
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md'
 import { GeneralInputType } from './@types'
-import { colors } from '../colors'
 
 const GeneralInput = ({
   sx,
