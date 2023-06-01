@@ -29,17 +29,7 @@ const GeneralInput = ({
         type={
           type === 'password' ? (showPassword ? 'text' : 'password') : 'text'
         }
-        sx={{
-          ...sx,
-          '& label.Mui-focused': {
-            color: colors.button.pineGreen,
-          },
-          '& .MuiOutlinedInput-root': {
-            '&.Mui-focused fieldset': {
-              borderColor: colors.button.pineGreen,
-            },
-          },
-        }}
+        sx={{ ...sx }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">{icon}</InputAdornment>
