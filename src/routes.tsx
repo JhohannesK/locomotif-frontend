@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Constants from './utils/constants'
 import App from './App'
-import SiginPageIns from './pages/institution-signin-page/signin_page'
 import SiginPage from './pages/doctor-signin-page/signin_page'
 import SiginPageIns from './pages/institution-signin-page/signin_page'
 
