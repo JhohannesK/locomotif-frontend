@@ -10,7 +10,7 @@ export const theme = createTheme({
           fontFamily: 'Raleway',
           fontWeight: 'bold',
           color: 'white',
-          background: colors.button.pineGreen,
+          background: 'white',
           transition: 'ease-in-out',
           animationDuration: '2000s',
           '&:hover': {
