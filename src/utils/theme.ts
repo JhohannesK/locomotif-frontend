@@ -35,5 +35,20 @@ export const theme = createTheme({
         },
       },
     },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& label.Mui-focused': {
+            color: colors.button.pineGreen,
+          },
+
+          '& .MuiOutlinedInput-root': {
+            '&.Mui-focused fieldset': {
+              borderColor: colors.button.pineGreen,
+            },
+          },
+        },
+      },
+    },
   },
 })
