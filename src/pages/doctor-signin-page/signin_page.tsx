@@ -41,7 +41,7 @@ function SiginPage() {
               sx={{ marginBottom: '20px' }}
               label="Password"
               icon={<FiKey />}
-              placeholder="Username"
+              placeholder="Password"
               type="password"
             />
           </SignInPageFields>

@@ -11,7 +11,7 @@ const routes = createBrowserRouter([
     element: <App />,
   },
   {
-    path: routhPaths.signin,
+    path: routhPaths.doctor_signin,
     element: <SiginPage />,
   }
 ])
