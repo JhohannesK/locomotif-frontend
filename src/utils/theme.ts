@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material'
-import { colors } from '../../colors'
+import { colors } from '../colors'
 
 export const theme = createTheme({
   components: {
@@ -26,6 +26,7 @@ export const theme = createTheme({
         root: {
           fontFamily: 'Raleway',
           gap: '1rem',
+          width: '100%',
         },
         input: {
           '::placeholder': {

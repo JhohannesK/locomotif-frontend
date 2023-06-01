@@ -22,6 +22,7 @@ function LandingPage() {
 
         <GeneralButton
           sx={{
+            backgroundColor: colors.button.pineGreen,
             color: colors.button.aquamarine,
             borderColor: colors.button.aquamarine,
             height: '7rem',
