@@ -5,6 +5,8 @@ export const PageWrapper = styled.body`
   height: 100vh;
   background-color: ${colors.background.pineGreen};
   align-items: start;
+  background-color: ${colors.background.pineGreen};
+  align-items: start;
 `
 
 export const ContentWrapper = styled.div`
@@ -33,6 +35,18 @@ export const QuestionWrapper = styled.div`
 export const SignedInWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 25px;
   padding-top: 5rem;
+  justify-content: space-between;
+`
+export const UserWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+`
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `

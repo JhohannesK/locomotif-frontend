@@ -24,4 +24,5 @@ export type GeneralBtnProps = {
     'small' | 'medium' | 'large',
     ButtonPropsSizeOverrides
   >
+  onClick?: () => void
 }
