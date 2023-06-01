@@ -3,6 +3,7 @@ const Constants = {
   ROUTES: {
     root: '/',
     institution_signin: '/institution-signin',
+    doctor_signin: '/doctor-signin'
   },
 }
 

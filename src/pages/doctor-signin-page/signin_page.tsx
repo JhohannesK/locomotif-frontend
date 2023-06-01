@@ -1,4 +1,4 @@
-import { BsBuildingLock } from 'react-icons/bs'
+import { AiOutlineUser } from 'react-icons/ai'
 import { FiKey } from 'react-icons/fi'
 import {
   SignInPageButton,
@@ -14,7 +14,7 @@ import image from '../../assets/doctor_sign_in.png'
 import GeneralInput from '../../general/Input'
 import GeneralButton from '../../general/Button'
 
-function SiginPageIns() {
+function SiginPage() {
   return (
     <SignInPageContainer>
       <SignInPageContent>
@@ -33,9 +33,9 @@ function SiginPageIns() {
           <SignInPageFields>
             <GeneralInput
               sx={{ marginBottom: '20px' }}
-              label="Facility Code"
-              icon={<BsBuildingLock/>}
-              placeholder="Facility Code"
+              label="Username"
+              icon={<AiOutlineUser />}
+              placeholder="Username"
             />
             <GeneralInput
               sx={{ marginBottom: '20px' }}
@@ -60,4 +60,4 @@ function SiginPageIns() {
   )
 }
 
-export default SiginPageIns
+export default SiginPage
