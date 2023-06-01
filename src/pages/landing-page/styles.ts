@@ -5,6 +5,8 @@ export const PageWrapper = styled.body`
   height: 100vh;
   background-color: ${colors.background.pineGreen};
   align-items: start;
+  background-color: ${colors.background.pineGreen};
+  align-items: start;
 `
 
 export const ContentWrapper = styled.div`
