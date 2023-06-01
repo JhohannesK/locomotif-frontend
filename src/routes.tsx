@@ -13,7 +13,7 @@ const routes = createBrowserRouter([
   {
     path: routhPaths.doctor_signin,
     element: <SiginPage />,
-  }
+  },
 ])
 
 export default routes
