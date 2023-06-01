@@ -21,12 +21,12 @@ const SignUpPage = () => {
           <GeneralInput
             label="First Name"
             icon={<AiOutlineUser />}
-            placeholder="Sister Akos"
+            placeholder="Curtis"
           />
           <GeneralInput
             label="Last Name"
             icon={<AiOutlineUser />}
-            placeholder="Sister Akos"
+            placeholder="Jackson"
           />
           <GeneralInput
             label="E-mail"
