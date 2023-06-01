@@ -8,11 +8,11 @@ import {
   SignInPageFields,
   SignInPageText,
   SignInPageButton,
-} from './signin_page_styles'
+} from './signup_page_styles'
 import GeneralInput from '../../general/Input'
 import GeneralButton from '../../general/Button'
 
-const SignInPage = () => {
+const SignUpPage = () => {
   return (
     <SignInPageContainer>
       <SignInPageContent>
@@ -50,4 +50,4 @@ const SignInPage = () => {
   )
 }
 
-export default SignInPage
+export default SignUpPage
