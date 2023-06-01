@@ -2,7 +2,11 @@ import { createBrowserRouter } from 'react-router-dom'
 import Constants from './utils/constants'
 import App from './App'
 import SiginPage from './pages/doctor-signin-page/signin_page'
+<<<<<<< HEAD
 import SiginPageIns from './pages/institution-signin-page/signin_page'
+=======
+import SiginPage from './pages/institution-signin-page/signin_page'
+>>>>>>> dba6536 (Add sigin page for institutions)
 
 const routhPaths = Constants.ROUTES
 
