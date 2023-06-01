@@ -1,4 +1,4 @@
-import { AiOutlineUser } from 'react-icons/ai'
+import { BsBuildingLock } from 'react-icons/bs'
 import { FiKey } from 'react-icons/fi'
 import {
   SignInPageButton,
@@ -34,14 +34,14 @@ function SiginPage() {
             <GeneralInput
               sx={{ marginBottom: '20px' }}
               label="Facility Code"
-              icon={<AiOutlineUser />}
+              icon={<BsBuildingLock/>}
               placeholder="Facility Code"
             />
             <GeneralInput
               sx={{ marginBottom: '20px' }}
               label="Password"
               icon={<FiKey />}
-              placeholder="password"
+              placeholder="Password"
               type="password"
             />
           </SignInPageFields>
