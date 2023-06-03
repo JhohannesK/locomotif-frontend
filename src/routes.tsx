@@ -12,11 +12,11 @@ const routes = createBrowserRouter([
     element: <App />,
   },
   {
-    path: routhPaths.institution_signin,
+    path: routhPaths.facility_signin,
     element: <SiginPageIns />,
   },
   {
-    path: routhPaths.doctor_signin,
+    path: routhPaths.personnel_signin,
     element: <SiginPage />,
   },
 ])

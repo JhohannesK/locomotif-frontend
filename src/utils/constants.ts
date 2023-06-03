@@ -2,8 +2,8 @@ const Constants = {
   API_URL: 'http://localhost:3000/',
   ROUTES: {
     root: '/',
-    institution_signin: '/institution/signin',
-    doctor_signin: '/doctor/signin',
+    facility_signin: '/facility/signin',
+    personnel_signin: '/personnel/signin',
   },
 }
 
