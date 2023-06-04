@@ -6,6 +6,7 @@ import {
 import { OverridableStringUnion } from '@mui/types'
 
 export type GeneralInputType = {
+  name: string
   sx?: SxProps
   icon: React.ReactNode
   placeholder: string

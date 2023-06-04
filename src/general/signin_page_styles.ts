@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { colors } from '../../colors'
+import { colors } from '../colors'
 
 export const SignInPageContainer = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ export const SignInPageContainer = styled.div`
   justify-content: center;
 `
 
-export const SignInPageContent = styled.div`
+export const SignInPageContent = styled.form`
   width: 28%;
   @media screen and (max-width: 1024px) {
     width: 50%;

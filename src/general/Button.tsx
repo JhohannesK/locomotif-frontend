@@ -9,7 +9,13 @@ const GeneralButton = ({
   onClick,
 }: GeneralBtnProps) => {
   return (
-    <Button variant={variantText} sx={{ ...sx }} size={size} onClick={onClick}>
+    <Button
+      variant={variantText}
+      sx={{ ...sx }}
+      size={size}
+      onClick={onClick}
+      type="submit"
+    >
       {title}
     </Button>
   )
