@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { colors } from '../../colors'
+import { colors } from '../../../colors'
 
 export const SignInPageContainer = styled.main`
   width: 100vw;
@@ -9,7 +9,7 @@ export const SignInPageContainer = styled.main`
   align-items: center;
 `
 
-export const SignInPageContent = styled.section`
+export const SignInPageContent = styled.form`
   max-width: 300px;
   width: 100%;
   padding: 2rem;

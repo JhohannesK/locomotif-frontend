@@ -4,6 +4,7 @@ const Constants = {
     root: '/',
     facility_signin: '/facility/signin',
     personnel_signin: '/personnel/signin',
+    personnel_signup: '/personnel/signup',
   },
 }
 
