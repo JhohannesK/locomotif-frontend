@@ -35,6 +35,7 @@ function LandingPage() {
                 color: 'black',
                 height: '3rem',
                 width: '20rem',
+                // borderColor: `${isFacilityClickedButton?colors.button.pineGreen:colors.button.aquamarine}`
               }}
               title="Practitioner"
               size={'large'}
@@ -121,7 +122,7 @@ function LandingPage() {
                 title="sign up"
                 size={'large'}
                 // onClick={()=>{
-                //   routes.navigate(Constants.ROUTES.personnel_signup)
+                //   routes.navigate(Constants.ROUTES.facility_signup)
 
                 // }}
               />
