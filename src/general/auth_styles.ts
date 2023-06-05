@@ -38,7 +38,7 @@ export const AuthLogo = styled.div`
 export const AuthFields = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 1px;
+  gap: 2rem;
 `
 
 export const AuthText = styled.div`
@@ -51,6 +51,7 @@ export const AuthText = styled.div`
 export const AuthLink = styled.div`
   cursor: pointer;
   font-size: 0.7rem;
+  padding: 0.7rem;
 `
 
 export const AuthButton = styled.div`
