@@ -10,16 +10,20 @@ import {
 } from './styles'
 import GeneralButton from '../../general/Button'
 import { useState } from 'react'
+import Constants from '../../utils/constants'
+import routes from '../../routes'
 
 function LandingPage() {
-  const [isClickedButton, setIsClickedButton] = useState(false)
+  const [isPersonnelClickedButton, setIsPersonnelClickedButton] =
+    useState(false)
+  const [isFacilityClickedButton, setIsFacilityClickedButton] = useState(false)
 
   return (
     <PageWrapper>
       <ContentWrapper>
         <WelcomeWrapper>Welcome!</WelcomeWrapper>
         <QuestionWrapper>
-          Are you an Institution or a Practitioner?
+          Are you an Facility or a Practitioner?
         </QuestionWrapper>
 
         <ButtonWrapper>
@@ -35,7 +39,8 @@ function LandingPage() {
               title="Practitioner"
               size={'large'}
               onClick={() => {
-                setIsClickedButton(true)
+                setIsPersonnelClickedButton(true)
+                setIsFacilityClickedButton(false)
               }}
             />
             <GeneralButton
@@ -47,14 +52,15 @@ function LandingPage() {
                 width: '20rem',
               }}
               variantText={'outlined'}
-              title={'Institution'}
+              title={'Facility'}
               size={'small'}
               onClick={() => {
-                setIsClickedButton(true)
+                setIsFacilityClickedButton(true)
+                setIsPersonnelClickedButton(false)
               }}
             />
           </UserWrapper>
-          {isClickedButton && (
+          {isPersonnelClickedButton && (
             <SignedInWrapper>
               <GeneralButton
                 variantText={'contained'}
@@ -66,6 +72,9 @@ function LandingPage() {
                 }}
                 title="LOG iN"
                 size={'large'}
+                onClick={() => {
+                  routes.navigate(Constants.ROUTES.personnel_signin)
+                }}
               />
               <GeneralButton
                 variantText={'outlined'}
@@ -76,8 +85,45 @@ function LandingPage() {
                   height: '2rem',
                   width: '9rem',
                 }}
-                title="sign iN"
+                title="sign up"
                 size={'large'}
+                onClick={() => {
+                  routes.navigate(Constants.ROUTES.personnel_signup)
+                }}
+              />
+            </SignedInWrapper>
+          )}
+          {isFacilityClickedButton && (
+            <SignedInWrapper>
+              <GeneralButton
+                variantText={'contained'}
+                sx={{
+                  backgroundColor: colors.button.aquamarine,
+                  color: 'black',
+                  height: '2rem',
+                  width: '9rem',
+                }}
+                title="LOG iN"
+                size={'large'}
+                onClick={() => {
+                  routes.navigate(Constants.ROUTES.facility_signin)
+                }}
+              />
+              <GeneralButton
+                variantText={'outlined'}
+                sx={{
+                  backgroundColor: colors.button.pineGreen,
+                  color: colors.button.aquamarine,
+                  borderColor: colors.button.aquamarine,
+                  height: '2rem',
+                  width: '9rem',
+                }}
+                title="sign up"
+                size={'large'}
+                // onClick={()=>{
+                //   routes.navigate(Constants.ROUTES.personnel_signup)
+
+                // }}
               />
             </SignedInWrapper>
           )}
