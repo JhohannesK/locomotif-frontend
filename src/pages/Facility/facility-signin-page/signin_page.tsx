@@ -24,7 +24,7 @@ const schema = z.object({
 
 type Schema = z.infer<typeof schema>
 
-function SiginPageIns() {
+function SigninPageIns() {
   const defaultValues: Schema = {
     facilityCode: '',
     password: '',
@@ -50,7 +50,7 @@ function SiginPageIns() {
               <img
                 src={image}
                 alt="health-leaf icon"
-                style={{ height: '100%', width: '100%', objectFit: 'contain' }}
+                style={{ height: '80%', width: '80%', objectFit: 'contain' }}
               />
             </SignInPageLogo>
 
@@ -91,4 +91,4 @@ function SiginPageIns() {
   )
 }
 
-export default SiginPageIns
+export default SigninPageIns

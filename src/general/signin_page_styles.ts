@@ -13,9 +13,13 @@ export const SignInPageContainer = styled.div`
 export const SignInPageContent = styled.form`
   width: 28%;
   @media screen and (max-width: 1024px) {
-    width: 50%;
+    width: 60%;
   }
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 769px) {
+    width: 70%;
+  }
+  
+  @media screen and (max-width: 600px) {
     width: 80%;
   }
 `
