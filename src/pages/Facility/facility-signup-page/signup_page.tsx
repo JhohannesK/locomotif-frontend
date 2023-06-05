@@ -10,7 +10,6 @@ import {
   AuthText,
   AuthLogo,
   AuthButton,
-  AuthLink,
 } from '../../../general/auth_styles'
 import image from '../../../assets/doctor_sign_in.png'
 import GeneralInput from '../../../general/Input'
@@ -19,20 +18,14 @@ import GeneralButton from '../../../general/Button'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
-import Constants from '../../../utils/constants'
-import axios from 'axios'
-import { useMutation } from '@tanstack/react-query'
-import routes from '../../../routes'
-import DesktopDateInput from '../../../general/Date'
 
 const schema = z
   .object({
-    facility_code: z.string().min(4),
-    name: z.string().min(2),
-    password: z.string(),
-    address: z.string().min(1),
-    establishment_date: z.string().nonempty(),
-    confirmPassword: z.string(),
+    firstName: z.string().min(10),
+    lastName: z.string().min(2),
+    email: z.string().email(),
+    password: z.string().min(8).max(100),
+    confirmPassword: z.string().min(8).max(100),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Passwords do not match',
@@ -43,11 +36,10 @@ type Schema = z.infer<typeof schema>
 
 const SignUpPageIns = () => {
   const defaultValues: Schema = {
-    facility_code: '',
-    name: '',
+    firstName: '',
+    lastName: '',
+    email: '',
     password: '',
-    address: '',
-    establishment_date: 'YYYY-MM-DD',
     confirmPassword: '',
   }
 
@@ -56,22 +48,8 @@ const SignUpPageIns = () => {
     defaultValues,
   })
 
-  type OmitConfirmPassword = Omit<Schema, 'confirmPassword'>
-
-  const mutation = useMutation({
-    mutationFn: async (data: OmitConfirmPassword) => {
-      axios.post(`${Constants.BaseURL}auth/login/medical_facility/`, data)
-    },
-    onSuccess: () => console.log('yess'),
-    onError: () => console.log('some error'),
-  })
-
   const onSubmit = (data: Schema) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { confirmPassword, ...rest } = data
     console.log(data)
-
-    mutation.mutate(rest)
   }
 
   return (
@@ -91,7 +69,7 @@ const SignUpPageIns = () => {
           </AuthUpperContent>
           <AuthFields>
             <GeneralInput
-              name="facility_code"
+              name="facilitycode"
               label="Facility Code"
               icon={<AiOutlineUser />}
               placeholder="KBTH123"
@@ -108,23 +86,11 @@ const SignUpPageIns = () => {
               icon={<AiOutlineUser />}
               placeholder="GA-159-343"
             />
-            <DesktopDateInput
-              name="establishment_date"
-              label="Establishment date"
-            />
             <GeneralInput
-              name="password"
-              label="Password"
-              type="password"
+              name="date"
+              label="Establishment Date"
               icon={<FiKey />}
-              placeholder="*********"
-            />
-            <GeneralInput
-              name="confirmPassword"
-              label="Confirm Password"
-              type="password"
-              icon={<FiKey />}
-              placeholder="*********"
+              placeholder="01/06/2023"
               sx={{ marginBottom: '20px' }}
             />
           </AuthFields>
@@ -136,14 +102,7 @@ const SignUpPageIns = () => {
             />
           </AuthButton>
           <AuthText>
-            Already have an account?{' '}
-            <AuthLink
-              onClick={() => {
-                routes.navigate(Constants.ROUTES.facility_signin)
-              }}
-            >
-              Sign In
-            </AuthLink>
+            Already have an account ? <a href="#">Sign In</a>
           </AuthText>
         </AuthContent>
       </FormProvider>

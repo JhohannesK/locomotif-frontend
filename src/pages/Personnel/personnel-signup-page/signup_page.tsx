@@ -15,10 +15,7 @@ import {
   AuthLogo,
   AuthFields,
   AuthContent,
-  AuthLink,
 } from '../../../general/auth_styles'
-import Constants from '../../../utils/constants'
-import routes from '../../../routes'
 import image from '../../../assets/doctor_sign_in.png'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
@@ -90,34 +87,22 @@ const SignUpPage = () => {
           </AuthUpperContent>
           <AuthFields>
             <GeneralInput
-              name="username"
-              label="Username"
-              icon={<AiOutlineUser />}
-              placeholder="Curtis"
-            />
-            <GeneralInput
-              name="first_name"
+              name="firstName"
               label="First Name"
               icon={<AiOutlineUser />}
               placeholder="Curtis"
             />
             <GeneralInput
-              name="last_name"
+              name="lastName"
               label="Last Name"
               icon={<AiOutlineUser />}
               placeholder="Jackson"
             />
             <GeneralInput
-              name="other_names"
-              label="Other Names"
+              name="email"
+              label="E-mail"
               icon={<AiOutlineUser />}
-              placeholder="other names"
-            />
-            <GeneralInput
-              name="role"
-              label="Role"
-              icon={<AiOutlineUser />}
-              placeholder="Role"
+              placeholder="mardar@gmail.com"
             />
             <GeneralInput
               name="password"
@@ -143,16 +128,7 @@ const SignUpPage = () => {
               size="large"
             />
           </AuthButton>
-          <AuthText>
-            Already have an account ?{' '}
-            <AuthLink
-              onClick={() => {
-                routes.navigate(Constants.ROUTES.personnel_signin)
-              }}
-            >
-              Sign In
-            </AuthLink>
-          </AuthText>
+          <AuthText>Already have an account ? Sign In</AuthText>
         </AuthContent>
       </FormProvider>
     </AuthContainer>

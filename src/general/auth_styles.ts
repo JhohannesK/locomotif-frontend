@@ -38,8 +38,7 @@ export const AuthLogo = styled.div`
 export const AuthFields = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 1px;
 `
 
 export const AuthText = styled.div`
@@ -52,7 +51,6 @@ export const AuthText = styled.div`
 export const AuthLink = styled.div`
   cursor: pointer;
   font-size: 0.7rem;
-  color: ${colors.button.pineGreen};
 `
 
 export const AuthButton = styled.div`
