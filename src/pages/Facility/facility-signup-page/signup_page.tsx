@@ -1,22 +1,23 @@
 import { AiOutlineUser } from 'react-icons/ai'
 import { FiKey } from 'react-icons/fi'
 
+import { colors } from '../../../colors'
+import {
+  AuthContainer,
+  AuthContent,
+  AuthUpperContent,
+  AuthFields,
+  AuthText,
+  AuthLogo,
+  AuthButton,
+} from '../../../general/auth_styles'
+import image from '../../../assets/doctor_sign_in.png'
 import GeneralInput from '../../../general/Input'
 import GeneralButton from '../../../general/Button'
+
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
-import { colors } from '../../../colors'
-import {
-  AuthUpperContent,
-  AuthContainer,
-  AuthText,
-  AuthButton,
-  AuthLogo,
-  AuthFields,
-  AuthContent,
-} from '../../../general/auth_styles'
-import image from '../../../assets/doctor_sign_in.png'
 
 const schema = z
   .object({
@@ -63,44 +64,36 @@ const SignUpPage = () => {
                 style={{ height: '80%', width: '80%', objectFit: 'contain' }}
               />
             </AuthLogo>
-            <h1>Sign Up</h1>
+
+            <h1 style={{ fontWeight: 650, fontSize: '2rem' }}>Sign Up</h1>
           </AuthUpperContent>
           <AuthFields>
             <GeneralInput
-              name="firstName"
-              label="First Name"
+              name="facilitycode"
+              label="Facility Code"
               icon={<AiOutlineUser />}
-              placeholder="Curtis"
+              placeholder="KBTH123"
             />
             <GeneralInput
-              name="lastName"
-              label="Last Name"
+              name="name"
+              label="Name"
               icon={<AiOutlineUser />}
-              placeholder="Jackson"
+              placeholder="Korle-Bu Teaching Hospital"
             />
             <GeneralInput
-              name="email"
-              label="E-mail"
+              name="address"
+              label="Address"
               icon={<AiOutlineUser />}
-              placeholder="mardar@gmail.com"
+              placeholder="GA-159-343"
             />
             <GeneralInput
-              name="password"
-              label="Password"
-              type="password"
+              name="date"
+              label="Establishment Date"
               icon={<FiKey />}
-              placeholder="*********"
-            />
-            <GeneralInput
-              name="confirmPassword"
-              label="Confirm Password"
-              type="password"
-              icon={<FiKey />}
-              placeholder="*********"
+              placeholder="01/06/2023"
               sx={{ marginBottom: '20px' }}
             />
           </AuthFields>
-
           <AuthButton>
             <GeneralButton
               title="Sign Up"
@@ -108,7 +101,9 @@ const SignUpPage = () => {
               size="large"
             />
           </AuthButton>
-          <AuthText>Already have an account ? Sign In</AuthText>
+          <AuthText>
+            Already have an account ? <a href="#">Sign In</a>
+          </AuthText>
         </AuthContent>
       </FormProvider>
     </AuthContainer>

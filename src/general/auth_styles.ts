@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 import { colors } from '../colors'
 
-export const SignInPageContainer = styled.div`
+export const AuthContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,7 @@ export const SignInPageContainer = styled.div`
   justify-content: center;
 `
 
-export const SignInPageContent = styled.form`
+export const AuthContent = styled.form`
   width: 28%;
   @media screen and (max-width: 1024px) {
     width: 60%;
@@ -24,33 +24,34 @@ export const SignInPageContent = styled.form`
   }
 `
 
-export const SignInPageUpperContent = styled.div`
+export const AuthUpperContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   height: 150px;
 `
-export const SignInPageLogo = styled.div`
+export const AuthLogo = styled.div`
   height: 100%;
   width: 50%;
 `
-export const SignInPageFields = styled.div`
+export const AuthFields = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 1px;
+  gap: 2rem;
 `
 
-export const SignInPageText = styled.div`
+export const AuthText = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: right;
   color: ${colors.button.pineGreen};
   cursor: pointer;
   font-size: 0.7rem;
+  padding: 0.7rem;
 `
 
-export const SignInPageButton = styled.div`
+export const AuthButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
