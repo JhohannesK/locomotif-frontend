@@ -9,14 +9,14 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import {
-  SignInPageButton,
-  SignInPageContainer,
-  SignInPageContent,
-  SignInPageFields,
-  SignInPageLogo,
-  SignInPageText,
-  SignInPageUpperContent,
-} from '../../../general/signin_page_styles'
+  AuthButton,
+  AuthContainer,
+  AuthContent,
+  AuthFields,
+  AuthLogo,
+  AuthText,
+  AuthUpperContent,
+} from '../../../general/auth_styles'
 import { FormProvider } from 'react-hook-form'
 
 const schema = z.object({
@@ -42,22 +42,22 @@ function SigninPage() {
   }
 
   return (
-    <SignInPageContainer>
+    <AuthContainer>
       <FormProvider {...methods}>
-        <SignInPageContent onSubmit={methods.handleSubmit(onSubmit)}>
-          <SignInPageUpperContent>
-            <SignInPageLogo>
+        <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
+          <AuthUpperContent>
+            <AuthLogo>
               <img
                 src={image}
                 alt="health-leaf icon"
                 style={{ height: '80%', width: '80%', objectFit: 'contain' }}
               />
-            </SignInPageLogo>
+            </AuthLogo>
 
             <h1 style={{ fontWeight: 650, fontSize: '2rem' }}>Sign In</h1>
-          </SignInPageUpperContent>
+          </AuthUpperContent>
           <div>
-            <SignInPageFields>
+            <AuthFields>
               <GeneralInput
                 name="username"
                 sx={{ marginBottom: '20px' }}
@@ -73,21 +73,19 @@ function SigninPage() {
                 placeholder="Password"
                 type="password"
               />
-            </SignInPageFields>
+            </AuthFields>
           </div>
-          <SignInPageText>
-            <p>Forgot your password?</p>
-          </SignInPageText>
-          <SignInPageButton>
+          <AuthText>Forgot your password?</AuthText>
+          <AuthButton>
             <GeneralButton
               sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
               title="Sign In"
               size="large"
             />
-          </SignInPageButton>
-        </SignInPageContent>
+          </AuthButton>
+        </AuthContent>
       </FormProvider>
-    </SignInPageContainer>
+    </AuthContainer>
   )
 }
 
