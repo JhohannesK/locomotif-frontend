@@ -34,7 +34,7 @@ const schema = z
 
 type Schema = z.infer<typeof schema>
 
-const SignUpPage = () => {
+const SignUpPageIns = () => {
   const defaultValues: Schema = {
     firstName: '',
     lastName: '',
@@ -110,4 +110,4 @@ const SignUpPage = () => {
   )
 }
 
-export default SignUpPage
+export default SignUpPageIns
