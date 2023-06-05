@@ -47,6 +47,7 @@ export const AuthText = styled.div`
   align-items: right;
   padding: 0.7rem;
   font-size: 0.7rem;
+  padding: 0.7rem;
 `
 export const AuthLink = styled.div`
   cursor: pointer;
