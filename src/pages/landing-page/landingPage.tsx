@@ -121,10 +121,9 @@ function LandingPage() {
                 }}
                 title="sign up"
                 size={'large'}
-                // onClick={()=>{
-                //   routes.navigate(Constants.ROUTES.facility_signup)
-
-                // }}
+                onClick={() => {
+                  routes.navigate(Constants.ROUTES.facility_signup)
+                }}
               />
             </SignedInWrapper>
           )}
