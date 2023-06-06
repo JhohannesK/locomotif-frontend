@@ -1,14 +1,14 @@
 import { BsBuildingLock } from 'react-icons/bs'
 import { FiKey } from 'react-icons/fi'
 import {
-  SignInPageButton,
-  SignInPageContainer,
-  SignInPageContent,
-  SignInPageFields,
-  SignInPageLogo,
-  SignInPageText,
-  SignInPageUpperContent,
-} from '../../../general/signin_page_styles'
+  AuthButton,
+  AuthContainer,
+  AuthContent,
+  AuthFields,
+  AuthLogo,
+  AuthText,
+  AuthUpperContent,
+} from '../../../general/auth_styles'
 import { colors } from '../../../colors'
 import image from '../../../assets/doctor_sign_in.png'
 import GeneralInput from '../../../general/Input'
@@ -42,22 +42,22 @@ function SigninPageIns() {
   }
 
   return (
-    <SignInPageContainer>
+    <AuthContainer>
       <FormProvider {...methods}>
-        <SignInPageContent onSubmit={methods.handleSubmit(onSubmit)}>
-          <SignInPageUpperContent>
-            <SignInPageLogo>
+        <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
+          <AuthUpperContent>
+            <AuthLogo>
               <img
                 src={image}
                 alt="health-leaf icon"
                 style={{ height: '80%', width: '80%', objectFit: 'contain' }}
               />
-            </SignInPageLogo>
+            </AuthLogo>
 
             <h1 style={{ fontWeight: 650, fontSize: '2rem' }}>Sign In</h1>
-          </SignInPageUpperContent>
+          </AuthUpperContent>
           <div>
-            <SignInPageFields>
+            <AuthFields>
               <GeneralInput
                 name="facilityCode"
                 sx={{ marginBottom: '20px' }}
@@ -74,20 +74,20 @@ function SigninPageIns() {
                 placeholder="Password"
                 type="password"
               />
-            </SignInPageFields>
+            </AuthFields>
           </div>
-          <SignInPageText>
+          <AuthText>
             <p>Forgot your password?</p>
-          </SignInPageText>
-          <SignInPageButton>
+          </AuthText>
+          <AuthButton>
             <GeneralButton
               sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
               title="Sign In"
             />
-          </SignInPageButton>
-        </SignInPageContent>
+          </AuthButton>
+        </AuthContent>
       </FormProvider>
-    </SignInPageContainer>
+    </AuthContainer>
   )
 }
 
