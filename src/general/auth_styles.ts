@@ -18,7 +18,7 @@ export const AuthContent = styled.form`
   @media screen and (max-width: 769px) {
     width: 70%;
   }
-  
+
   @media screen and (max-width: 600px) {
     width: 80%;
   }
