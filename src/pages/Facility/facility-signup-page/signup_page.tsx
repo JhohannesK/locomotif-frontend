@@ -20,15 +20,18 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
 import Constants from '../../../utils/constants'
+import axios from 'axios'
+import { useMutation } from '@tanstack/react-query'
 import routes from '../../../routes'
 
 const schema = z
   .object({
-    firstName: z.string().min(10),
-    lastName: z.string().min(2),
-    email: z.string().email(),
-    password: z.string().min(8).max(100),
-    confirmPassword: z.string().min(8).max(100),
+    facility_code: z.string(),
+    name: z.string(),
+    password: z.string(),
+    address: z.string(),
+    establishment_date: z.string(),
+    confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Passwords do not match',
@@ -39,10 +42,11 @@ type Schema = z.infer<typeof schema>
 
 const SignUpPageIns = () => {
   const defaultValues: Schema = {
-    firstName: '',
-    lastName: '',
-    email: '',
+    facility_code: '',
+    name: '',
     password: '',
+    address: '',
+    establishment_date: '2019-08-24',
     confirmPassword: '',
   }
 
@@ -51,8 +55,22 @@ const SignUpPageIns = () => {
     defaultValues,
   })
 
+  type OmitConfirmPassword = Omit<Schema, 'confirmPassword'>
+
+  const mutation = useMutation({
+    mutationFn: async (data: OmitConfirmPassword) => {
+      axios.post(`${Constants.BaseURL}auth/login/medical_facility/`, data)
+    },
+    onSuccess: () => console.log('yess'),
+    onError: () => console.log('some error'),
+  })
+
   const onSubmit = (data: Schema) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { confirmPassword, ...rest } = data
     console.log(data)
+
+    mutation.mutate(rest)
   }
 
   return (
