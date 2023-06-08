@@ -22,3 +22,13 @@ body {
 ::-ms-reveal {
   display: none;
 }
+
+.input > div,
+button {
+  height: 44px;
+}
+
+span,
+a {
+  cursor: pointer;
+}

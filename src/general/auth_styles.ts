@@ -45,10 +45,13 @@ export const AuthText = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: right;
-  color: ${colors.button.pineGreen};
+  padding: 0.7rem;
+  font-size: 0.7rem;
+`
+export const AuthLink = styled.div`
   cursor: pointer;
   font-size: 0.7rem;
-  padding: 0.7rem;
+  color: ${colors.button.pineGreen};
 `
 
 export const AuthButton = styled.div`

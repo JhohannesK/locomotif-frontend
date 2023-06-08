@@ -34,6 +34,7 @@ const GeneralInput = ({
         defaultValue=""
         render={({ field }) => (
           <TextField
+            className="input"
             id={label}
             {...field}
             label={label}
