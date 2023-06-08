@@ -18,3 +18,8 @@ body {
     font-size: 16px;
   }
 }
+
+.input > div,
+button {
+  height: 44px;
+}
