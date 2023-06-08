@@ -15,11 +15,13 @@ import {
   AuthLogo,
   AuthFields,
   AuthContent,
+  AuthLink,
 } from '../../../general/auth_styles'
+import Constants from '../../../utils/constants'
+import routes from '../../../routes'
 import image from '../../../assets/doctor_sign_in.png'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
-import Constants from '../../../utils/constants'
 
 const schema = z
   .object({
@@ -141,7 +143,16 @@ const SignUpPage = () => {
               size="large"
             />
           </AuthButton>
-          <AuthText>Already have an account ? Sign In</AuthText>
+          <AuthText>
+            Already have an account ?{' '}
+            <AuthLink
+              onClick={() => {
+                routes.navigate(Constants.ROUTES.personnel_signin)
+              }}
+            >
+              Sign In
+            </AuthLink>
+          </AuthText>
         </AuthContent>
       </FormProvider>
     </AuthContainer>

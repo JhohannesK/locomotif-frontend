@@ -10,6 +10,7 @@ import {
   AuthText,
   AuthLogo,
   AuthButton,
+  AuthLink,
 } from '../../../general/auth_styles'
 import image from '../../../assets/doctor_sign_in.png'
 import GeneralInput from '../../../general/Input'
@@ -21,6 +22,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 import Constants from '../../../utils/constants'
 import axios from 'axios'
 import { useMutation } from '@tanstack/react-query'
+import routes from '../../../routes'
 
 const schema = z
   .object({
@@ -121,7 +123,14 @@ const SignUpPageIns = () => {
             />
           </AuthButton>
           <AuthText>
-            Already have an account ? <a href="#">Sign In</a>
+            Already have an account?{' '}
+            <AuthLink
+              onClick={() => {
+                routes.navigate(Constants.ROUTES.facility_signin)
+              }}
+            >
+              Sign In
+            </AuthLink>
           </AuthText>
         </AuthContent>
       </FormProvider>
