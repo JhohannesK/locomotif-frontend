@@ -11,8 +11,11 @@ import {
   NavBarRightContent,
   NavBarUserImage,
   NavBarUserName,
+  SearchBarContainer,
 } from './home_page_style'
 import image from '../../../assets/user.jpeg'
+import { BiSearch } from 'react-icons/bi'
+import SearchInput from '../../../general/SearchInput'
 
 function HomePage() {
   return (
@@ -39,7 +42,18 @@ function HomePage() {
       <LowerContent>
         <LowerContentContainer>
           <LowerContentLeft>filter</LowerContentLeft>
-          <LowerContentRight>jobs</LowerContentRight>
+          <LowerContentRight>
+            <SearchBarContainer>
+              <SearchInput
+                name="Search"
+                sx={{ width:'60%'}}
+                icon={<BiSearch />}
+                placeholder="Search"
+                size={'small'}
+              />
+            </SearchBarContainer>
+            <div>Jobs</div>
+          </LowerContentRight>
         </LowerContentContainer>
       </LowerContent>
     </HomePageContainer>

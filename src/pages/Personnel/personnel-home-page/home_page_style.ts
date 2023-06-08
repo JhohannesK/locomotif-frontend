@@ -75,11 +75,21 @@ export const LowerContentContainer = styled.div`
 export const LowerContentLeft = styled.aside`
   width: 30%;
   height: 100%;
-  outline: 1px solid green;
+  border : 2px solid ${colors.background.keppel};
+  border-radius: 10px;
 `
 
 export const LowerContentRight = styled.aside`
     width: 68%;
     height: 100%;
-    outline: 1px solid pink;
+    border : 2px solid ${colors.background.keppel};
+    border-radius: 10px;
+`
+export const SearchBarContainer = styled.div`
+  height: 12%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom : 2px solid ${colors.background.keppel};
+  padding: 5px;
 `
