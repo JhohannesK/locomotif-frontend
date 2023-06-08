@@ -23,3 +23,8 @@ body {
 button {
   height: 44px;
 }
+
+span,
+a {
+  cursor: pointer;
+}
