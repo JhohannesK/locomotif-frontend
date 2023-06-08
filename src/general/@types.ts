@@ -5,6 +5,15 @@ import {
 } from '@mui/material'
 import { OverridableStringUnion } from '@mui/types'
 
+export type SearchInputType = {
+  name: string
+  sx?: SxProps
+  icon: React.ReactNode
+  placeholder: string
+  type?: 'text'
+  size: 'small' | 'medium'
+}
+
 export type GeneralInputType = {
   name: string
   sx?: SxProps
