@@ -24,6 +24,7 @@ button {
   height: 44px;
 }
 
-span, a {
+span,
+a {
   cursor: pointer;
 }
