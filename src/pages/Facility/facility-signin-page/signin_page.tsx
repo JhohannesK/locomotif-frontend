@@ -42,6 +42,7 @@ function SigninPageIns() {
     mutationFn: async (data: Schema) =>
       axios.post(`${Constants.BaseURL}auth/login/medical_facility/`, data),
     onSuccess: () => console.log('yes'),
+    onError: () => console.log('some error'),
   })
 
   const onSubmit = (data: Schema) => {
@@ -68,7 +69,7 @@ function SigninPageIns() {
           <div>
             <AuthFields>
               <GeneralInput
-                name="facilityCode"
+                name="facility_code"
                 sx={{ marginBottom: '20px' }}
                 label="Facility Code"
                 icon={<BsBuildingLock />}
