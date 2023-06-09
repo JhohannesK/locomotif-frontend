@@ -23,14 +23,15 @@ import Constants from '../../../utils/constants'
 import axios from 'axios'
 import { useMutation } from '@tanstack/react-query'
 import routes from '../../../routes'
+import DesktopDateInput from '../../../general/Date'
 
 const schema = z
   .object({
-    facility_code: z.string(),
-    name: z.string(),
+    facility_code: z.string().min(4),
+    name: z.string().min(2),
     password: z.string(),
-    address: z.string(),
-    establishment_date: z.string(),
+    address: z.string().min(1),
+    establishment_date: z.string().nonempty(),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
@@ -46,7 +47,7 @@ const SignUpPageIns = () => {
     name: '',
     password: '',
     address: '',
-    establishment_date: '2019-08-24',
+    establishment_date: 'YYYY-MM-DD',
     confirmPassword: '',
   }
 
@@ -90,7 +91,7 @@ const SignUpPageIns = () => {
           </AuthUpperContent>
           <AuthFields>
             <GeneralInput
-              name="facilitycode"
+              name="facility_code"
               label="Facility Code"
               icon={<AiOutlineUser />}
               placeholder="KBTH123"
@@ -107,11 +108,23 @@ const SignUpPageIns = () => {
               icon={<AiOutlineUser />}
               placeholder="GA-159-343"
             />
+            <DesktopDateInput
+              name="establishment_date"
+              label="Establishment date"
+            />
             <GeneralInput
-              name="date"
-              label="Establishment Date"
+              name="password"
+              label="Password"
+              type="password"
               icon={<FiKey />}
-              placeholder="01/06/2023"
+              placeholder="*********"
+            />
+            <GeneralInput
+              name="confirmPassword"
+              label="Confirm Password"
+              type="password"
+              icon={<FiKey />}
+              placeholder="*********"
               sx={{ marginBottom: '20px' }}
             />
           </AuthFields>
