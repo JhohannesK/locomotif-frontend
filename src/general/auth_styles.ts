@@ -39,6 +39,7 @@ export const AuthFields = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-bottom: 20px;
 `
 
 export const AuthText = styled.div`
