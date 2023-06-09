@@ -1,7 +1,7 @@
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { Controller, useFormContext } from 'react-hook-form'
 
-const DesktopDateInput = ({ name }: { name: string }) => {
+const DesktopDateInput = ({ name, label }: { name: string; label: string }) => {
   const {
     control,
     // formState: { errors },
@@ -26,6 +26,7 @@ const DesktopDateInput = ({ name }: { name: string }) => {
               ref={(r) => {
                 field.ref(r?.querySelector('input'))
               }}
+              label={label}
 
               // onClose={(...args) => {
               //   field.onBlur()

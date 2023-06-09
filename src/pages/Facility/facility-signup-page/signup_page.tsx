@@ -47,7 +47,7 @@ const SignUpPageIns = () => {
     name: '',
     password: '',
     address: '',
-    establishment_date: '',
+    establishment_date: 'YYYY-MM-DD',
     confirmPassword: '',
   }
 
@@ -108,7 +108,10 @@ const SignUpPageIns = () => {
               icon={<AiOutlineUser />}
               placeholder="GA-159-343"
             />
-            <DesktopDateInput name="establishment_date" />
+            <DesktopDateInput
+              name="establishment_date"
+              label="Establishment date"
+            />
             <GeneralInput
               name="password"
               label="Password"
