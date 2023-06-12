@@ -7,8 +7,8 @@ export const HomePageContainer = styled.section`
 `
 
 export const NavBar = styled.nav`
-  height: 10%;
-  border-bottom: 2px solid ${colors.background.keppel};
+  height: 8%;
+  border-bottom: 2px solid ${colors.border.whiteSmoke};
   padding: 3px 0px;
 `
 export const NavBarContainer = styled.div`
@@ -75,14 +75,14 @@ export const LowerContentContainer = styled.div`
 export const LowerContentLeft = styled.aside`
   width: 30%;
   height: 100%;
-  border : 2px solid ${colors.background.keppel};
+  border : 2px solid ${colors.border.whiteSmoke};
   border-radius: 10px;
 `
 
 export const LowerContentRight = styled.aside`
     width: 68%;
     height: 100%;
-    border : 2px solid ${colors.background.keppel};
+    border : 2px solid ${colors.border.whiteSmoke};
     border-radius: 10px;
 `
 export const SearchBarContainer = styled.div`
@@ -90,6 +90,6 @@ export const SearchBarContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-bottom : 2px solid ${colors.background.keppel};
+  border-bottom : 2px solid ${colors.border.whiteSmoke};
   padding: 5px;
 `
