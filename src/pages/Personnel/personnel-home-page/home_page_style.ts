@@ -83,7 +83,7 @@ export const LowerContentLeft = styled.aside`
 export const LowerContentRight = styled.aside`
   width: 68%;
   height: 100%;
-  border: 2px solid ${colors.background.pineGreen};
+  // border: 2px solid ${colors.background.pineGreen};
   border-radius: 10px;
 `
 export const SearchBarContainer = styled.div`
@@ -91,6 +91,51 @@ export const SearchBarContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-bottom: 2px solid ${colors.background.pineGreen};
   padding: 5px;
+`
+export const JobsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  // outline: 1px solid red;
+  height: 85%;
+`
+
+export const JobContainer = styled.div`
+  max-width: 100%;
+  border: 1px solid ${colors.background.pineGreen};
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
+  height: 110px;
+  margin-bottom: 10px;
+`
+
+export const JobContainerLeft = styled.div`
+  width: 30%;
+  color: #fff;
+  background: ${colors.background.pineGreen};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+`
+export const JobTitle = styled.h2`
+  color: #fff;
+  font-size: 1.2rem;
+  opacity: 0.8;
+`
+
+export const JobContainerRight = styled.div`
+  padding-left: 10px;
+`
+export const JobDescription = styled.p`
+  font-size: 0.8rem;
+  opacity: 0.8;
+`
+
+export const JobLocation = styled.h3`
+  font-size: 1rem;
+  opacity: 0.8;
 `

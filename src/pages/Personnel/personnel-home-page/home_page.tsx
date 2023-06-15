@@ -1,5 +1,12 @@
 import {
   HomePageContainer,
+  JobContainer,
+  JobContainerLeft,
+  JobContainerRight,
+  JobDescription,
+  JobLocation,
+  JobTitle,
+  JobsContainer,
   LowerContent,
   LowerContentContainer,
   LowerContentLeft,
@@ -52,13 +59,28 @@ function HomePage() {
                 size={'small'}
               />
             </SearchBarContainer>
-            <div>
-              <div>
-                <h2>Dentist</h2>
-                <p>Okomfo Anokye Teaching Hospital</p>
-                <p>GHS 20k/year</p>
-              </div>
-            </div>
+            <JobsContainer>
+              <JobContainer>
+                <JobContainerLeft>
+                  <JobTitle>Obstetrics and Gynecology Physician </JobTitle>
+                </JobContainerLeft>
+                <JobContainerRight>
+                  <JobLocation>Okomfo Anokye Teaching Hospital</JobLocation>
+                  <JobDescription>GHS 20K/yr</JobDescription>
+                  <JobDescription>Full-time</JobDescription>
+                </JobContainerRight>
+              </JobContainer>
+              <JobContainer>
+                <JobContainerLeft>
+                  <JobTitle>Acute Care Surgeon </JobTitle>
+                </JobContainerLeft>
+                <JobContainerRight>
+                  <JobLocation>Ridge Medical Center</JobLocation>
+                  <JobDescription>GHS 50K/yr</JobDescription>
+                  <JobDescription>Part-time</JobDescription>
+                </JobContainerRight>
+              </JobContainer>
+            </JobsContainer>
           </LowerContentRight>
         </LowerContentContainer>
       </LowerContent>
