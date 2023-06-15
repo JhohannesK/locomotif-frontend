@@ -46,18 +46,18 @@ function HomePage() {
             <SearchBarContainer>
               <SearchInput
                 name="Search"
-                sx={{ width:'60%','borderColor':'red'}}
+                sx={{ width: '60%', borderColor: 'red' }}
                 icon={<BiSearch />}
                 placeholder="Search"
                 size={'small'}
               />
             </SearchBarContainer>
             <div>
-            <div>
-              <h2>Dentist</h2>
-              <p>Okomfo Anokye Teaching Hospital</p>
-              <p>GHS 20k/year</p>
-            </div>
+              <div>
+                <h2>Dentist</h2>
+                <p>Okomfo Anokye Teaching Hospital</p>
+                <p>GHS 20k/year</p>
+              </div>
             </div>
           </LowerContentRight>
         </LowerContentContainer>

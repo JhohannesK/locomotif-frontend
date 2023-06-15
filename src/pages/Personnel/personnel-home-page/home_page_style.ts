@@ -4,12 +4,12 @@ import { colors } from '../../../colors'
 export const HomePageContainer = styled.section`
   height: 100vh;
   outline: 1px solid ${colors.button.pineGreen};
-  background-color:${colors.background.whiteSmoke};
+  background-color: ${colors.background.whiteSmoke};
 `
 
 export const NavBar = styled.nav`
   height: 8%;
-  border-bottom: 2px solid #04A592;
+  border-bottom: 2px solid #04a592;
   padding: 3px 0px;
 `
 export const NavBarContainer = styled.div`
@@ -59,14 +59,14 @@ export const MidContentText = styled.h1`
 
 export const LowerContent = styled.section`
   height: 70%;
-//   outline: 1px solid red;
+  //   outline: 1px solid red;
 `
 
 export const LowerContentContainer = styled.div`
   margin: 0 auto;
   height: 100%;
   width: 90%;
-//   outline: 1px solid blue;
+  //   outline: 1px solid blue;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -76,21 +76,21 @@ export const LowerContentContainer = styled.div`
 export const LowerContentLeft = styled.aside`
   width: 30%;
   height: 100%;
-  border : 2px solid ${colors.background.pineGreen};
+  border: 2px solid ${colors.background.pineGreen};
   border-radius: 10px;
 `
 
 export const LowerContentRight = styled.aside`
-    width: 68%;
-    height: 100%;
-    border : 2px solid ${colors.background.pineGreen};
-    border-radius: 10px;
+  width: 68%;
+  height: 100%;
+  border: 2px solid ${colors.background.pineGreen};
+  border-radius: 10px;
 `
 export const SearchBarContainer = styled.div`
   height: 12%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-bottom : 2px solid ${colors.background.pineGreen};
+  border-bottom: 2px solid ${colors.background.pineGreen};
   padding: 5px;
 `

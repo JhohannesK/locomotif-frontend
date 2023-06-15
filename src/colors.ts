@@ -7,7 +7,6 @@ export const colors = {
     night: '#0C120C',
     pompAndPower: '#8D5A97',
     whiteSmoke: '#F5F5F5',
-
   },
   button: {
     pineGreen: '#036B5E',

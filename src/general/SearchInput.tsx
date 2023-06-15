@@ -14,12 +14,13 @@ const theme = createTheme({
           },
 
           '& .MuiOutlinedInput-root': {
-            '& fieldset': {            // - The <fieldset> inside the Input-root
-                  borderColor: colors.border.whiteSmoke,   // - Set the Input border
-              },
-              '&:hover fieldset': {
-                  borderColor: colors.border.whiteSmoke, // - Set the Input border when parent has :hover
-              },
+            '& fieldset': {
+              // - The <fieldset> inside the Input-root
+              borderColor: colors.border.whiteSmoke, // - Set the Input border
+            },
+            '&:hover fieldset': {
+              borderColor: colors.border.whiteSmoke, // - Set the Input border when parent has :hover
+            },
             '&.Mui-focused fieldset': {
               borderColor: colors.button.pineGreen,
             },
