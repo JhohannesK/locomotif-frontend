@@ -52,7 +52,13 @@ function HomePage() {
                 size={'small'}
               />
             </SearchBarContainer>
-            <div>Jobs</div>
+            <div>
+            <div>
+              <h2>Dentist</h2>
+              <p>Okomfo Anokye Teaching Hospital</p>
+              <p>GHS 20k/year</p>
+            </div>
+            </div>
           </LowerContentRight>
         </LowerContentContainer>
       </LowerContent>

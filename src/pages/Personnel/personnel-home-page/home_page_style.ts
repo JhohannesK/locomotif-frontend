@@ -4,11 +4,12 @@ import { colors } from '../../../colors'
 export const HomePageContainer = styled.section`
   height: 100vh;
   outline: 1px solid ${colors.button.pineGreen};
+  background-color:${colors.background.whiteSmoke};
 `
 
 export const NavBar = styled.nav`
   height: 8%;
-  border-bottom: 2px solid ${colors.border.whiteSmoke};
+  border-bottom: 2px solid #04A592;
   padding: 3px 0px;
 `
 export const NavBarContainer = styled.div`
@@ -75,14 +76,14 @@ export const LowerContentContainer = styled.div`
 export const LowerContentLeft = styled.aside`
   width: 30%;
   height: 100%;
-  border : 2px solid ${colors.border.whiteSmoke};
+  border : 2px solid ${colors.background.pineGreen};
   border-radius: 10px;
 `
 
 export const LowerContentRight = styled.aside`
     width: 68%;
     height: 100%;
-    border : 2px solid ${colors.border.whiteSmoke};
+    border : 2px solid ${colors.background.pineGreen};
     border-radius: 10px;
 `
 export const SearchBarContainer = styled.div`
@@ -90,6 +91,6 @@ export const SearchBarContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-bottom : 2px solid ${colors.border.whiteSmoke};
+  border-bottom : 2px solid ${colors.background.pineGreen};
   padding: 5px;
 `
