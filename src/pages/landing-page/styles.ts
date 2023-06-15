@@ -23,6 +23,9 @@ export const WelcomeWrapper = styled.h1`
   font-weight: bold;
   font-size: 7rem;
   color: ${colors.text.whiteSmoke};
+  @media (max-width: 768px) {
+    font-size: 4rem;
+  }
 `
 
 export const QuestionWrapper = styled.div`

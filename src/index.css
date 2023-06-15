@@ -19,10 +19,6 @@ body {
   }
 }
 
-::-ms-reveal {
-  display: none;
-}
-
 .input > div,
 button {
   height: 44px;
@@ -36,3 +32,4 @@ a {
 ::-ms-reveal {
   display: none;
 }
+
