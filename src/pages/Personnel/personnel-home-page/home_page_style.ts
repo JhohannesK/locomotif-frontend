@@ -9,7 +9,7 @@ export const HomePageContainer = styled.section`
 
 export const NavBar = styled.nav`
   height: 8%;
-  border-bottom: 2px solid #04a592;
+  border-bottom: 2px solid ${colors.border.raisinBlack};
   padding: 3px 0px;
 `
 export const NavBarContainer = styled.div`
@@ -137,5 +137,5 @@ export const JobDescription = styled.p`
 
 export const JobLocation = styled.h3`
   font-size: 1rem;
-  opacity: 0.8;
+  color: ${colors.text.raisinBlack};
 `

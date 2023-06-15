@@ -17,10 +17,12 @@ export const colors = {
   text: {
     primary: '#0C120C',
     whiteSmoke: '#F5F5F5',
+    raisinBlack: '#202030',
   },
   border: {
     danger: '#EA5455',
     active: '#46C740',
     whiteSmoke: '#F5F5F5',
+    raisinBlack: '#202030',
   },
 }
