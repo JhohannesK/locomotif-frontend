@@ -1,6 +1,5 @@
 import { AiOutlineUser } from 'react-icons/ai'
 import { FiKey } from 'react-icons/fi'
-
 import { colors } from '../../../colors'
 import {
   AuthContainer,
@@ -15,39 +14,25 @@ import {
 import image from '../../../assets/doctor_sign_in.png'
 import GeneralInput from '../../../general/Input'
 import GeneralButton from '../../../general/Button'
-
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
 import Constants from '../../../utils/constants'
 import axios from 'axios'
 import { useMutation } from '@tanstack/react-query'
 import routes from '../../../routes'
-import DesktopDateInput from '../../../general/Date'
-
-const schema = z
-  .object({
-    facility_code: z.string().min(4),
-    name: z.string().min(2),
-    password: z.string(),
-    address: z.string().min(1),
-    establishment_date: z.string().nonempty(),
-    confirmPassword: z.string(),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match',
-    path: ['confirmPassword'],
-  })
-
-type Schema = z.infer<typeof schema>
+import { genCode } from '../../../utils/genCode'
+import { OmitConfirmPassword, Schema, schema } from './_types'
+import { useNavigate } from 'react-router-dom'
 
 const SignUpPageIns = () => {
+  const navigate = useNavigate()
+
   const defaultValues: Schema = {
     facility_code: '',
     name: '',
     password: '',
     address: '',
-    establishment_date: 'YYYY-MM-DD',
+    establishment_date: '',
     confirmPassword: '',
   }
 
@@ -56,21 +41,22 @@ const SignUpPageIns = () => {
     defaultValues,
   })
 
-  type OmitConfirmPassword = Omit<Schema, 'confirmPassword'>
-
   const mutation = useMutation({
     mutationFn: async (data: OmitConfirmPassword) => {
-      axios.post(`${Constants.BaseURL}auth/login/medical_facility/`, data)
+      await axios.post(
+        `${Constants.BaseURL}auth/signup/medical_facility/`,
+        data
+      )
     },
-    onSuccess: () => console.log('yess'),
+    onSuccess: () => navigate(Constants.ROUTES.facility_signin),
     onError: () => console.log('some error'),
   })
 
   const onSubmit = (data: Schema) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { confirmPassword, ...rest } = data
-    console.log(data)
 
+    methods.setValue('facility_code', genCode(rest.name))
     mutation.mutate(rest)
   }
 
@@ -95,6 +81,7 @@ const SignUpPageIns = () => {
               label="Facility Code"
               icon={<AiOutlineUser />}
               placeholder="KBTH123"
+              disabled
             />
             <GeneralInput
               name="name"
@@ -108,9 +95,11 @@ const SignUpPageIns = () => {
               icon={<AiOutlineUser />}
               placeholder="GA-159-343"
             />
-            <DesktopDateInput
+            <GeneralInput
               name="establishment_date"
-              label="Establishment date"
+              label="establishment date"
+              type={'date'}
+              placeholder="Establishment date"
             />
             <GeneralInput
               name="password"
@@ -147,6 +136,7 @@ const SignUpPageIns = () => {
           </AuthText>
         </AuthContent>
       </FormProvider>
+      {/* {mutation.isSuccess ? <div>okay okay</div> : <>oops</>} */}
     </AuthContainer>
   )
 }
