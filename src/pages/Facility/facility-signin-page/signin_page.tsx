@@ -38,17 +38,22 @@ function SigninPageIns() {
     defaultValues,
   })
 
-  const mutation = useMutation({
+  const { mutate, status } = useMutation({
     mutationFn: async (data: Schema) =>
       axios.post(`${Constants.BaseURL}auth/login/medical_facility/`, data),
-    onSuccess: () => console.log('yes'),
+    // onSuccess: () => console.log('yes'),
+
+    // TODO: add some toast to show the error
     onError: () => console.log('some error'),
   })
 
   const onSubmit = (data: Schema) => {
-    console.log(data)
+    mutate(data)
+  }
 
-    mutation.mutate(data)
+  if (status === 'success') {
+    // TODO: redirect to dashboard
+    return <div>success</div>
   }
 
   return (
