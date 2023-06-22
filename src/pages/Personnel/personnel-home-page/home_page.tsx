@@ -18,6 +18,7 @@ import {
 import { BiSearch } from 'react-icons/bi'
 import SearchInput from '../../../general/SearchInput'
 import Layout from '../../../general/Layout'
+import FilterBox from './components/FilterBox'
 
 function HomePage() {
   return (
@@ -28,7 +29,9 @@ function HomePage() {
         </MidContent>
         <LowerContent>
           <LowerContentContainer>
-            <LowerContentLeft>filter</LowerContentLeft>
+            <LowerContentLeft>
+              <FilterBox />
+            </LowerContentLeft>
             <LowerContentRight>
               <SearchBarContainer>
                 <SearchInput

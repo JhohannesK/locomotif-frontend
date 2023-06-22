@@ -3,7 +3,6 @@ import { colors } from '../../../colors'
 
 export const HomePageContainer = styled.section`
   height: 100vh;
-  outline: 1px solid ${colors.button.pineGreen};
 `
 
 export const NavBar = styled.nav`
@@ -65,22 +64,19 @@ export const LowerContentContainer = styled.div`
   margin: 0 auto;
   height: 100%;
   width: 90%;
-  //   outline: 1px solid blue;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: row;
 `
 
 export const LowerContentLeft = styled.aside`
   width: 30%;
-  height: 100%;
-  border: 2px solid ${colors.background.pineGreen};
+  float: left;
+  min-height: 100%;
+  border: 1px solid grey;
   border-radius: 10px;
 `
 
 export const LowerContentRight = styled.aside`
   width: 68%;
+  float: right;
   height: 100%;
   // border: 2px solid ${colors.background.pineGreen};
   border-radius: 10px;
