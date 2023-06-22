@@ -28,8 +28,8 @@ export const NavBarUserName = styled.h2`
 
 export const NavBarUserImage = styled.div`
   outline: 1px solid orange;
-  height: 80%;
-  width: 50px;
+  height: 3rem;
+  width: 3rem;
   clip-path: circle();
   background-color: red;
   margin-right: 10px;

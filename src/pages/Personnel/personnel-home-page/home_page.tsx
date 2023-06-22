@@ -1,11 +1,5 @@
 import {
   HomePageContainer,
-  JobContainer,
-  JobContainerLeft,
-  JobContainerRight,
-  JobDescription,
-  JobLocation,
-  JobTitle,
   JobsContainer,
   LowerContent,
   LowerContentContainer,
@@ -18,8 +12,24 @@ import {
 import { BiSearch } from 'react-icons/bi'
 import SearchInput from '../../../general/SearchInput'
 import Layout from '../../../general/Layout'
+import JobCard from '../../../general/components/JobLIstingCard'
+// import axios from 'axios'
+// import Constants from '../../../utils/constants'
+// import { JobCardProps } from '../../../general/@types'
 
 function HomePage() {
+  // const fetchPostings = async (): Promise<JobCardProps[]> => {
+  //   const response = await axios.get<JobCardProps[]>(
+  //     `${Constants.BaseURL}postings/`
+  //   )
+  //   return response.data
+  // }
+
+  // const { data } = useQuery<JobCardProps>({
+  //    'postings',
+  //   fetchPostings,
+  // })
+  // console.log(data)
   return (
     <Layout>
       <HomePageContainer>
@@ -40,26 +50,12 @@ function HomePage() {
                 />
               </SearchBarContainer>
               <JobsContainer>
-                <JobContainer>
-                  <JobContainerLeft>
-                    <JobTitle>Obstetrics and Gynecology Physician </JobTitle>
-                  </JobContainerLeft>
-                  <JobContainerRight>
-                    <JobLocation>Okomfo Anokye Teaching Hospital</JobLocation>
-                    <JobDescription>GHS 20K/yr</JobDescription>
-                    <JobDescription>Full-time</JobDescription>
-                  </JobContainerRight>
-                </JobContainer>
-                <JobContainer>
-                  <JobContainerLeft>
-                    <JobTitle>Acute Care Surgeon </JobTitle>
-                  </JobContainerLeft>
-                  <JobContainerRight>
-                    <JobLocation>Ridge Medical Center</JobLocation>
-                    <JobDescription>GHS 50K/yr</JobDescription>
-                    <JobDescription>Part-time</JobDescription>
-                  </JobContainerRight>
-                </JobContainer>
+                <JobCard
+                  description="Fix the problem for the children teeth"
+                  facility="Ridge Hospital"
+                  rate_per_6_hour_shift={20}
+                  title="Paediatrician"
+                />
               </JobsContainer>
             </LowerContentRight>
           </LowerContentContainer>

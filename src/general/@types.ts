@@ -37,3 +37,14 @@ export type GeneralBtnProps = {
   >
   onClick?: () => void
 }
+
+export interface JobCardProps {
+  title: string
+  description: string
+  required_role?: string
+  shift?: 'MORNING' | 'AFTERNOON' | 'EVENING'
+  start_time?: string
+  end_time?: string
+  rate_per_6_hour_shift: number
+  facility: string
+}

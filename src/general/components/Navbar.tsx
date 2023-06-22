@@ -24,7 +24,7 @@ const Navbar = () => {
             <img
               src={image}
               alt="health-leaf icon"
-              style={{ height: '100%', width: '100%' }}
+              style={{ height: '100%', width: '100%', objectFit: 'cover' }}
             />
           </NavBarUserImage>
 
