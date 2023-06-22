@@ -20,8 +20,10 @@ import {
 import { FormProvider } from 'react-hook-form'
 import { useMutation } from '@tanstack/react-query'
 import Constants from '../../../utils/constants'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState, login } from '../../../store'
 
 const schema = z.object({
   username: z.string().min(3),
@@ -42,15 +44,24 @@ function SigninPage() {
     defaultValues,
   })
 
+  const dispatch = useDispatch()
+  const authResponse = useSelector(
+    (state: RootState) => state.auth.authResponse
+  )
+
+  console.log(authResponse)
+
   const { mutate } = useMutation({
     mutationFn: async (datas: Schema) => {
-      await axios.post(
-        `${Constants.BaseURL}auth/login/medical_personnel/`,
-        datas
-      )
+      await axios
+        .post(`${Constants.BaseURL}auth/login/medical_personnel/`, datas)
+        .then((res: AxiosResponse) => {
+          const responseData = res.data
+          dispatch(login(responseData))
+        })
     },
     onSuccess: () => {
-      navigate(Constants.ROUTES.root)
+      navigate(Constants.ROUTES.personnel_dashboard)
     },
     onError: () => console.log('some error'),
   })

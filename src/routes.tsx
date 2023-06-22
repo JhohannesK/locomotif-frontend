@@ -5,6 +5,7 @@ import SigninPageIns from './pages/Facility/facility-signin-page/signin_page'
 import SignUpPageIns from './pages/Facility/facility-signup-page/signup_page'
 import SigninPage from './pages/Personnel/personnel-signin-page/signin_page'
 import SignUpPage from './pages/Personnel/personnel-signup-page/signup_page'
+import HomePage from './pages/Personnel/personnel-home-page/home_page'
 
 const routhPaths = Constants.ROUTES
 
@@ -28,6 +29,10 @@ const routes = createBrowserRouter([
   {
     path: routhPaths.personnel_signup,
     element: <SignUpPage />,
+  },
+  {
+    path: routhPaths.personnel_dashboard,
+    element: <HomePage />,
   },
 ])
 

@@ -35,6 +35,7 @@ function LandingPage() {
                 color: colors.button.pineGreen,
                 height: '3rem',
                 width: '20rem',
+                // borderColor: `${isFacilityClickedButton?colors.button.pineGreen:colors.button.aquamarine}`
               }}
               title="Practitioner"
               size={'large'}
