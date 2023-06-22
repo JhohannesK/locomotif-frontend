@@ -58,10 +58,13 @@ const SignUpPage = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: a) => {
-      axios.post(`${Constants.BaseURL}auth/signup/medical_personnel/`, data)
+      await axios.post(
+        `${Constants.BaseURL}auth/signup/medical_personnel/`,
+        data
+      )
     },
     onSuccess: () => console.log('yess'),
-    onError: () => console.log('some error'),
+    onError: (err) => console.log(err),
   })
 
   const onSubmit = (data: Schema) => {

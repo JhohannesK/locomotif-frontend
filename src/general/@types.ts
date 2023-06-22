@@ -17,10 +17,11 @@ export type SearchInputType = {
 export type GeneralInputType = {
   name: string
   sx?: SxProps
-  icon: React.ReactNode
+  icon?: React.ReactNode
   placeholder: string
   label: string
-  type?: 'text' | 'password'
+  type?: 'text' | 'password' | 'date'
+  disabled?: boolean
 }
 
 export type GeneralBtnProps = {
