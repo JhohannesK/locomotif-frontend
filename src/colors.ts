@@ -6,6 +6,7 @@ export const colors = {
     keppel: '#06B29E',
     night: '#0C120C',
     pompAndPower: '#8D5A97',
+    whiteSmoke: '#F5F5F5',
   },
   button: {
     pineGreen: '#036B5E',
@@ -16,10 +17,12 @@ export const colors = {
   text: {
     primary: '#0C120C',
     whiteSmoke: '#F5F5F5',
+    raisinBlack: '#202030',
   },
   border: {
     danger: '#EA5455',
     active: '#46C740',
     whiteSmoke: '#F5F5F5',
+    raisinBlack: '#202030',
   },
 }
