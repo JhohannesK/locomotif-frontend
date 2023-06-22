@@ -4,7 +4,6 @@ import { colors } from '../../../colors'
 export const HomePageContainer = styled.section`
   height: 100vh;
   outline: 1px solid ${colors.button.pineGreen};
-  background-color: ${colors.background.whiteSmoke};
 `
 
 export const NavBar = styled.nav`
