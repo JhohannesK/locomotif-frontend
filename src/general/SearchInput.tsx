@@ -7,7 +7,7 @@ const SearchInput = ({
   placeholder,
   type,
   name,
-  size
+  size,
 }: SearchInputType) => {
   return (
     <>
@@ -16,7 +16,7 @@ const SearchInput = ({
         id={name}
         placeholder={placeholder}
         type={type}
-        sx={{ ...sx, }}
+        sx={{ ...sx }}
         size={size}
         InputProps={{
           endAdornment: (

@@ -1,6 +1,5 @@
 import { AiOutlineUser } from 'react-icons/ai'
 import { FiKey } from 'react-icons/fi'
-
 import { colors } from '../../../colors'
 import {
   AuthContainer,
@@ -10,36 +9,30 @@ import {
   AuthText,
   AuthLogo,
   AuthButton,
+  AuthLink,
 } from '../../../general/auth_styles'
 import image from '../../../assets/doctor_sign_in.png'
 import GeneralInput from '../../../general/Input'
 import GeneralButton from '../../../general/Button'
-
-import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
-
-const schema = z
-  .object({
-    firstName: z.string().min(10),
-    lastName: z.string().min(2),
-    email: z.string().email(),
-    password: z.string().min(8).max(100),
-    confirmPassword: z.string().min(8).max(100),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match',
-    path: ['confirmPassword'],
-  })
-
-type Schema = z.infer<typeof schema>
+import Constants from '../../../utils/constants'
+import axios from 'axios'
+import { useMutation } from '@tanstack/react-query'
+import routes from '../../../routes'
+import { genCode } from '../../../utils/genCode'
+import { OmitConfirmPassword, Schema, schema } from './_types'
+import { useNavigate } from 'react-router-dom'
 
 const SignUpPageIns = () => {
+  const navigate = useNavigate()
+
   const defaultValues: Schema = {
-    firstName: '',
-    lastName: '',
-    email: '',
+    facility_code: '',
+    name: '',
     password: '',
+    address: '',
+    establishment_date: '',
     confirmPassword: '',
   }
 
@@ -48,8 +41,23 @@ const SignUpPageIns = () => {
     defaultValues,
   })
 
+  const mutation = useMutation({
+    mutationFn: async (data: OmitConfirmPassword) => {
+      await axios.post(
+        `${Constants.BaseURL}auth/signup/medical_facility/`,
+        data
+      )
+    },
+    onSuccess: () => navigate(Constants.ROUTES.facility_signin),
+    onError: () => console.log('some error'),
+  })
+
   const onSubmit = (data: Schema) => {
-    console.log(data)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { confirmPassword, ...rest } = data
+
+    methods.setValue('facility_code', genCode(rest.name))
+    mutation.mutate(rest)
   }
 
   return (
@@ -69,10 +77,11 @@ const SignUpPageIns = () => {
           </AuthUpperContent>
           <AuthFields>
             <GeneralInput
-              name="facilitycode"
+              name="facility_code"
               label="Facility Code"
               icon={<AiOutlineUser />}
               placeholder="KBTH123"
+              disabled
             />
             <GeneralInput
               name="name"
@@ -87,10 +96,24 @@ const SignUpPageIns = () => {
               placeholder="GA-159-343"
             />
             <GeneralInput
-              name="date"
-              label="Establishment Date"
+              name="establishment_date"
+              label="establishment date"
+              type={'date'}
+              placeholder="Establishment date"
+            />
+            <GeneralInput
+              name="password"
+              label="Password"
+              type="password"
               icon={<FiKey />}
-              placeholder="01/06/2023"
+              placeholder="*********"
+            />
+            <GeneralInput
+              name="confirmPassword"
+              label="Confirm Password"
+              type="password"
+              icon={<FiKey />}
+              placeholder="*********"
               sx={{ marginBottom: '20px' }}
             />
           </AuthFields>
@@ -102,10 +125,18 @@ const SignUpPageIns = () => {
             />
           </AuthButton>
           <AuthText>
-            Already have an account ? <a href="#">Sign In</a>
+            Already have an account?{' '}
+            <AuthLink
+              onClick={() => {
+                routes.navigate(Constants.ROUTES.facility_signin)
+              }}
+            >
+              Sign In
+            </AuthLink>
           </AuthText>
         </AuthContent>
       </FormProvider>
+      {/* {mutation.isSuccess ? <div>okay okay</div> : <>oops</>} */}
     </AuthContainer>
   )
 }

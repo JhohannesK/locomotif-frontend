@@ -18,15 +18,20 @@ import {
   AuthUpperContent,
 } from '../../../general/auth_styles'
 import { FormProvider } from 'react-hook-form'
+import { useMutation } from '@tanstack/react-query'
+import Constants from '../../../utils/constants'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const schema = z.object({
-  username: z.string().min(6),
-  password: z.string().min(8).max(100),
+  username: z.string().min(3),
+  password: z.string().min(3).max(100),
 })
 
 type Schema = z.infer<typeof schema>
 
 function SigninPage() {
+  const navigate = useNavigate()
   const defaultValues: Schema = {
     username: '',
     password: '',
@@ -37,8 +42,21 @@ function SigninPage() {
     defaultValues,
   })
 
+  const { mutate } = useMutation({
+    mutationFn: async (datas: Schema) => {
+      await axios.post(
+        `${Constants.BaseURL}auth/login/medical_personnel/`,
+        datas
+      )
+    },
+    onSuccess: () => {
+      navigate(Constants.ROUTES.root)
+    },
+    onError: () => console.log('some error'),
+  })
+
   const onSubmit = (data: Schema) => {
-    console.log(data)
+    mutate(data)
   }
 
   return (

@@ -58,14 +58,14 @@ export const MidContentText = styled.h1`
 
 export const LowerContent = styled.section`
   height: 70%;
-//   outline: 1px solid red;
+  //   outline: 1px solid red;
 `
 
 export const LowerContentContainer = styled.div`
   margin: 0 auto;
   height: 100%;
   width: 90%;
-//   outline: 1px solid blue;
+  //   outline: 1px solid blue;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -75,21 +75,21 @@ export const LowerContentContainer = styled.div`
 export const LowerContentLeft = styled.aside`
   width: 30%;
   height: 100%;
-  border : 2px solid ${colors.background.keppel};
+  border: 2px solid ${colors.background.keppel};
   border-radius: 10px;
 `
 
 export const LowerContentRight = styled.aside`
-    width: 68%;
-    height: 100%;
-    border : 2px solid ${colors.background.keppel};
-    border-radius: 10px;
+  width: 68%;
+  height: 100%;
+  border: 2px solid ${colors.background.keppel};
+  border-radius: 10px;
 `
 export const SearchBarContainer = styled.div`
   height: 12%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-bottom : 2px solid ${colors.background.keppel};
+  border-bottom: 2px solid ${colors.background.keppel};
   padding: 5px;
 `

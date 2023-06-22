@@ -1,5 +1,6 @@
 const Constants = {
-  API_URL: 'http://localhost:3000/',
+  BaseURL: 'https://locomotif-backend.onrender.com/api/',
+
   ROUTES: {
     root: '/',
     facility_signin: '/facility/signin',

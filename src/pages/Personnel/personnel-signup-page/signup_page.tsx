@@ -15,14 +15,21 @@ import {
   AuthLogo,
   AuthFields,
   AuthContent,
+  AuthLink,
 } from '../../../general/auth_styles'
+import Constants from '../../../utils/constants'
+import routes from '../../../routes'
 import image from '../../../assets/doctor_sign_in.png'
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 
 const schema = z
   .object({
-    firstName: z.string().min(10),
-    lastName: z.string().min(2),
-    email: z.string().email(),
+    username: z.string().min(3),
+    first_name: z.string().min(10),
+    last_name: z.string().min(2),
+    other_names: z.string(),
+    role: z.string(),
     password: z.string().min(8).max(100),
     confirmPassword: z.string().min(8).max(100),
   })
@@ -35,9 +42,11 @@ type Schema = z.infer<typeof schema>
 
 const SignUpPage = () => {
   const defaultValues: Schema = {
-    firstName: '',
-    lastName: '',
-    email: '',
+    username: '',
+    first_name: '',
+    last_name: '',
+    other_names: '',
+    role: '',
     password: '',
     confirmPassword: '',
   }
@@ -47,8 +56,25 @@ const SignUpPage = () => {
     defaultValues,
   })
 
+  type a = Omit<Schema, 'confirmPassword'>
+
+  const mutation = useMutation({
+    mutationFn: async (data: a) => {
+      await axios.post(
+        `${Constants.BaseURL}auth/signup/medical_personnel/`,
+        data
+      )
+    },
+    onSuccess: () => console.log('yess'),
+    onError: (err) => console.log(err),
+  })
+
   const onSubmit = (data: Schema) => {
-    console.log(data)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { confirmPassword, ...rest } = data
+    console.log(rest)
+
+    mutation.mutate(rest)
   }
 
   return (
@@ -67,22 +93,34 @@ const SignUpPage = () => {
           </AuthUpperContent>
           <AuthFields>
             <GeneralInput
-              name="firstName"
+              name="username"
+              label="Username"
+              icon={<AiOutlineUser />}
+              placeholder="Curtis"
+            />
+            <GeneralInput
+              name="first_name"
               label="First Name"
               icon={<AiOutlineUser />}
               placeholder="Curtis"
             />
             <GeneralInput
-              name="lastName"
+              name="last_name"
               label="Last Name"
               icon={<AiOutlineUser />}
               placeholder="Jackson"
             />
             <GeneralInput
-              name="email"
-              label="E-mail"
+              name="other_names"
+              label="Other Names"
               icon={<AiOutlineUser />}
-              placeholder="mardar@gmail.com"
+              placeholder="other names"
+            />
+            <GeneralInput
+              name="role"
+              label="Role"
+              icon={<AiOutlineUser />}
+              placeholder="Role"
             />
             <GeneralInput
               name="password"
@@ -108,7 +146,16 @@ const SignUpPage = () => {
               size="large"
             />
           </AuthButton>
-          <AuthText>Already have an account ? Sign In</AuthText>
+          <AuthText>
+            Already have an account ?{' '}
+            <AuthLink
+              onClick={() => {
+                routes.navigate(Constants.ROUTES.personnel_signin)
+              }}
+            >
+              Sign In
+            </AuthLink>
+          </AuthText>
         </AuthContent>
       </FormProvider>
     </AuthContainer>

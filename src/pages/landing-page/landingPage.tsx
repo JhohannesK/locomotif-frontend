@@ -29,10 +29,10 @@ function LandingPage() {
         <ButtonWrapper>
           <UserWrapper>
             <GeneralButton
-              variantText={'contained'}
+              // variantText={'contained'}
               sx={{
                 backgroundColor: colors.button.aquamarine,
-                color: 'black',
+                color: colors.button.pineGreen,
                 height: '3rem',
                 width: '20rem',
                 // borderColor: `${isFacilityClickedButton?colors.button.pineGreen:colors.button.aquamarine}`
@@ -51,6 +51,9 @@ function LandingPage() {
                 borderColor: colors.button.aquamarine,
                 height: '3rem',
                 width: '20rem',
+                ':hover': {
+                  borderColor: colors.button.aquamarine,
+                },
               }}
               variantText={'outlined'}
               title={'Facility'}
@@ -67,7 +70,7 @@ function LandingPage() {
                 variantText={'contained'}
                 sx={{
                   backgroundColor: colors.button.aquamarine,
-                  color: 'black',
+                  color: colors.button.pineGreen,
                   height: '2rem',
                   width: '9rem',
                 }}
@@ -85,6 +88,9 @@ function LandingPage() {
                   borderColor: colors.button.aquamarine,
                   height: '2rem',
                   width: '9rem',
+                  ':hover': {
+                    borderColor: colors.button.aquamarine,
+                  },
                 }}
                 title="sign up"
                 size={'large'}
@@ -100,7 +106,7 @@ function LandingPage() {
                 variantText={'contained'}
                 sx={{
                   backgroundColor: colors.button.aquamarine,
-                  color: 'black',
+                  color: colors.button.pineGreen,
                   height: '2rem',
                   width: '9rem',
                 }}
@@ -118,6 +124,9 @@ function LandingPage() {
                   borderColor: colors.button.aquamarine,
                   height: '2rem',
                   width: '9rem',
+                  ':hover': {
+                    borderColor: colors.button.aquamarine,
+                  },
                 }}
                 title="sign up"
                 size={'large'}

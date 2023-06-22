@@ -31,9 +31,9 @@ const routes = createBrowserRouter([
     element: <SignUpPage />,
   },
   {
-    path:routhPaths.personnel_dashboard,
-    element:<HomePage/>
-  }
+    path: routhPaths.personnel_dashboard,
+    element: <HomePage />,
+  },
 ])
 
 export default routes

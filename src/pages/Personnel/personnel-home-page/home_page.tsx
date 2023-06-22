@@ -46,7 +46,7 @@ function HomePage() {
             <SearchBarContainer>
               <SearchInput
                 name="Search"
-                sx={{ width:'60%'}}
+                sx={{ width: '60%' }}
                 icon={<BiSearch />}
                 placeholder="Search"
                 size={'small'}

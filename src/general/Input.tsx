@@ -11,6 +11,7 @@ const GeneralInput = ({
   label,
   type,
   name,
+  disabled,
 }: GeneralInputType) => {
   const [showPassword, setShowPassword] = useState(false)
   const handleClickShowPassword = () => setShowPassword((show) => !show)
@@ -34,9 +35,11 @@ const GeneralInput = ({
         defaultValue=""
         render={({ field }) => (
           <TextField
+            className="input"
             id={label}
             {...field}
             label={label}
+            disabled={disabled === true ? true : false}
             placeholder={placeholder}
             error={!!errors[name]}
             helperText={
@@ -47,6 +50,8 @@ const GeneralInput = ({
                 ? showPassword
                   ? 'text'
                   : 'password'
+                : type === 'date'
+                ? 'date'
                 : 'text'
             }
             sx={{ ...sx }}

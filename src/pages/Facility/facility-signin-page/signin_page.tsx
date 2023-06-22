@@ -16,9 +16,12 @@ import GeneralButton from '../../../general/Button'
 import { z } from 'zod'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
+import Constants from '../../../utils/constants'
 
 const schema = z.object({
-  facilityCode: z.string().min(6),
+  facility_code: z.string().min(4),
   password: z.string().min(8).max(100),
 })
 
@@ -26,7 +29,7 @@ type Schema = z.infer<typeof schema>
 
 function SigninPageIns() {
   const defaultValues: Schema = {
-    facilityCode: '',
+    facility_code: '',
     password: '',
   }
 
@@ -35,10 +38,22 @@ function SigninPageIns() {
     defaultValues,
   })
 
-  const onSubmit = (data: Schema) => {
-    console.log('hello')
+  const { mutate, status } = useMutation({
+    mutationFn: async (data: Schema) =>
+      axios.post(`${Constants.BaseURL}auth/login/medical_facility/`, data),
+    // onSuccess: () => console.log('yes'),
 
-    console.log(data)
+    // TODO: add some toast to show the error
+    onError: () => console.log('some error'),
+  })
+
+  const onSubmit = (data: Schema) => {
+    mutate(data)
+  }
+
+  if (status === 'success') {
+    // TODO: redirect to dashboard
+    return <div>success</div>
   }
 
   return (
@@ -59,7 +74,7 @@ function SigninPageIns() {
           <div>
             <AuthFields>
               <GeneralInput
-                name="facilityCode"
+                name="facility_code"
                 sx={{ marginBottom: '20px' }}
                 label="Facility Code"
                 icon={<BsBuildingLock />}
