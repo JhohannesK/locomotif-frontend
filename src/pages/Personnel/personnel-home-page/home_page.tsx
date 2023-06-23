@@ -13,23 +13,28 @@ import { BiSearch } from 'react-icons/bi'
 import SearchInput from '../../../general/SearchInput'
 import Layout from '../../../general/Layout'
 import JobCard from '../../../general/components/JobLIstingCard'
-// import axios from 'axios'
-// import Constants from '../../../utils/constants'
-// import { JobCardProps } from '../../../general/@types'
+import axios from 'axios'
+import Constants from '../../../utils/constants'
+import { JobCardProps } from '../../../general/@types'
+import { useQuery } from '@tanstack/react-query'
 
 function HomePage() {
-  // const fetchPostings = async (): Promise<JobCardProps[]> => {
-  //   const response = await axios.get<JobCardProps[]>(
-  //     `${Constants.BaseURL}postings/`
-  //   )
-  //   return response.data
-  // }
+  const fetchPostings = async (): Promise<JobCardProps> => {
+    const response = await axios.get<JobCardProps>(
+      `${Constants.BaseURL}postings/`
+    )
+    return response.data
+  }
 
-  // const { data } = useQuery<JobCardProps>({
-  //    'postings',
-  //   fetchPostings,
-  // })
-  // console.log(data)
+  const { data, isLoading } = useQuery<JobCardProps>(
+    ['postings'],
+    fetchPostings
+  )
+  console.log(data)
+  if (isLoading) {
+    return <>loading</>
+  }
+
   return (
     <Layout>
       <HomePageContainer>
