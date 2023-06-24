@@ -12,21 +12,21 @@ import {
 import { BiSearch } from 'react-icons/bi'
 import SearchInput from '../../../general/SearchInput'
 import Layout from '../../../general/Layout'
-import JobCard from '../../../general/components/JobLIstingCard'
+import JobCard from '../job-card/JobLIstingCard'
 import axios from 'axios'
 import Constants from '../../../utils/constants'
 import { JobCardProps } from '../../../general/@types'
 import { useQuery } from '@tanstack/react-query'
 
 function HomePage() {
-  const fetchPostings = async (): Promise<JobCardProps> => {
-    const response = await axios.get<JobCardProps>(
+  const fetchPostings = async (): Promise<JobCardProps[]> => {
+    const response = await axios.get<JobCardProps[]>(
       `${Constants.BaseURL}postings/`
     )
     return response.data
   }
 
-  const { data, isLoading } = useQuery<JobCardProps>(
+  const { data, isLoading } = useQuery<JobCardProps[], Error>(
     ['postings'],
     fetchPostings
   )
@@ -55,12 +55,17 @@ function HomePage() {
                 />
               </SearchBarContainer>
               <JobsContainer>
-                <JobCard
-                  description="Fix the problem for the children teeth"
-                  facility="Ridge Hospital"
-                  rate_per_6_hour_shift={20}
-                  title="Paediatrician"
-                />
+                {data?.map((posting) => {
+                  return (
+                    <JobCard
+                      description={posting.description}
+                      facility="Ridge Hospital"
+                      rate_per_6_hour_shift={posting.rate_per_6_hour_shift}
+                      required_role={posting.required_role}
+                      shift={posting.shift}
+                    />
+                  )
+                })}
               </JobsContainer>
             </LowerContentRight>
           </LowerContentContainer>

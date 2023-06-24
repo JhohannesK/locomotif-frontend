@@ -39,10 +39,10 @@ export type GeneralBtnProps = {
 }
 
 export interface JobCardProps {
-  title: string
+  title?: string
   description: string
   required_role?: string
-  shift?: 'MORNING' | 'AFTERNOON' | 'EVENING'
+  shift: 'MORNING' | 'AFTERNOON' | 'EVENING'
   start_time?: string
   end_time?: string
   rate_per_6_hour_shift: number

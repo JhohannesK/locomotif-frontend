@@ -46,7 +46,7 @@ function SigninPage() {
 
   const dispatch = useDispatch()
 
-  const { mutate } = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationFn: async (datas: Schema) => {
       await axios
         .post(`${Constants.BaseURL}auth/login/medical_personnel/`, datas)
@@ -63,6 +63,10 @@ function SigninPage() {
 
   const onSubmit = (data: Schema) => {
     mutate(data)
+  }
+
+  if (isLoading) {
+    return <div>loading</div>
   }
 
   return (
