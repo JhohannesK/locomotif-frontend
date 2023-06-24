@@ -1,5 +1,6 @@
 import { styled } from 'styled-components'
 import { colors } from '../../../colors'
+import Constants from '../../../utils/constants'
 
 export const HomePageContainer = styled.section`
   height: 100vh;
@@ -51,38 +52,64 @@ export const MidContent = styled.div`
 `
 
 export const MidContentText = styled.h1`
-  font-size: 2.5rem;
   color: ${colors.background.keppel};
   font-weight: 600;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
+    font-size: 1.8rem;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX} {
+    font-size: 2.5rem;
+  }
 `
 
 export const LowerContent = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 70%;
   //   outline: 1px solid red;
 `
 
 export const LowerContentContainer = styled.div`
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE_SM} {
+    margin: 0;
+    width: 100%;
+  }
   margin: 0 auto;
   height: 100%;
   width: 90%;
-  //   outline: 1px solid blue;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  justify-content: center;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    justify-content: space-between;
+  }
 `
 
 export const LowerContentLeft = styled.aside`
-  width: 30%;
-  height: 100%;
-  border: 2px solid ${colors.background.pineGreen};
-  border-radius: 10px;
+  display: none;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    display: flex;
+    width: 30%;
+    height: 100%;
+    border: 2px solid ${colors.background.pineGreen};
+    border-radius: 10px;
+  }
 `
 
 export const LowerContentRight = styled.aside`
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE_SM} {
+    width: 100%;
+    height: 100%;
+  }
   width: 68%;
   height: 100%;
-  // border: 2px solid ${colors.background.pineGreen};
   border-radius: 10px;
 `
 export const SearchBarContainer = styled.div`
@@ -92,57 +119,14 @@ export const SearchBarContainer = styled.div`
   align-items: center;
   padding: 5px;
 `
+
 export const JobsContainer = styled.div`
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE_SM} {
+    margin: 0;
+    width: 100%;
+  }
+
   display: flex;
   flex-direction: column;
-  // outline: 1px solid red;a
   height: 85%;
-`
-
-export const JobContainer = styled.div`
-  max-width: 100%;
-  background: linear-gradient(
-    80deg,
-    ${colors.background.pineGreen} 17%,
-    ${colors.background.whiteSmoke} 30%
-  );
-  border-radius: 10px;
-  display: flex;
-  overflow: hidden;
-  cursor: pointer;
-  height: 110px;
-  margin-bottom: 10px;
-`
-
-export const JobContainerLeft = styled.div`
-  width: 30%;
-  color: #fff;
-  /* background: linear-gradient(
-    100deg,
-    ${colors.background.pineGreen} 80%,
-    ${colors.background.whiteSmoke}
-  ); */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-`
-
-export const JobContainerRight = styled.div`
-  padding-left: 10px;
-  /* background-color: inherit; */
-`
-export const JobTitle = styled.h2`
-  color: ${colors.text.white};
-  font-size: 1.2rem;
-  opacity: 0.8;
-`
-export const JobDescription = styled.p`
-  font-size: 0.8rem;
-  opacity: 0.8;
-`
-
-export const JobLocation = styled.h3`
-  font-size: 1rem;
-  color: ${colors.text.raisinBlack};
 `

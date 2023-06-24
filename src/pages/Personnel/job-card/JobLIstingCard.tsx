@@ -5,24 +5,33 @@ import {
   JobDescription,
   JobLocation,
   JobTitle,
-} from '../../pages/Personnel/personnel-home-page/home_page_style'
-import { JobCardProps } from '../@types'
+  RateAndShift,
+  ShiftContainer,
+} from './styles'
+import { JobCardProps } from '../../../general/@types'
 
 const JobCard = ({
-  title,
+  required_role,
   description,
+  shift,
   rate_per_6_hour_shift,
   facility,
 }: JobCardProps) => {
   return (
     <JobContainer>
       <JobContainerLeft>
-        <JobTitle>{title} </JobTitle>
+        <JobTitle>{required_role} </JobTitle>
       </JobContainerLeft>
       <JobContainerRight>
         <JobLocation>{facility}</JobLocation>
         <JobDescription>{description}</JobDescription>
-        <JobDescription>GHS{rate_per_6_hour_shift}/shift</JobDescription>
+        <RateAndShift>
+          <JobDescription>GHS{rate_per_6_hour_shift}/shift</JobDescription>
+          <ShiftContainer>{shift}</ShiftContainer>
+          <div>
+            <button>Apply</button>
+          </div>
+        </RateAndShift>
       </JobContainerRight>
     </JobContainer>
   )

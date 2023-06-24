@@ -1,13 +1,18 @@
 import {
+  LogoStyles,
+  MenuIcon,
   NavBar,
-  NavBarContainer,
+  NavBarLaptopContainer,
+  NavBarMobileContainer,
   NavBarRightContent,
   NavBarUserImage,
   NavBarUserName,
+  SearchIcon,
 } from './navbarStyles'
 import image from '../../assets/user.jpeg'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store'
+import { BiMenuAltLeft, BiSearchAlt } from 'react-icons/bi'
 
 const Navbar = () => {
   const authResponse = useSelector(
@@ -17,8 +22,18 @@ const Navbar = () => {
   console.log(authResponse)
   return (
     <NavBar>
-      <NavBarContainer>
-        <div>Locomotif</div>
+      <NavBarMobileContainer>
+        <MenuIcon>
+          <BiMenuAltLeft size={28} />
+        </MenuIcon>
+        <LogoStyles>Locomotif</LogoStyles>
+        <SearchIcon>
+          <BiSearchAlt size={28} />
+        </SearchIcon>
+      </NavBarMobileContainer>
+
+      <NavBarLaptopContainer>
+        <LogoStyles>Locomotif</LogoStyles>
         <NavBarRightContent>
           <NavBarUserImage>
             <img
@@ -30,7 +45,7 @@ const Navbar = () => {
 
           <NavBarUserName>{authResponse.first_name ?? 'user'}</NavBarUserName>
         </NavBarRightContent>
-      </NavBarContainer>
+      </NavBarLaptopContainer>
     </NavBar>
   )
 }
