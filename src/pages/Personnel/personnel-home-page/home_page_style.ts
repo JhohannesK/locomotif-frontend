@@ -4,6 +4,7 @@ import Constants from '../../../utils/constants'
 
 export const HomePageContainer = styled.section`
   height: 100vh;
+  outline: 1px solid ${colors.button.pineGreen};
 `
 
 export const NavBar = styled.nav`
@@ -80,18 +81,26 @@ export const LowerContentContainer = styled.div`
   margin: 0 auto;
   height: 100%;
   width: 90%;
-  //   outline: 1px solid blue;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  justify-content: center;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    justify-content: space-between;
+  }
 `
 
 export const LowerContentLeft = styled.aside`
-  width: 30%;
-  height: 100%;
-  border: 2px solid ${colors.background.pineGreen};
-  border-radius: 10px;
+  display: none;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    display: flex;
+    width: 30%;
+    height: 100%;
+    border: 2px solid ${colors.background.pineGreen};
+    border-radius: 10px;
+  }
 `
 
 export const LowerContentRight = styled.aside`
@@ -100,7 +109,6 @@ export const LowerContentRight = styled.aside`
     height: 100%;
   }
   width: 68%;
-  float: right;
   height: 100%;
   border-radius: 10px;
 `
