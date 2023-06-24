@@ -22,8 +22,8 @@ import { useMutation } from '@tanstack/react-query'
 import Constants from '../../../utils/constants'
 import axios, { AxiosResponse } from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { RootState, login } from '../../../store'
+import { useDispatch } from 'react-redux'
+import { login } from '../../../store'
 
 const schema = z.object({
   username: z.string().min(3),
@@ -45,13 +45,8 @@ function SigninPage() {
   })
 
   const dispatch = useDispatch()
-  const authResponse = useSelector(
-    (state: RootState) => state.auth.authResponse
-  )
 
-  console.log(authResponse)
-
-  const { mutate } = useMutation({
+  const { mutate, isLoading } = useMutation({
     mutationFn: async (datas: Schema) => {
       await axios
         .post(`${Constants.BaseURL}auth/login/medical_personnel/`, datas)
@@ -68,6 +63,10 @@ function SigninPage() {
 
   const onSubmit = (data: Schema) => {
     mutate(data)
+  }
+
+  if (isLoading) {
+    return <div>loading</div>
   }
 
   return (

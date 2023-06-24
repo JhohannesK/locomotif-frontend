@@ -1,11 +1,5 @@
 import {
   HomePageContainer,
-  JobContainer,
-  JobContainerLeft,
-  JobContainerRight,
-  JobDescription,
-  JobLocation,
-  JobTitle,
   JobsContainer,
   LowerContent,
   LowerContentContainer,
@@ -18,9 +12,30 @@ import {
 import { BiSearch } from 'react-icons/bi'
 import SearchInput from '../../../general/SearchInput'
 import Layout from '../../../general/Layout'
+import JobCard from '../job-card/JobLIstingCard'
+import axios from 'axios'
+import Constants from '../../../utils/constants'
+import { JobCardProps } from '../../../general/@types'
+import { useQuery } from '@tanstack/react-query'
 import FilterBox from './components/FilterBox'
 
 function HomePage() {
+  const fetchPostings = async (): Promise<JobCardProps[]> => {
+    const response = await axios.get<JobCardProps[]>(
+      `${Constants.BaseURL}postings/`
+    )
+    return response.data
+  }
+
+  const { data, isLoading } = useQuery<JobCardProps[], Error>(
+    ['postings'],
+    fetchPostings
+  )
+  console.log(data)
+  if (isLoading) {
+    return <>loading</>
+  }
+
   return (
     <Layout>
       <HomePageContainer>
@@ -43,26 +58,17 @@ function HomePage() {
                 />
               </SearchBarContainer>
               <JobsContainer>
-                <JobContainer>
-                  <JobContainerLeft>
-                    <JobTitle>Obstetrics and Gynecology Physician </JobTitle>
-                  </JobContainerLeft>
-                  <JobContainerRight>
-                    <JobLocation>Okomfo Anokye Teaching Hospital</JobLocation>
-                    <JobDescription>GHS 20K/yr</JobDescription>
-                    <JobDescription>Full-time</JobDescription>
-                  </JobContainerRight>
-                </JobContainer>
-                <JobContainer>
-                  <JobContainerLeft>
-                    <JobTitle>Acute Care Surgeon </JobTitle>
-                  </JobContainerLeft>
-                  <JobContainerRight>
-                    <JobLocation>Ridge Medical Center</JobLocation>
-                    <JobDescription>GHS 50K/yr</JobDescription>
-                    <JobDescription>Part-time</JobDescription>
-                  </JobContainerRight>
-                </JobContainer>
+                {data?.map((posting) => {
+                  return (
+                    <JobCard
+                      description={posting.description}
+                      facility="Ridge Hospital"
+                      rate_per_6_hour_shift={posting.rate_per_6_hour_shift}
+                      required_role={posting.required_role}
+                      shift={posting.shift}
+                    />
+                  )
+                })}
               </JobsContainer>
             </LowerContentRight>
           </LowerContentContainer>

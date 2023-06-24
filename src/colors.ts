@@ -15,6 +15,7 @@ export const colors = {
     viridian: '#048B7B',
   },
   text: {
+    white: '#FEFFFE',
     primary: '#0C120C',
     whiteSmoke: '#F5F5F5',
     raisinBlack: '#202030',
