@@ -50,5 +50,22 @@ export const theme = createTheme({
         },
       },
     },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          width: '100%',
+          '& .MuiAccordionSummary-content': {
+            '& .MuiTypography-root': {
+              fontSize: '1.2rem',
+            },
+          },
+          '& .MuiListItemText-root': {
+            '& .MuiTypography-root': {
+              cursor: 'pointer',
+            },
+          },
+        },
+      },
+    },
   },
 })

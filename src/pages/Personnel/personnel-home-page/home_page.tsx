@@ -17,6 +17,7 @@ import axios from 'axios'
 import Constants from '../../../utils/constants'
 import { JobCardProps } from '../../../general/@types'
 import { useQuery } from '@tanstack/react-query'
+import FilterBox from './components/FilterBox'
 
 function HomePage() {
   const fetchPostings = async (): Promise<JobCardProps[]> => {
@@ -43,7 +44,9 @@ function HomePage() {
         </MidContent>
         <LowerContent>
           <LowerContentContainer>
-            <LowerContentLeft>filter</LowerContentLeft>
+            <LowerContentLeft>
+              <FilterBox />
+            </LowerContentLeft>
             <LowerContentRight>
               <SearchBarContainer>
                 <SearchInput
