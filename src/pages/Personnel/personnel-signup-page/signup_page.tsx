@@ -112,22 +112,28 @@ const SignUpPage = () => {
             {mutation.isError ? <Alert severity="error">{error}</Alert> : null}
 
             <GeneralInput
-              name="firstName"
+              name="username"
+              label="Username"
+              icon={<AiOutlineUser />}
+              placeholder="mardar@gmail.com"
+            />
+            <GeneralInput
+              name="first_name"
               label="First Name"
               icon={<AiOutlineUser />}
               placeholder="Curtis"
             />
             <GeneralInput
-              name="lastName"
+              name="last_name"
               label="Last Name"
               icon={<AiOutlineUser />}
               placeholder="Jackson"
             />
             <GeneralInput
-              name="email"
-              label="E-mail"
+              name="other_names"
+              label="Other names"
               icon={<AiOutlineUser />}
-              placeholder="mardar@gmail.com"
+              placeholder="Lamptey-Odin"
             />
             <GeneralInput
               name="password"
