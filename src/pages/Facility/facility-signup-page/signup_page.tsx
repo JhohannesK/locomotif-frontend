@@ -17,15 +17,23 @@ import GeneralButton from '../../../general/Button'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
 import Constants from '../../../utils/constants'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { useMutation } from '@tanstack/react-query'
 import routes from '../../../routes'
 import { genCode } from '../../../utils/genCode'
 import { OmitConfirmPassword, Schema, schema } from './_types'
 import { useNavigate } from 'react-router-dom'
+import { Alert } from '@mui/material'
+import { useState } from 'react'
+import { LoadingButton } from '@mui/lab'
+
+interface MyResponse {
+  error?: string
+}
 
 const SignUpPageIns = () => {
   const navigate = useNavigate()
+  const [error, setError] = useState<string>('')
 
   const defaultValues: Schema = {
     facility_code: '',
@@ -49,7 +57,18 @@ const SignUpPageIns = () => {
       )
     },
     onSuccess: () => navigate(Constants.ROUTES.facility_signin),
-    onError: () => console.log('some error'),
+    onError: (error) => {
+      if ((error as AxiosError).code === 'ERR_NETWORK') {
+        setError('Check internet connectivity')
+      } else if ((error as AxiosError).code === 'ERR_BAD_REQUEST') {
+        setError(
+          (error as AxiosError<MyResponse>).response?.data?.error ||
+            'Unknown error'
+        )
+      } else if ((error as AxiosError).code === 'ERR_BAD_RESPONSE') {
+        setError("It is our fault, we'll fix it soon")
+      }
+    },
   })
 
   const onSubmit = (data: Schema) => {
@@ -76,6 +95,8 @@ const SignUpPageIns = () => {
             <h1 style={{ fontWeight: 650, fontSize: '2rem' }}>Sign Up</h1>
           </AuthUpperContent>
           <AuthFields>
+            {mutation.isError ? <Alert severity="error">{error}</Alert> : null}
+
             <GeneralInput
               name="facility_code"
               label="Facility Code"
@@ -118,11 +139,18 @@ const SignUpPageIns = () => {
             />
           </AuthFields>
           <AuthButton>
-            <GeneralButton
-              title="Sign Up"
-              sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
-              size="large"
-            />
+            {mutation.isLoading ? (
+              <LoadingButton
+                loading
+                sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
+              ></LoadingButton>
+            ) : (
+              <GeneralButton
+                sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
+                title="Sign In"
+                size="large"
+              />
+            )}
           </AuthButton>
           <AuthText>
             Already have an account?{' '}

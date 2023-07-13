@@ -25,14 +25,15 @@ export const AuthContent = styled.form`
 
 export const AuthUpperContent = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 20px;
   height: 150px;
+  width: 100%;
 `
 export const AuthLogo = styled.div`
-  height: 100%;
-  width: 50%;
+  height: 100px;
+  width: 100px;
 `
 export const AuthFields = styled.div`
   display: flex;
