@@ -27,6 +27,7 @@ import { login } from '../../../store'
 import { Alert } from '@mui/material'
 import { useState } from 'react'
 import { LoadingButton } from '@mui/lab'
+// import Toast from '../../../general/Toast'
 
 const schema = z.object({
   username: z.string().min(3),
@@ -42,7 +43,7 @@ interface MyResponse {
 function SigninPage() {
   const navigate = useNavigate()
 
-  const [error, setError] = useState<string>('')
+  const [errorMessage, setError] = useState<string>('')
   const defaultValues: Schema = {
     username: '',
     password: '',
@@ -55,7 +56,7 @@ function SigninPage() {
 
   const dispatch = useDispatch()
 
-  const { mutate, isLoading, isError } = useMutation({
+  const { mutate, isLoading, isError, error } = useMutation({
     mutationFn: async (datas: Schema) => {
       await axios
         .post(`${Constants.BaseURL}auth/login/medical_personnel/`, datas)
@@ -67,15 +68,13 @@ function SigninPage() {
     onSuccess: () => {
       navigate(Constants.ROUTES.personnel_dashboard)
     },
-    onError: (error) => {
-      if ((error as AxiosError).code === 'ERR_NETWORK') {
-        setError('Check internet connectivity')
-      } else if ((error as AxiosError).code === 'ERR_BAD_REQUEST') {
+    onError: (err) => {
+      if ((err as AxiosError).code === 'ERR_BAD_REQUEST') {
         setError(
-          (error as AxiosError<MyResponse>).response?.data?.error ||
+          (err as AxiosError<MyResponse>).response?.data?.error ||
             'Unknown error'
         )
-      } else if ((error as AxiosError).code === 'ERR_BAD_RESPONSE') {
+      } else if ((err as AxiosError).code === 'ERR_BAD_RESPONSE') {
         setError("It is our fault, we'll fix it soon")
       }
     },
@@ -87,6 +86,13 @@ function SigninPage() {
 
   return (
     <AuthContainer>
+      {/* {error && (error as AxiosError)?.code === 'ERR_NETWORK' && (
+        <Toast
+          children={<div>Check internet connectivity</div>}
+          type="error"
+        ></Toast>
+      )} */}
+
       <FormProvider {...methods}>
         <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
           <AuthUpperContent>
@@ -103,7 +109,9 @@ function SigninPage() {
 
           <div>
             <AuthFields>
-              {isError ? <Alert severity="error">{error}</Alert> : null}
+              {isError && (error as AxiosError)?.code !== 'ERR_NETWORK' ? (
+                <Alert severity="error">{errorMessage}</Alert>
+              ) : null}
               <GeneralInput
                 name="username"
                 sx={{ marginBottom: '20px' }}
