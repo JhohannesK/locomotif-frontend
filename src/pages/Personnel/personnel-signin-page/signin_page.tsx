@@ -27,7 +27,6 @@ import { login } from '../../../store'
 import { Alert } from '@mui/material'
 import { useState } from 'react'
 import { LoadingButton } from '@mui/lab'
-// import Toast from '../../../general/Toast'
 
 const schema = z.object({
   username: z.string().min(3),
@@ -86,13 +85,6 @@ function SigninPage() {
 
   return (
     <AuthContainer>
-      {/* {error && (error as AxiosError)?.code === 'ERR_NETWORK' && (
-        <Toast
-          children={<div>Check internet connectivity</div>}
-          type="error"
-        ></Toast>
-      )} */}
-
       <FormProvider {...methods}>
         <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
           <AuthUpperContent>
