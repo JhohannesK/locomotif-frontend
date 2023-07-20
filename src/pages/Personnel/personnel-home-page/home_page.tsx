@@ -60,7 +60,7 @@ function HomePage() {
                   return (
                     <JobCard
                       description={posting.description}
-                      facility="Ridge Hospital"
+                      facility={posting.facility}
                       rate_per_6_hour_shift={posting.rate_per_6_hour_shift}
                       required_role={posting.required_role}
                       shift={posting.shift}

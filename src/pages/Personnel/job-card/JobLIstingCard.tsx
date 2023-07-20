@@ -1,21 +1,23 @@
 import {
   HospitalLogo,
+  HospitalName,
   JobContainer,
   JobContainerHead,
-  JobContainerRight,
+  JobDescriptionContainer,
   JobDescription,
-  JobLocation,
-  JobTitle,
-  RateAndShift,
-  ShiftContainer,
+  TagStyles,
+  NameAndRoleStyles,
+  TagWithIcons,
+  AllTags,
 } from './styles'
 import { JobCardProps } from '../../../_shared/@types'
 import { colors } from '../../../colors'
+import { MdLocationOn } from 'react-icons/md'
+import GeneralButton from '../../../_shared/Button'
 
 const JobCard = ({
   required_role,
   description,
-  shift,
   rate_per_6_hour_shift,
   facility,
 }: JobCardProps) => {
@@ -32,19 +34,36 @@ const JobCard = ({
             }}
           />
         </HospitalLogo>
-        <JobLocation>{facility}</JobLocation>
+        <NameAndRoleStyles>
+          <HospitalName>{facility}</HospitalName>
+          <TagStyles>{required_role} </TagStyles>
+        </NameAndRoleStyles>
       </JobContainerHead>
-      <JobContainerRight>
-        <JobTitle>{required_role} </JobTitle>
+      <JobDescriptionContainer>
         <JobDescription>{description}</JobDescription>
-        <RateAndShift>
-          <JobDescription>GHS{rate_per_6_hour_shift}/shift</JobDescription>
-          <ShiftContainer>{shift}</ShiftContainer>
-          <div>
-            <button>Apply</button>
-          </div>
-        </RateAndShift>
-      </JobContainerRight>
+        {/* <JobDescription>GHS{rate_per_6_hour_shift}/shift</JobDescription> */}
+        <AllTags>
+          <TagWithIcons>
+            <MdLocationOn />
+            Accra, Ghana
+          </TagWithIcons>
+          <TagWithIcons>
+            <MdLocationOn />
+            GHS {rate_per_6_hour_shift}/shift
+          </TagWithIcons>
+
+          <GeneralButton
+            title="Apply Now"
+            sx={{
+              padding: '12px 20px',
+              height: '10px',
+              fontSize: '13px',
+              borderRadius: '15px',
+              fontWeight: 'medium',
+            }}
+          />
+        </AllTags>
+      </JobDescriptionContainer>
     </JobContainer>
   )
 }
