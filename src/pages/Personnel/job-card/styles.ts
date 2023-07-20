@@ -8,6 +8,8 @@ export const JobContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
+  padding: 10px;
+  gap: 10px;
 `
 
 export const HospitalLogo = styled.div``
@@ -18,42 +20,55 @@ export const JobContainerHead = styled.div`
   gap: 10px;
   justify-content: flex-start;
   align-items: center;
-  padding: 10px;
 `
 
-export const JobContainerRight = styled.div`
-  padding-left: 10px;
+export const JobDescriptionContainer = styled.div`
   width: 100%;
-  padding: 0 10px 10px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  /* padding: 0 10px 10px 30px; */
   /* background-color: inherit; */
 `
-export const JobTitle = styled.h2`
+export const TagStyles = styled.div`
   color: ${colors.text.night};
-  font-size: 1.2rem;
+  background-color: ${colors.background.timberwolf};
+  width: fit-content;
+  font-size: 13px;
+  padding: 5px 10px;
+  border-radius: 10px;
   opacity: 0.8;
 `
 export const JobDescription = styled.p`
   font-size: 0.8rem;
-  opacity: 0.8;
+  color: rgba(0, 0, 0, 0.6);
 `
 
-export const JobLocation = styled.h3`
-  font-size: 1rem;
+export const HospitalName = styled.h3`
+  font-size: 20px;
   color: ${colors.text.night};
 `
 
-export const RateAndShift = styled.div`
+export const NameAndRoleStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  align-items: flex-start;
+`
+
+export const TagWithIcons = styled(TagStyles)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  gap: 5px;
 `
-export const ShiftContainer = styled.div`
+
+export const AllTags = styled.div`
   display: flex;
-  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
   align-items: center;
-  padding: 5px;
-  border-radius: 5px;
-  background-color: ${colors.background.pineGreen};
-  color: white;
+  justify-content: center;
 `
