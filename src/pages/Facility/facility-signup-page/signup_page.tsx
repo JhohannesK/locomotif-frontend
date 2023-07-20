@@ -51,6 +51,7 @@ const SignUpPageIns = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: OmitConfirmPassword) => {
+      console.log('🚀 ~ file: signup_page.tsx:46 ~ mutationFn: ~ data:', data)
       await axios.post(
         `${Constants.BaseURL}auth/signup/medical_facility/`,
         data
@@ -75,7 +76,6 @@ const SignUpPageIns = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { confirmPassword, ...rest } = data
 
-    methods.setValue('facility_code', genCode(rest.name))
     mutation.mutate(rest)
   }
 
@@ -146,8 +146,14 @@ const SignUpPageIns = () => {
               ></LoadingButton>
             ) : (
               <GeneralButton
+                onClick={() =>
+                  methods.setValue(
+                    'facility_code',
+                    genCode(methods.getValues('name'))
+                  )
+                }
+                title="Sign Up"
                 sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
-                title="Sign In"
                 size="large"
               />
             )}
