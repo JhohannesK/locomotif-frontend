@@ -17,8 +17,11 @@ import { z } from 'zod'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import Constants from '../../../utils/constants'
+import { Alert } from '@mui/material'
+import { useState } from 'react'
+import { LoadingButton } from '@mui/lab'
 
 const schema = z.object({
   facility_code: z.string().min(4),
@@ -27,7 +30,13 @@ const schema = z.object({
 
 type Schema = z.infer<typeof schema>
 
+interface MyResponse {
+  error?: string
+}
+
 function SigninPageIns() {
+  const [error, setError] = useState<string>('')
+
   const defaultValues: Schema = {
     facility_code: '',
     password: '',
@@ -38,13 +47,24 @@ function SigninPageIns() {
     defaultValues,
   })
 
-  const { mutate, status } = useMutation({
+  const { mutate, status, isError, isLoading } = useMutation({
     mutationFn: async (data: Schema) =>
       axios.post(`${Constants.BaseURL}auth/login/medical_facility/`, data),
     // onSuccess: () => console.log('yes'),
 
     // TODO: add some toast to show the error
-    onError: () => console.log('some error'),
+    onError: (error) => {
+      if ((error as AxiosError).code === 'ERR_NETWORK') {
+        setError('Check internet connectivity')
+      } else if ((error as AxiosError).code === 'ERR_BAD_REQUEST') {
+        setError(
+          (error as AxiosError<MyResponse>).response?.data?.error ||
+            'Unknown error'
+        )
+      } else if ((error as AxiosError).code === 'ERR_BAD_RESPONSE') {
+        setError("It is our fault, we'll fix it soon")
+      }
+    },
   })
 
   const onSubmit = (data: Schema) => {
@@ -73,6 +93,7 @@ function SigninPageIns() {
           </AuthUpperContent>
           <div>
             <AuthFields>
+              {isError ? <Alert severity="error">{error}</Alert> : null}
               <GeneralInput
                 name="facility_code"
                 sx={{ marginBottom: '20px' }}
@@ -95,10 +116,18 @@ function SigninPageIns() {
             <p>Forgot your password?</p>
           </AuthText>
           <AuthButton>
-            <GeneralButton
-              sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
-              title="Sign In"
-            />
+            {isLoading ? (
+              <LoadingButton
+                loading
+                sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
+              ></LoadingButton>
+            ) : (
+              <GeneralButton
+                sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
+                title="Sign In"
+                size="large"
+              />
+            )}
           </AuthButton>
         </AuthContent>
       </FormProvider>

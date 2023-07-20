@@ -1,6 +1,5 @@
 import { AiOutlineUser } from 'react-icons/ai'
 import { FiKey } from 'react-icons/fi'
-
 import GeneralInput from '../../../general/Input'
 import GeneralButton from '../../../general/Button'
 import { z } from 'zod'
@@ -18,8 +17,11 @@ import {
 } from '../../../general/auth_styles'
 import image from '../../../assets/doctor_sign_in.png'
 import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import Constants from '../../../utils/constants'
+import { Alert } from '@mui/material'
+import { useState } from 'react'
+import { LoadingButton } from '@mui/lab'
 
 const schema = z
   .object({
@@ -38,7 +40,13 @@ const schema = z
 
 type Schema = z.infer<typeof schema>
 
+interface MyResponse {
+  error?: string
+}
+
 const SignUpPage = () => {
+  const [error, setError] = useState<string>('')
+
   const defaultValues: Schema = {
     username: '',
     first_name: '',
@@ -64,7 +72,18 @@ const SignUpPage = () => {
       )
     },
     onSuccess: () => console.log('yess'),
-    onError: (err) => console.log(err),
+    onError: (error) => {
+      if ((error as AxiosError).code === 'ERR_NETWORK') {
+        setError('Check internet connectivity')
+      } else if ((error as AxiosError).code === 'ERR_BAD_REQUEST') {
+        setError(
+          (error as AxiosError<MyResponse>).response?.data?.error ||
+            'Unknown error'
+        )
+      } else if ((error as AxiosError).code === 'ERR_BAD_RESPONSE') {
+        setError("It is our fault, we'll fix it soon")
+      }
+    },
   })
 
   const onSubmit = (data: Schema) => {
@@ -90,6 +109,8 @@ const SignUpPage = () => {
             <h1>Sign Up</h1>
           </AuthUpperContent>
           <AuthFields>
+            {mutation.isError ? <Alert severity="error">{error}</Alert> : null}
+
             <GeneralInput
               name="username"
               label="Username"
@@ -132,11 +153,18 @@ const SignUpPage = () => {
           </AuthFields>
 
           <AuthButton>
-            <GeneralButton
-              title="Sign Up"
-              sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
-              size="large"
-            />
+            {mutation.isLoading ? (
+              <LoadingButton
+                loading
+                sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
+              ></LoadingButton>
+            ) : (
+              <GeneralButton
+                sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
+                title="Sign In"
+                size="large"
+              />
+            )}
           </AuthButton>
           <AuthText>Already have an account ? Sign In</AuthText>
         </AuthContent>

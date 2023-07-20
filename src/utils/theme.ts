@@ -24,7 +24,6 @@ export const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          fontFamily: 'Raleway',
           gap: '1rem',
           width: '100%',
         },
@@ -63,6 +62,16 @@ export const theme = createTheme({
             '& .MuiTypography-root': {
               cursor: 'pointer',
             },
+          },
+        },
+      },
+    },
+
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          '& .MuiLoadingButton-loadingIndicator': {
+            color: 'white',
           },
         },
       },

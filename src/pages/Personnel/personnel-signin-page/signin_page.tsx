@@ -20,10 +20,13 @@ import {
 import { FormProvider } from 'react-hook-form'
 import { useMutation } from '@tanstack/react-query'
 import Constants from '../../../utils/constants'
-import axios, { AxiosResponse } from 'axios'
+import axios, { AxiosError, AxiosResponse } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { login } from '../../../store'
+import { Alert } from '@mui/material'
+import { useState } from 'react'
+import { LoadingButton } from '@mui/lab'
 
 const schema = z.object({
   username: z.string().min(3),
@@ -32,8 +35,14 @@ const schema = z.object({
 
 type Schema = z.infer<typeof schema>
 
+interface MyResponse {
+  error?: string
+}
+
 function SigninPage() {
   const navigate = useNavigate()
+
+  const [errorMessage, setError] = useState<string>('')
   const defaultValues: Schema = {
     username: '',
     password: '',
@@ -46,7 +55,7 @@ function SigninPage() {
 
   const dispatch = useDispatch()
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isLoading, isError, error } = useMutation({
     mutationFn: async (datas: Schema) => {
       await axios
         .post(`${Constants.BaseURL}auth/login/medical_personnel/`, datas)
@@ -58,15 +67,20 @@ function SigninPage() {
     onSuccess: () => {
       navigate(Constants.ROUTES.personnel_dashboard)
     },
-    onError: () => console.log('some error'),
+    onError: (err) => {
+      if ((err as AxiosError).code === 'ERR_BAD_REQUEST') {
+        setError(
+          (err as AxiosError<MyResponse>).response?.data?.error ||
+            'Unknown error'
+        )
+      } else if ((err as AxiosError).code === 'ERR_BAD_RESPONSE') {
+        setError("It is our fault, we'll fix it soon")
+      }
+    },
   })
 
   const onSubmit = (data: Schema) => {
     mutate(data)
-  }
-
-  if (isLoading) {
-    return <div>loading</div>
   }
 
   return (
@@ -84,8 +98,12 @@ function SigninPage() {
 
             <h1 style={{ fontWeight: 650, fontSize: '2rem' }}>Sign In</h1>
           </AuthUpperContent>
+
           <div>
             <AuthFields>
+              {isError && (error as AxiosError)?.code !== 'ERR_NETWORK' ? (
+                <Alert severity="error">{errorMessage}</Alert>
+              ) : null}
               <GeneralInput
                 name="username"
                 sx={{ marginBottom: '20px' }}
@@ -105,11 +123,18 @@ function SigninPage() {
           </div>
           <AuthText>Forgot your password?</AuthText>
           <AuthButton>
-            <GeneralButton
-              sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
-              title="Sign In"
-              size="large"
-            />
+            {isLoading ? (
+              <LoadingButton
+                loading
+                sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
+              ></LoadingButton>
+            ) : (
+              <GeneralButton
+                sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
+                title="Sign In"
+                size="large"
+              />
+            )}
           </AuthButton>
         </AuthContent>
       </FormProvider>
