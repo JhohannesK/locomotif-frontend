@@ -3,8 +3,8 @@ import { FiKey } from 'react-icons/fi'
 
 import { colors } from '../../../colors'
 import image from '../../../assets/doctor_sign_in.png'
-import GeneralInput from '../../../general/Input'
-import GeneralButton from '../../../general/Button'
+import GeneralInput from '../../../_shared/Input'
+import GeneralButton from '../../../_shared/Button'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -16,7 +16,7 @@ import {
   AuthLogo,
   AuthText,
   AuthUpperContent,
-} from '../../../general/auth_styles'
+} from '../../../_shared/auth_styles'
 import { FormProvider } from 'react-hook-form'
 import { useMutation } from '@tanstack/react-query'
 import Constants from '../../../utils/constants'

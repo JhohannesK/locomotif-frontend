@@ -8,7 +8,7 @@ import {
   UserWrapper,
   ButtonWrapper,
 } from './styles'
-import GeneralButton from '../../general/Button'
+import GeneralButton from '../../_shared/Button'
 import { useState } from 'react'
 import Constants from '../../utils/constants'
 import routes from '../../routes'

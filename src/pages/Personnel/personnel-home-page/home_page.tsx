@@ -3,21 +3,19 @@ import {
   JobsContainer,
   LowerContent,
   LowerContentContainer,
-  LowerContentLeft,
   LowerContentRight,
   MidContent,
   MidContentText,
   SearchBarContainer,
 } from './home_page_style'
 import { BiSearch } from 'react-icons/bi'
-import SearchInput from '../../../general/SearchInput'
-import Layout from '../../../general/Layout'
+import SearchInput from '../../../_shared/SearchInput'
+import Layout from '../../../_shared/Layout'
 import JobCard from '../job-card/JobLIstingCard'
 import axios from 'axios'
 import Constants from '../../../utils/constants'
-import { JobCardProps } from '../../../general/@types'
+import { JobCardProps } from '../../../_shared/@types'
 import { useQuery } from '@tanstack/react-query'
-import FilterBox from './components/FilterBox'
 
 function HomePage() {
   const fetchPostings = async (): Promise<JobCardProps[]> => {
@@ -44,9 +42,9 @@ function HomePage() {
         </MidContent>
         <LowerContent>
           <LowerContentContainer>
-            <LowerContentLeft>
+            {/* <LowerContentLeft>
               <FilterBox />
-            </LowerContentLeft>
+            </LowerContentLeft> */}
             <LowerContentRight>
               <SearchBarContainer>
                 <SearchInput

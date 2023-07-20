@@ -7,14 +7,13 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           fontSize: '1rem',
-          fontFamily: 'Raleway',
           fontWeight: 'bold',
           color: 'white',
           background: 'white',
           transition: 'ease-in-out',
           animationDuration: '2000s',
           '&:hover': {
-            background: colors.button.viridian,
+            background: colors.button.pineGreen,
           },
           width: '50%',
         },

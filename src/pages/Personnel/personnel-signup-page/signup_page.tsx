@@ -1,7 +1,7 @@
 import { AiOutlineUser } from 'react-icons/ai'
 import { FiKey } from 'react-icons/fi'
-import GeneralInput from '../../../general/Input'
-import GeneralButton from '../../../general/Button'
+import GeneralInput from '../../../_shared/Input'
+import GeneralButton from '../../../_shared/Button'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
@@ -14,7 +14,7 @@ import {
   AuthLogo,
   AuthFields,
   AuthContent,
-} from '../../../general/auth_styles'
+} from '../../../_shared/auth_styles'
 import image from '../../../assets/doctor_sign_in.png'
 import { useMutation } from '@tanstack/react-query'
 import axios, { AxiosError } from 'axios'
