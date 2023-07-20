@@ -19,19 +19,17 @@ export const ContentWrapper = styled.div`
 `
 
 export const WelcomeWrapper = styled.h1`
-  font-family: 'Raleway';
   font-weight: bold;
   font-size: 7rem;
-  color: ${colors.text.whiteSmoke};
+  color: ${colors.text.platinum};
   @media (max-width: 768px) {
     font-size: 4rem;
   }
 `
 
 export const QuestionWrapper = styled.div`
-  font-family: 'Raleway';
   font-size: 1.2rem;
-  color: ${colors.text.whiteSmoke};
+  color: ${colors.text.platinum};
   text-align: center;
 `
 

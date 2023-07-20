@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <div>
-      <h1>Made by Bermadar</h1>
+      <p>Made by Bermadar</p>
     </div>
   )
 }

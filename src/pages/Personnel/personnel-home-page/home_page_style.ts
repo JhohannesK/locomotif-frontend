@@ -52,7 +52,7 @@ export const MidContent = styled.div`
 `
 
 export const MidContentText = styled.h1`
-  color: ${colors.background.keppel};
+  color: ${colors.background.pineGreen};
   font-weight: 600;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {

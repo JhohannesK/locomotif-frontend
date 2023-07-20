@@ -10,10 +10,10 @@ import {
   AuthLogo,
   AuthButton,
   AuthLink,
-} from '../../../general/auth_styles'
+} from '../../../_shared/auth_styles'
 import image from '../../../assets/doctor_sign_in.png'
-import GeneralInput from '../../../general/Input'
-import GeneralButton from '../../../general/Button'
+import GeneralInput from '../../../_shared/Input'
+import GeneralButton from '../../../_shared/Button'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
 import Constants from '../../../utils/constants'

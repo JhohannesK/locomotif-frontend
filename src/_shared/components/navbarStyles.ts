@@ -1,10 +1,12 @@
 import { styled } from 'styled-components'
 import { colors } from '../../colors'
 import Constants from '../../utils/constants'
+import { Link } from 'react-router-dom'
 
 export const NavBar = styled.nav`
   height: 4rem;
-  border-bottom: 2px solid ${colors.background.keppel};
+  border-bottom: 2px solid ${colors.background.timberwolf};
+  background-color: ${colors.background.whiteSmoke};
   padding: 3px 0px;
 `
 
@@ -27,6 +29,21 @@ export const NavBarRightContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`
+
+export const Navbarlinks = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+export const LinkStyles = styled(Link)`
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.7);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 137.14%;
 `
 
 export const NavBarUserName = styled.h2`

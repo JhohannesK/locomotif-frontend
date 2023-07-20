@@ -8,11 +8,11 @@ import {
   AuthLogo,
   AuthText,
   AuthUpperContent,
-} from '../../../general/auth_styles'
+} from '../../../_shared/auth_styles'
 import { colors } from '../../../colors'
 import image from '../../../assets/doctor_sign_in.png'
-import GeneralInput from '../../../general/Input'
-import GeneralButton from '../../../general/Button'
+import GeneralInput from '../../../_shared/Input'
+import GeneralButton from '../../../_shared/Button'
 import { z } from 'zod'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'

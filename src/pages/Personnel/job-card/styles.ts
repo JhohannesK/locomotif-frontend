@@ -2,25 +2,21 @@ import { styled } from 'styled-components'
 import { colors } from '../../../colors'
 
 export const JobContainer = styled.div`
-  max-width: 100%;
-  background: linear-gradient(
-    80deg,
-    ${colors.background.pineGreen} 17%,
-    ${colors.background.whiteSmoke} 30%
-  );
+  width: 100%;
+  background: ${colors.background.whiteSmoke};
   border-radius: 10px;
   display: flex;
-  overflow: hidden;
-  cursor: pointer;
-  height: 110px;
+  flex-direction: column;
   margin-bottom: 10px;
 `
 
-export const JobContainerLeft = styled.div`
-  width: 30%;
+export const HospitalLogo = styled.div``
+
+export const JobContainerHead = styled.div`
   color: #fff;
   display: flex;
-  justify-content: center;
+  gap: 10px;
+  justify-content: flex-start;
   align-items: center;
   padding: 10px;
 `
@@ -32,7 +28,7 @@ export const JobContainerRight = styled.div`
   /* background-color: inherit; */
 `
 export const JobTitle = styled.h2`
-  color: ${colors.text.white};
+  color: ${colors.text.night};
   font-size: 1.2rem;
   opacity: 0.8;
 `
@@ -43,7 +39,7 @@ export const JobDescription = styled.p`
 
 export const JobLocation = styled.h3`
   font-size: 1rem;
-  color: ${colors.text.raisinBlack};
+  color: ${colors.text.night};
 `
 
 export const RateAndShift = styled.div`
@@ -58,6 +54,6 @@ export const ShiftContainer = styled.div`
   align-items: center;
   padding: 5px;
   border-radius: 5px;
-  background-color: ${colors.background.pompAndPower};
+  background-color: ${colors.background.pineGreen};
   color: white;
 `
