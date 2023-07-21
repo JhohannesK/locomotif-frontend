@@ -55,3 +55,9 @@ export interface SelectProps {
   defaultValue: string
   sx?: SxProps
 }
+
+export type toastParams = {
+  open: boolean
+  type?: 'success' | 'error' | 'info' | 'warning'
+  children?: React.ReactNode
+}
