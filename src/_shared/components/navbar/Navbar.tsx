@@ -13,9 +13,9 @@ import {
 } from './navbarStyles'
 import image from '../../assets/user.jpeg'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../store'
+import { RootState } from '../../../store'
 import { BiMenuAltLeft, BiSearchAlt } from 'react-icons/bi'
-import Constants from '../../utils/constants'
+import Constants from '../../../utils/constants'
 
 const Navbar = () => {
   const authResponse = useSelector(

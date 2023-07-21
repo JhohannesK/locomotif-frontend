@@ -36,6 +36,13 @@ export const theme = createTheme({
         },
       },
     },
+    MuiSelect: {
+      styleOverrides: {
+        select: {
+          width: '100%',
+        },
+      },
+    },
     MuiTextField: {
       styleOverrides: {
         root: {

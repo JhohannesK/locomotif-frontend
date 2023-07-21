@@ -15,6 +15,7 @@ export const colors = {
   text: {
     night: '#0C120C',
     platinum: '#D9D9D9',
+    white: '#FEFFFE',
   },
   border: {
     danger: '#EA5455',

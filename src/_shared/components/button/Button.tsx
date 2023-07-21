@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import { GeneralBtnProps } from './@types'
+import { GeneralBtnProps } from '../../@types'
 
 const GeneralButton = ({
   variantText,

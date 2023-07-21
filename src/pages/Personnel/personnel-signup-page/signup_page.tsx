@@ -1,7 +1,5 @@
 import { AiOutlineUser } from 'react-icons/ai'
 import { FiKey } from 'react-icons/fi'
-import GeneralInput from '../../../_shared/Input'
-import GeneralButton from '../../../_shared/Button'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
@@ -15,13 +13,15 @@ import {
   AuthFields,
   AuthContent,
 } from '../../../_shared/auth_styles'
-import image from '../../../assets/doctor_sign_in.png'
+import image from '../../../_shared/assets/doctor_sign_in.png'
 import { useMutation } from '@tanstack/react-query'
 import axios, { AxiosError } from 'axios'
 import Constants from '../../../utils/constants'
 import { Alert } from '@mui/material'
 import { useState } from 'react'
 import { LoadingButton } from '@mui/lab'
+import GeneralInput from '../../../_shared/components/inputs/Input'
+import { GenericButton } from '../../../_shared'
 
 const schema = z
   .object({
@@ -159,7 +159,7 @@ const SignUpPage = () => {
                 sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
               ></LoadingButton>
             ) : (
-              <GeneralButton
+              <GenericButton
                 sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
                 title="Sign In"
                 size="large"

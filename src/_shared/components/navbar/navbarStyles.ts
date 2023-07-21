@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
-import { colors } from '../../colors'
-import Constants from '../../utils/constants'
+import { colors } from '../../../colors'
+import Constants from '../../../utils/constants'
 import { Link } from 'react-router-dom'
 
 export const NavBar = styled.nav`
@@ -8,7 +8,12 @@ export const NavBar = styled.nav`
   border-bottom: 2px solid ${colors.background.timberwolf};
   background-color: ${colors.background.whiteSmoke};
   padding: 3px 0px;
+  /* position: fixed; */
+  width: 100%;
+  max-width: 1600px;
+  align-self: center;
 `
+export const NavbarWrapper = styled.div``
 
 export const LogoStyles = styled.div``
 

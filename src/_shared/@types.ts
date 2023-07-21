@@ -48,3 +48,10 @@ export interface JobCardProps {
   rate_per_6_hour_shift: number
   facility: string
 }
+
+export interface SelectProps {
+  label?: string
+  data: string[]
+  defaultValue: string
+  sx?: SxProps
+}

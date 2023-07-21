@@ -8,7 +8,7 @@ import {
   UserWrapper,
   ButtonWrapper,
 } from './styles'
-import GeneralButton from '../../_shared/Button'
+import GeneralButton from '../../_shared/components/button/Button'
 import { useState } from 'react'
 import Constants from '../../utils/constants'
 import routes from '../../routes'
@@ -35,6 +35,10 @@ function LandingPage() {
                 color: colors.button.pineGreen,
                 height: '3rem',
                 width: '20rem',
+                textTransform: 'uppercase',
+                ':hover': {
+                  background: colors.button.aquamarine,
+                },
                 // borderColor: `${isFacilityClickedButton?colors.button.pineGreen:colors.button.aquamarine}`
               }}
               title="Practitioner"
@@ -51,6 +55,7 @@ function LandingPage() {
                 borderColor: colors.button.aquamarine,
                 height: '3rem',
                 width: '20rem',
+                textTransform: 'uppercase',
                 ':hover': {
                   borderColor: colors.button.aquamarine,
                 },
@@ -74,7 +79,7 @@ function LandingPage() {
                   height: '2rem',
                   width: '9rem',
                 }}
-                title="LOG iN"
+                title="LOG IN"
                 size={'large'}
                 onClick={() => {
                   routes.navigate(Constants.ROUTES.personnel_signin)
@@ -92,7 +97,7 @@ function LandingPage() {
                     borderColor: colors.button.aquamarine,
                   },
                 }}
-                title="sign up"
+                title="SIGN UP"
                 size={'large'}
                 onClick={() => {
                   routes.navigate(Constants.ROUTES.personnel_signup)

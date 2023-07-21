@@ -13,7 +13,7 @@ import {
 import { JobCardProps } from '../../../_shared/@types'
 import { colors } from '../../../colors'
 import { MdLocationOn } from 'react-icons/md'
-import GeneralButton from '../../../_shared/Button'
+import GeneralButton from '../../../_shared/components/button/Button'
 
 const JobCard = ({
   required_role,

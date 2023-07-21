@@ -11,9 +11,7 @@ import {
   AuthButton,
   AuthLink,
 } from '../../../_shared/auth_styles'
-import image from '../../../assets/doctor_sign_in.png'
-import GeneralInput from '../../../_shared/Input'
-import GeneralButton from '../../../_shared/Button'
+import image from '../../../_shared/assets/doctor_sign_in.png'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, FormProvider } from 'react-hook-form'
 import Constants from '../../../utils/constants'
@@ -26,6 +24,7 @@ import { useNavigate } from 'react-router-dom'
 import { Alert } from '@mui/material'
 import { useState } from 'react'
 import { LoadingButton } from '@mui/lab'
+import { GenericButton, GenericInput } from '../../../_shared'
 
 interface MyResponse {
   error?: string
@@ -97,39 +96,39 @@ const SignUpPageIns = () => {
           <AuthFields>
             {mutation.isError ? <Alert severity="error">{error}</Alert> : null}
 
-            <GeneralInput
+            <GenericInput
               name="facility_code"
               label="Facility Code"
               icon={<AiOutlineUser />}
               placeholder="KBTH123"
               disabled
             />
-            <GeneralInput
+            <GenericInput
               name="name"
               label="Name"
               icon={<AiOutlineUser />}
               placeholder="Korle-Bu Teaching Hospital"
             />
-            <GeneralInput
+            <GenericInput
               name="address"
               label="Address"
               icon={<AiOutlineUser />}
               placeholder="GA-159-343"
             />
-            <GeneralInput
+            <GenericInput
               name="establishment_date"
               label="establishment date"
               type={'date'}
               placeholder="Establishment date"
             />
-            <GeneralInput
+            <GenericInput
               name="password"
               label="Password"
               type="password"
               icon={<FiKey />}
               placeholder="*********"
             />
-            <GeneralInput
+            <GenericInput
               name="confirmPassword"
               label="Confirm Password"
               type="password"
@@ -145,7 +144,7 @@ const SignUpPageIns = () => {
                 sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
               ></LoadingButton>
             ) : (
-              <GeneralButton
+              <GenericButton
                 onClick={() =>
                   methods.setValue(
                     'facility_code',

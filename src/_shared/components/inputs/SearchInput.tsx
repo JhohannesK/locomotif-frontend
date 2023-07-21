@@ -1,7 +1,7 @@
 import { IconButton, InputAdornment, TextField } from '@mui/material'
-import { SearchInputType } from './@types'
+import { SearchInputType } from '../../@types'
 import { createTheme } from '@mui/material'
-import { colors } from '../colors'
+import { colors } from '../../../colors'
 import { ThemeProvider } from '@mui/material'
 
 const theme = createTheme({
@@ -16,7 +16,7 @@ const theme = createTheme({
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
               // - The <fieldset> inside the Input-root
-              borderColor: '#04a592', // - Set the Input border
+              // borderColor: '#04a592', // - Set the Input border
             },
             '&:hover fieldset': {
               borderColor: '#04a592', // - Set the Input border when parent has :hover
@@ -50,8 +50,8 @@ const SearchInput = ({
           sx={{ ...sx }}
           size={size}
           InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
+            startAdornment: (
+              <InputAdornment position="start">
                 <IconButton>{icon}</IconButton>
               </InputAdornment>
             ),

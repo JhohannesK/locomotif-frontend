@@ -2,9 +2,7 @@ import { AiOutlineUser } from 'react-icons/ai'
 import { FiKey } from 'react-icons/fi'
 
 import { colors } from '../../../colors'
-import image from '../../../assets/doctor_sign_in.png'
-import GeneralInput from '../../../_shared/Input'
-import GeneralButton from '../../../_shared/Button'
+import image from '../../../_shared/assets/doctor_sign_in.png'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -27,6 +25,8 @@ import { login } from '../../../store'
 import { Alert } from '@mui/material'
 import { useState } from 'react'
 import { LoadingButton } from '@mui/lab'
+import { GenericInput } from '../../../_shared'
+import GeneralButton from '../../../_shared/components/button/Button'
 
 const schema = z.object({
   username: z.string().min(3),
@@ -104,14 +104,14 @@ function SigninPage() {
               {isError && (error as AxiosError)?.code !== 'ERR_NETWORK' ? (
                 <Alert severity="error">{errorMessage}</Alert>
               ) : null}
-              <GeneralInput
+              <GenericInput
                 name="username"
                 sx={{ marginBottom: '20px' }}
                 label="Username"
                 icon={<AiOutlineUser />}
                 placeholder="Username"
               />
-              <GeneralInput
+              <GenericInput
                 name="password"
                 sx={{ marginBottom: '20px' }}
                 label="Password"

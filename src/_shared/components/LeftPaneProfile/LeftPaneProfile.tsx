@@ -1,5 +1,5 @@
 import { colors } from '../../../colors'
-import GeneralButton from '../../Button'
+import GeneralButton from '../button/Button'
 import {
   LeftPaneProfileContainer,
   LeftProfileNameContainer,

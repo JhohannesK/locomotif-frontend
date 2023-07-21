@@ -10,9 +10,7 @@ import {
   AuthUpperContent,
 } from '../../../_shared/auth_styles'
 import { colors } from '../../../colors'
-import image from '../../../assets/doctor_sign_in.png'
-import GeneralInput from '../../../_shared/Input'
-import GeneralButton from '../../../_shared/Button'
+import image from '../../../_shared/assets/doctor_sign_in.png'
 import { z } from 'zod'
 import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -22,6 +20,7 @@ import Constants from '../../../utils/constants'
 import { Alert } from '@mui/material'
 import { useState } from 'react'
 import { LoadingButton } from '@mui/lab'
+import { GenericButton, GenericInput } from '../../../_shared'
 
 const schema = z.object({
   facility_code: z.string().min(4),
@@ -94,7 +93,7 @@ function SigninPageIns() {
           <div>
             <AuthFields>
               {isError ? <Alert severity="error">{error}</Alert> : null}
-              <GeneralInput
+              <GenericInput
                 name="facility_code"
                 sx={{ marginBottom: '20px' }}
                 label="Facility Code"
@@ -102,7 +101,7 @@ function SigninPageIns() {
                 placeholder="Facility Code"
               />
 
-              <GeneralInput
+              <GenericInput
                 name="password"
                 sx={{ marginBottom: '20px' }}
                 label="Password"
@@ -122,7 +121,7 @@ function SigninPageIns() {
                 sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
               ></LoadingButton>
             ) : (
-              <GeneralButton
+              <GenericButton
                 sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
                 title="Sign In"
                 size="large"

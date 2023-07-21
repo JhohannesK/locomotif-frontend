@@ -1,8 +1,8 @@
 import { styled } from 'styled-components'
 import { colors } from '../../../colors'
+import Constants from '../../../utils/constants'
 
 export const JobContainer = styled.div`
-  width: 100%;
   background: ${colors.background.whiteSmoke};
   border-radius: 10px;
   display: flex;
@@ -10,6 +10,9 @@ export const JobContainer = styled.div`
   margin-bottom: 10px;
   padding: 10px;
   gap: 10px;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
+  }
 `
 
 export const HospitalLogo = styled.div``
