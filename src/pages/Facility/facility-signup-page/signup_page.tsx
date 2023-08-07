@@ -12,72 +12,17 @@ import {
   AuthLink,
 } from '../../../_shared/auth_styles'
 import image from '../../../_shared/assets/doctor_sign_in.png'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm, FormProvider } from 'react-hook-form'
 import Constants from '../../../utils/constants'
-import axios, { AxiosError } from 'axios'
-import { useMutation } from '@tanstack/react-query'
 import routes from '../../../routes'
 import { genCode } from '../../../utils/genCode'
-import { OmitConfirmPassword, Schema, schema } from './_types'
-import { useNavigate } from 'react-router-dom'
 import { Alert } from '@mui/material'
-import { useState } from 'react'
 import { LoadingButton } from '@mui/lab'
 import { GenericButton, GenericInput } from '../../../_shared'
-
-interface MyResponse {
-  error?: string
-}
+import useFacilitySignUp from './useFacilitySignUp'
+import { FormProvider } from 'react-hook-form'
 
 const SignUpPageIns = () => {
-  const navigate = useNavigate()
-  const [error, setError] = useState<string>('')
-
-  const defaultValues: Schema = {
-    facility_code: '',
-    name: '',
-    password: '',
-    address: '',
-    establishment_date: '',
-    confirmPassword: '',
-  }
-
-  const methods = useForm<Schema>({
-    resolver: zodResolver(schema),
-    defaultValues,
-  })
-
-  const mutation = useMutation({
-    mutationFn: async (data: OmitConfirmPassword) => {
-      console.log('🚀 ~ file: signup_page.tsx:46 ~ mutationFn: ~ data:', data)
-      await axios.post(
-        `${Constants.BaseURL}auth/signup/medical_facility/`,
-        data
-      )
-    },
-    onSuccess: () => navigate(Constants.ROUTES.facility_signin),
-    onError: (error) => {
-      if ((error as AxiosError).code === 'ERR_NETWORK') {
-        setError('Check internet connectivity')
-      } else if ((error as AxiosError).code === 'ERR_BAD_REQUEST') {
-        setError(
-          (error as AxiosError<MyResponse>).response?.data?.error ||
-            'Unknown error'
-        )
-      } else if ((error as AxiosError).code === 'ERR_BAD_RESPONSE') {
-        setError("It is our fault, we'll fix it soon")
-      }
-    },
-  })
-
-  const onSubmit = (data: Schema) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { confirmPassword, ...rest } = data
-
-    mutation.mutate(rest)
-  }
-
+  const { mutation, onSubmit, methods, error } = useFacilitySignUp()
   return (
     <AuthContainer>
       <FormProvider {...methods}>

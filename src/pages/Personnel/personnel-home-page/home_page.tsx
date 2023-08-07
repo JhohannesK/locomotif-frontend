@@ -16,33 +16,19 @@ import { BiSearch } from 'react-icons/bi'
 
 import Layout from '../../../_shared/Layout'
 import JobCard from '../job-card/JobLIstingCard'
-import axios from 'axios'
-import Constants from '../../../utils/constants'
-import { JobCardProps } from '../../../_shared/@types'
-import { useQuery } from '@tanstack/react-query'
 import GeneralButton from '../../../_shared/components/button/Button'
 import { colors } from '../../../colors'
 import LeftPane from './LeftPane'
 import FilterPane from './filter'
 import { SearchInput } from '../../../_shared'
+import useFetch from './hook/useFetch'
 
 function HomePage() {
-  const fetchPostings = async (): Promise<JobCardProps[]> => {
-    const response = await axios.get<JobCardProps[]>(
-      `${Constants.BaseURL}postings/`
-    )
-    return response.data
-  }
+  const { data, isLoading } = useFetch()
 
-  const { data, isLoading } = useQuery<JobCardProps[], Error>(
-    ['postings'],
-    fetchPostings
-  )
-  console.log(data)
   if (isLoading) {
-    return <>loading</>
+    return <>loading </>
   }
-
   return (
     <Layout>
       <Wrapper>
