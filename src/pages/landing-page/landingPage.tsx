@@ -22,9 +22,7 @@ function LandingPage() {
     <PageWrapper>
       <ContentWrapper>
         <WelcomeWrapper>Welcome!</WelcomeWrapper>
-        <QuestionWrapper>
-          Are you an Facility or a Practitioner?
-        </QuestionWrapper>
+        <QuestionWrapper>Are you a Facility or a Practitioner?</QuestionWrapper>
 
         <ButtonWrapper>
           <UserWrapper>
