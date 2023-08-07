@@ -11,76 +11,25 @@ import {
 } from '../../../_shared/auth_styles'
 import { colors } from '../../../colors'
 import image from '../../../_shared/assets/doctor_sign_in.png'
-import { z } from 'zod'
-import { FormProvider, useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation } from '@tanstack/react-query'
-import axios, { AxiosError } from 'axios'
-import Constants from '../../../utils/constants'
 import { Alert } from '@mui/material'
-import { useState } from 'react'
 import { LoadingButton } from '@mui/lab'
 import { GenericButton, GenericInput } from '../../../_shared'
 import Toast from '../../../_shared/components/Notifications/Toast'
-import { toastParams } from '../../../_shared/@types'
-
-const schema = z.object({
-  facility_code: z.string().min(4),
-  password: z.string().min(8).max(100),
-})
-
-type Schema = z.infer<typeof schema>
-
-interface MyResponse {
-  error?: string
-}
+import useFacilitySignIn from './hook/useFacilitySignIn'
+import { FormProvider } from 'react-hook-form'
 
 function SigninPageIns() {
-  const [error, setError] = useState<string>('')
-  const [toast, setToast] = useState<toastParams>({
-    open: false,
-    type: 'success',
-    children: 'Default Toast',
-  })
+  const {
+    methods,
+    status,
+    isError,
+    isLoading,
+    error,
+    toast,
+    showToast,
+    onSubmit,
+  } = useFacilitySignIn()
 
-  const defaultValues: Schema = {
-    facility_code: '',
-    password: '',
-  }
-
-  const methods = useForm<Schema>({
-    resolver: zodResolver(schema),
-    defaultValues,
-  })
-
-  const { mutate, status, isError, isLoading } = useMutation({
-    mutationFn: async (data: Schema) =>
-      axios.post(`${Constants.BaseURL}auth/login/medical_facility/`, data),
-    // onSuccess: () => console.log('yes'),
-
-    // TODO: add some toast to show the error
-    onError: (error) => {
-      if ((error as AxiosError).code === 'ERR_NETWORK') {
-        setError('Check internet connectivity')
-      } else if ((error as AxiosError).code === 'ERR_BAD_REQUEST') {
-        setError(
-          (error as AxiosError<MyResponse>).response?.data?.error ||
-            'Unknown error'
-        )
-        showToast({ open: true, children: 'Unknown error' })
-      } else if ((error as AxiosError).code === 'ERR_BAD_RESPONSE') {
-        setError("It is our fault, we'll fix it soon")
-        showToast({ open: true, children: 'Unknown error' })
-      }
-    },
-  })
-
-  const onSubmit = (data: Schema) => {
-    mutate(data)
-  }
-  const showToast = (newState: toastParams) => {
-    setToast({ ...newState })
-  }
   if (status === 'success') {
     // TODO: redirect to dashboard
     return <div>success</div>

@@ -1,11 +1,7 @@
 import { AiOutlineUser } from 'react-icons/ai'
 import { FiKey } from 'react-icons/fi'
-
 import { colors } from '../../../colors'
 import image from '../../../_shared/assets/doctor_sign_in.png'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
 import {
   AuthButton,
   AuthContainer,
@@ -16,72 +12,16 @@ import {
   AuthUpperContent,
 } from '../../../_shared/auth_styles'
 import { FormProvider } from 'react-hook-form'
-import { useMutation } from '@tanstack/react-query'
-import Constants from '../../../utils/constants'
-import axios, { AxiosError, AxiosResponse } from 'axios'
-import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { login } from '../../../store'
 import { Alert } from '@mui/material'
-import { useState } from 'react'
 import { LoadingButton } from '@mui/lab'
 import { GenericInput } from '../../../_shared'
 import GeneralButton from '../../../_shared/components/button/Button'
-
-const schema = z.object({
-  username: z.string().min(3),
-  password: z.string().min(3).max(100),
-})
-
-type Schema = z.infer<typeof schema>
-
-interface MyResponse {
-  error?: string
-}
+import useSignIn from './hook/useSignIn'
+import { AxiosError } from 'axios'
 
 function SigninPage() {
-  const navigate = useNavigate()
-
-  const [errorMessage, setError] = useState<string>('')
-  const defaultValues: Schema = {
-    username: '',
-    password: '',
-  }
-
-  const methods = useForm<Schema>({
-    resolver: zodResolver(schema),
-    defaultValues,
-  })
-
-  const dispatch = useDispatch()
-
-  const { mutate, isLoading, isError, error } = useMutation({
-    mutationFn: async (datas: Schema) => {
-      await axios
-        .post(`${Constants.BaseURL}auth/login/medical_personnel/`, datas)
-        .then((res: AxiosResponse) => {
-          const responseData = res.data
-          dispatch(login(responseData))
-        })
-    },
-    onSuccess: () => {
-      navigate(Constants.ROUTES.personnel_dashboard)
-    },
-    onError: (err) => {
-      if ((err as AxiosError).code === 'ERR_BAD_REQUEST') {
-        setError(
-          (err as AxiosError<MyResponse>).response?.data?.error ||
-            'Unknown error'
-        )
-      } else if ((err as AxiosError).code === 'ERR_BAD_RESPONSE') {
-        setError("It is our fault, we'll fix it soon")
-      }
-    },
-  })
-
-  const onSubmit = (data: Schema) => {
-    mutate(data)
-  }
+  const { methods, onSubmit, errorMessage, isError, error, isLoading } =
+    useSignIn()
 
   return (
     <AuthContainer>
@@ -126,11 +66,17 @@ function SigninPage() {
             {isLoading ? (
               <LoadingButton
                 loading
-                sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
+                sx={{
+                  backgroundColor: colors.button.pineGreen,
+                  width: '100%',
+                }}
               ></LoadingButton>
             ) : (
               <GeneralButton
-                sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
+                sx={{
+                  backgroundColor: colors.button.pineGreen,
+                  width: '100%',
+                }}
                 title="Sign In"
                 size="large"
               />

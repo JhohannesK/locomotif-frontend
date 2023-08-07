@@ -1,8 +1,5 @@
 import { AiOutlineUser } from 'react-icons/ai'
 import { FiKey } from 'react-icons/fi'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm, FormProvider } from 'react-hook-form'
 import { colors } from '../../../colors'
 import {
   AuthUpperContent,
@@ -14,86 +11,14 @@ import {
   AuthContent,
 } from '../../../_shared/auth_styles'
 import image from '../../../_shared/assets/doctor_sign_in.png'
-import { useMutation } from '@tanstack/react-query'
-import axios, { AxiosError } from 'axios'
-import Constants from '../../../utils/constants'
-import { Alert } from '@mui/material'
-import { useState } from 'react'
-import { LoadingButton } from '@mui/lab'
+import { Alert, LoadingButton } from '@mui/lab'
 import GeneralInput from '../../../_shared/components/inputs/Input'
 import { GenericButton } from '../../../_shared'
-
-const schema = z
-  .object({
-    username: z.string().min(3),
-    first_name: z.string().min(10),
-    last_name: z.string().min(2),
-    other_names: z.string(),
-    role: z.string(),
-    password: z.string().min(8).max(100),
-    confirmPassword: z.string().min(8).max(100),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match',
-    path: ['confirmPassword'],
-  })
-
-type Schema = z.infer<typeof schema>
-
-interface MyResponse {
-  error?: string
-}
+import usePersonnelSignup from './hook/usePersonnelSignup'
+import { FormProvider } from 'react-hook-form'
 
 const SignUpPage = () => {
-  const [error, setError] = useState<string>('')
-
-  const defaultValues: Schema = {
-    username: '',
-    first_name: '',
-    last_name: '',
-    other_names: '',
-    role: '',
-    password: '',
-    confirmPassword: '',
-  }
-
-  const methods = useForm<Schema>({
-    resolver: zodResolver(schema),
-    defaultValues,
-  })
-
-  type a = Omit<Schema, 'confirmPassword'>
-
-  const mutation = useMutation({
-    mutationFn: async (data: a) => {
-      await axios.post(
-        `${Constants.BaseURL}auth/signup/medical_personnel/`,
-        data
-      )
-    },
-    onSuccess: () => console.log('yess'),
-    onError: (error) => {
-      if ((error as AxiosError).code === 'ERR_NETWORK') {
-        setError('Check internet connectivity')
-      } else if ((error as AxiosError).code === 'ERR_BAD_REQUEST') {
-        setError(
-          (error as AxiosError<MyResponse>).response?.data?.error ||
-            'Unknown error'
-        )
-      } else if ((error as AxiosError).code === 'ERR_BAD_RESPONSE') {
-        setError("It is our fault, we'll fix it soon")
-      }
-    },
-  })
-
-  const onSubmit = (data: Schema) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { confirmPassword, ...rest } = data
-    console.log(rest)
-
-    mutation.mutate(rest)
-  }
-
+  const { mutation, onSubmit, methods, error } = usePersonnelSignup()
   return (
     <AuthContainer>
       <FormProvider {...methods}>
