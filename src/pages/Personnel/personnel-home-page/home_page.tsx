@@ -61,6 +61,7 @@ function HomePage() {
                   borderRadius: '15px',
                   border: '1px solid white',
                   padding: '10px',
+                  width: '25%',
                   fontSize: '13px',
                   fontWeight: 'medium',
                 }}

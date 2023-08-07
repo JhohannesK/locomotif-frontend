@@ -56,7 +56,7 @@ const JobCard = ({
             title="Apply Now"
             sx={{
               padding: '12px 20px',
-              height: '10px',
+              height: '15px',
               fontSize: '13px',
               borderRadius: '15px',
               fontWeight: 'medium',

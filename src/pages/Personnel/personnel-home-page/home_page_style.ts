@@ -24,16 +24,16 @@ export const HomePageContainer = styled.div`
 `
 
 export const MidContent = styled.div`
-  /* height: 15%; */
+  height: 15%;
   /* width: 100%; */
   display: flex;
   flex-direction: column;
   color: ${colors.text.platinum};
-  /* justify-content: center; */
+  justify-content: space-around;
   align-items: flex-start;
   background-color: ${colors.background.pineGreen};
-  border-radius: 20px;
-  padding: 20px 15px;
+  border-radius: 15px;
+  padding: 30px 20px;
 `
 
 export const MidContentText = styled.h1`
