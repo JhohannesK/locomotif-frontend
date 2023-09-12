@@ -8,7 +8,7 @@ export const JobContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 20px;
   gap: 10px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
@@ -44,7 +44,7 @@ export const TagStyles = styled.div`
   opacity: 0.8;
 `
 export const JobDescription = styled.p`
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: rgba(0, 0, 0, 0.6);
 `
 
@@ -70,8 +70,8 @@ export const TagWithIcons = styled(TagStyles)`
 
 export const AllTags = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 `

@@ -10,7 +10,6 @@ export const NavBar = styled.nav`
   padding: 3px 0px;
   /* position: fixed; */
   width: 100%;
-  max-width: 1600px;
   align-self: center;
 `
 export const NavbarWrapper = styled.div``
@@ -75,6 +74,7 @@ export const NavBarLaptopContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+    max-width: 1600px;
     height: 100%;
     width: 90%;
   }

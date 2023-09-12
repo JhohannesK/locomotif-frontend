@@ -3,7 +3,7 @@ import { colors } from '../../../../colors'
 
 export const FilterWrapper = styled.div`
   width: 286px;
-  height: 304px;
+  /* height: 304px; */
   border-radius: 10px;
   border: 1px solid rgba(209, 209, 209, 0.5);
   background: #fff;
