@@ -131,7 +131,7 @@ function LandingPage() {
                     borderColor: colors.button.aquamarine,
                   },
                 }}
-                title="sign up"
+                title="SIGN UP"
                 size={'large'}
                 onClick={() => {
                   routes.navigate(Constants.ROUTES.facility_signup)
