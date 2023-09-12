@@ -5,7 +5,8 @@ import SigninPageIns from './pages/Facility/facility-signin-page/signin_page'
 import SignUpPageIns from './pages/Facility/facility-signup-page/signup_page'
 import SigninPage from './pages/Personnel/personnel-signin-page/signin_page'
 import SignUpPage from './pages/Personnel/personnel-signup-page/signup_page'
-import HomePage from './pages/Personnel/personnel-home-page/home_page'
+import PersonnelHomePage from './pages/Personnel/personnel-home-page/home_page'
+import FacilityHomePage from './pages/Facility/facility-home-page/home_page'
 
 const routhPaths = Constants.ROUTES
 
@@ -32,7 +33,11 @@ const routes = createBrowserRouter([
   },
   {
     path: routhPaths.personnel_dashboard,
-    element: <HomePage />,
+    element: <PersonnelHomePage />,
+  },
+  {
+    path: routhPaths.facility_dashboard,
+    element: <FacilityHomePage />,
   },
 ])
 

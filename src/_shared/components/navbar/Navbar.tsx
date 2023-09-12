@@ -5,9 +5,10 @@ import {
   NavBar,
   NavBarLaptopContainer,
   NavBarMobileContainer,
+  NavBarRightBox,
   NavBarRightContent,
+  NavBarRightIcons,
   NavBarUserImage,
-  NavBarUserName,
   Navbarlinks,
   SearchIcon,
 } from './navbarStyles'
@@ -16,6 +17,8 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../store'
 import { BiMenuAltLeft, BiSearchAlt } from 'react-icons/bi'
 import Constants from '../../../utils/constants'
+import { RxEnvelopeClosed } from 'react-icons/rx'
+import { FiBell } from 'react-icons/fi'
 
 const Navbar = () => {
   const authResponse = useSelector(
@@ -39,19 +42,36 @@ const Navbar = () => {
         <LogoStyles>Locomotif</LogoStyles>
         <Navbarlinks>
           <LinkStyles to={Constants.ROUTES.personnel_dashboard}>
-            Find Job
+            Overview
+          </LinkStyles>
+          <LinkStyles to={Constants.ROUTES.personnel_dashboard}>
+            History
+          </LinkStyles>
+          <LinkStyles to={Constants.ROUTES.personnel_dashboard}>
+            Analysis
+          </LinkStyles>
+          <LinkStyles to={Constants.ROUTES.personnel_dashboard}>
+            Profile
           </LinkStyles>
         </Navbarlinks>
         <NavBarRightContent>
-          <NavBarUserImage>
-            <img
-              src={image}
-              alt="health-leaf icon"
-              style={{ height: '100%', width: '100%', objectFit: 'cover' }}
-            />
-          </NavBarUserImage>
+          <NavBarRightBox>
+            <NavBarRightIcons>
+              <RxEnvelopeClosed />
+            </NavBarRightIcons>
+            <NavBarRightIcons>
+              <FiBell />
+            </NavBarRightIcons>
+            <NavBarUserImage>
+              <img
+                src={image}
+                alt="health-leaf icon"
+                style={{ height: '100%', width: '100%', objectFit: 'cover' }}
+              />
+            </NavBarUserImage>
+          </NavBarRightBox>
 
-          <NavBarUserName>{authResponse.first_name ?? 'user'}</NavBarUserName>
+          {/* <NavBarUserName>{authResponse.first_name ?? 'user'}</NavBarUserName> */}
         </NavBarRightContent>
       </NavBarLaptopContainer>
     </NavBar>

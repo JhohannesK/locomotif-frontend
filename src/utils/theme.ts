@@ -85,5 +85,35 @@ export const theme = createTheme({
         },
       },
     },
+
+    MuiFormControl: {
+      styleOverrides: {
+        root: {
+          '& .MuiFormControl-root': {
+            '& .MuiInputLabel-root': {
+              color: 'rgba(0, 0, 0, 0.60)',
+              '&:hover': {
+                color: 'rgba(0, 0, 0, 0.60)',
+              },
+            },
+          },
+          '& .MuiInputBase-root': {
+            width: '150px',
+            borderRadius: '15px',
+            border: '1px solid rgba(0, 0, 0, 0.60)',
+            background: '#FFF',
+            '&:focus': {
+              borderColour: ' rgba(0, 0, 0, 0.60)',
+            },
+          },
+          '& MuiOutlinedInput-notchedOutline': {
+            borderStyle: 'none',
+            '&:focus': {
+              borderColour: 'rgba(0, 0, 0, 0.60)',
+            },
+          },
+        },
+      },
+    },
   },
 })
