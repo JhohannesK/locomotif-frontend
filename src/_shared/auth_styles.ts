@@ -1,4 +1,5 @@
 import { styled } from 'styled-components'
+import { colors } from '../colors'
 
 export const AuthContainer = styled.div`
   display: flex;
@@ -43,16 +44,16 @@ export const AuthFields = styled.div`
 
 export const AuthText = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: right;
   padding: 0.7rem;
   font-size: 0.7rem;
-  padding: 0.7rem;
 `
 export const AuthLink = styled.div`
+  color: ${colors.background.pineGreen};
   cursor: pointer;
   font-size: 0.7rem;
-  padding: 0.7rem;
+  // margin: 0.7rem;
 `
 
 export const AuthButton = styled.div`
