@@ -1,6 +1,11 @@
 import {
   FacilityDashboard,
   FacilityLeftContainer,
+  FacilityLeftLowerContent,
+  FacilityLeftMidBox,
+  FacilityLeftMidBoxContent,
+  FacilityLeftMidContent,
+  FacilityLeftMidTitle,
   FacilityLeftUpperContent,
   FacilityMidContainer,
   FacilityRightContainer,
@@ -10,12 +15,20 @@ import {
   JobPostOptions,
   JobPostTextContainer,
   JobPostTitle,
+  LeftContent,
+  RightContent,
+  RightContentH4,
+  RightContentP,
 } from './home_page_style'
 import LeftPaneProfile from '../../../_shared/components/LeftPaneProfile/LeftPaneProfile'
 import FormSelect from './select/Select'
 import { TextField } from '@mui/material'
 import GeneralButton from '../../../_shared/components/button/Button'
 import { colors } from '../../../colors'
+import member_one from '../../../_shared/assets/member 1.png'
+import member_two from '../../../_shared/assets/member 2.png'
+import member_three from '../../../_shared/assets/member 3.png'
+
 function Dashboard() {
   return (
     <>
@@ -24,10 +37,69 @@ function Dashboard() {
           <FacilityLeftUpperContent>
             <LeftPaneProfile
               name="Ridge Hospital"
-              jobTitle="Surgeaon"
-              workExperience="High"
+              jobTitle="Cardiac Hospital"
+              workExperience="Airport, Accra"
             />
           </FacilityLeftUpperContent>
+          <FacilityLeftMidContent>
+            <FacilityLeftMidTitle>
+              This week's summary
+              <FacilityLeftMidBox>
+                <FacilityLeftMidBoxContent>
+                  <LeftContent>
+                    <img
+                      src={member_one}
+                      alt="member one"
+                      style={{
+                        height: '100%',
+                        width: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  </LeftContent>
+                  <RightContent>
+                    <RightContentH4>24</RightContentH4>
+                    <RightContentP>New candidates</RightContentP>
+                  </RightContent>
+                </FacilityLeftMidBoxContent>
+                <FacilityLeftMidBoxContent>
+                  <LeftContent>
+                    <img
+                      src={member_two}
+                      alt="member two"
+                      style={{
+                        height: '100%',
+                        width: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  </LeftContent>
+                  <RightContent>
+                    <RightContentH4>12</RightContentH4>
+                    <RightContentP>Processing applications</RightContentP>
+                  </RightContent>
+                </FacilityLeftMidBoxContent>
+                <FacilityLeftMidBoxContent>
+                  <LeftContent>
+                    <img
+                      src={member_three}
+                      alt="member three"
+                      style={{
+                        height: '100%',
+                        width: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  </LeftContent>
+                  <RightContent>
+                    <RightContentH4>12</RightContentH4>
+                    <RightContentP>Available jobs</RightContentP>
+                  </RightContent>
+                </FacilityLeftMidBoxContent>
+              </FacilityLeftMidBox>
+            </FacilityLeftMidTitle>
+          </FacilityLeftMidContent>
+          <FacilityLeftLowerContent></FacilityLeftLowerContent>
         </FacilityLeftContainer>
         <FacilityMidContainer>
           <JobPostBox>

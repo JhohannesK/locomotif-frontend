@@ -18,6 +18,7 @@ export const theme = createTheme({
           margin: 0,
           '&:hover': {
             background: colors.button.pineGreen,
+            borderColor: colors.button.pineGreen,
           },
         },
       },
