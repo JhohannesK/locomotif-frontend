@@ -7,6 +7,7 @@ import {
   AuthContainer,
   AuthContent,
   AuthFields,
+  AuthLink,
   AuthLogo,
   AuthText,
   AuthUpperContent,
@@ -18,6 +19,8 @@ import { GenericInput } from '../../../_shared'
 import GeneralButton from '../../../_shared/components/button/Button'
 import useSignIn from './hook/useSignIn'
 import { AxiosError } from 'axios'
+import Constants from '../../../utils/constants'
+import routes from '../../../routes'
 
 function SigninPage() {
   const { methods, onSubmit, errorMessage, isError, error, isLoading } =
@@ -61,7 +64,6 @@ function SigninPage() {
               />
             </AuthFields>
           </div>
-          <AuthText>Forgot your password?</AuthText>
           <AuthButton>
             {isLoading ? (
               <LoadingButton
@@ -82,6 +84,14 @@ function SigninPage() {
               />
             )}
           </AuthButton>
+          <AuthText>
+            <AuthLink
+              onClick={() => routes.navigate(Constants.ROUTES.personnel_signup)}
+            >
+              Sign Up{' '}
+            </AuthLink>{' '}
+            Forgot your password?
+          </AuthText>
         </AuthContent>
       </FormProvider>
     </AuthContainer>

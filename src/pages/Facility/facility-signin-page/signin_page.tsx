@@ -7,6 +7,7 @@ import {
   AuthFields,
   AuthLogo,
   AuthText,
+  AuthLink,
   AuthUpperContent,
 } from '../../../_shared/auth_styles'
 import { colors } from '../../../colors'
@@ -17,6 +18,8 @@ import { GenericButton, GenericInput } from '../../../_shared'
 import Toast from '../../../_shared/components/Notifications/Toast'
 import useFacilitySignIn from './hook/useFacilitySignIn'
 import { FormProvider } from 'react-hook-form'
+import routes from '../../../routes'
+import Constants from '../../../utils/constants'
 
 function SigninPageIns() {
   const {
@@ -75,9 +78,6 @@ function SigninPageIns() {
                 />
               </AuthFields>
             </div>
-            <AuthText>
-              <p>Forgot your password?</p>
-            </AuthText>
             <AuthButton>
               {isLoading ? (
                 <LoadingButton
@@ -98,6 +98,16 @@ function SigninPageIns() {
                 />
               )}
             </AuthButton>
+            <AuthText>
+              <AuthLink
+                onClick={() =>
+                  routes.navigate(Constants.ROUTES.facility_signup)
+                }
+              >
+                Sign Up{' '}
+              </AuthLink>{' '}
+              Forgot your password?
+            </AuthText>
           </AuthContent>
         </FormProvider>
       </AuthContainer>

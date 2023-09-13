@@ -29,10 +29,13 @@ function LandingPage() {
             <GeneralButton
               // variantText={'contained'}
               sx={{
-                backgroundColor: colors.button.aquamarine,
+                backgroundColor:
+                  isPersonnelClickedButton === true
+                    ? colors.button.white
+                    : colors.button.aquamarine,
                 color: colors.button.pineGreen,
-                height: '3rem',
-                width: '20rem',
+                height: isPersonnelClickedButton === true ? '4rem' : '3rem',
+                width: isPersonnelClickedButton === true ? '23rem' : '20rem',
                 textTransform: 'uppercase',
                 ':hover': {
                   background: colors.button.aquamarine,
@@ -48,11 +51,20 @@ function LandingPage() {
             />
             <GeneralButton
               sx={{
-                backgroundColor: colors.button.pineGreen,
-                color: colors.button.aquamarine,
-                borderColor: colors.button.aquamarine,
-                height: '3rem',
-                width: '20rem',
+                backgroundColor:
+                  isFacilityClickedButton === true
+                    ? colors.button.white
+                    : colors.button.pineGreen,
+                color:
+                  isFacilityClickedButton === true
+                    ? colors.button.aquamarine
+                    : colors.button.aquamarine,
+                borderColor:
+                  isFacilityClickedButton === true
+                    ? colors.button.pineGreen
+                    : colors.button.aquamarine,
+                height: isFacilityClickedButton === true ? '4rem' : '3rem',
+                width: isFacilityClickedButton === true ? '23rem' : '20rem',
                 textTransform: 'uppercase',
                 ':hover': {
                   borderColor: colors.button.aquamarine,
@@ -131,7 +143,7 @@ function LandingPage() {
                     borderColor: colors.button.aquamarine,
                   },
                 }}
-                title="sign up"
+                title="SIGN UP"
                 size={'large'}
                 onClick={() => {
                   routes.navigate(Constants.ROUTES.facility_signup)
