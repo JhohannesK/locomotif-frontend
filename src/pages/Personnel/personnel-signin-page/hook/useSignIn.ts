@@ -6,8 +6,8 @@ import Constants from '../../../../utils/constants'
 import axios, { AxiosError, AxiosResponse } from 'axios'
 import { useMutation } from '@tanstack/react-query'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { login } from '../../../../store'
 import { useNavigate } from 'react-router-dom'
+import { login } from '../../../../redux/slices/authSlice'
 
 const useSignIn = () => {
   const navigate = useNavigate()
@@ -41,6 +41,10 @@ const useSignIn = () => {
         .post(`${Constants.BaseURL}auth/login/medical_personnel/`, datas)
         .then((res: AxiosResponse) => {
           const responseData = res.data
+          console.log(
+            '🚀 ~ file: useSignIn.ts:44 ~ .then ~ responseData:',
+            responseData
+          )
           dispatch(login(responseData))
         })
     },
