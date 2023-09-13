@@ -30,7 +30,7 @@ function PersonnelHomePage() {
     return <>loading </>
   }
   return (
-    <Layout>
+    <Layout dashboardType="personnel">
       <Wrapper>
         <LeftPaneContainer>
           <LeftPane />

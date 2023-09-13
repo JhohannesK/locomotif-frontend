@@ -13,19 +13,54 @@ import {
   SearchIcon,
 } from './navbarStyles'
 import image from '../../assets/user.jpeg'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../../store'
+// import { useSelector } from 'react-redux'
+// import { RootState } from '../../../store'
 import { BiMenuAltLeft, BiSearchAlt } from 'react-icons/bi'
-import Constants from '../../../utils/constants'
 import { RxEnvelopeClosed } from 'react-icons/rx'
 import { FiBell } from 'react-icons/fi'
+import { useEffect, useMemo, useState } from 'react'
 
-const Navbar = () => {
-  const authResponse = useSelector(
-    (state: RootState) => state.auth.authResponse
+interface linksObject {
+  link: string
+  path: string
+}
+
+const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
+  // const authResponse = useSelector(
+  //   (state: RootState) => state.auth.authResponse
+  // )
+
+  // Use useMemo to memoize the links
+  const facilityLinks: linksObject[] = useMemo(
+    () => [
+      { link: 'Overview', path: '' },
+      { link: 'History', path: '' },
+      { link: 'Analysis', path: '' },
+      { link: 'Profile', path: '' },
+    ],
+    []
   )
 
-  console.log(authResponse)
+  const personnelLinks: linksObject[] = useMemo(
+    () => [
+      { link: 'Find Jobs', path: '' },
+      { link: 'Find Facility', path: '' },
+      { link: 'Applications', path: '' },
+      { link: 'Profile', path: '' },
+    ],
+    []
+  )
+
+  const [linksHolder, setLinksHolder] = useState<linksObject[]>([])
+
+  useEffect(() => {
+    if (type === 'facility') {
+      setLinksHolder(facilityLinks)
+    } else {
+      setLinksHolder(personnelLinks)
+    }
+  }, [facilityLinks, personnelLinks, type])
+
   return (
     <NavBar>
       <NavBarMobileContainer>
@@ -41,18 +76,13 @@ const Navbar = () => {
       <NavBarLaptopContainer>
         <LogoStyles>Locomotif</LogoStyles>
         <Navbarlinks>
-          <LinkStyles to={Constants.ROUTES.personnel_dashboard}>
-            Overview
-          </LinkStyles>
-          <LinkStyles to={Constants.ROUTES.personnel_dashboard}>
-            History
-          </LinkStyles>
-          <LinkStyles to={Constants.ROUTES.personnel_dashboard}>
-            Analysis
-          </LinkStyles>
-          <LinkStyles to={Constants.ROUTES.personnel_dashboard}>
-            Profile
-          </LinkStyles>
+          {linksHolder.map((linkObject, index) => {
+            return (
+              <LinkStyles key={index} to={linkObject.path}>
+                {linkObject.link}
+              </LinkStyles>
+            )
+          })}
         </Navbarlinks>
         <NavBarRightContent>
           <NavBarRightBox>

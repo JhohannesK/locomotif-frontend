@@ -3,10 +3,16 @@ import styled from 'styled-components'
 import { colors } from '../colors'
 import Constants from '../utils/constants'
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({
+  children,
+  dashboardType,
+}: {
+  children: React.ReactNode
+  dashboardType: 'personnel' | 'facility'
+}) => {
   return (
     <LayoutWrapper>
-      <Navbar />
+      <Navbar type={dashboardType} />
       <ChildrenWrapper>{children}</ChildrenWrapper>
     </LayoutWrapper>
   )

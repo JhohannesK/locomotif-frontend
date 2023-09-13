@@ -1,10 +1,13 @@
 import Layout from '../../../_shared/Layout'
-import Dashboard from './dasboard'
+import Dashboard from './dashboard'
 
 function FacilityHomePage() {
   return (
     <>
-      <Layout children={<Dashboard></Dashboard>}></Layout>
+      <Layout
+        children={<Dashboard></Dashboard>}
+        dashboardType={'facility'}
+      ></Layout>
     </>
   )
 }

@@ -52,6 +52,28 @@ export const JobPostTitle = styled.h3`
   font-weight: 700;
   line-height: 137.14%;
 `
+
+export const JobPostTextContainer = styled.div`
+  width: 100%;
+  margin-top: 10px;
+`
+
+export const JobPostOptions = styled.div`
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`
+
+export const JobPostButtons = styled.div`
+  width: 50%;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
 export const FacilityRightContainer = styled.div`
   width: 22%;
   height: 100%;
