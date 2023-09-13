@@ -9,13 +9,17 @@ import {
   AuthLogo,
   AuthFields,
   AuthContent,
+  AuthLink,
 } from '../../../_shared/auth_styles'
 import image from '../../../_shared/assets/doctor_sign_in.png'
-import { Alert, LoadingButton } from '@mui/lab'
+import { Alert } from '@mui/material'
+import { LoadingButton } from '@mui/lab'
 import GeneralInput from '../../../_shared/components/inputs/Input'
 import { GenericButton } from '../../../_shared'
 import usePersonnelSignup from './hook/usePersonnelSignup'
 import { FormProvider } from 'react-hook-form'
+import routes from '../../../routes'
+import Constants from '../../../utils/constants'
 
 const SignUpPage = () => {
   const { mutation, onSubmit, methods, error } = usePersonnelSignup()
@@ -86,12 +90,20 @@ const SignUpPage = () => {
             ) : (
               <GenericButton
                 sx={{ backgroundColor: colors.button.pineGreen, width: '100%' }}
-                title="Sign In"
+                title="Sign Up"
                 size="large"
               />
             )}
           </AuthButton>
-          <AuthText>Already have an account ? Sign In</AuthText>
+          <AuthText>
+            Already have an account ?{' '}
+            <AuthLink
+              onClick={() => routes.navigate(Constants.ROUTES.personnel_signin)}
+            >
+              {' '}
+              Sign In
+            </AuthLink>
+          </AuthText>
         </AuthContent>
       </FormProvider>
     </AuthContainer>
