@@ -1,9 +1,6 @@
 import {
   FacilityDashboard,
   FacilityLeftContainer,
-  FacilityLeftLowerContent,
-  FacilityLeftMidContent,
-  FacilityLeftUpperContent,
   FacilityMidContainer,
   FacilityRightContainer,
   JobPostBox,
@@ -13,33 +10,18 @@ import {
   JobPostTextContainer,
   JobPostTitle,
 } from './home_page_style'
-import LeftPaneProfile from '../../../_shared/components/LeftPaneProfile/LeftPaneProfile'
 import FormSelect from './select/Select'
 import { TextField } from '@mui/material'
 import GeneralButton from '../../../_shared/components/button/Button'
 import { colors } from '../../../colors'
-import WeeklySummary from '../../../_shared/components/WeeklySummary/WeeklySummary'
+import FacilityLeftPane from './LeftPane/LeftPane'
 
 function Dashboard() {
   return (
     <>
       <FacilityDashboard>
         <FacilityLeftContainer>
-          <FacilityLeftUpperContent>
-            <LeftPaneProfile
-              name="Ridge Hospital"
-              jobTitle="Cardiac Hospital"
-              workExperience="Airport, Accra"
-            />
-          </FacilityLeftUpperContent>
-          <FacilityLeftMidContent>
-            <WeeklySummary
-              numberOfNewCandidates={3}
-              numberOfProcessingApplications={2}
-              numberOfAvailableJobs={1}
-            />
-          </FacilityLeftMidContent>
-          <FacilityLeftLowerContent></FacilityLeftLowerContent>
+          <FacilityLeftPane />
         </FacilityLeftContainer>
         <FacilityMidContainer>
           <JobPostBox>
