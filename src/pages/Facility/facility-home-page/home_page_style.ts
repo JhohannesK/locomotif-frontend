@@ -9,11 +9,12 @@ export const FacilityDashboard = styled.section`
   justify-content: space-between;
 `
 export const FacilityLeftContainer = styled.div`
-  width: 21%;
+  width: 19%;
   height: 100%;
   display: flex;
   flex-direction: column;
   outline: 1px solid blue;
+  gap: 29px;
 `
 
 export const FacilityLeftUpperContent = styled.div`

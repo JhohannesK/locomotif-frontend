@@ -42,9 +42,10 @@ const LeftPaneProfile = ({
           color: `${colors.button.white}`,
           textAlign: 'center',
           fontFamily: 'Helvetica',
-          fontSize: '10px',
+          fontSize: '15px',
           fontWeight: '400',
           lineHeight: '137.14%',
+          width: '48%',
         }}
       />
     </LeftPaneProfileContainer>
