@@ -8,7 +8,7 @@ const ProtectedRoute = ({
   userRole,
   children,
 }: ProtectedRouteProps) => {
-  const isAuthenticated: boolean = authState.isAuthtneticated
+  const isAuthenticated: boolean = authState?.isAuthtneticated
 
   if (isAuthenticated && userRole && allowedRoles.includes(userRole)) {
     return children

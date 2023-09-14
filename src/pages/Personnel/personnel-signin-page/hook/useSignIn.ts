@@ -38,10 +38,6 @@ const useSignIn = () => {
         .post(`${Constants.BaseURL}auth/login/medical_personnel/`, datas)
         .then((res: AxiosResponse) => {
           const responseData = res.data
-          console.log(
-            '🚀 ~ file: useSignIn.ts:44 ~ .then ~ responseData:',
-            responseData
-          )
           dispatch(login({ ...responseData, isAuthtneticated: true }))
         })
     },

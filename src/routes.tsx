@@ -11,7 +11,7 @@ import ProtectedRoute from './utils/ProtectedRoute'
 
 export const routhPaths = Constants.ROUTES
 
-const userRole = authState.role
+const userRole = authState?.role
 
 const routes = createBrowserRouter([
   {
