@@ -3,18 +3,9 @@ import {
   FacilityLeftContainer,
   FacilityMidContainer,
   FacilityRightContainer,
-  JobPostBox,
-  JobPostButtons,
-  JobPostHeader,
-  JobPostOptions,
-  JobPostTextContainer,
-  JobPostTitle,
 } from './home_page_style'
-import FormSelect from './select/Select'
-import { TextField } from '@mui/material'
-import GeneralButton from '../../../_shared/components/button/Button'
-import { colors } from '../../../colors'
 import FacilityLeftPane from './LeftPane/LeftPane'
+import MiddlePane from './MIddlePane/MiddlePane'
 
 function Dashboard() {
   return (
@@ -24,68 +15,7 @@ function Dashboard() {
           <FacilityLeftPane />
         </FacilityLeftContainer>
         <FacilityMidContainer>
-          <JobPostBox>
-            <JobPostHeader>
-              <JobPostTitle>Create Job Post</JobPostTitle>
-              <FormSelect label="Job Type" menu={['One-time']} />
-            </JobPostHeader>
-            <JobPostTextContainer>
-              <TextField
-                id="outlined-multiline-static"
-                label="Job Description"
-                multiline
-                rows={4}
-                defaultValue=" "
-                fullWidth
-              />
-            </JobPostTextContainer>
-            <JobPostOptions>
-              <FormSelect label={'Medical Field'} menu={['Surgeon']} />
-              <FormSelect label={'Location'} menu={['Airport,Accra']} />
-              <FormSelect label={'Date Added'} menu={['Surgeon']} />
-              <FormSelect label={'Salary'} menu={['$1500']} />
-            </JobPostOptions>
-            <JobPostButtons>
-              <GeneralButton
-                variantText={'outlined'}
-                sx={{
-                  backgroundColor: colors.button.pineGreen,
-                  borderColor: colors.button.aquamarine,
-                  height: '2rem',
-                  color: '#FFF',
-                  fontSize: '15px',
-                  fontStyle: 'normal',
-                  fontWeight: '400',
-                  lineHeight: '137.14%',
-                  padding: '10px 34px',
-                  borderRadius: '10px',
-                  width: '140px',
-                  minHeight: '40px',
-                }}
-                title="Post Job"
-                size={'large'}
-              />
-              <GeneralButton
-                variantText={'outlined'}
-                sx={{
-                  backgroundColor: '#FFF',
-                  border: `1px solid ${colors.button.pineGreen}`,
-                  height: '2rem',
-                  color: colors.button.pineGreen,
-                  fontSize: '15px',
-                  fontStyle: 'normal',
-                  fontWeight: '400',
-                  lineHeight: '137.14%',
-                  padding: '10px 34px',
-                  borderRadius: '10px',
-                  width: '140px',
-                  minHeight: '40px',
-                }}
-                title="Draft Job"
-                size={'large'}
-              />
-            </JobPostButtons>
-          </JobPostBox>
+          <MiddlePane />
         </FacilityMidContainer>
         <FacilityRightContainer></FacilityRightContainer>
       </FacilityDashboard>
