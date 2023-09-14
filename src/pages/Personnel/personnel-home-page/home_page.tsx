@@ -23,14 +23,14 @@ import FilterPane from './filter'
 import { SearchInput } from '../../../_shared'
 import useFetch from './hook/useFetch'
 
-function HomePage() {
+function PersonnelHomePage() {
   const { data, isLoading } = useFetch()
 
   if (isLoading) {
     return <>loading </>
   }
   return (
-    <Layout>
+    <Layout dashboardType="personnel">
       <Wrapper>
         <LeftPaneContainer>
           <LeftPane />
@@ -96,4 +96,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export default PersonnelHomePage

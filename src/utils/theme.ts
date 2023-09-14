@@ -18,6 +18,7 @@ export const theme = createTheme({
           margin: 0,
           '&:hover': {
             background: colors.button.pineGreen,
+            borderColor: colors.button.pineGreen,
           },
         },
       },
@@ -40,6 +41,18 @@ export const theme = createTheme({
       styleOverrides: {
         select: {
           width: '100%',
+
+          '.MuiOutlinedInput-notchedOutline': {
+            borderColor: '#E34824',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#E34824',
+            borderWidth: 'thin',
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#E34824',
+            borderWidth: 'thin',
+          },
         },
       },
     },

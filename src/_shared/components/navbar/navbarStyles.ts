@@ -30,24 +30,58 @@ export const NavBarMobileContainer = styled.div`
 `
 export const NavBarRightContent = styled.div`
   height: 100%;
-  display: flex;
-  justify-content: space-between;
+  display: inline-flex;
+  justify-content: center;
   align-items: center;
+  width: 20%;
+  height: 100%;
+`
+export const NavBarRightBox = styled.div`
+  width: 140px;
+  height: 45px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+`
+export const NavBarRightIcons = styled.i`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  font-size: 200%;
+  opacity: 0.5;
+  cursor: pointer;
 `
 
 export const Navbarlinks = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  height: 100%;
 `
 
 export const LinkStyles = styled(Link)`
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.7);
+  color: ${colors.button.pineGreen};
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: 137.14%;
+  position: relative;
+
+  &:hover:after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    height: 4px;
+    width: 100%;
+    border-radius: 5px 5px 0px 0px;
+    background: ${colors.button.pineGreen};
+    left: 0;
+  }
 `
 
 export const NavBarUserName = styled.h2`
