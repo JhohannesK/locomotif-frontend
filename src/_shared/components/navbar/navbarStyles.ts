@@ -51,6 +51,7 @@ export const NavBarRightIcons = styled.i`
   height: 38px;
   font-size: 200%;
   opacity: 0.5;
+  cursor: pointer;
 `
 
 export const Navbarlinks = styled.div`
