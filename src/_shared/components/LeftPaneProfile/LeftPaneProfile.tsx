@@ -29,7 +29,7 @@ const LeftPaneProfile = ({
         <LeftProfileWorkContainer>
           {jobTitle} |{' '}
           <LeftProfileWorkExperienceContainer>
-            {workExperience + ' years Experience'}
+            {workExperience}
           </LeftProfileWorkExperienceContainer>
         </LeftProfileWorkContainer>
       </LeftProfileWorkExperienceAndWork>

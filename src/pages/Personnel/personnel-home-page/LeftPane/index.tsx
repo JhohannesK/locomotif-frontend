@@ -15,7 +15,7 @@ const LeftPane = () => {
         <LeftPaneProfile
           jobTitle="Surgeon"
           name="Nicholoas Asante"
-          workExperience="5"
+          workExperience="5 years Experience"
         />
         <WorkExperienceContainer>
           <InnerWorkExperienceContainer>
