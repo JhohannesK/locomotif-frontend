@@ -6,8 +6,12 @@ import SignUpPageIns from './pages/Facility/facility-signup-page/signup_page'
 import SigninPage from './pages/Personnel/personnel-signin-page/signin_page'
 import SignUpPage from './pages/Personnel/personnel-signup-page/signup_page'
 import HomePage from './pages/Personnel/personnel-home-page/home_page'
+import { authState } from './redux/slices/authSlice'
+import ProtectedRoute from './utils/ProtectedRoute'
 
-const routhPaths = Constants.ROUTES
+export const routhPaths = Constants.ROUTES
+
+const userRole = authState.role
 
 const routes = createBrowserRouter([
   {
@@ -32,7 +36,11 @@ const routes = createBrowserRouter([
   },
   {
     path: routhPaths.personnel_dashboard,
-    element: <HomePage />,
+    element: (
+      <ProtectedRoute allowedRoles={['doctor']} userRole={userRole}>
+        <HomePage />
+      </ProtectedRoute>
+    ),
   },
 ])
 

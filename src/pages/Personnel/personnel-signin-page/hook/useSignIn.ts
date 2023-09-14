@@ -42,7 +42,7 @@ const useSignIn = () => {
             '🚀 ~ file: useSignIn.ts:44 ~ .then ~ responseData:',
             responseData
           )
-          dispatch(login(responseData))
+          dispatch(login({ ...responseData, isAuthtneticated: true }))
         })
     },
     onSuccess: () => {
