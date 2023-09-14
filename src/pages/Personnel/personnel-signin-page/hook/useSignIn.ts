@@ -3,11 +3,12 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import Constants from '../../../../utils/constants'
-import axios, { AxiosError, AxiosResponse } from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { useMutation } from '@tanstack/react-query'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { login } from '../../../../store'
 import { useNavigate } from 'react-router-dom'
+import { login } from '../../../../redux/slices/authSlice'
+import { setErrorMessages } from '../../../../utils/util'
 
 const useSignIn = () => {
   const navigate = useNavigate()
@@ -17,10 +18,6 @@ const useSignIn = () => {
   })
 
   type Schema = z.infer<typeof schema>
-
-  interface MyResponse {
-    error?: string
-  }
 
   const [errorMessage, setError] = useState<string>('')
   const defaultValues: Schema = {
@@ -41,22 +38,17 @@ const useSignIn = () => {
         .post(`${Constants.BaseURL}auth/login/medical_personnel/`, datas)
         .then((res: AxiosResponse) => {
           const responseData = res.data
-          dispatch(login(responseData))
+          console.log(
+            '🚀 ~ file: useSignIn.ts:44 ~ .then ~ responseData:',
+            responseData
+          )
+          dispatch(login({ ...responseData, isAuthtneticated: true }))
         })
     },
     onSuccess: () => {
       navigate(Constants.ROUTES.personnel_dashboard)
     },
-    onError: (err) => {
-      if ((err as AxiosError).code === 'ERR_BAD_REQUEST') {
-        setError(
-          (err as AxiosError<MyResponse>).response?.data?.error ||
-            'Unknown error'
-        )
-      } else if ((err as AxiosError).code === 'ERR_BAD_RESPONSE') {
-        setError("It is our fault, we'll fix it soon")
-      }
-    },
+    onError: (err) => setErrorMessages(err, setError),
   })
 
   const onSubmit = (data: Schema) => {

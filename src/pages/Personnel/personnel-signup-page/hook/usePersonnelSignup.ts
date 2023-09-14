@@ -35,7 +35,7 @@ const usePersonnelSignup = () => {
     first_name: '',
     last_name: '',
     other_names: '',
-    role: 'doctor',
+    role: 'personnel',
     password: '',
     confirmPassword: '',
   }
