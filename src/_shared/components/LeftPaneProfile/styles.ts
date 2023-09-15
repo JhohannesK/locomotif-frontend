@@ -3,7 +3,6 @@ import { colors } from '../../../colors'
 
 export const LeftPaneProfileContainer = styled.div`
   width: 100%;
-  max-height: 100%;
   border-radius: 10px;
   border: 1px solid rgba(209, 209, 209, 0.5);
   background: #fff;
@@ -12,6 +11,7 @@ export const LeftPaneProfileContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   padding: 10px 0px;
+  height: 225px;
 `
 
 export const LeftProfileButtonContainer = styled.div``
