@@ -3,13 +3,14 @@ import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import Constants from '../../../../utils/constants'
+import { setErrorMessages } from '../../../../utils/util'
 
 const schema = z
   .object({
     username: z.string().min(3),
-    first_name: z.string().min(10),
+    first_name: z.string().min(2),
     last_name: z.string().min(2),
     other_names: z.string(),
     role: z.string(),
@@ -22,10 +23,6 @@ const schema = z
   })
 
 type Schema = z.infer<typeof schema>
-
-interface MyResponse {
-  error?: string
-}
 
 const usePersonnelSignup = () => {
   const [error, setError] = useState<string>('')
@@ -55,18 +52,7 @@ const usePersonnelSignup = () => {
       )
     },
     onSuccess: () => console.log('yess'),
-    onError: (error) => {
-      if ((error as AxiosError).code === 'ERR_NETWORK') {
-        setError('Check internet connectivity')
-      } else if ((error as AxiosError).code === 'ERR_BAD_REQUEST') {
-        setError(
-          (error as AxiosError<MyResponse>).response?.data?.error ||
-            'Unknown error'
-        )
-      } else if ((error as AxiosError).code === 'ERR_BAD_RESPONSE') {
-        setError("It is our fault, we'll fix it soon")
-      }
-    },
+    onError: (err) => setErrorMessages(err, setError),
   })
 
   const onSubmit = (data: Schema) => {

@@ -12,6 +12,7 @@ import { setErrorMessages } from '../../../../utils/util'
 
 const useSignIn = () => {
   const navigate = useNavigate()
+
   const schema = z.object({
     username: z.string().min(3),
     password: z.string().min(3).max(100),
@@ -50,6 +51,7 @@ const useSignIn = () => {
   const onSubmit = (data: Schema) => {
     mutate(data)
   }
+
   return { methods, onSubmit, errorMessage, isError, error, isLoading }
 }
 
