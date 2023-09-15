@@ -12,7 +12,7 @@ const initialState: IAuth = {
     other_names: authState?.other_names ?? '',
     role: authState?.role ?? '',
     username: authState?.username ?? '',
-    isAuthtneticated: authState?.isAuthtneticated ?? false,
+    isAuthenticated: authState?.isAuthenticated ?? false,
   },
 }
 

@@ -8,5 +8,5 @@ export type ResponseType = {
   other_names: string
   role: 'personnel' | 'facility'
   username: string
-  isAuthtneticated: boolean
+  isAuthenticated: boolean
 }

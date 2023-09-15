@@ -12,7 +12,6 @@ import {
 } from '../../../_shared/auth_styles'
 import { colors } from '../../../colors'
 import image from '../../../_shared/assets/doctor_sign_in.png'
-import { Alert } from '@mui/material'
 import { LoadingButton } from '@mui/lab'
 import { GenericButton, GenericInput } from '../../../_shared'
 import Toast from '../../../_shared/components/Notifications/Toast'
@@ -22,16 +21,8 @@ import routes from '../../../routes'
 import Constants from '../../../utils/constants'
 
 function SigninPageIns() {
-  const {
-    methods,
-    status,
-    isError,
-    isLoading,
-    error,
-    toast,
-    showToast,
-    onSubmit,
-  } = useFacilitySignIn()
+  const { methods, status, isError, errorMessage, isLoading, onSubmit } =
+    useFacilitySignIn()
 
   if (status === 'success') {
     // TODO: redirect to dashboard
@@ -40,9 +31,7 @@ function SigninPageIns() {
 
   return (
     <>
-      <Toast {...toast} showToast={showToast}>
-        How are you today
-      </Toast>
+      {isError && <Toast open={isError} type="error" children={errorMessage} />}
       <AuthContainer>
         <FormProvider {...methods}>
           <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
@@ -59,7 +48,6 @@ function SigninPageIns() {
             </AuthUpperContent>
             <div>
               <AuthFields>
-                {isError ? <Alert severity="error">{error}</Alert> : null}
                 <GenericInput
                   name="facility_code"
                   sx={{ marginBottom: '20px' }}

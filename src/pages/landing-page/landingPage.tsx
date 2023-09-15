@@ -88,6 +88,7 @@ function LandingPage() {
                   color: colors.button.pineGreen,
                   height: '2rem',
                   width: '9rem',
+                  textTransform: 'uppercase',
                 }}
                 title="LOG IN"
                 size={'large'}
@@ -106,6 +107,7 @@ function LandingPage() {
                   ':hover': {
                     borderColor: colors.button.aquamarine,
                   },
+                  textTransform: 'uppercase',
                 }}
                 title="SIGN UP"
                 size={'large'}
@@ -124,8 +126,9 @@ function LandingPage() {
                   color: colors.button.pineGreen,
                   height: '2rem',
                   width: '9rem',
+                  textTransform: 'uppercase',
                 }}
-                title="LOG iN"
+                title="LOG IN"
                 size={'large'}
                 onClick={() => {
                   routes.navigate(Constants.ROUTES.facility_signin)
@@ -142,6 +145,7 @@ function LandingPage() {
                   ':hover': {
                     borderColor: colors.button.aquamarine,
                   },
+                  textTransform: 'uppercase',
                 }}
                 title="SIGN UP"
                 size={'large'}
