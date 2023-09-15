@@ -6,6 +6,7 @@ import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import Constants from '../../../../utils/constants'
 import { setErrorMessages } from '../../../../utils/util'
+import { useNavigate } from 'react-router-dom'
 
 const schema = z
   .object({
@@ -44,6 +45,8 @@ const usePersonnelSignup = () => {
 
   type a = Omit<Schema, 'confirmPassword'>
 
+  const navigate = useNavigate()
+
   const mutation = useMutation({
     mutationFn: async (data: a) => {
       await axios.post(
@@ -51,7 +54,9 @@ const usePersonnelSignup = () => {
         data
       )
     },
-    onSuccess: () => console.log('yess'),
+    onSuccess: () => {
+      navigate(Constants.ROUTES.personnel_dashboard)
+    },
     onError: (err) => setErrorMessages(err, setError),
   })
 
