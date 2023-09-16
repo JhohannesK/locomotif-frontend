@@ -3,7 +3,15 @@ import { IAuth, ResponseType } from '../@types'
 import { loadFromLocalStorage, saveToLocalStorage } from '../hooks/middleware'
 
 const response: IAuth = loadFromLocalStorage({ key: 'auth' })
-export const authState: ResponseType = response?.authResponse
+console.log('🚀 ~ file: authSlice.ts:6 ~ response:', response)
+export const authState: ResponseType = response?.authResponse ?? {
+  first_name: '',
+  last_name: '',
+  other_names: '',
+  role: '',
+  username: '',
+  isAuthenticated: false,
+}
 
 const initialState: IAuth = {
   authResponse: {
@@ -12,7 +20,7 @@ const initialState: IAuth = {
     other_names: authState?.other_names ?? '',
     role: authState?.role ?? '',
     username: authState?.username ?? '',
-    isAuthtneticated: authState?.isAuthtneticated ?? false,
+    isAuthenticated: authState?.isAuthenticated ?? false,
   },
 }
 
