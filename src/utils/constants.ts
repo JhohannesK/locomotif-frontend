@@ -22,11 +22,16 @@ const Constants = {
       TABLET_PX: '@media only screen and (min-width: 768px)',
       TABLET_PX_2:
         '@media only screen and (min-width: 768px) and (max-width: 1024px)',
+      TABLET_PX_3: '@media only screen and  (max-width: 1023px)',
+      TABLET_MOBILE_PX: '@media only screen and (max-width: 768px)',
+
       LAPTOP_PX: '@media only screen and (min-width: 1024px) ',
       LAPTOP_M_PX: '@media only screen and (min-width: 1360px) ',
       LAPTOP_L_PX: '@media only screen and (min-width: 1440px)',
     },
   },
+
+  isMenuOpen: 'false',
 }
 
 export default Constants

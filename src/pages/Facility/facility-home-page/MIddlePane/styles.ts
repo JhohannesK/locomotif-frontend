@@ -1,5 +1,6 @@
 import { styled } from 'styled-components'
 import { colors } from '../../../../colors'
+import Constants from '../../../../utils/constants'
 
 export const JobPostBox = styled.div`
   width: 100%;
@@ -16,6 +17,14 @@ export const JobPostButtons = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_MOBILE_PX} {
+    width: 70%;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE_SM} {
+    width: 100%;
+  }
 `
 
 export const JobPostHeader = styled.div`
@@ -33,6 +42,10 @@ export const JobPostOptions = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE_SM} {
+    gap: 3px;
+  }
 `
 
 export const JobPostTextContainer = styled.div`
@@ -47,4 +60,12 @@ export const JobPostTitle = styled.h3`
   font-style: normal;
   font-weight: 700;
   line-height: 137.14%;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_MOBILE_PX} {
+    font-size: 22px;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE_SM} {
+    font-size: 20px;
+  }
 `

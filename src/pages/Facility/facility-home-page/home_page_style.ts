@@ -1,4 +1,5 @@
-import { styled } from 'styled-components'
+import { styled, css } from 'styled-components'
+import Constants from '../../../utils/constants'
 // import { colors } from '../../../colors'
 
 export const FacilityDashboard = styled.section`
@@ -7,14 +8,38 @@ export const FacilityDashboard = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_3} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `
-export const FacilityLeftContainer = styled.div`
+// Left Pane
+export const FacilityLeftContainer = styled.div<{ isMenuOpen: string }>`
   width: 19%;
   height: 100%;
   display: flex;
   flex-direction: column;
   outline: 1px solid blue;
   gap: 29px;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
+    width: 21%;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_3} {
+    ${(props) =>
+      props.isMenuOpen === 'true'
+        ? css`
+            z-index: 10;
+            position: absolute;
+            left: 0;
+          `
+        : css`
+            display: none;
+          `}
+  }
 `
 
 export const FacilityLeftUpperContent = styled.div`
@@ -88,6 +113,8 @@ export const FacilityLeftLowerContent = styled.div`
   height: 250px;
   width: 100%;
 `
+
+// Middle Pane
 export const FacilityMidContainer = styled.div`
   width: 47%;
   height: 100%;
@@ -96,13 +123,30 @@ export const FacilityMidContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 5px;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_3} {
+    width: 90%;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
+    width: 50%;
+  }
 `
 
+// Right Pane
 export const FacilityRightContainer = styled.div`
-  width: 21%;
+  width: 19%;
   height: 100%;
   outline: 1px solid orange;
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
+    width: 21%;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_3} {
+    display: none;
+  }
 `

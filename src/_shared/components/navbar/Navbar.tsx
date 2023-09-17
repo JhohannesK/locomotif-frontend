@@ -19,6 +19,7 @@ import { BiMenuAltLeft, BiSearchAlt } from 'react-icons/bi'
 import { RxEnvelopeClosed } from 'react-icons/rx'
 import { FiBell } from 'react-icons/fi'
 import { useEffect, useMemo, useState } from 'react'
+import Constants from '../../../utils/constants'
 
 interface linksObject {
   link: string
@@ -61,10 +62,13 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
     }
   }, [facilityLinks, personnelLinks, type])
 
+  const handleMenu = () => {
+    Constants.isMenuOpen = 'true'
+  }
   return (
     <NavBar>
       <NavBarMobileContainer>
-        <MenuIcon>
+        <MenuIcon onClick={handleMenu}>
           <BiMenuAltLeft size={28} />
         </MenuIcon>
         <LogoStyles>Locomotif</LogoStyles>

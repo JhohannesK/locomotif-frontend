@@ -114,6 +114,8 @@ export const NavBarLaptopContainer = styled.div`
   }
 `
 
-export const MenuIcon = styled.div``
+export const MenuIcon = styled.div`
+  cursor: pointer;
+`
 
 export const SearchIcon = styled.div``
