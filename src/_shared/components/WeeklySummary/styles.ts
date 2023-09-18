@@ -2,7 +2,15 @@ import { styled } from 'styled-components'
 import Constants from '../../../utils/constants'
 
 export const FacilityLeftMidBox = styled.div`
-  width: 100%;
+  width: 80%;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    width: 90%;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+    width: 75%;
+  }
 `
 
 export const FacilityLeftMidBoxContent = styled.div`
@@ -10,6 +18,14 @@ export const FacilityLeftMidBoxContent = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 10px 0;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    height: 40px;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+    height: 45px;
+  }
 `
 
 export const LeftContent = styled.div`
@@ -19,7 +35,7 @@ export const LeftContent = styled.div`
   height: auto;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    max-width: 25%;
+    max-width: 22%;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
@@ -30,6 +46,14 @@ export const RightContent = styled.div`
   width: 70%;
   display: flex;
   flex-direction: column;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    width: 72%;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+    max-width: 75%;
+  }
 `
 export const RightContentH4 = styled.h4`
   color: rgba(0, 0, 0, 0.8);
@@ -58,11 +82,11 @@ export const RightContentP = styled.p`
   line-height: 137.14%; /* 20.571px */
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
-    font-size: 16px;
+    font-size: 15px;
   }
 `
 export const FacilityLeftMidTitle = styled.h2`
@@ -75,7 +99,7 @@ export const FacilityLeftMidTitle = styled.h2`
   line-height: 137.14%; /* 34.285px */
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    font-size: 22px;
+    font-size: 20px;
   }
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
     font-size: 25px;

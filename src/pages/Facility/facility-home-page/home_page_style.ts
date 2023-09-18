@@ -113,14 +113,13 @@ export const FacilityLeftLowerContent = styled.div`
 export const FacilityMidContainer = styled.div`
   width: 47%;
   height: 100%;
-  outline: 1px solid purple;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 5px;
+  padding: 0px 5px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    width: 48%;
+    width: 47%;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_3} {
@@ -128,7 +127,7 @@ export const FacilityMidContainer = styled.div`
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
-    width: 52%;
+    width: 47%;
   }
 `
 
@@ -136,10 +135,12 @@ export const FacilityMidContainer = styled.div`
 export const FacilityRightContainer = styled.div`
   width: 19%;
   height: 100%;
-  outline: 1px solid orange;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
+  border: 1px solid rgba(209, 209, 209, 0.5);
+  background: #fff;
+  padding: 10px 5px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     width: 23%;

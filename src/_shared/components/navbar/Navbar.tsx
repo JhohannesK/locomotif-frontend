@@ -110,7 +110,7 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
             <NavBarUserImage>
               <img
                 src={image}
-                alt="health-leaf icon"
+                alt="user icon"
                 style={{ height: '100%', width: '100%', objectFit: 'cover' }}
               />
             </NavBarUserImage>
