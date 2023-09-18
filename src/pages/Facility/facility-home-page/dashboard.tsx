@@ -1,4 +1,3 @@
-import Constants from '../../../utils/constants'
 import {
   FacilityDashboard,
   FacilityLeftContainer,
@@ -12,7 +11,7 @@ function Dashboard() {
   return (
     <>
       <FacilityDashboard>
-        <FacilityLeftContainer isMenuOpen={Constants.isMenuOpen}>
+        <FacilityLeftContainer>
           <FacilityLeftPane />
         </FacilityLeftContainer>
         <FacilityMidContainer>

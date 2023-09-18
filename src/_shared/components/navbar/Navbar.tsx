@@ -15,15 +15,21 @@ import {
 import image from '../../assets/user.jpeg'
 // import { useSelector } from 'react-redux'
 // import { RootState } from '../../../store'
-import { BiMenuAltLeft, BiSearchAlt } from 'react-icons/bi'
+import { BiBriefcase, BiMenuAltLeft, BiSearchAlt } from 'react-icons/bi'
 import { RxEnvelopeClosed } from 'react-icons/rx'
 import { FiBell } from 'react-icons/fi'
-import { useEffect, useMemo, useState } from 'react'
-import Constants from '../../../utils/constants'
+import { RiLayoutGridFill } from 'react-icons/ri'
+import { FaUserAlt } from 'react-icons/fa'
+import { FaClockRotateLeft } from 'react-icons/fa6'
+import { PiChartLineUpBold, PiClipboardTextLight } from 'react-icons/pi'
+import { ReactNode, useEffect, useMemo, useState } from 'react'
+import NavbarLeftPaneMenu from './LeftPaneMenu'
+import { AiOutlineFileSearch } from 'react-icons/ai'
 
 interface linksObject {
   link: string
   path: string
+  icon: ReactNode
 }
 
 const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
@@ -34,25 +40,26 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
   // Use useMemo to memoize the links
   const facilityLinks: linksObject[] = useMemo(
     () => [
-      { link: 'Overview', path: '' },
-      { link: 'History', path: '' },
-      { link: 'Analysis', path: '' },
-      { link: 'Profile', path: '' },
+      { link: 'Overview', path: '', icon: <RiLayoutGridFill /> },
+      { link: 'History', path: '', icon: <FaClockRotateLeft /> },
+      { link: 'Analysis', path: '', icon: <PiChartLineUpBold /> },
+      { link: 'Profile', path: '', icon: <FaUserAlt /> },
     ],
     []
   )
 
   const personnelLinks: linksObject[] = useMemo(
     () => [
-      { link: 'Find Jobs', path: '' },
-      { link: 'Find Facility', path: '' },
-      { link: 'Applications', path: '' },
-      { link: 'Profile', path: '' },
+      { link: 'Find Jobs', path: '', icon: <BiBriefcase /> },
+      { link: 'Find Facility', path: '', icon: <AiOutlineFileSearch /> },
+      { link: 'Applications', path: '', icon: <PiClipboardTextLight /> },
+      { link: 'Profile', path: '', icon: <FaUserAlt /> },
     ],
     []
   )
 
   const [linksHolder, setLinksHolder] = useState<linksObject[]>([])
+  const [isLeftPaneOpen, setIsLeftPaneOpen] = useState<boolean>(false)
 
   useEffect(() => {
     if (type === 'facility') {
@@ -62,20 +69,24 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
     }
   }, [facilityLinks, personnelLinks, type])
 
-  const handleMenu = () => {
-    Constants.isMenuOpen = 'true'
+  const handleLeftPane = () => {
+    setIsLeftPaneOpen(!isLeftPaneOpen)
   }
   return (
     <NavBar>
-      <NavBarMobileContainer>
-        <MenuIcon onClick={handleMenu}>
-          <BiMenuAltLeft size={28} />
-        </MenuIcon>
-        <LogoStyles>Locomotif</LogoStyles>
-        <SearchIcon>
-          <BiSearchAlt size={28} />
-        </SearchIcon>
-      </NavBarMobileContainer>
+      {isLeftPaneOpen ? (
+        <NavbarLeftPaneMenu closePane={handleLeftPane} menu={linksHolder} />
+      ) : (
+        <NavBarMobileContainer>
+          <MenuIcon onClick={handleLeftPane}>
+            <BiMenuAltLeft size={28} />
+          </MenuIcon>
+          <LogoStyles>Locomotif</LogoStyles>
+          <SearchIcon>
+            <BiSearchAlt size={28} />
+          </SearchIcon>
+        </NavBarMobileContainer>
+      )}
 
       <NavBarLaptopContainer>
         <LogoStyles>Locomotif</LogoStyles>

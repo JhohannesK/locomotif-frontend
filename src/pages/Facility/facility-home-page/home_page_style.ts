@@ -1,4 +1,4 @@
-import { styled, css } from 'styled-components'
+import { styled } from 'styled-components'
 import Constants from '../../../utils/constants'
 // import { colors } from '../../../colors'
 
@@ -16,30 +16,25 @@ export const FacilityDashboard = styled.section`
   }
 `
 // Left Pane
-export const FacilityLeftContainer = styled.div<{ isMenuOpen: string }>`
+export const FacilityLeftContainer = styled.div`
   width: 19%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  outline: 1px solid blue;
   gap: 29px;
 
-  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
-    width: 21%;
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    width: 23%;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+    width: 24%;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_3} {
-    ${(props) =>
-      props.isMenuOpen === 'true'
-        ? css`
-            z-index: 10;
-            position: absolute;
-            left: 0;
-          `
-        : css`
+
             display: none;
-          `}
-  }
+ 
 `
 
 export const FacilityLeftUpperContent = styled.div`
@@ -124,12 +119,16 @@ export const FacilityMidContainer = styled.div`
   flex-direction: column;
   padding: 5px;
 
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    width: 48%;
+  }
+
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_3} {
     width: 90%;
   }
 
-  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
-    width: 50%;
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+    width: 52%;
   }
 `
 
@@ -142,8 +141,12 @@ export const FacilityRightContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
-    width: 21%;
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    width: 23%;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+    width: 24%;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_3} {

@@ -31,7 +31,7 @@ const Constants = {
     },
   },
 
-  isMenuOpen: 'false',
+  isMenuOpen: true,
 }
 
 export default Constants

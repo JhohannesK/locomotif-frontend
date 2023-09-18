@@ -18,6 +18,10 @@ export const JobPostButtons = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    width: 70%;
+  }
+
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_MOBILE_PX} {
     width: 70%;
   }

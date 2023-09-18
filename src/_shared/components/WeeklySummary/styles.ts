@@ -1,4 +1,5 @@
 import { styled } from 'styled-components'
+import Constants from '../../../utils/constants'
 
 export const FacilityLeftMidBox = styled.div`
   width: 100%;
@@ -16,6 +17,14 @@ export const LeftContent = styled.div`
   max-width: 30%;
   width: auto;
   height: auto;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    max-width: 25%;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+    max-width: 30%;
+  }
 `
 export const RightContent = styled.div`
   width: 70%;
@@ -29,6 +38,14 @@ export const RightContentH4 = styled.h4`
   font-style: normal;
   font-weight: 700;
   line-height: 137.14%; /* 27.428px */
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    font-size: 18px;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+    font-size: 20px;
+  }
 `
 
 export const RightContentP = styled.p`
@@ -39,6 +56,14 @@ export const RightContentP = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 137.14%; /* 20.571px */
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    font-size: 14px;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+    font-size: 16px;
+  }
 `
 export const FacilityLeftMidTitle = styled.h2`
   color: rgba(0, 0, 0, 0.8);
@@ -48,4 +73,11 @@ export const FacilityLeftMidTitle = styled.h2`
   font-style: normal;
   font-weight: 700;
   line-height: 137.14%; /* 34.285px */
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    font-size: 22px;
+  }
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+    font-size: 25px;
+  }
 `
