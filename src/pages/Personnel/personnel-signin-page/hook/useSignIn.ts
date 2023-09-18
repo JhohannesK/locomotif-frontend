@@ -12,6 +12,7 @@ import { setErrorMessages } from '../../../../utils/util'
 
 const useSignIn = () => {
   const navigate = useNavigate()
+
   const schema = z.object({
     username: z.string().min(3),
     password: z.string().min(3).max(100),
@@ -38,7 +39,7 @@ const useSignIn = () => {
         .post(`${Constants.BaseURL}auth/login/medical_personnel/`, datas)
         .then((res: AxiosResponse) => {
           const responseData = res.data
-          dispatch(login({ ...responseData, isAuthtneticated: true }))
+          dispatch(login({ ...responseData, isAuthenticated: true }))
         })
     },
     onSuccess: () => {
@@ -50,6 +51,7 @@ const useSignIn = () => {
   const onSubmit = (data: Schema) => {
     mutate(data)
   }
+
   return { methods, onSubmit, errorMessage, isError, error, isLoading }
 }
 

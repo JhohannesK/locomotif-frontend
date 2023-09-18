@@ -1,15 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from 'react-router-dom'
-import { OmitConfirmPassword, Schema, schema } from './_types'
-import Constants from '../../../utils/constants'
-import axios, { AxiosError } from 'axios'
+import { OmitConfirmPassword, Schema, schema } from '../_types'
+import Constants from '../../../../utils/constants'
+import axios from 'axios'
 import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-
-interface MyResponse {
-  error?: string
-}
+import { setErrorMessages } from '../../../../utils/util'
 
 const useFacilitySignUp = () => {
   const navigate = useNavigate()
@@ -38,18 +35,7 @@ const useFacilitySignUp = () => {
       )
     },
     onSuccess: () => navigate(Constants.ROUTES.facility_signin),
-    onError: (error) => {
-      if ((error as AxiosError).code === 'ERR_NETWORK') {
-        setError('Check internet connectivity')
-      } else if ((error as AxiosError).code === 'ERR_BAD_REQUEST') {
-        setError(
-          (error as AxiosError<MyResponse>).response?.data?.error ||
-            'Unknown error'
-        )
-      } else if ((error as AxiosError).code === 'ERR_BAD_RESPONSE') {
-        setError("It is our fault, we'll fix it soon")
-      }
-    },
+    onError: (err) => setErrorMessages(err, setError),
   })
 
   const onSubmit = (data: Schema) => {
@@ -58,6 +44,7 @@ const useFacilitySignUp = () => {
 
     mutation.mutate(rest)
   }
+
   return { onSubmit, mutation, methods, error }
 }
 
