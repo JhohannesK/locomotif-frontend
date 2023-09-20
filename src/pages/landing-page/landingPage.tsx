@@ -1,163 +1,53 @@
-import { colors } from '../../colors'
 import {
-  ContentWrapper,
-  PageWrapper,
-  QuestionWrapper,
-  WelcomeWrapper,
-  SignedInWrapper,
-  UserWrapper,
-  ButtonWrapper,
+  BottomContent,
+  Content,
+  Facility,
+  GetStarted,
+  JoinLocomotif,
+  Logo,
+  MainContent,
+  Page,
+  Personnel,
+  TopContent,
 } from './styles'
-import GeneralButton from '../../_shared/components/button/Button'
-import { useState } from 'react'
-import Constants from '../../utils/constants'
+import facility from '../../_shared/assets/facility.jpeg'
+import doctor from '../../_shared/assets/doctor.jpeg'
 import routes from '../../routes'
+import Constants from '../../utils/constants'
 
 function LandingPage() {
-  const [isPersonnelClickedButton, setIsPersonnelClickedButton] =
-    useState(false)
-  const [isFacilityClickedButton, setIsFacilityClickedButton] = useState(false)
-
   return (
-    <PageWrapper>
-      <ContentWrapper>
-        <WelcomeWrapper>Welcome!</WelcomeWrapper>
-        <QuestionWrapper>Are you a Facility or a Practitioner?</QuestionWrapper>
-
-        <ButtonWrapper>
-          <UserWrapper>
-            <GeneralButton
-              // variantText={'contained'}
-              sx={{
-                backgroundColor:
-                  isPersonnelClickedButton === true
-                    ? colors.button.white
-                    : colors.button.aquamarine,
-                color: colors.button.pineGreen,
-                height: isPersonnelClickedButton === true ? '4rem' : '3rem',
-                width: isPersonnelClickedButton === true ? '23rem' : '20rem',
-                textTransform: 'uppercase',
-                ':hover': {
-                  background: colors.button.aquamarine,
-                },
-                // borderColor: `${isFacilityClickedButton?colors.button.pineGreen:colors.button.aquamarine}`
-              }}
-              title="Practitioner"
-              size={'large'}
+    <Page>
+      <Content>
+        <Logo>Loco</Logo>
+        <MainContent>
+          <TopContent>
+            <GetStarted>Get Started With Locomotif</GetStarted>
+            <JoinLocomotif>
+              Join Locomotif as a Personnel or Facility
+            </JoinLocomotif>
+          </TopContent>
+          <BottomContent>
+            <Facility
               onClick={() => {
-                setIsPersonnelClickedButton(true)
-                setIsFacilityClickedButton(false)
+                routes.navigate(Constants.ROUTES.facility_signup)
               }}
-            />
-            <GeneralButton
-              sx={{
-                backgroundColor:
-                  isFacilityClickedButton === true
-                    ? colors.button.white
-                    : colors.button.pineGreen,
-                color:
-                  isFacilityClickedButton === true
-                    ? colors.button.aquamarine
-                    : colors.button.aquamarine,
-                borderColor:
-                  isFacilityClickedButton === true
-                    ? colors.button.pineGreen
-                    : colors.button.aquamarine,
-                height: isFacilityClickedButton === true ? '4rem' : '3rem',
-                width: isFacilityClickedButton === true ? '23rem' : '20rem',
-                textTransform: 'uppercase',
-                ':hover': {
-                  borderColor: colors.button.aquamarine,
-                },
-              }}
-              variantText={'outlined'}
-              title={'Facility'}
-              size={'small'}
+            >
+              <img src={facility} alt="facility" />
+              <div>Join As a health Care Facility</div>
+            </Facility>
+            <Personnel
               onClick={() => {
-                setIsFacilityClickedButton(true)
-                setIsPersonnelClickedButton(false)
+                routes.navigate(Constants.ROUTES.personnel_signup)
               }}
-            />
-          </UserWrapper>
-          {isPersonnelClickedButton && (
-            <SignedInWrapper>
-              <GeneralButton
-                variantText={'contained'}
-                sx={{
-                  backgroundColor: colors.button.aquamarine,
-                  color: colors.button.pineGreen,
-                  height: '2rem',
-                  width: '9rem',
-                  textTransform: 'uppercase',
-                }}
-                title="LOG IN"
-                size={'large'}
-                onClick={() => {
-                  routes.navigate(Constants.ROUTES.personnel_signin)
-                }}
-              />
-              <GeneralButton
-                variantText={'outlined'}
-                sx={{
-                  backgroundColor: colors.button.pineGreen,
-                  color: colors.button.aquamarine,
-                  borderColor: colors.button.aquamarine,
-                  height: '2rem',
-                  width: '9rem',
-                  ':hover': {
-                    borderColor: colors.button.aquamarine,
-                  },
-                  textTransform: 'uppercase',
-                }}
-                title="SIGN UP"
-                size={'large'}
-                onClick={() => {
-                  routes.navigate(Constants.ROUTES.personnel_signup)
-                }}
-              />
-            </SignedInWrapper>
-          )}
-          {isFacilityClickedButton && (
-            <SignedInWrapper>
-              <GeneralButton
-                variantText={'contained'}
-                sx={{
-                  backgroundColor: colors.button.aquamarine,
-                  color: colors.button.pineGreen,
-                  height: '2rem',
-                  width: '9rem',
-                  textTransform: 'uppercase',
-                }}
-                title="LOG IN"
-                size={'large'}
-                onClick={() => {
-                  routes.navigate(Constants.ROUTES.facility_signin)
-                }}
-              />
-              <GeneralButton
-                variantText={'outlined'}
-                sx={{
-                  backgroundColor: colors.button.pineGreen,
-                  color: colors.button.aquamarine,
-                  borderColor: colors.button.aquamarine,
-                  height: '2rem',
-                  width: '9rem',
-                  ':hover': {
-                    borderColor: colors.button.aquamarine,
-                  },
-                  textTransform: 'uppercase',
-                }}
-                title="SIGN UP"
-                size={'large'}
-                onClick={() => {
-                  routes.navigate(Constants.ROUTES.facility_signup)
-                }}
-              />
-            </SignedInWrapper>
-          )}
-        </ButtonWrapper>
-      </ContentWrapper>
-    </PageWrapper>
+            >
+              <img src={doctor} alt="doctor" />
+              <div>Register As a Personnel</div>
+            </Personnel>
+          </BottomContent>
+        </MainContent>
+      </Content>
+    </Page>
   )
 }
 
