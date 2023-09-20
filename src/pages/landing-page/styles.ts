@@ -56,7 +56,7 @@ export const BottomContent = styled.div`
   align-items: center;
   width: 100%;
   border-radius: 12px;
-  background-color: brown;
+  // background-color: brown;
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_480_PX} {
     gap: 30px;
   }
@@ -93,7 +93,7 @@ export const JoinLocomotif = styled.div`
 `
 
 export const Facility = styled.div`
-  background-color: blue;
+  // background-color: blue;
   position: relative; /* Ensure relative positioning for containing absolute positioned text */
 
   img {
@@ -121,7 +121,7 @@ export const Facility = styled.div`
 `
 
 export const Personnel = styled.div`
-  background-color: green;
+  // background-color: green;
   position: relative; /* Ensure relative positioning for containing absolute positioned text */
 
   img {
@@ -129,6 +129,7 @@ export const Personnel = styled.div`
     max-width: 400px;
     object-fit: cover;
     border-radius: 12px;
+    height: 500px;
   }
 
   /* Center the text vertically and horizontally within the container */

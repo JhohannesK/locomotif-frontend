@@ -12,6 +12,8 @@ import {
 } from './styles'
 import facility from '../../_shared/assets/facility.jpeg'
 import doctor from '../../_shared/assets/doctor.jpeg'
+import routes from '../../routes'
+import Constants from '../../utils/constants'
 
 function LandingPage() {
   return (
@@ -26,22 +28,20 @@ function LandingPage() {
             </JoinLocomotif>
           </TopContent>
           <BottomContent>
-            <Facility>
+            <Facility
+              onClick={() => {
+                routes.navigate(Constants.ROUTES.facility_signup)
+              }}
+            >
               <img src={facility} alt="facility" />
               <div>Join As a health Care Facility</div>
             </Facility>
-            <Personnel>
-              <img
-                src={doctor}
-                alt="facility"
-                style={{
-                  height: '500px',
-                  width: '100%',
-                  maxWidth: '400px',
-                  objectFit: 'cover',
-                  borderRadius: '12px',
-                }}
-              />
+            <Personnel
+              onClick={() => {
+                routes.navigate(Constants.ROUTES.personnel_signup)
+              }}
+            >
+              <img src={doctor} alt="doctor" />
               <div>Register As a Personnel</div>
             </Personnel>
           </BottomContent>
