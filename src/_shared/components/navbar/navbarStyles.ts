@@ -114,6 +114,96 @@ export const NavBarLaptopContainer = styled.div`
   }
 `
 
-export const MenuIcon = styled.div``
+export const MenuIcon = styled.div`
+  cursor: pointer;
+`
 
 export const SearchIcon = styled.div``
+
+// Left Pane
+export const NavbarMenu = styled.div`
+  backgroud: white;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+  z-index: 10;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #fff;
+  width: 30%;
+  padding: 10px 20px;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    display: none;
+  }
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_2} {
+    width: 250px;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_480_PX} {
+    width: 250px;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE_SM} {
+    width: 250px;
+  }
+`
+
+export const NavbarHeaderIcon = styled.i`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 38px;
+  height: 38px;
+  font-size: 200%;
+  cursor: pointer;
+`
+
+export const NavbarMenuHeader = styled.div`
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  color: ${colors.button.pineGreen};
+`
+export const NavbarOptionsBox = styled.div`
+  width: 50%;
+  color: rgba(0, 0, 0, 0.7);
+`
+export const NavbarOptionLeft = styled.div`
+  width: 30%;
+`
+export const NavbarOptionRight = styled.div`
+  width: 70%;
+`
+export const NavbarOptions = styled(Link)`
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  heigth: 35px;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.7);
+  &:active {
+    color: ${colors.button.pineGreen};
+  }
+`
+export const NavbarOptionsIcon = styled.i`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: inherit;
+  font-size: 125%;
+  cursor: pointer;
+`
+export const NavbarOptionsH3 = styled.h3`
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 137.14%; /* 24.685px */
+`
