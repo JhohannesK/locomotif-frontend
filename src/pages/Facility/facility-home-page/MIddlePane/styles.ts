@@ -21,12 +21,20 @@ export const JobPostButtons = styled.div`
     width: 65%;
   }
 
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
+    max-width: 50%;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+    max-width: 45%;
+  }
+
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_MOBILE_PX} {
     width: 60%;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE_SM} {
-    width: 100%;
+    width: 85%;
   }
 `
 

@@ -41,7 +41,11 @@ export const NavBarRightBox = styled.div`
   height: 45px;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
+    margin-left: 100px;
+  }
 `
 export const NavBarRightIcons = styled.i`
   display: flex;
@@ -60,6 +64,18 @@ export const Navbarlinks = styled.div`
   align-items: center;
   width: 40%;
   height: 100%;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    max-width: 35%;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
+    max-width: 35%;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+    max-width: 30%;
+  }
 `
 
 export const LinkStyles = styled(Link)`
@@ -120,11 +136,12 @@ export const MenuIcon = styled.div`
 
 export const SearchIcon = styled.div``
 
-// Left Pane
+/* Left Pane */
+
 export const NavbarMenu = styled.div`
-  backgroud: white;
+  background: #fff;
   width: 250px;
-  height: 100vh;
+  // height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 29px;
@@ -144,11 +161,11 @@ export const NavbarMenu = styled.div`
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_480_PX} {
-    width: 250px;
+    width: 290px;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE_SM} {
-    width: 250px;
+    width: 300px;
   }
 `
 
@@ -183,7 +200,7 @@ export const NavbarOptions = styled(Link)`
   text-decoration: none;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 22px;
   heigth: 35px;
   width: 100%;
   color: rgba(0, 0, 0, 0.7);

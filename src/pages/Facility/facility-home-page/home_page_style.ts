@@ -24,7 +24,7 @@ export const FacilityLeftContainer = styled.div`
 
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    width: 22%;
+    width: 23%;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
@@ -116,7 +116,7 @@ export const FacilityMidContainer = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-left: 15px;
+  padding-left: 10px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     width: 50%;
@@ -144,7 +144,7 @@ export const FacilityRightContainer = styled.div`
   padding: 10px 5px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    width: 22%;
+    width: 23%;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
