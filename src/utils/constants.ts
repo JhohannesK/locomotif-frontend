@@ -19,6 +19,7 @@ const Constants = {
         '@media only screen and (min-width: 820px) and (max-width: 1200px)',
       SMALL_PX: '@media only screen and (min-width: 418px)',
       TABLET_480_PX: '@media only screen and (min-width: 480px)',
+      TABLET_580_PX: '@media only screen and (max-width: 580px)',
       TABLET_PX: '@media only screen and (min-width: 768px)',
       TABLET_PX_2:
         '@media only screen and (min-width: 768px) and (max-width: 1024px)',

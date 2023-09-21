@@ -79,7 +79,7 @@ export const PostInfoBox = styled.div`
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     max-height: 95px;
-    column-gap: 15px;
+    column-gap: 10px;
     row-gap: 5px;
   }
 `

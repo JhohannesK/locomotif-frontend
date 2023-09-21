@@ -2,7 +2,6 @@ import { styled } from 'styled-components'
 import { colors } from '../../../colors'
 
 export const LeftPaneProfileContainer = styled.div`
-  width: 100%;
   border-radius: 10px;
   border: 1px solid rgba(209, 209, 209, 0.5);
   background: #fff;
