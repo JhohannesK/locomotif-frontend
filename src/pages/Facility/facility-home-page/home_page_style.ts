@@ -4,7 +4,6 @@ import Constants from '../../../utils/constants'
 
 export const FacilityDashboard = styled.section`
   height: 100%;
-  outline: 1px solid red;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -23,8 +22,9 @@ export const FacilityLeftContainer = styled.div`
   flex-direction: column;
   gap: 29px;
 
+
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    width: 23%;
+    width: 22%;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
@@ -116,14 +116,15 @@ export const FacilityMidContainer = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0px 5px;
+  padding-left: 15px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    width: 47%;
+    width: 50%;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_3} {
-    width: 90%;
+    padding: 0px;
+    width: 100%;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
@@ -143,7 +144,7 @@ export const FacilityRightContainer = styled.div`
   padding: 10px 5px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    width: 23%;
+    width: 22%;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {

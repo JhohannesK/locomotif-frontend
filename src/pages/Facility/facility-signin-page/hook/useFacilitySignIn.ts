@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useMutation } from '@tanstack/react-query'
 import Constants from '../../../../utils/constants'
 import { setErrorMessages } from '../../../../utils/util'
+import { useNavigate } from 'react-router-dom'
 
 const schema = z.object({
   facility_code: z.string().min(4),
@@ -15,6 +16,8 @@ const schema = z.object({
 type Schema = z.infer<typeof schema>
 
 const useFacilitySignIn = () => {
+  const navigate = useNavigate()
+
   const [errorMessage, setError] = useState<string>('')
 
   const defaultValues: Schema = {
@@ -30,9 +33,9 @@ const useFacilitySignIn = () => {
   const { mutate, status, error, isError, isLoading } = useMutation({
     mutationFn: async (data: Schema) =>
       axios.post(`${Constants.BaseURL}auth/login/medical_facility/`, data),
-    // onSuccess: () => console.log('yes'),
 
-    // TODO: add some toast to show the error
+    onSuccess: () => navigate(Constants.ROUTES.facility_dashboard),
+
     onError: (err) => {
       setErrorMessages(err, setError)
     },

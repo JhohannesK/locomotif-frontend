@@ -24,6 +24,8 @@ const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  max-width: 1999px;
+  margin: 0 auto;
   background-color: ${colors.background.antiflashWhite};
 `
 
@@ -32,7 +34,6 @@ const ChildrenWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 1rem 3rem;
-  outline: 1px solid green;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
     margin: 1rem;

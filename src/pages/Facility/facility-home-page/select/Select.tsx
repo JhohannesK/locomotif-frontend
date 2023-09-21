@@ -23,6 +23,7 @@ const useStyles = makeStyles({
     },
   },
 })
+
 function FormSelect({ label, menu }: SelectDeatails) {
   const classes = useStyles()
 

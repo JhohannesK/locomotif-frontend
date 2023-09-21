@@ -30,7 +30,7 @@ function MiddlePane() {
           />
         </JobPostTextContainer>
         <JobPostOptions>
-          <FormSelect label={'Medical Field'} menu={['Surgeon']} />
+          <FormSelect label={'Type Of Work'} menu={['Surgeon']} />
           <FormSelect label={'Location'} menu={['Airport,Accra']} />
           <FormSelect label={'Date Added'} menu={['Surgeon']} />
           <FormSelect label={'Salary'} menu={['$1500']} />
@@ -43,14 +43,14 @@ function MiddlePane() {
               borderColor: colors.button.aquamarine,
               height: '2rem',
               color: '#FFF',
-              fontSize: '15px',
+              fontSize: '12px',
               fontStyle: 'normal',
               fontWeight: '400',
               lineHeight: '137.14%',
               padding: '10px 34px',
               borderRadius: '10px',
-              width: '140px',
-              minHeight: '40px',
+              width: '127px',
+              maxHeight: '41px',
             }}
             title="Post Job"
             size={'large'}
@@ -62,14 +62,14 @@ function MiddlePane() {
               border: `1px solid ${colors.button.pineGreen}`,
               height: '2rem',
               color: colors.button.pineGreen,
-              fontSize: '15px',
+              fontSize: '12px',
               fontStyle: 'normal',
               fontWeight: '400',
               lineHeight: '137.14%',
               padding: '10px 34px',
               borderRadius: '10px',
-              width: '140px',
-              minHeight: '40px',
+              width: '127px',
+              maxHeight: '41px',
             }}
             title="Draft Job"
             size={'large'}
