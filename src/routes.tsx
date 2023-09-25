@@ -39,6 +39,10 @@ const routes = createBrowserRouter([
     element: <PersonnelSignup />,
   },
   {
+    path: routhPaths.AUTH.FACILITY.new_facility_signup,
+    element: <PersonnelSignup />,
+  },
+  {
     path: routhPaths.PERSONNEL.personnel_dashboard,
     element: (
       // <ProtectedRoute allowedRoles={['doctor']} userRole={userRole}>

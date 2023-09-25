@@ -4,10 +4,11 @@ const Constants = {
   ROUTES: {
     root: '/',
     AUTH: {
-      FACILITY: {},
+      FACILITY: {
+        new_facility_signup: '/facility/new-signup',
+      },
       PERSONNEL: {
         new_personnel_signup: '/personnel/new-signup',
-        ta: 'ta',
       },
     },
     FACILITY: {
