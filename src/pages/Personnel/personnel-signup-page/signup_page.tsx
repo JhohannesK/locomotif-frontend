@@ -107,7 +107,7 @@ const SignUpPage = () => {
               Already have an account ?{' '}
               <AuthLink
                 onClick={() =>
-                  routes.navigate(Constants.ROUTES.personnel_signin)
+                  routes.navigate(Constants.ROUTES.PERSONNEL.personnel_signin)
                 }
               >
                 {' '}

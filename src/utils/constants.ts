@@ -3,12 +3,23 @@ const Constants = {
 
   ROUTES: {
     root: '/',
-    facility_signin: '/facility/signin',
-    facility_signup: '/facility/signup',
-    personnel_signin: '/personnel/signin',
-    personnel_signup: '/personnel/signup',
-    personnel_dashboard: '/personnel/dashboard',
-    facility_dashboard: '/facility/dashboard',
+    AUTH: {
+      FACILITY: {},
+      PERSONNEL: {
+        new_personnel_signup: '/personnel/new-signup',
+        ta: 'ta',
+      },
+    },
+    FACILITY: {
+      facility_signin: '/facility/signin',
+      facility_signup: '/facility/signup',
+      facility_dashboard: '/facility/dashboard',
+    },
+    PERSONNEL: {
+      personnel_signin: '/personnel/signin',
+      personnel_signup: '/personnel/signup',
+      personnel_dashboard: '/personnel/dashboard',
+    },
   },
 
   LAYOUT: {

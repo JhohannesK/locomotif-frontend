@@ -30,7 +30,7 @@ function LandingPage() {
           <BottomContent>
             <Facility
               onClick={() => {
-                routes.navigate(Constants.ROUTES.facility_signup)
+                routes.navigate(Constants.ROUTES.FACILITY.facility_signup)
               }}
             >
               <img src={facility} alt="facility" />
@@ -38,7 +38,7 @@ function LandingPage() {
             </Facility>
             <Personnel
               onClick={() => {
-                routes.navigate(Constants.ROUTES.personnel_signup)
+                routes.navigate(Constants.ROUTES.PERSONNEL.personnel_signup)
               }}
             >
               <img src={doctor} alt="doctor" />

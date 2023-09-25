@@ -113,7 +113,7 @@ const SignUpPageIns = () => {
               Already have an account?{' '}
               <AuthLink
                 onClick={() => {
-                  routes.navigate(Constants.ROUTES.facility_signin)
+                  routes.navigate(Constants.ROUTES.FACILITY.facility_signin)
                 }}
               >
                 Sign In
