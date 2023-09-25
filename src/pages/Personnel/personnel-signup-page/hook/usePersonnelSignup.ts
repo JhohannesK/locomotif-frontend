@@ -55,7 +55,7 @@ const usePersonnelSignup = () => {
       )
     },
     onSuccess: () => {
-      navigate(Constants.ROUTES.personnel_dashboard)
+      navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
     },
     onError: (err) => setErrorMessages(err, setError),
   })

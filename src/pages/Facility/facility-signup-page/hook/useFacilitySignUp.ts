@@ -34,7 +34,7 @@ const useFacilitySignUp = () => {
         data
       )
     },
-    onSuccess: () => navigate(Constants.ROUTES.facility_dashboard),
+    onSuccess: () => navigate(Constants.ROUTES.FACILITY.facility_dashboard),
     onError: (err) => setErrorMessages(err, setError),
   })
 

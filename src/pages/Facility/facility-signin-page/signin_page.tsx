@@ -89,7 +89,7 @@ function SigninPageIns() {
             <AuthText>
               <AuthLink
                 onClick={() =>
-                  routes.navigate(Constants.ROUTES.facility_signup)
+                  routes.navigate(Constants.ROUTES.FACILITY.facility_signup)
                 }
               >
                 Sign Up{' '}

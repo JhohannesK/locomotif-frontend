@@ -14,7 +14,7 @@ const ProtectedRoute = ({
     return children
   } else {
     console.log('not authenticated')
-    return <Navigate to={routhPaths.personnel_signin} />
+    return <Navigate to={routhPaths.PERSONNEL.personnel_signin} />
   }
 }
 
