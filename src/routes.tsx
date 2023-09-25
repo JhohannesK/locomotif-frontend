@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import Constants from './utils/constants'
 import App from './App'
 import SigninPageIns from './pages/Facility/facility-signin-page/signin_page'
-import SignUpPageIns from './pages/Facility/facility-signup-page/signup_page'
+// import SignUpPageIns from './pages/Facility/facility-signup-page/signup_page'
 import SigninPage from './pages/Personnel/personnel-signin-page/signin_page'
 import SignUpPage from './pages/Personnel/personnel-signup-page/signup_page'
 import HomePage from './pages/Personnel/personnel-home-page/home_page'
@@ -10,6 +10,10 @@ import HomePage from './pages/Personnel/personnel-home-page/home_page'
 // import ProtectedRoute from './utils/ProtectedRoute'
 export const routhPaths = Constants.ROUTES
 import FacilityHomePage from './pages/Facility/facility-home-page/home_page'
+// import FacilityCreateAccount from './pages/Facility/facility-signup-page/signup-flow-components/create_account'
+// import FacilitySetUpProfile from './pages/Facility/facility-signup-page/signup-flow-components/setup_profile'
+// import FacilityTermsAndCondions from './pages/Facility/facility-signup-page/signup-flow-components/terms_conditions'
+import FacilitySuccess from './pages/Facility/facility-signup-page/signup-flow-components/success'
 
 // const userRole = authState?.role
 
@@ -24,7 +28,7 @@ const routes = createBrowserRouter([
   },
   {
     path: routhPaths.facility_signup,
-    element: <SignUpPageIns />,
+    element: <FacilitySuccess />,
   },
   {
     path: routhPaths.personnel_signin,

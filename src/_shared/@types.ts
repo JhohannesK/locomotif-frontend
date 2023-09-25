@@ -35,6 +35,7 @@ export type GeneralBtnProps = {
     'small' | 'medium' | 'large',
     ButtonPropsSizeOverrides
   >
+  icon?: React.ReactNode
   onClick?: () => void
 }
 
