@@ -10,3 +10,7 @@ export type ResponseType = {
   username: string
   isAuthenticated: boolean
 }
+
+export interface AppState {
+  activeSidebar: number
+}

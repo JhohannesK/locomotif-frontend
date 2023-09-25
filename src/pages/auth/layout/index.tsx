@@ -4,9 +4,12 @@ import styled from 'styled-components'
 import { colors } from '../../../colors'
 
 const steps = [
-  'Personal Information',
-  'Contact Information',
-  'Account Information',
+  'Personnel/Facility ',
+  'Create an account',
+  'Terms and Conditions',
+  'Create Profile',
+  'Upload your CV',
+  'Completed',
 ]
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
