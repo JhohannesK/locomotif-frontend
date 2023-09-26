@@ -3,7 +3,9 @@ const Constants = {
 
   ROUTES: {
     root: '/',
+    GetStarted: '/getStarted',
     AUTH: {
+      signin: '/signin',
       FACILITY: {
         new_facility_signup: '/facility/new-signup',
       },

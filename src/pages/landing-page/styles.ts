@@ -71,12 +71,12 @@ export const GetStarted = styled.div`
   color: #000;
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Inter;
-  font-size: 1.7em;
+  font-size: 1.5em;
   font-style: normal;
   font-weight: 700;
   line-height: 137.14%; /* 68.57px */
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_480_PX} {
-    font-size: 2.5em;
+    font-size: 2em;
   }
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX} {
     font-size: 50px;
@@ -90,7 +90,7 @@ export const JoinLocomotif = styled.div`
   font-weight: 400;
   line-height: normal;
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_480_PX} {
-    font-size: 2.5em;
+    font-size: 1.5em;
   }
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX} {
     font-size: 25px;
