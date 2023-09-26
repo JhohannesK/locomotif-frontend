@@ -14,7 +14,7 @@ import {
   GenericSelect,
   Toast,
 } from '../../../../_shared'
-import useFacilitySignUp from '../hook/useFacilitySignUp'
+import useFacilitySignUp from '../../../Facility/facility-signup-page/hook/useFacilitySignUp'
 import { colors } from '../../../../colors'
 import { ButtonsBox, SelectBox } from '../styles'
 import { TextField } from '@mui/material'

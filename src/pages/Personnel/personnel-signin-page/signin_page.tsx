@@ -83,7 +83,7 @@ function SigninPage() {
             <AuthText>
               <AuthLink
                 onClick={() =>
-                  routes.navigate(Constants.ROUTES.personnel_signup)
+                  routes.navigate(Constants.ROUTES.PERSONNEL.personnel_signup)
                 }
               >
                 Sign Up{' '}

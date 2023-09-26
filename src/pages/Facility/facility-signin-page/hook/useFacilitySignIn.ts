@@ -34,7 +34,7 @@ const useFacilitySignIn = () => {
     mutationFn: async (data: Schema) =>
       axios.post(`${Constants.BaseURL}auth/login/medical_facility/`, data),
 
-    onSuccess: () => navigate(Constants.ROUTES.facility_dashboard),
+    onSuccess: () => navigate(Constants.ROUTES.FACILITY.facility_dashboard),
 
     onError: (err) => {
       setErrorMessages(err, setError)

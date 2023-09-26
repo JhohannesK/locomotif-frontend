@@ -12,7 +12,7 @@ import {
   AuthUpperContentP,
 } from '../../../../_shared/auth_styles'
 import { GenericButton, GenericInput, Toast } from '../../../../_shared'
-import useFacilitySignUp from '../hook/useFacilitySignUp'
+import useFacilitySignUp from '../../../Facility/facility-signup-page/hook/useFacilitySignUp'
 import { colors } from '../../../../colors'
 import { genCode } from '../../../../utils/genCode'
 import google_logo from '../../../../_shared/assets/google_logo.png'

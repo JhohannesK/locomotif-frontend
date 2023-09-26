@@ -5,7 +5,7 @@ import {
   AuthUpperContent,
 } from '../../../../_shared/auth_styles'
 import { GenericButton, Toast } from '../../../../_shared'
-import useFacilitySignUp from '../hook/useFacilitySignUp'
+import useFacilitySignUp from '../../../Facility/facility-signup-page/hook/useFacilitySignUp'
 import { colors } from '../../../../colors'
 import { UpperContentH1 } from '../styles'
 
