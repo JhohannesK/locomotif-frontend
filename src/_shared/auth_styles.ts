@@ -3,15 +3,15 @@ import { colors } from '../colors'
 
 export const AuthContainer = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   width: 100%;
   height: 100vh;
-  justify-content: center;
+  justify-content: flex-start;
+  // padding-left: 25%;
 `
 
 export const AuthContent = styled.form`
-  width: 28%;
+  // width: 40%;
   @media screen and (max-width: 1024px) {
     width: 60%;
   }
@@ -26,11 +26,28 @@ export const AuthContent = styled.form`
 
 export const AuthUpperContent = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 150px;
-  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  // width: 100%;
+  margin-bottom: 1.5rem;
+`
+export const AuthUpperContentH2 = styled.div`
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 137.14%; /* 54.856px */
+`
+export const AuthUpperContentP = styled.p`
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 129.188%; /* 19.378px */
 `
 export const AuthLogo = styled.div`
   height: 100px;
@@ -39,7 +56,15 @@ export const AuthLogo = styled.div`
 export const AuthFields = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 0.5rem;
+`
+
+export const AuthFieldsLabel = styled.h3`
+  color: var(--Tertiary, rgba(0, 0, 0, 0.7));
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `
 
 export const AuthText = styled.div`
@@ -48,6 +73,7 @@ export const AuthText = styled.div`
   align-items: right;
   padding: 0.7rem;
   font-size: 0.7rem;
+  border-radius: 10px;
 `
 export const AuthLink = styled.div`
   color: ${colors.background.pineGreen};
@@ -58,6 +84,36 @@ export const AuthLink = styled.div`
 
 export const AuthButton = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 1rem;
+`
+export const AuthButtonH3 = styled.h3`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 137.14%; /* 16.457px */
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1 1;
+    border-bottom: 1px solid #d9d9d9;
+    margin: auto;
+  }
+
+  &::before {
+    margin-right: 10px;
+  }
+
+  &::after {
+    margin-left: 10px;
+  }
 `

@@ -37,7 +37,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <LayoutStyles>
       <Sidebar steps={steps} />
-      <div>{children}</div>
+      <ComponentWrapper>{children}</ComponentWrapper>
     </LayoutStyles>
   )
 }
@@ -47,7 +47,10 @@ export default Layout
 const LayoutStyles = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   height: 100vh;
+  gap: 20%;
   background-color: ${colors.background.whiteSmoke};
+`
+const ComponentWrapper = styled.div`
+  width: 60%;
 `

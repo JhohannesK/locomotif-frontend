@@ -187,20 +187,20 @@ export const NavbarMenuHeader = styled.div`
   color: ${colors.button.pineGreen};
 `
 export const NavbarOptionsBox = styled.div`
-  width: 50%;
+  width: 70%;
   color: rgba(0, 0, 0, 0.7);
 `
 export const NavbarOptionLeft = styled.div`
-  width: 30%;
+  width: 20%;
 `
 export const NavbarOptionRight = styled.div`
-  width: 70%;
+  width: 75%;
 `
 export const NavbarOptions = styled(Link)`
   text-decoration: none;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 22px;
+  margin-bottom: 25px;
   heigth: 35px;
   width: 100%;
   color: rgba(0, 0, 0, 0.7);
