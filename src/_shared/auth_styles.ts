@@ -3,15 +3,15 @@ import { colors } from '../colors'
 
 export const AuthContainer = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   width: 100%;
   height: 100vh;
-  justify-content: center;
+  justify-content: flex-start;
+  // padding-left: 25%;
 `
 
 export const AuthContent = styled.form`
-  width: 28%;
+  // width: 40%;
   @media screen and (max-width: 1024px) {
     width: 60%;
   }
@@ -29,7 +29,7 @@ export const AuthUpperContent = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
-  width: 100%;
+  // width: 100%;
   margin-bottom: 1.5rem;
 `
 export const AuthUpperContentH2 = styled.div`
