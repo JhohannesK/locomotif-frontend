@@ -16,6 +16,7 @@ const useFacilitySignUp = () => {
     facility_code: '',
     name: '',
     password: '',
+    email: '',
     address: '',
     establishment_date: '',
     confirmPassword: '',

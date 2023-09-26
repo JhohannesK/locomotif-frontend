@@ -56,6 +56,9 @@ const GeneralInput = ({
             }
             sx={{ ...sx }}
             InputProps={{
+              style: {
+                borderRadius: '10px',
+              },
               startAdornment: (
                 <InputAdornment position="start">{icon}</InputAdornment>
               ),
