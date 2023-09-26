@@ -12,6 +12,8 @@ export const routhPaths = Constants.ROUTES
 import FacilityHomePage from './pages/Facility/facility-home-page/home_page'
 import PersonnelSignup from './pages/auth/personnel'
 import FacilitySignUp from './pages/auth/facility'
+import SignIn from './pages/auth/signin/signin'
+import LandingPage from './pages/landing-page/landingPage'
 // const userRole = authState?.role
 
 const routes = createBrowserRouter([
@@ -55,6 +57,14 @@ const routes = createBrowserRouter([
   {
     path: routhPaths.FACILITY.facility_dashboard,
     element: <FacilityHomePage />,
+  },
+  {
+    path: routhPaths.AUTH.signin,
+    element: <SignIn />,
+  },
+  {
+    path: routhPaths.GetStarted,
+    element: <LandingPage />,
   },
 ])
 

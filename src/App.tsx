@@ -1,9 +1,9 @@
-import LandingPage from './pages/landing-page/landingPage'
+import SignIn from './pages/auth/signin/signin'
 
 function App() {
   return (
     <>
-      <LandingPage />
+      <SignIn />
     </>
   )
 }
