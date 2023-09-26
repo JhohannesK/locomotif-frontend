@@ -43,7 +43,7 @@ const routes = createBrowserRouter([
   },
   {
     path: routhPaths.AUTH.FACILITY.new_facility_signup,
-    element: <PersonnelSignup />,
+    element: <FacilitySignUp />,
   },
   {
     path: routhPaths.PERSONNEL.personnel_dashboard,
