@@ -22,6 +22,11 @@ const initialState: IAuth = {
     username: authState?.username ?? '',
     isAuthenticated: authState?.isAuthenticated ?? false,
   },
+  signInResponse: {
+    access_token: '',
+    refresh_token: '',
+    user_role: '',
+  },
 }
 
 export const authSlice = createSlice({

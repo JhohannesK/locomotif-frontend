@@ -22,8 +22,7 @@ import routes from '../../../routes'
 import Constants from '../../../utils/constants'
 
 const SignIn = () => {
-  // const {methods,error,errorMessage,isError,isLoading,onSubmit} = useSignIn();
-  const { methods, errorMessage, isError, isLoading } = useSignIn()
+  const { methods, errorMessage, isError, isLoading, onSubmit } = useSignIn()
   return (
     <>
       {isError && <Toast open={isError} type="error" children={errorMessage} />}
@@ -37,7 +36,7 @@ const SignIn = () => {
             </Instructions>
           </Welcome>
           <FormProvider {...methods}>
-            <InputBoxes>
+            <InputBoxes onSubmit={methods.handleSubmit(onSubmit)}>
               <InputBoxLabels>Email Address</InputBoxLabels>
               <GenericInput
                 name="email"
@@ -45,9 +44,12 @@ const SignIn = () => {
                 placeholder="e.g. kojo23@gmail.com"
               />
               <InputBoxLabels>Password</InputBoxLabels>
-              <GenericInput name="password" label="" placeholder="*********" />
-            </InputBoxes>
-            <SignInButtons>
+              <GenericInput
+                name="password"
+                label=""
+                placeholder="*********"
+                type="password"
+              />
               {isLoading ? (
                 <LoadingButton
                   loading
@@ -58,12 +60,6 @@ const SignIn = () => {
                 ></LoadingButton>
               ) : (
                 <GenericButton
-                  onClick={() => {
-                    // methods.setValue(
-                    //     'email',
-                    //     `test+${genCode(5)}@gmail.com`
-                    //     )
-                  }}
                   title="Sign In"
                   sx={{
                     backgroundColor: colors.button.pineGreen,
@@ -79,41 +75,40 @@ const SignIn = () => {
                   size="large"
                 />
               )}
-              <AuthButtonH3>OR</AuthButtonH3>
-              <GenericButton
-                variantText="outlined"
-                title="Continue with Google"
-                sx={{
+            </InputBoxes>
+          </FormProvider>
+          <SignInButtons>
+            <AuthButtonH3>OR</AuthButtonH3>
+            <GenericButton
+              variantText="outlined"
+              title="Continue with Google"
+              sx={{
+                backgroundColor: '#FFF',
+                borderColor: colors.button.pineGreen,
+                color: 'rgba(0, 0, 0, 0.60)',
+                textAlign: 'center',
+                fontSize: '14px',
+                width: '100%',
+                borderRadius: '12px',
+                hover: {
                   backgroundColor: '#FFF',
                   borderColor: colors.button.pineGreen,
-                  color: 'rgba(0, 0, 0, 0.60)',
-                  textAlign: 'center',
-                  fontSize: '14px',
-                  fontStyle: 'normal',
-                  fontWeight: '400',
-                  lineHeight: '137.14%',
-                  width: '100%',
-                  borderRadius: '12px',
-                  hover: {
-                    backgroundColor: '#FFF',
-                    borderColor: colors.button.pineGreen,
-                  },
-                }}
-                size="large"
-                icon={
-                  <img
-                    src={googleLogo}
-                    alt="google icon"
-                    style={{
-                      height: '100%',
-                      width: '100%',
-                      objectFit: 'cover',
-                    }}
-                  />
-                }
-              />
-            </SignInButtons>
-          </FormProvider>
+                },
+              }}
+              size="large"
+              icon={
+                <img
+                  src={googleLogo}
+                  alt="google icon"
+                  style={{
+                    height: '100%',
+                    width: '100%',
+                    objectFit: 'cover',
+                  }}
+                />
+              }
+            />
+          </SignInButtons>
           <CreateAccount>
             <GenericButton
               variantText="outlined"
@@ -124,10 +119,6 @@ const SignIn = () => {
                 color: colors.background.pineGreen,
                 textAlign: 'center',
                 fontSize: '15px',
-                fontFamily: 'Inter',
-                fontStyle: 'normal',
-                fontWeight: '400',
-                lineHeight: 'normal',
                 width: '100%',
                 height: '80%',
                 borderRadius: '12px',

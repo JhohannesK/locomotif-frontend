@@ -73,12 +73,13 @@ export const Instructions = styled.div`
   }
 `
 
-export const InputBoxes = styled.div`
+export const InputBoxes = styled.form`
   width: 100%;
-  height: 26.5%;
+  // height: 39%;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  // background-color:blue;
 `
 
 export const InputBoxLabels = styled.div`
@@ -94,7 +95,7 @@ export const InputBoxLabels = styled.div`
 
 export const SignInButtons = styled.div`
   width: 100%;
-  height: 25.3%;
+  height: 12.5%;
   display: flex;
   flex-direction: column;
   gap: 10%;
