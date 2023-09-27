@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { colors } from '../../../../colors'
+import Constants from '../../../../utils/constants'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -8,10 +9,19 @@ export const Wrapper = styled.div`
   align-items: center;
   background-color: ${colors.background.pineGreen};
   margin: 5px;
-  width: 20%;
+  width: 22rem;
   color: ${colors.text.white};
   padding: 7px;
   border-radius: 20px;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
+    display: none;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET} {
+    display: flex;
+    width: 40%;
+  }
 `
 
 export const LogoAndStepsWrapper = styled.div`
@@ -49,10 +59,18 @@ export const TextWrapper = styled.div`
 
 export const TitleStyles = styled.p`
   font-size: 17px;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET} {
+    font-size: 12px;
+  }
 `
 
 export const SubTitle = styled.p`
   font-size: 10px;
   font-weight: 100;
   opacity: 60%;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET} {
+    font-size: 8px;
+  }
 `

@@ -66,6 +66,7 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
           padding: '10px 20px',
           width: '100%',
           borderRadius: '12px',
+          fontSize: '14px',
         }}
       />
     </Wrapper>
