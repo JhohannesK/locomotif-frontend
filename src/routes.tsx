@@ -22,6 +22,10 @@ const routes = createBrowserRouter([
     element: <App />,
   },
   {
+    path: routhPaths.AUTH.signin,
+    element: <SignIn />,
+  },
+  {
     path: routhPaths.FACILITY.facility_signin,
     element: <SigninPageIns />,
   },
@@ -57,10 +61,6 @@ const routes = createBrowserRouter([
   {
     path: routhPaths.FACILITY.facility_dashboard,
     element: <FacilityHomePage />,
-  },
-  {
-    path: routhPaths.AUTH.signin,
-    element: <SignIn />,
   },
   {
     path: routhPaths.GetStarted,

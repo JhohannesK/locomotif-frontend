@@ -1,5 +1,10 @@
 export interface IAuth {
   authResponse: ResponseType
+  signInResponse: {
+    access_token: string
+    refresh_token: string
+    user_role: string
+  }
 }
 
 export type ResponseType = {
