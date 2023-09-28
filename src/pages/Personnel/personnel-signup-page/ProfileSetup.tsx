@@ -1,12 +1,12 @@
-import { AiOutlineUser } from 'react-icons/ai'
-import { FiKey } from 'react-icons/fi'
+import { AiFillCalendar } from 'react-icons/ai'
+import { FiMapPin } from 'react-icons/fi'
 import { colors } from '../../../colors'
 import {
   AuthUpperContent,
   AuthContainer,
   AuthText,
   AuthButton,
-  // AuthLogo,
+  //   AuthLogo,
   AuthFields,
   AuthContent,
   AuthLink,
@@ -19,6 +19,7 @@ import usePersonnelSignup from './hook/usePersonnelSignup'
 import { FormProvider } from 'react-hook-form'
 import routes from '../../../routes'
 import Constants from '../../../utils/constants'
+// import { BiMap } from 'react-icons/bi'
 
 const SignUpPage = () => {
   const { mutation, onSubmit, methods, error } = usePersonnelSignup()
@@ -39,47 +40,46 @@ const SignUpPage = () => {
                   style={{ height: '80%', width: '80%', objectFit: 'contain' }}
                 />
               </AuthLogo> */}
-              <h1>Sign Up</h1>
+              <h1>Set Up Your Profile</h1>
             </AuthUpperContent>
             <AuthFields>
               <GeneralInput
-                name="username"
-                label="Username"
-                icon={<AiOutlineUser />}
-                placeholder="mardar@gmail.com"
+                name="specialty"
+                label="Specialty"
+                // icon={<AiOutlineUser />}
+                placeholder="e.g: Neurosurgery"
               />
               <GeneralInput
-                name="first_name"
-                label="First Name"
-                icon={<AiOutlineUser />}
-                placeholder="Curtis"
+                name="registrationyear"
+                label="Year of Registration"
+                type="number"
+                icon={<AiFillCalendar />}
+                placeholder="2023"
               />
               <GeneralInput
-                name="last_name"
-                label="Last Name"
-                icon={<AiOutlineUser />}
+                name="DoB"
+                label="Date of Birth"
+                type="date"
+                InputProps={{
+                  inputProps: {
+                    min: `${new Date().getFullYear() - 70}-01-01`,
+                    max: new Date().toJSON().split('T')[0],
+                  },
+                }}
+                icon={<AiFillCalendar />}
                 placeholder="Jackson"
               />
               <GeneralInput
-                name="other_names"
-                label="Other names"
-                icon={<AiOutlineUser />}
-                placeholder="Lamptey-Odin"
+                name="location"
+                label="Location"
+                icon={<FiMapPin />}
+                placeholder="Lartebiokorshie"
               />
               <GeneralInput
-                name="password"
-                label="Password"
-                type="password"
-                icon={<FiKey />}
-                placeholder="*********"
-              />
-              <GeneralInput
-                name="confirmPassword"
-                label="Confirm Password"
-                type="password"
-                icon={<FiKey />}
-                placeholder="*********"
-                sx={{ marginBottom: '20px' }}
+                name="digitaladdress"
+                label="Digital Address"
+                icon={<FiMapPin />}
+                placeholder="e.g: GA-123-9876"
               />
             </AuthFields>
 

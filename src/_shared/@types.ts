@@ -20,8 +20,11 @@ export type GeneralInputType = {
   icon?: React.ReactNode
   placeholder: string
   label: string
-  type?: 'text' | 'password' | 'date'
+  type?: 'text' | 'password' | 'date' | 'number'
   disabled?: boolean
+  InputProps?: {
+    inputProps: { min: string; max: string }
+  }
 }
 
 export type GeneralBtnProps = {

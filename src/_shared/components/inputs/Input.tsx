@@ -12,6 +12,7 @@ const GeneralInput = ({
   type,
   name,
   disabled,
+  InputProps,
 }: GeneralInputType) => {
   const [showPassword, setShowPassword] = useState(false)
   const handleClickShowPassword = () => setShowPassword((show) => !show)
@@ -56,6 +57,7 @@ const GeneralInput = ({
             }
             sx={{ ...sx }}
             InputProps={{
+              ...InputProps,
               style: {
                 borderRadius: '10px',
               },
