@@ -19,7 +19,11 @@ import { colors } from '../../../../colors'
 import { ButtonsBox, SelectBox } from '../styles'
 import { TextField } from '@mui/material'
 
-const FacilitySetUpProfile = () => {
+const FacilitySetUpProfile = ({
+  handleActiveState,
+}: {
+  handleActiveState: (index: number) => void
+}) => {
   const { mutation, onSubmit, methods, error } = useFacilitySignUp()
   return (
     <>
@@ -97,6 +101,7 @@ const FacilitySetUpProfile = () => {
                   },
                 }}
                 size="large"
+                onClick={() => handleActiveState(4)}
               />
               <GenericButton
                 title="Next"

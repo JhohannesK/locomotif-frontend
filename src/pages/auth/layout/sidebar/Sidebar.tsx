@@ -31,7 +31,6 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
   const dispatch = useDispatch()
 
   const onHandleClick = (index: number) => {
-    console.log(index)
     dispatch(setActiveSidebar({ activeSidebar: index }))
   }
 

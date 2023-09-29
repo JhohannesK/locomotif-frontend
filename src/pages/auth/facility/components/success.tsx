@@ -9,9 +9,13 @@ import useFacilitySignUp from '../../../Facility/facility-signup-page/hook/useFa
 import { colors } from '../../../../colors'
 import { ImageBox, UpperContentH1 } from '../styles'
 import success_img from '.././../../../_shared/assets/success.png'
+import Constants from '../../../../utils/constants'
+import { useNavigate } from 'react-router-dom'
 
 const FacilitySuccess = () => {
   const { mutation, onSubmit, methods, error } = useFacilitySignUp()
+
+  const navigate = useNavigate()
   return (
     <>
       {mutation.isError && (
@@ -48,6 +52,9 @@ const FacilitySuccess = () => {
                 marginTop: '2rem',
               }}
               size="large"
+              onClick={() =>
+                navigate(Constants.ROUTES.FACILITY.facility_dashboard)
+              }
             />
           </AuthContent>
         </FormProvider>

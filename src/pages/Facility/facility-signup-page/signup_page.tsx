@@ -14,7 +14,6 @@ import {
 import image from '../../../_shared/assets/doctor_sign_in.png'
 import Constants from '../../../utils/constants'
 import routes from '../../../routes'
-import { genCode } from '../../../utils/genCode'
 import { LoadingButton } from '@mui/lab'
 import { GenericButton, GenericInput, Toast } from '../../../_shared'
 import useFacilitySignUp from './hook/useFacilitySignUp'
@@ -94,12 +93,6 @@ const SignUpPageIns = () => {
                 ></LoadingButton>
               ) : (
                 <GenericButton
-                  onClick={() =>
-                    methods.setValue(
-                      'facility_code',
-                      genCode(methods.getValues('name'))
-                    )
-                  }
                   title="Sign Up"
                   sx={{
                     backgroundColor: colors.button.pineGreen,
