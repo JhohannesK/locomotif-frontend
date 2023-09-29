@@ -81,7 +81,7 @@ export default Layout
 const LayoutStyles = styled.div`
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${colors.background.whiteSmoke};
 `
 const ComponentWrapper = styled.div`

@@ -10,9 +10,8 @@ export const AuthContainer = styled.div`
 `
 
 export const AuthContent = styled.form`
-  width: 50%;
+  width: clamp(260px, 90%, 500px);
   margin: auto;
-  min-width: 260px;
   // @media screen and (max-width: 1024px) {
   //   width: 60%;
   // }

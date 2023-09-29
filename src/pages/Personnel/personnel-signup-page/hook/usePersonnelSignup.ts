@@ -15,6 +15,7 @@ const schema = z
     last_name: z.string().min(2),
     other_names: z.string(),
     role: z.string(),
+    email: z.string().min(8).max(100),
     password: z.string().min(8).max(100),
     confirmPassword: z.string().min(8).max(100),
   })
@@ -34,6 +35,7 @@ const usePersonnelSignup = () => {
     last_name: '',
     other_names: '',
     role: 'personnel',
+    email: '',
     password: '',
     confirmPassword: '',
   }
@@ -61,11 +63,7 @@ const usePersonnelSignup = () => {
   })
 
   const onSubmit = (data: Schema) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { confirmPassword, ...rest } = data
-    console.log(rest)
-
-    mutation.mutate(rest)
+    mutation.mutate(data)
   }
 
   return { onSubmit, mutation, methods, error }
