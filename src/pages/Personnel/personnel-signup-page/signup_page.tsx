@@ -40,6 +40,8 @@ const SignUpPage = () => {
               <p>Please input your details as specified below</p>
             </AuthUpperContent>
             <AuthFields>
+              <AuthFieldsLabel>Username</AuthFieldsLabel>
+              <GeneralInput name="username" placeholder="mardar@gmail.com" />
               <AuthFieldsLabel>First Name</AuthFieldsLabel>
               <GeneralInput name="first_name" placeholder="Curtis" />
               <AuthFieldsLabel>Last Name</AuthFieldsLabel>
