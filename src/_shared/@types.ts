@@ -19,7 +19,7 @@ export type GeneralInputType = {
   sx?: SxProps
   icon?: React.ReactNode
   placeholder: string
-  label: string
+  label?: string
   type?: 'text' | 'password' | 'date' | 'number'
   disabled?: boolean
   InputProps?: {

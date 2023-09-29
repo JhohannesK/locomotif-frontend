@@ -2,9 +2,11 @@ import { useSelector } from 'react-redux'
 import { ConditionRenderComponent } from '../../../utils/ConditionRender'
 import Layout from '../layout'
 import { RootState } from '../../../redux/store'
-import TermsAndConditions from './TermsAndConditions'
+import TermsAndConditions from './components/terms_conditions'
 import SignUpPage from '../../Personnel/personnel-signup-page/signup_page'
-import ProfileSetup from '../../Personnel/personnel-signup-page/ProfileSetup'
+import ProfileSetup from './components/profile_setup'
+import FacilitySuccess from '../facility/components/success'
+import UploadCV from './components/upload_cv'
 
 const PersonnelSignup = () => {
   const activeState = useSelector((state: RootState) => state.app.activeSidebar)
@@ -20,10 +22,10 @@ const PersonnelSignup = () => {
         <ProfileSetup />
       </ConditionRenderComponent>
       <ConditionRenderComponent renderIf={activeState === 4}>
-        <div>The fourth component</div>
+        <UploadCV />
       </ConditionRenderComponent>
       <ConditionRenderComponent renderIf={activeState === 5}>
-        <div>The fifth component</div>
+        <FacilitySuccess />
       </ConditionRenderComponent>
     </Layout>
   )

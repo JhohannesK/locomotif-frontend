@@ -1,24 +1,22 @@
 import { AiFillCalendar } from 'react-icons/ai'
 import { FiMapPin } from 'react-icons/fi'
-import { colors } from '../../../colors'
+import { colors } from '../../../../colors'
 import {
   AuthUpperContent,
   AuthContainer,
-  AuthText,
-  AuthButton,
-  //   AuthLogo,
+  StepNavigateButtons,
   AuthFields,
   AuthContent,
-  AuthLink,
-} from '../../../_shared/auth_styles'
+  AuthFieldsLabel,
+} from '../../../../_shared/auth_styles'
 // import image from '../../../_shared/assets/doctor_sign_in.png'
-import { LoadingButton } from '@mui/lab'
-import GeneralInput from '../../../_shared/components/inputs/Input'
-import { GenericButton, Toast } from '../../../_shared'
-import usePersonnelSignup from './hook/usePersonnelSignup'
+// import { LoadingButton } from '@mui/lab'
+import GeneralInput from '../../../../_shared/components/inputs/Input'
+import { GenericButton, Toast } from '../../../../_shared'
+import usePersonnelSignup from '../../../Personnel/personnel-signup-page/hook/usePersonnelSignup'
 import { FormProvider } from 'react-hook-form'
-import routes from '../../../routes'
-import Constants from '../../../utils/constants'
+// import routes from '../../../../routes'
+// import Constants from '../../../../utils/constants'
 // import { BiMap } from 'react-icons/bi'
 
 const SignUpPage = () => {
@@ -43,22 +41,22 @@ const SignUpPage = () => {
               <h1>Set Up Your Profile</h1>
             </AuthUpperContent>
             <AuthFields>
+              <AuthFieldsLabel>Specialty</AuthFieldsLabel>
               <GeneralInput
                 name="specialty"
-                label="Specialty"
                 // icon={<AiOutlineUser />}
                 placeholder="e.g: Neurosurgery"
               />
+              <AuthFieldsLabel>Year of Registration</AuthFieldsLabel>
               <GeneralInput
                 name="registrationyear"
-                label="Year of Registration"
                 type="number"
                 icon={<AiFillCalendar />}
                 placeholder="2023"
               />
+              <AuthFieldsLabel>Date of Birth</AuthFieldsLabel>
               <GeneralInput
                 name="DoB"
-                label="Date of Birth"
                 type="date"
                 InputProps={{
                   inputProps: {
@@ -69,22 +67,43 @@ const SignUpPage = () => {
                 icon={<AiFillCalendar />}
                 placeholder="Jackson"
               />
+              <AuthFieldsLabel>Location</AuthFieldsLabel>
               <GeneralInput
                 name="location"
-                label="Location"
                 icon={<FiMapPin />}
                 placeholder="Lartebiokorshie"
               />
+              <AuthFieldsLabel>Digital Address</AuthFieldsLabel>
               <GeneralInput
                 name="digitaladdress"
-                label="Digital Address"
                 icon={<FiMapPin />}
                 placeholder="e.g: GA-123-9876"
               />
             </AuthFields>
 
-            <AuthButton>
-              {mutation.isLoading ? (
+            <StepNavigateButtons>
+              <GenericButton
+                sx={{
+                  backgroundColor: colors.button.white,
+                  color: colors.text.pineGreen,
+                  width: '100%',
+                  // border:`2px solid ${colors.border.pineGreen}`,
+                  borderRadius: '10px',
+                }}
+                title="Skip"
+                size="medium"
+                variantText="outlined"
+              />
+              <GenericButton
+                sx={{
+                  backgroundColor: colors.button.pineGreen,
+                  width: '100%',
+                  borderRadius: '10px',
+                }}
+                title="Next"
+                size="medium"
+              />
+              {/* {mutation.isLoading ? (
                 <LoadingButton
                   loading
                   sx={{
@@ -101,19 +120,8 @@ const SignUpPage = () => {
                   title="Sign Up"
                   size="large"
                 />
-              )}
-            </AuthButton>
-            <AuthText>
-              Already have an account ?{' '}
-              <AuthLink
-                onClick={() =>
-                  routes.navigate(Constants.ROUTES.PERSONNEL.personnel_signin)
-                }
-              >
-                {' '}
-                Sign In
-              </AuthLink>
-            </AuthText>
+              )} */}
+            </StepNavigateButtons>
           </AuthContent>
         </FormProvider>
       </AuthContainer>

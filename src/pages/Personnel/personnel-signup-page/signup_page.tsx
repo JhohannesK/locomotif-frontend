@@ -10,6 +10,7 @@ import {
   AuthFields,
   AuthContent,
   AuthLink,
+  AuthFieldsLabel,
 } from '../../../_shared/auth_styles'
 // import image from '../../../_shared/assets/doctor_sign_in.png'
 import { LoadingButton } from '@mui/lab'
@@ -42,40 +43,40 @@ const SignUpPage = () => {
               <h1>Sign Up</h1>
             </AuthUpperContent>
             <AuthFields>
+              <AuthFieldsLabel>Username</AuthFieldsLabel>
               <GeneralInput
                 name="username"
-                label="Username"
                 icon={<AiOutlineUser />}
                 placeholder="mardar@gmail.com"
               />
+              <AuthFieldsLabel>First Name</AuthFieldsLabel>
               <GeneralInput
                 name="first_name"
-                label="First Name"
                 icon={<AiOutlineUser />}
                 placeholder="Curtis"
               />
+              <AuthFieldsLabel>Last Name</AuthFieldsLabel>
               <GeneralInput
                 name="last_name"
-                label="Last Name"
                 icon={<AiOutlineUser />}
                 placeholder="Jackson"
               />
+              <AuthFieldsLabel>Other Name</AuthFieldsLabel>
               <GeneralInput
                 name="other_names"
-                label="Other names"
                 icon={<AiOutlineUser />}
                 placeholder="Lamptey-Odin"
               />
+              <AuthFieldsLabel>Password</AuthFieldsLabel>
               <GeneralInput
                 name="password"
-                label="Password"
                 type="password"
                 icon={<FiKey />}
                 placeholder="*********"
               />
+              <AuthFieldsLabel>Confirm Password</AuthFieldsLabel>
               <GeneralInput
                 name="confirmPassword"
-                label="Confirm Password"
                 type="password"
                 icon={<FiKey />}
                 placeholder="*********"

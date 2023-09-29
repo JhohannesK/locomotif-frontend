@@ -12,7 +12,7 @@ import {
   Welcome,
   WelcomeBack,
 } from './styles'
-import useSignIn from './hook/useSginIn'
+import useSignIn from './hook/useSignIn'
 import { LoadingButton } from '@mui/lab'
 import { colors } from '../../../colors'
 // import { genCode } from "../../../utils/genCode";

@@ -14,12 +14,14 @@ export const colors = {
   },
   text: {
     night: '#0C120C',
+    pineGreen: '#0E6655',
     platinum: '#D9D9D9',
     white: '#FEFFFE',
   },
   border: {
     danger: '#EA5455',
     active: '#0E6655',
+    pineGreen: '#0E6655',
     whiteSmoke: '#F5F5F5',
     raisinBlack: '#202030',
   },
