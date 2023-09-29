@@ -60,7 +60,7 @@ const useFacilitySignUp = () => {
     mutation.mutate(payload)
   }
 
-  return { onSubmit, mutation, methods, error, defaultValues }
+  return { onSubmit, mutation, methods, error }
 }
 
 export default useFacilitySignUp

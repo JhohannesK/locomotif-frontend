@@ -4,7 +4,7 @@ import {
   AuthContent,
   AuthUpperContent,
 } from '../../../../_shared/auth_styles'
-import { GenericButton, Toast } from '../../../../_shared'
+import { GenericButton } from '../../../../_shared'
 import useFacilitySignUp from '../../../Facility/facility-signup-page/hook/useFacilitySignUp'
 import { colors } from '../../../../colors'
 import { ImageBox, UpperContentH1 } from '../styles'
@@ -13,14 +13,11 @@ import Constants from '../../../../utils/constants'
 import { useNavigate } from 'react-router-dom'
 
 const FacilitySuccess = () => {
-  const { mutation, onSubmit, methods, error } = useFacilitySignUp()
+  const { onSubmit, methods } = useFacilitySignUp()
 
   const navigate = useNavigate()
   return (
     <>
-      {mutation.isError && (
-        <Toast open={mutation.isError} type="error" children={error} />
-      )}
       <AuthContainer>
         <FormProvider {...methods}>
           <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
