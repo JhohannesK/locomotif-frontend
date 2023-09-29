@@ -4,7 +4,7 @@ import {
   AuthContent,
   AuthUpperContent,
 } from '../../../../_shared/auth_styles'
-import { GenericButton } from '../../../../_shared'
+import { GenericButton, Toast } from '../../../../_shared'
 import useFacilitySignUp from '../../../Facility/facility-signup-page/hook/useFacilitySignUp'
 import { colors } from '../../../../colors'
 import { UpperContentH1 } from '../styles'
@@ -20,8 +20,7 @@ const FacilityTermsAndCondions = ({
     password: string
   }
 }) => {
-  const { methods, onSubmit, mutation } = useFacilitySignUp()
-  console.log(userData)
+  const { methods, onSubmit, mutation, error } = useFacilitySignUp()
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault() // Prevent the default form submission behavior
@@ -29,6 +28,9 @@ const FacilityTermsAndCondions = ({
   }
   return (
     <>
+      {mutation.isError && (
+        <Toast open={mutation.isError} type="error" children={error} />
+      )}
       <AuthContainer>
         <FormProvider {...methods}>
           <AuthContent onSubmit={handleSubmit}>
