@@ -16,10 +16,10 @@ export const theme = createTheme({
           width: 'fit-content',
           padding: 0,
           margin: 0,
-          '&:hover': {
-            background: colors.button.pineGreen,
-            borderColor: colors.button.pineGreen,
-          },
+          // '&:hover': {
+          //   background: colors.button.pineGreen,
+          //   borderColor: colors.button.pineGreen,
+          // },
         },
       },
     },

@@ -24,7 +24,7 @@ const FacilityTermsAndCondions = () => {
             </AuthUpperContent>
 
             <GenericButton
-              title="I Agree"
+              title="I Agree & Sign Up"
               sx={{
                 backgroundColor: colors.button.pineGreen,
                 width: '100%',

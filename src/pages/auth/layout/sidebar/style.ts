@@ -44,16 +44,23 @@ export const StepperWrapper = styled.div`
   font-weight: 600;
   letter-spacing: 1px;
 `
-export const BoxStyle = styled.div`
+export const BoxStyle = styled.button`
   display: flex;
   gap: 1rem;
   align-items: center;
+  justify-content: flex-start;
   cursor: pointer;
+  background-color: inherit;
+  outline: none;
+  border: none;
+  color: ${colors.text.white};
 `
 
 export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
   gap: 1px;
 `
 
@@ -66,11 +73,11 @@ export const TitleStyles = styled.p`
 `
 
 export const SubTitle = styled.p`
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 100;
   opacity: 60%;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET} {
-    font-size: 8px;
+    font-size: 10px;
   }
 `
