@@ -73,7 +73,7 @@ const FacilityCreateAccount = () => {
                       genCode(methods.getValues('name'))
                     )
                   }
-                  title="Sign Up"
+                  title="Continue "
                   sx={{
                     backgroundColor: colors.button.pineGreen,
                     width: '100%',
@@ -84,6 +84,9 @@ const FacilityCreateAccount = () => {
                     fontStyle: 'normal',
                     fontWeight: '400',
                     lineHeight: '137.14%',
+                    ':hover': {
+                      backgroundColor: colors.button.pineGreen,
+                    },
                   }}
                   size="large"
                 />
