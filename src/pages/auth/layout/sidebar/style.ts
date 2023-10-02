@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   align-items: center;
   background-color: ${colors.background.pineGreen};
   margin: 5px;
-  width: 22rem;
+  width: 30rem;
   color: ${colors.text.white};
   padding: 7px;
   border-radius: 20px;
