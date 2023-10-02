@@ -40,7 +40,6 @@ const useFacilitySignUp = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: FacilitySignUpPayload) => {
-      console.log('🚀 ~ file: signup_page.tsx:46 ~ mutationFn: ~ data:', data)
       await axios.post(`${Constants.BaseURL}auth/signup/`, data)
     },
     onSuccess: () => onHandleClick(3),

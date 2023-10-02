@@ -5,7 +5,7 @@ import {
   AuthUpperContent,
 } from '../../../../_shared/auth_styles'
 import { GenericButton } from '../../../../_shared'
-import useFacilitySignUp from '../../../Facility/facility-signup-page/hook/useFacilitySignUp'
+import useFacilitySignUp from '../hook/useFacilitySignUp'
 import { colors } from '../../../../colors'
 import { ImageBox, UpperContentH1 } from '../styles'
 import success_img from '.././../../../_shared/assets/success.png'

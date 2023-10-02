@@ -9,7 +9,7 @@ import {
   AuthUpperContentP,
 } from '../../../../_shared/auth_styles'
 import { GenericButton, GenericInput, GenericSelect } from '../../../../_shared'
-import useFacilitySignUp from '../../../Facility/facility-signup-page/hook/useFacilitySignUp'
+import useFacilitySignUp from '../hook/useFacilitySignUp'
 import { colors } from '../../../../colors'
 import { ButtonsBox, SelectBox } from '../styles'
 import { TextField } from '@mui/material'
@@ -109,6 +109,7 @@ const FacilitySetUpProfile = ({
                   lineHeight: '137.14%',
                 }}
                 size="large"
+                onClick={() => handleActiveState(4)}
               />
             </ButtonsBox>
           </AuthContent>
