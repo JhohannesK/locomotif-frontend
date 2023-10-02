@@ -30,7 +30,7 @@ padding-left:13px;
 export const WorkExperienceTitleContainer = styled.div`
   color: ${colors.text.night};
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Inter;
+  font-family: Roboto;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;

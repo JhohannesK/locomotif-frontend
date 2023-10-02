@@ -61,7 +61,7 @@ const Constants = {
       },
       {
         title: 'Terms and Conditions',
-        subTitle: 'Read and accept our terms and conditions',
+        subTitle: 'Accept our terms and conditions',
       },
       {
         title: 'Create Profile',
@@ -88,7 +88,7 @@ const Constants = {
       },
       {
         title: 'Terms and Conditions',
-        subTitle: 'Read and accept our terms and conditions',
+        subTitle: 'Accept our terms and conditions',
       },
       {
         title: 'Create Profile',

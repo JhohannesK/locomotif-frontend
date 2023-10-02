@@ -8,7 +8,7 @@ export const theme = createTheme({
         root: {
           fontSize: '1rem',
           fontWeight: 'bold',
-          fontFamily: 'Inter',
+          fontFamily: 'Roboto',
           color: 'white',
           background: colors.button.pineGreen,
           transition: 'ease-in-out',
@@ -28,7 +28,7 @@ export const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          fontFamily: 'Inter',
+          fontFamily: 'Roboto',
           gap: '1rem',
           width: '100%',
         },
@@ -42,7 +42,7 @@ export const theme = createTheme({
     MuiSelect: {
       styleOverrides: {
         select: {
-          fontFamily: 'Inter',
+          fontFamily: 'Roboto',
           width: '100%',
 
           '.MuiOutlinedInput-notchedOutline': {
@@ -62,7 +62,7 @@ export const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
-          fontFamily: 'Inter',
+          fontFamily: 'Roboto',
           '& label.Mui-focused': {
             color: colors.button.pineGreen,
           },
@@ -78,7 +78,7 @@ export const theme = createTheme({
     MuiAccordion: {
       styleOverrides: {
         root: {
-          fontFamily: 'Inter',
+          fontFamily: 'Roboto',
           width: '100%',
           '& .MuiAccordionSummary-content': {
             '& .MuiTypography-root': {
@@ -100,7 +100,7 @@ export const theme = createTheme({
           '& .MuiLoadingButton-loadingIndicator': {
             color: 'white',
           },
-          fontFamily: 'Inter',
+          fontFamily: 'Roboto',
         },
       },
     },

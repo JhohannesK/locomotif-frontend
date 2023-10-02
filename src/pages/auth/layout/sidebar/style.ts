@@ -62,7 +62,7 @@ export const TextWrapper = styled.div`
   align-items: start;
   justify-content: flex-start;
   gap: 1px;
-  font-family: 'Inter';
+  font-family: 'Roboto';
 `
 
 export const TitleStyles = styled.p`
