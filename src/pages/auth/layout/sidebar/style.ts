@@ -49,7 +49,24 @@ export const BoxStyle = styled.button<{ grayOut: number; tabIndex: number }>`
   gap: 1rem;
   align-items: center;
   justify-content: flex-start;
-  cursor: pointer;
+  cursor: ${(props) =>
+    props.grayOut === 1
+      ? props.tabIndex > 1
+        ? 'default'
+        : 'pointer'
+      : props.grayOut === 2
+      ? props.tabIndex > 2
+        ? 'default'
+        : 'pointer'
+      : props.grayOut === 3
+      ? props.tabIndex < 3
+        ? 'default'
+        : 'pointer'
+      : props.grayOut === 4
+      ? props.tabIndex < 3
+        ? 'default'
+        : 'pointer'
+      : 'pointer'};
   background-color: inherit;
   outline: none;
   border: none;
