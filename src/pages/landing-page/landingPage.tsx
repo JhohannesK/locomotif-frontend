@@ -34,7 +34,7 @@ function LandingPage() {
               }}
             >
               <img src={facility} alt="facility" />
-              <div>Join As a health Care Facility</div>
+              <div>Join As a Health Care Facility</div>
             </Facility>
             <Personnel
               onClick={() => {

@@ -1,4 +1,4 @@
-import { LoadingButton } from '@mui/lab'
+// import { LoadingButton } from '@mui/lab'
 import { FormProvider } from 'react-hook-form'
 import {
   AuthButton,
@@ -11,22 +11,38 @@ import {
   AuthUpperContentH2,
   AuthUpperContentP,
 } from '../../../../_shared/auth_styles'
-import { GenericButton, GenericInput, Toast } from '../../../../_shared'
-import useFacilitySignUp from '../../../Facility/facility-signup-page/hook/useFacilitySignUp'
+import { GenericButton, GenericInput } from '../../../../_shared'
+import useFacilitySignUp from '../hook/useFacilitySignUp'
 import { colors } from '../../../../colors'
-import { genCode } from '../../../../utils/genCode'
 import google_logo from '../../../../_shared/assets/google_logo.png'
 
-const FacilityCreateAccount = () => {
-  const { mutation, onSubmit, methods, error } = useFacilitySignUp()
+const FacilityCreateAccount = ({
+  handleActiveState,
+  handleUserData,
+}: {
+  handleActiveState: (index: number) => void
+  handleUserData: (userData: {
+    name: string
+    email: string
+    password: string
+  }) => void
+}) => {
+  const { methods } = useFacilitySignUp()
+
+  const onSubmit = (data: {
+    name: string
+    email: string
+    password: string
+  }) => {
+    handleActiveState(2)
+    handleUserData(data)
+  }
+
   return (
     <>
-      {mutation.isError && (
-        <Toast open={mutation.isError} type="error" children={error} />
-      )}
       <AuthContainer>
         <FormProvider {...methods}>
-          <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
+          <AuthContent>
             <AuthUpperContent>
               <AuthUpperContentH2>Create Your Account</AuthUpperContentH2>
               <AuthUpperContentP>
@@ -57,40 +73,23 @@ const FacilityCreateAccount = () => {
               />
             </AuthFields>
             <AuthButton>
-              {mutation.isLoading ? (
-                <LoadingButton
-                  loading
-                  sx={{
-                    backgroundColor: colors.button.pineGreen,
-                    width: '100%',
-                  }}
-                ></LoadingButton>
-              ) : (
-                <GenericButton
-                  onClick={() =>
-                    methods.setValue(
-                      'facility_code',
-                      genCode(methods.getValues('name'))
-                    )
-                  }
-                  title="Continue "
-                  sx={{
-                    backgroundColor: colors.button.pineGreen,
-                    width: '100%',
-                    borderRadius: '10px',
-                    color: '#F6FBFF',
-                    textAlign: 'center',
-                    fontSize: '14px',
-                    fontStyle: 'normal',
-                    fontWeight: '400',
-                    lineHeight: '137.14%',
-                    ':hover': {
-                      backgroundColor: colors.button.pineGreen,
-                    },
-                  }}
-                  size="large"
-                />
-              )}
+              <GenericButton
+                title="Sign Up"
+                sx={{
+                  backgroundColor: colors.button.pineGreen,
+                  width: '100%',
+                  borderRadius: '10px',
+                  color: '#F6FBFF',
+                  textAlign: 'center',
+                  fontSize: '14px',
+                  fontStyle: 'normal',
+                  fontWeight: '400',
+                  lineHeight: '137.14%',
+                }}
+                size="large"
+                onClick={methods.handleSubmit(onSubmit)}
+              />
+              {/* )} */}
               <AuthButtonH3>OR</AuthButtonH3>
               <GenericButton
                 variantText="outlined"

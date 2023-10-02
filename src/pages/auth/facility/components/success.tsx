@@ -4,19 +4,20 @@ import {
   AuthContent,
   AuthUpperContent,
 } from '../../../../_shared/auth_styles'
-import { GenericButton, Toast } from '../../../../_shared'
-import useFacilitySignUp from '../../../Facility/facility-signup-page/hook/useFacilitySignUp'
+import { GenericButton } from '../../../../_shared'
+import useFacilitySignUp from '../hook/useFacilitySignUp'
 import { colors } from '../../../../colors'
 import { ImageBox, UpperContentH1 } from '../styles'
 import success_img from '.././../../../_shared/assets/success.png'
+import Constants from '../../../../utils/constants'
+import { useNavigate } from 'react-router-dom'
 
 const FacilitySuccess = () => {
-  const { mutation, onSubmit, methods, error } = useFacilitySignUp()
+  const { onSubmit, methods } = useFacilitySignUp()
+
+  const navigate = useNavigate()
   return (
     <>
-      {mutation.isError && (
-        <Toast open={mutation.isError} type="error" children={error} />
-      )}
       <AuthContainer>
         <FormProvider {...methods}>
           <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
@@ -48,6 +49,9 @@ const FacilitySuccess = () => {
                 marginTop: '2rem',
               }}
               size="large"
+              onClick={() =>
+                navigate(Constants.ROUTES.FACILITY.facility_dashboard)
+              }
             />
           </AuthContent>
         </FormProvider>
