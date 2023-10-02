@@ -48,6 +48,7 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
     if (activeSidebar === 4) {
       if (index < 3) return true
     }
+    return false
   }
 
   return (
@@ -58,6 +59,8 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
         <StepperWrapper>
           {steps.map((step, index) => (
             <BoxStyle
+              grayOut={activeSidebar}
+              tabIndex={index}
               disabled={onDisable(index)}
               key={index}
               onClick={() => onHandleClick(index)}
