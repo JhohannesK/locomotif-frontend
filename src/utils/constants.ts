@@ -1,6 +1,6 @@
 const Constants = {
   BaseURL: 'https://locomotif-backend.onrender.com/api/',
-  DevBaseURL: 'https://locomotif-backend-pr-61.onrender.com/api/',
+  DevBaseURL: 'https://locomotif-backend-pr-65.onrender.com/api/',
 
   ROUTES: {
     root: '/',
@@ -48,6 +48,58 @@ const Constants = {
   },
 
   isMenuOpen: true,
+
+  SIDEBAR: {
+    PersonnelSteps: [
+      {
+        title: 'Personnel or Facility',
+        subTitle: 'Join us as a Personnel or Facility',
+      },
+      {
+        title: 'Create an account',
+        subTitle: 'Create an account to get started',
+      },
+      {
+        title: 'Terms and Conditions',
+        subTitle: 'Accept our terms and conditions',
+      },
+      {
+        title: 'Create Profile',
+        subTitle: 'Provide us with your details',
+      },
+      {
+        title: 'Upload your CV',
+        subTitle: 'Upload your CV and other documents',
+      },
+      {
+        title: 'Completed',
+        subTitle: 'You are all set',
+      },
+    ],
+
+    FacilitySteps: [
+      {
+        title: 'Personnel or Facility',
+        subTitle: 'Join us as a Personnel or Facility',
+      },
+      {
+        title: 'Create an account',
+        subTitle: 'Create an account to get started',
+      },
+      {
+        title: 'Terms and Conditions',
+        subTitle: 'Accept our terms and conditions',
+      },
+      {
+        title: 'Create Profile',
+        subTitle: 'Setup your facility profile page',
+      },
+      {
+        title: 'Completed',
+        subTitle: 'You are all set',
+      },
+    ],
+  },
 }
 
 export default Constants
