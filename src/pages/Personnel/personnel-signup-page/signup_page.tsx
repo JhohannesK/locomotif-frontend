@@ -1,24 +1,21 @@
-import { AiOutlineUser } from 'react-icons/ai'
-import { FiKey } from 'react-icons/fi'
 import { colors } from '../../../colors'
 import {
   AuthUpperContent,
   AuthContainer,
-  AuthText,
   AuthButton,
-  AuthLogo,
+  // AuthLogo,
   AuthFields,
   AuthContent,
-  AuthLink,
+  AuthFieldsLabel,
 } from '../../../_shared/auth_styles'
-import image from '../../../_shared/assets/doctor_sign_in.png'
+// import image from '../../../_shared/assets/doctor_sign_in.png'
 import { LoadingButton } from '@mui/lab'
 import GeneralInput from '../../../_shared/components/inputs/Input'
 import { GenericButton, Toast } from '../../../_shared'
 import usePersonnelSignup from './hook/usePersonnelSignup'
 import { FormProvider } from 'react-hook-form'
-import routes from '../../../routes'
-import Constants from '../../../utils/constants'
+// import routes from '../../../routes'
+// import Constants from '../../../utils/constants'
 
 const SignUpPage = () => {
   const { mutation, onSubmit, methods, error } = usePersonnelSignup()
@@ -32,52 +29,42 @@ const SignUpPage = () => {
         <FormProvider {...methods}>
           <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
             <AuthUpperContent>
-              <AuthLogo>
+              {/* <AuthLogo>
                 <img
                   src={image}
                   alt="health-leaf icon"
                   style={{ height: '80%', width: '80%', objectFit: 'contain' }}
                 />
-              </AuthLogo>
-              <h1>Sign Up</h1>
+              </AuthLogo> */}
+              <h1>Create Your Account</h1>
+              <p>Please input your details as specified below</p>
             </AuthUpperContent>
             <AuthFields>
+              <AuthFieldsLabel>Username</AuthFieldsLabel>
+              <GeneralInput name="username" placeholder="mardar@gmail.com" />
+              <AuthFieldsLabel>First Name</AuthFieldsLabel>
+              <GeneralInput name="first_name" placeholder="Curtis" />
+              <AuthFieldsLabel>Last Name</AuthFieldsLabel>
+              <GeneralInput name="last_name" placeholder="Jackson" />
+              <AuthFieldsLabel>Other Names</AuthFieldsLabel>
+              <GeneralInput name="other_names" placeholder="Lamptey-Odin" />
+              <AuthFieldsLabel>Email address</AuthFieldsLabel>
               <GeneralInput
-                name="username"
-                label="Username"
-                icon={<AiOutlineUser />}
-                placeholder="mardar@gmail.com"
+                name="email"
+                placeholder="e.g. Averywilson64@gmail.com"
               />
-              <GeneralInput
-                name="first_name"
-                label="First Name"
-                icon={<AiOutlineUser />}
-                placeholder="Curtis"
-              />
-              <GeneralInput
-                name="last_name"
-                label="Last Name"
-                icon={<AiOutlineUser />}
-                placeholder="Jackson"
-              />
-              <GeneralInput
-                name="other_names"
-                label="Other names"
-                icon={<AiOutlineUser />}
-                placeholder="Lamptey-Odin"
-              />
+              <AuthFieldsLabel>Password</AuthFieldsLabel>
               <GeneralInput
                 name="password"
-                label="Password"
                 type="password"
-                icon={<FiKey />}
+                // icon={<FiKey />}
                 placeholder="*********"
               />
+              <AuthFieldsLabel>Confirm Password</AuthFieldsLabel>
               <GeneralInput
                 name="confirmPassword"
-                label="Confirm Password"
                 type="password"
-                icon={<FiKey />}
+                // icon={<FiKey />}
                 placeholder="*********"
                 sx={{ marginBottom: '20px' }}
               />
@@ -103,17 +90,6 @@ const SignUpPage = () => {
                 />
               )}
             </AuthButton>
-            <AuthText>
-              Already have an account ?{' '}
-              <AuthLink
-                onClick={() =>
-                  routes.navigate(Constants.ROUTES.PERSONNEL.personnel_signin)
-                }
-              >
-                {' '}
-                Sign In
-              </AuthLink>
-            </AuthText>
           </AuthContent>
         </FormProvider>
       </AuthContainer>

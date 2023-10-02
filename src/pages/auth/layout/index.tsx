@@ -32,10 +32,9 @@ export default Layout
 const LayoutStyles = styled.div`
   display: flex;
   flex-direction: row;
-  height: 100vh;
-  gap: 20%;
+  min-height: 100vh;
   background-color: ${colors.background.whiteSmoke};
 `
 const ComponentWrapper = styled.div`
-  width: 60%;
+  width: 100%;
 `

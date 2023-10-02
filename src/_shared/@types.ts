@@ -19,9 +19,12 @@ export type GeneralInputType = {
   sx?: SxProps
   icon?: React.ReactNode
   placeholder: string
-  label: string
-  type?: 'text' | 'password' | 'date'
+  label?: string
+  type?: 'text' | 'password' | 'date' | 'number'
   disabled?: boolean
+  InputProps?: {
+    inputProps: { min: string; max: string }
+  }
 }
 
 export type GeneralBtnProps = {
