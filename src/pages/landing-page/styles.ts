@@ -23,7 +23,7 @@ export const Content = styled.div`
 export const Logo = styled.div`
   top: 0;
   color: var(--Primary-Color, #0e6655);
-  font-family: Inter;
+  font-family: Roboto;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
@@ -70,7 +70,7 @@ export const BottomContent = styled.div`
 export const GetStarted = styled.div`
   color: #000;
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Inter;
+  font-family: Roboto;
   font-size: 1.5em;
   font-style: normal;
   font-weight: 700;
@@ -84,7 +84,7 @@ export const GetStarted = styled.div`
 `
 export const JoinLocomotif = styled.div`
   color: var(--Tertiary, rgba(0, 0, 0, 0.7));
-  font-family: Inter;
+  font-family: Roboto;
   font-size: 1em;
   font-style: normal;
   font-weight: 400;
@@ -121,7 +121,7 @@ export const Facility = styled.div`
     text-align: left;
     color: #fff;
     /* Main Header */
-    font-family: Inter;
+    font-family: Roboto;
     font-size: 25px;
     font-style: normal;
     font-weight: 600;
@@ -148,7 +148,7 @@ export const Personnel = styled.div`
   div {
     color: #fff;
     /* Semi bold */
-    font-family: Inter;
+    font-family: Roboto;
     font-size: 25px;
     font-style: normal;
     font-weight: 600;
