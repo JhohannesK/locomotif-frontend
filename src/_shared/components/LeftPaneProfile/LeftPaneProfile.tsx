@@ -41,7 +41,7 @@ const LeftPaneProfile = ({
           borderRadius: '10px',
           color: `${colors.button.white}`,
           textAlign: 'center',
-          fontFamily: 'Helvetica',
+          fontFamily: 'Roboto',
           fontSize: '15px',
           fontWeight: '400',
           lineHeight: '137.14%',

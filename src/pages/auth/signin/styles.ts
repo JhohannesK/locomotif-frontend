@@ -25,7 +25,7 @@ export const Logo = styled.div`
   width: 100%;
   height: 6.34%;
   color: var(--Primary-Color, #0e6655);
-  font-family: Helvetica;
+  font-family: Roboto;
   font-size: 25px;
   font-style: normal;
   font-weight: 700;
@@ -47,7 +47,7 @@ export const Welcome = styled.div`
 export const WelcomeBack = styled.div`
   color: #000;
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Helvetica;
+  font-family: Roboto;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
@@ -86,7 +86,7 @@ export const InputBoxLabels = styled.div`
   color: rgba(0, 0, 0, 0.8);
 
   /* Paragraph Text */
-  font-family: Inter;
+  font-family: Roboto;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;

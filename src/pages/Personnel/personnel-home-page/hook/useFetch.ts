@@ -6,7 +6,7 @@ import axios from 'axios'
 const useFetch = () => {
   const fetchPostings = async (): Promise<JobCardProps[]> => {
     const response = await axios.get<JobCardProps[]>(
-      `${Constants.BaseURL}postings/`
+      `${Constants.DevBaseURL}auth/profile/`
     )
     return response.data
   }

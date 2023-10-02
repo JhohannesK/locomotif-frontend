@@ -7,21 +7,21 @@ export const AuthContainer = styled.div`
   width: 100%;
   height: 100vh;
   justify-content: flex-start;
-  // padding-left: 25%;
 `
 
 export const AuthContent = styled.form`
-  // width: 40%;
-  @media screen and (max-width: 1024px) {
-    width: 60%;
-  }
-  @media screen and (max-width: 769px) {
-    width: 70%;
-  }
+  width: clamp(260px, 90%, 500px);
+  margin: auto;
+  // @media screen and (max-width: 1024px) {
+  //   width: 60%;
+  // }
+  // @media screen and (max-width: 769px) {
+  //   width: 70%;
+  // }
 
-  @media screen and (max-width: 600px) {
-    width: 80%;
-  }
+  // @media screen and (max-width: 600px) {
+  //   width: 80%;
+  // }
 `
 
 export const AuthUpperContent = styled.div`
@@ -89,6 +89,13 @@ export const AuthButton = styled.div`
   gap: 10px;
   margin-top: 1rem;
 `
+export const StepNavigateButtons = styled.div`
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+`
+
 export const AuthButtonH3 = styled.h3`
   display: flex;
   flex-direction: row;

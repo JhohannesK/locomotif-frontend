@@ -2,66 +2,17 @@ import React from 'react'
 import Sidebar from './sidebar/Sidebar'
 import styled from 'styled-components'
 import { colors } from '../../../colors'
-
-const PersonnelSteps = [
-  {
-    title: 'Personnel or Facility',
-    subTitle: 'Join us as a Personnel or Facility',
-  },
-  {
-    title: 'Create an account',
-    subTitle: 'Create an account to get started',
-  },
-  {
-    title: 'Terms and Conditions',
-    subTitle: 'Read and accept our terms and conditions',
-  },
-  {
-    title: 'Create Profile',
-    subTitle: 'Provide us with your details',
-  },
-  {
-    title: 'Upload your CV',
-    subTitle: 'Upload your CV and other documents',
-  },
-  {
-    title: 'Completed',
-    subTitle: 'You are all set',
-  },
-]
-
-const FacilitySteps = [
-  {
-    title: 'Personnel or Facility',
-    subTitle: 'Join us as a Personnel or Facility',
-  },
-  {
-    title: 'Create an account',
-    subTitle: 'Create an account to get started',
-  },
-  {
-    title: 'Terms and Conditions',
-    subTitle: 'Read and accept our terms and conditions',
-  },
-  {
-    title: 'Create Profile',
-    subTitle: 'Setup your facility profile page',
-  },
-  {
-    title: 'Completed',
-    subTitle: 'You are all set',
-  },
-]
+import Constants from '../../../utils/constants'
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const currentRoute = window.location.pathname
   const checkWhichRoute = () => {
     const route = currentRoute.split('/')
     if (route[1] === 'personnel') {
-      return PersonnelSteps
+      return Constants.SIDEBAR.PersonnelSteps
     }
     if (route[1] === 'facility') {
-      return FacilitySteps
+      return Constants.SIDEBAR.FacilitySteps
     }
     return []
   }
@@ -81,10 +32,9 @@ export default Layout
 const LayoutStyles = styled.div`
   display: flex;
   flex-direction: row;
-  height: 100vh;
-  gap: 20%;
+  min-height: 100vh;
   background-color: ${colors.background.whiteSmoke};
 `
 const ComponentWrapper = styled.div`
-  width: 60%;
+  width: 100%;
 `

@@ -18,7 +18,7 @@ export const LeftProfileButtonContainer = styled.div``
 
 export const LeftProfileNameContainer = styled.div`
   color: #000000;
-  font-family: Helvetica;
+  font-family: Roboto;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -26,7 +26,7 @@ export const LeftProfileNameContainer = styled.div`
 `
 
 export const LeftProfileWorkContainer = styled.div`
-  font-family: Helvetica;
+  font-family: Roboto;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -35,7 +35,7 @@ export const LeftProfileWorkContainer = styled.div`
 `
 
 export const LeftProfileWorkExperienceContainer = styled.span`
-  font-family: Helvetica;
+  font-family: Roboto;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;

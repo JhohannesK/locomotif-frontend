@@ -6,23 +6,19 @@ import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import Constants from '../../../../utils/constants'
 import { setErrorMessages } from '../../../../utils/util'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
-const schema = z
-  .object({
-    username: z.string().min(3),
-    first_name: z.string().min(2),
-    last_name: z.string().min(2),
-    other_names: z.string(),
-    role: z.string(),
-    email: z.string().min(8).max(100),
-    password: z.string().min(8).max(100),
-    confirmPassword: z.string().min(8).max(100),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match',
-    path: ['confirmPassword'],
-  })
+const schema = z.object({
+  specialty: z.string().min(3),
+  registrationyear: z
+    .number()
+    .positive()
+    .gt(1950)
+    .lte(new Date().getFullYear()),
+  DoB: z.date().min(new Date('1900-01-01')).max(new Date()),
+  location: z.string().min(8).max(100),
+  digitaladdress: z.string().min(3).max(15),
+})
 
 type Schema = z.infer<typeof schema>
 
@@ -30,14 +26,11 @@ const usePersonnelSignup = () => {
   const [error, setError] = useState<string>('')
 
   const defaultValues: Schema = {
-    username: '',
-    first_name: '',
-    last_name: '',
-    other_names: '',
-    role: 'personnel',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    specialty: '',
+    registrationyear: 0,
+    DoB: new Date(),
+    location: '',
+    digitaladdress: '',
   }
 
   const methods = useForm<Schema>({
@@ -45,19 +38,18 @@ const usePersonnelSignup = () => {
     defaultValues,
   })
 
-  type a = Omit<Schema, 'confirmPassword'>
-
-  const navigate = useNavigate()
+  //   const navigate = useNavigate()
 
   const mutation = useMutation({
-    mutationFn: async (data: a) => {
+    mutationFn: async (data: Schema) => {
       await axios.post(
         `${Constants.BaseURL}auth/signup/medical_personnel/`,
         data
       )
     },
     onSuccess: () => {
-      navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
+      console.log('Profile Setup')
+      //   navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
     },
     onError: (err) => setErrorMessages(err, setError),
   })

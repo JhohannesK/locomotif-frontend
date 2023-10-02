@@ -4,7 +4,7 @@ import App from './App'
 import SigninPageIns from './pages/Facility/facility-signin-page/signin_page'
 // import SignUpPageIns from './pages/Facility/facility-signup-page/signup_page'
 import SigninPage from './pages/Personnel/personnel-signin-page/signin_page'
-import SignUpPage from './pages/Personnel/personnel-signup-page/signup_page'
+// import SignUpPage from './pages/Personnel/personnel-signup-page/signup_page'
 import HomePage from './pages/Personnel/personnel-home-page/home_page'
 // import { authState } from './redux/slices/authSlice'
 // import ProtectedRoute from './utils/ProtectedRoute'
@@ -39,7 +39,7 @@ const routes = createBrowserRouter([
   },
   {
     path: routhPaths.PERSONNEL.personnel_signup,
-    element: <SignUpPage />,
+    element: <PersonnelSignup />,
   },
   {
     path: routhPaths.AUTH.PERSONNEL.new_personnel_signup,
