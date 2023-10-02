@@ -124,3 +124,5 @@ export const AuthButtonH3 = styled.h3`
     margin-left: 10px;
   }
 `
+
+// export const Dropzone
