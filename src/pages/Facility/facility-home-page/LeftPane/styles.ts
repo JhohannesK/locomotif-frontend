@@ -47,7 +47,7 @@ export const PendingAppicationsInnerWrapper = styled.div`
 export const PendingApplicationsTitleWrapper = styled.div`
   color: rgba(0, 0, 0, 0.8);
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Helvetica;
+  font-family: Inter;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -75,7 +75,7 @@ export const SeeMoreWrapper = styled.div`
 export const SeeMore = styled.div`
   color: var(--Primary-Color, #0e6655);
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Helvetica;
+  font-family: Inter;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;

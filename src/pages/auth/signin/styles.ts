@@ -25,7 +25,7 @@ export const Logo = styled.div`
   width: 100%;
   height: 6.34%;
   color: var(--Primary-Color, #0e6655);
-  font-family: Helvetica;
+  font-family: Inter;
   font-size: 25px;
   font-style: normal;
   font-weight: 700;
@@ -47,7 +47,7 @@ export const Welcome = styled.div`
 export const WelcomeBack = styled.div`
   color: #000;
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Helvetica;
+  font-family: Inter;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
@@ -62,7 +62,7 @@ export const Instructions = styled.div`
   color: rgba(0, 0, 0, 0.6);
   text-align: center;
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Roboto;
+  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
