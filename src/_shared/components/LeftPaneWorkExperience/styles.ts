@@ -41,7 +41,7 @@ export const DurationRoleContainer = styled.div`
 export const Role = styled.div`
   color: rgba(0, 0, 0, 0.6);
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Helvetica;
+  font-family: Inter;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -50,7 +50,7 @@ export const Role = styled.div`
 export const Duration = styled.div`
   color: rgba(0, 0, 0, 0.8);
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Helvetica;
+  font-family: Inter;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;

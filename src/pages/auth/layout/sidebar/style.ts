@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
 
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET} {
     display: flex;
-    width: 40%;
+    width: 50%;
   }
 `
 
@@ -62,13 +62,14 @@ export const TextWrapper = styled.div`
   align-items: start;
   justify-content: flex-start;
   gap: 1px;
+  font-family: 'Inter';
 `
 
 export const TitleStyles = styled.p`
   font-size: 17px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET} {
-    font-size: 12px;
+    font-size: 15px;
   }
 `
 
