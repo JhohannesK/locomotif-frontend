@@ -8,27 +8,23 @@ import {
   AuthUpperContentH2,
   AuthUpperContentP,
 } from '../../../../_shared/auth_styles'
-import {
-  GenericButton,
-  GenericInput,
-  GenericSelect,
-  Toast,
-} from '../../../../_shared'
-import useFacilitySignUp from '../../../Facility/facility-signup-page/hook/useFacilitySignUp'
+import { GenericButton, GenericInput, GenericSelect } from '../../../../_shared'
+import useFacilitySignUp from '../hook/useFacilitySignUp'
 import { colors } from '../../../../colors'
 import { ButtonsBox, SelectBox } from '../styles'
 import { TextField } from '@mui/material'
 
-const FacilitySetUpProfile = () => {
-  const { mutation, onSubmit, methods, error } = useFacilitySignUp()
+const FacilitySetUpProfile = ({
+  handleActiveState,
+}: {
+  handleActiveState: (index: number) => void
+}) => {
+  const { methods } = useFacilitySignUp()
   return (
     <>
-      {mutation.isError && (
-        <Toast open={mutation.isError} type="error" children={error} />
-      )}
       <AuthContainer>
         <FormProvider {...methods}>
-          <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
+          <AuthContent>
             <AuthUpperContent>
               <AuthUpperContentH2>Setup Your Profile</AuthUpperContentH2>
               <AuthUpperContentP>
@@ -97,6 +93,7 @@ const FacilitySetUpProfile = () => {
                   },
                 }}
                 size="large"
+                onClick={() => handleActiveState(4)}
               />
               <GenericButton
                 title="Next"
@@ -112,6 +109,7 @@ const FacilitySetUpProfile = () => {
                   lineHeight: '137.14%',
                 }}
                 size="large"
+                onClick={() => handleActiveState(4)}
               />
             </ButtonsBox>
           </AuthContent>
