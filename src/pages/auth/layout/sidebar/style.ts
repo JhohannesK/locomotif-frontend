@@ -44,7 +44,7 @@ export const StepperWrapper = styled.div`
   font-weight: 600;
   letter-spacing: 1px;
 `
-export const BoxStyle = styled.button`
+export const BoxStyle = styled.button<{ grayOut: number; tabIndex: number }>`
   display: flex;
   gap: 1rem;
   align-items: center;
@@ -53,7 +53,24 @@ export const BoxStyle = styled.button`
   background-color: inherit;
   outline: none;
   border: none;
-  color: ${colors.text.white};
+  color: ${(props) =>
+    props.grayOut === 1
+      ? props.tabIndex > 1
+        ? colors.text.inactive
+        : colors.text.white
+      : props.grayOut === 2
+      ? props.tabIndex > 2
+        ? colors.text.inactive
+        : colors.text.white
+      : props.grayOut === 3
+      ? props.tabIndex < 3
+        ? colors.text.inactive
+        : colors.text.white
+      : props.grayOut === 4
+      ? props.tabIndex < 3
+        ? colors.text.inactive
+        : colors.text.white
+      : colors.text.white};
 `
 
 export const TextWrapper = styled.div`

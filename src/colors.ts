@@ -17,6 +17,7 @@ export const colors = {
     pineGreen: '#0E6655',
     platinum: '#D9D9D9',
     white: '#FEFFFE',
+    inactive: '#D9D9E9',
   },
   border: {
     danger: '#EA5455',
