@@ -124,3 +124,15 @@ export const AuthButtonH3 = styled.h3`
     margin-left: 10px;
   }
 `
+
+export const Dropzone = styled.div`
+  background: #fff;
+  border: 1px dashed grey;
+  border-radius: 25px;
+  width: 100%;
+  height: 25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+`

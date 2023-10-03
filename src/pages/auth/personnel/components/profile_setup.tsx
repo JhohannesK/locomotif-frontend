@@ -1,5 +1,3 @@
-import { AiFillCalendar } from 'react-icons/ai'
-import { FiMapPin } from 'react-icons/fi'
 import { colors } from '../../../../colors'
 import {
   AuthUpperContent,
@@ -42,16 +40,11 @@ const SignUpPage = () => {
             </AuthUpperContent>
             <AuthFields>
               <AuthFieldsLabel>Specialty</AuthFieldsLabel>
-              <GeneralInput
-                name="specialty"
-                // icon={<AiOutlineUser />}
-                placeholder="e.g: Neurosurgery"
-              />
+              <GeneralInput name="specialty" placeholder="e.g: Neurosurgery" />
               <AuthFieldsLabel>Year of Registration</AuthFieldsLabel>
               <GeneralInput
                 name="registrationyear"
                 type="number"
-                icon={<AiFillCalendar />}
                 placeholder="2023"
               />
               <AuthFieldsLabel>Date of Birth</AuthFieldsLabel>
@@ -64,19 +57,13 @@ const SignUpPage = () => {
                     max: new Date().toJSON().split('T')[0],
                   },
                 }}
-                icon={<AiFillCalendar />}
                 placeholder="Jackson"
               />
               <AuthFieldsLabel>Location</AuthFieldsLabel>
-              <GeneralInput
-                name="location"
-                icon={<FiMapPin />}
-                placeholder="Lartebiokorshie"
-              />
+              <GeneralInput name="location" placeholder="Lartebiokorshie" />
               <AuthFieldsLabel>Digital Address</AuthFieldsLabel>
               <GeneralInput
                 name="digitaladdress"
-                icon={<FiMapPin />}
                 placeholder="e.g: GA-123-9876"
               />
             </AuthFields>

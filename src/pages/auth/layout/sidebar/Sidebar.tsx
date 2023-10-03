@@ -19,6 +19,7 @@ import { BiStopCircle } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
 import { Steps } from '../../_types'
+import { useEffect } from 'react'
 
 const Sidebar = ({ steps }: { steps: Steps }) => {
   const navigate = useNavigate()
@@ -26,6 +27,10 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
     (state: RootState) => state.app.activeSidebar
   )
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setActiveSidebar({ activeSidebar: 1 }))
+  }, [dispatch])
 
   const onHandleClick = (index: number) => {
     if (index === 0) {
@@ -48,6 +53,7 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
     if (activeSidebar === 4) {
       if (index < 3) return true
     }
+    return false
   }
 
   return (
@@ -58,6 +64,8 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
         <StepperWrapper>
           {steps.map((step, index) => (
             <BoxStyle
+              grayOut={activeSidebar}
+              tabIndex={index}
               disabled={onDisable(index)}
               key={index}
               onClick={() => onHandleClick(index)}
