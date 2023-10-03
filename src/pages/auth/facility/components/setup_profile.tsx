@@ -8,23 +8,54 @@ import {
   AuthUpperContentH2,
   AuthUpperContentP,
 } from '../../../../_shared/auth_styles'
-import { GenericButton, GenericInput, GenericSelect } from '../../../../_shared'
-import useFacilitySignUp from '../hook/useFacilitySignUp'
+import {
+  GenericButton,
+  GenericInput,
+  GenericSelect,
+  Toast,
+} from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { ButtonsBox, SelectBox } from '../styles'
-import { TextField } from '@mui/material'
+import useFacilityProfileSetup from '../hook/useFacilityProfileSetup'
+import { ProfileSchema } from '../_types'
+// import { FormEvent } from 'react'
+// import { FormEvent } from 'react'
 
 const FacilitySetUpProfile = ({
   handleActiveState,
+
+  userData,
 }: {
   handleActiveState: (index: number) => void
+  userData: {
+    name: string
+    email: string
+    password: string
+    confirmPassword: string
+  }
 }) => {
-  const { methods } = useFacilitySignUp()
+  const { methods, mutation, error, onSubmit } = useFacilityProfileSetup()
+
+  function passData(data: ProfileSchema) {
+    const combinedData = {
+      ...data,
+      ...userData,
+    }
+    onSubmit(combinedData)
+  }
+
+  const handleDataSubmit = () => {
+    methods.handleSubmit(passData)()
+  }
+
   return (
     <>
+      {mutation.isError && (
+        <Toast open={mutation.isError} type="error" children={error} />
+      )}
       <AuthContainer>
         <FormProvider {...methods}>
-          <AuthContent>
+          <AuthContent onSubmit={(event) => event.preventDefault()}>
             <AuthUpperContent>
               <AuthUpperContentH2>Setup Your Profile</AuthUpperContentH2>
               <AuthUpperContentP>
@@ -33,40 +64,49 @@ const FacilitySetUpProfile = ({
             </AuthUpperContent>
             <AuthFields>
               <AuthFieldsLabel>Bio</AuthFieldsLabel>
-              <TextField
-                id="outlined-multiline-static"
-                label=""
-                multiline
-                rows={4}
-                defaultValue=" "
-                fullWidth
+
+              <GenericInput
+                name={'bio'}
+                placeholder=""
+                type="multiline-input"
               />
               <AuthFieldsLabel>Location</AuthFieldsLabel>
 
               <SelectBox>
                 <GenericSelect
+                  name="country"
                   label={'Country'}
                   data={['Ghana', 'The UK']}
                   defaultValue="ama"
                   sx={{ width: '30%' }}
                 />
                 <GenericSelect
+                  name="region"
                   label={'Region'}
                   data={['Greater Accra', 'Ashanti']}
                   defaultValue="ama"
                   sx={{ width: '30%' }}
                 />
                 <GenericSelect
+                  name="city"
                   label={'City'}
                   data={['Accra', 'Kumasi']}
                   defaultValue="ama"
                   sx={{ width: '30%' }}
                 />
               </SelectBox>
+              <AuthFieldsLabel>Telephone</AuthFieldsLabel>
+
+              <GenericInput
+                name="telephone"
+                label=""
+                type="number"
+                placeholder="e.g. 0302689167"
+              />
               <AuthFieldsLabel>Digital Address</AuthFieldsLabel>
 
               <GenericInput
-                name="address"
+                name="digitaladdress"
                 label=""
                 type="text"
                 placeholder="e.g. GA-492-53"
@@ -109,7 +149,7 @@ const FacilitySetUpProfile = ({
                   lineHeight: '137.14%',
                 }}
                 size="large"
-                onClick={() => handleActiveState(4)}
+                onClick={handleDataSubmit}
               />
             </ButtonsBox>
           </AuthContent>

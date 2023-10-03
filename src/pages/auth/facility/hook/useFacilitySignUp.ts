@@ -31,6 +31,7 @@ const useFacilitySignUp = () => {
     name: '',
     password: '',
     email: '',
+    confirmPassword: '',
   }
 
   const methods = useForm<Schema>({
@@ -43,7 +44,9 @@ const useFacilitySignUp = () => {
       await axios.post(`${Constants.BaseURL}auth/signup/`, data)
     },
     onSuccess: () => onHandleClick(3),
-    onError: (err) => setErrorMessages(err, setError),
+    onError: (err) => {
+      setErrorMessages(err, setError), onHandleClick(2)
+    },
   })
 
   const onSubmit = (data: Schema) => {

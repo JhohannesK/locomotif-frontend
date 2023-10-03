@@ -30,63 +30,88 @@ const GeneralInput = ({
 
   return (
     <>
-      <Controller
-        control={control}
-        name={name}
-        defaultValue=""
-        render={({ field }) => (
-          <TextField
-            className="input"
-            id={label}
-            {...field}
-            label={label}
-            disabled={disabled === true ? true : false}
-            placeholder={placeholder}
-            error={!!errors[name]}
-            helperText={
-              errors[name] ? (errors[name]?.message as unknown as string) : ''
-            }
-            type={
-              type === 'password'
-                ? showPassword
-                  ? 'text'
-                  : 'password'
-                : type === 'date'
-                ? 'date'
-                : 'text'
-            }
-            sx={{ ...sx }}
-            InputProps={{
-              ...InputProps,
-              style: {
-                borderRadius: '10px',
-              },
-              startAdornment: (
-                <InputAdornment position="start">{icon}</InputAdornment>
-              ),
-              endAdornment: (
-                <InputAdornment position="end">
-                  {type === 'password' ? (
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? (
-                        <MdOutlineVisibilityOff />
-                      ) : (
-                        <MdOutlineVisibility />
-                      )}
-                    </IconButton>
-                  ) : null}
-                </InputAdornment>
-              ),
-            }}
-            size="medium"
-          />
-        )}
-      />
+      {type === 'multiline-input' ? (
+        <Controller
+          control={control}
+          name={name}
+          defaultValue=""
+          render={({ field }) => (
+            <TextField
+              {...field}
+              id="outlined-multiline-static"
+              label=""
+              multiline
+              rows={4}
+              defaultValue=" "
+              fullWidth
+              error={!!errors[name]}
+              helperText={
+                errors[name] ? (errors[name]?.message as unknown as string) : ''
+              }
+            />
+          )}
+        />
+      ) : (
+        <Controller
+          control={control}
+          name={name}
+          defaultValue=""
+          render={({ field }) => (
+            <TextField
+              className="input"
+              id={label}
+              {...field}
+              label={label}
+              disabled={disabled === true ? true : false}
+              placeholder={placeholder}
+              error={!!errors[name]}
+              helperText={
+                errors[name] ? (errors[name]?.message as unknown as string) : ''
+              }
+              type={
+                type === 'password'
+                  ? showPassword
+                    ? 'text'
+                    : 'password'
+                  : type === 'date'
+                  ? 'date'
+                  : type === 'number'
+                  ? 'number'
+                  : 'text'
+              }
+              sx={{ ...sx }}
+              InputProps={{
+                ...InputProps,
+                style: {
+                  borderRadius: '10px',
+                },
+                startAdornment: (
+                  <InputAdornment position="start">{icon}</InputAdornment>
+                ),
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {type === 'password' ? (
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? (
+                          <MdOutlineVisibilityOff />
+                        ) : (
+                          <MdOutlineVisibility />
+                        )}
+                      </IconButton>
+                    ) : null}
+                  </InputAdornment>
+                ),
+              }}
+              size="medium"
+            />
+          )}
+        />
+      )}
     </>
   )
 }
