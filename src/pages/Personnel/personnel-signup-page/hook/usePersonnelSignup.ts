@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom'
 
 const schema = z
   .object({
-    username: z.string().min(3),
     first_name: z.string().min(2),
     last_name: z.string().min(2),
     other_names: z.string(),
@@ -30,7 +29,6 @@ const usePersonnelSignup = () => {
   const [error, setError] = useState<string>('')
 
   const defaultValues: Schema = {
-    username: '',
     first_name: '',
     last_name: '',
     other_names: '',
