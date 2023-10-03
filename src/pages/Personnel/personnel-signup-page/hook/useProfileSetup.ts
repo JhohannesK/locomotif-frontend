@@ -6,6 +6,8 @@ import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import Constants from '../../../../utils/constants'
 import { setErrorMessages } from '../../../../utils/util'
+import { useDispatch } from 'react-redux'
+import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 // import { useNavigate } from 'react-router-dom'
 
 const schema = z.object({
@@ -15,20 +17,21 @@ const schema = z.object({
     .positive()
     .gt(1950)
     .lte(new Date().getFullYear()),
-  DoB: z.date().min(new Date('1900-01-01')).max(new Date()),
-  location: z.string().min(8).max(100),
-  digitaladdress: z.string().min(3).max(15),
+  DoB: z.string(),
+  // date().min(new Date('1900-01-01')).max(new Date()),
+  location: z.string().min(2).max(100),
+  digitaladdress: z.string().min(2).max(15),
 })
 
 type Schema = z.infer<typeof schema>
 
-const usePersonnelSignup = () => {
+const useProfileSetup = () => {
   const [error, setError] = useState<string>('')
 
   const defaultValues: Schema = {
     specialty: '',
-    registrationyear: 0,
-    DoB: new Date(),
+    registrationyear: 2023,
+    DoB: '',
     location: '',
     digitaladdress: '',
   }
@@ -38,18 +41,15 @@ const usePersonnelSignup = () => {
     defaultValues,
   })
 
-  //   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const mutation = useMutation({
     mutationFn: async (data: Schema) => {
-      await axios.post(
-        `${Constants.BaseURL}auth/signup/medical_personnel/`,
-        data
-      )
+      console.log(data)
+      await axios.put(`${Constants.BaseURL}auth/profile/`, data)
     },
     onSuccess: () => {
-      console.log('Profile Setup')
-      //   navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
+      dispatch(setActiveSidebar({ activeSidebar: 4 }))
     },
     onError: (err) => setErrorMessages(err, setError),
   })
@@ -61,4 +61,4 @@ const usePersonnelSignup = () => {
   return { onSubmit, mutation, methods, error }
 }
 
-export default usePersonnelSignup
+export default useProfileSetup
