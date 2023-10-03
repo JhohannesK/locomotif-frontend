@@ -7,18 +7,16 @@ import {
   AuthContent,
   AuthFieldsLabel,
 } from '../../../../_shared/auth_styles'
-// import image from '../../../_shared/assets/doctor_sign_in.png'
-// import { LoadingButton } from '@mui/lab'
 import GeneralInput from '../../../../_shared/components/inputs/Input'
 import { GenericButton, Toast } from '../../../../_shared'
-import usePersonnelSignup from '../../../Personnel/personnel-signup-page/hook/usePersonnelSignup'
+import useProfileSetup from '../../../Personnel/personnel-signup-page/hook/useProfileSetup'
 import { FormProvider } from 'react-hook-form'
-// import routes from '../../../../routes'
-// import Constants from '../../../../utils/constants'
-// import { BiMap } from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom'
+import Constants from '../../../../utils/constants'
 
 const SignUpPage = () => {
-  const { mutation, onSubmit, methods, error } = usePersonnelSignup()
+  const { mutation, onSubmit, methods, error } = useProfileSetup()
+  const navigate = useNavigate()
 
   return (
     <>
@@ -29,13 +27,6 @@ const SignUpPage = () => {
         <FormProvider {...methods}>
           <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
             <AuthUpperContent>
-              {/* <AuthLogo>
-                <img
-                  src={image}
-                  alt="health-leaf icon"
-                  style={{ height: '80%', width: '80%', objectFit: 'contain' }}
-                />
-              </AuthLogo> */}
               <h1>Set Up Your Profile</h1>
             </AuthUpperContent>
             <AuthFields>
@@ -70,6 +61,9 @@ const SignUpPage = () => {
 
             <StepNavigateButtons>
               <GenericButton
+                onClick={() =>
+                  navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
+                }
                 sx={{
                   backgroundColor: colors.button.white,
                   color: colors.text.pineGreen,
