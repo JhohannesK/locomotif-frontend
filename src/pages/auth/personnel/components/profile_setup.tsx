@@ -9,12 +9,12 @@ import {
 } from '../../../../_shared/auth_styles'
 import GeneralInput from '../../../../_shared/components/inputs/Input'
 import { GenericButton, Toast } from '../../../../_shared'
-import useProfileSetup from '../../../Personnel/personnel-signup-page/hook/useProfileSetup'
+import useProfileSetup from '../hook/useProfileSetup'
 import { FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
 
-const SignUpPage = () => {
+const SignUp = () => {
   const { mutation, onSubmit, methods, error } = useProfileSetup()
   const navigate = useNavigate()
 
@@ -110,4 +110,4 @@ const SignUpPage = () => {
   )
 }
 
-export default SignUpPage
+export default SignUp
