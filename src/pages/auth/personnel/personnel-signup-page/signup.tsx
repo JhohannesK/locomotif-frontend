@@ -10,7 +10,7 @@ import {
 } from '../../../../_shared/auth_styles'
 // import image from '../../../_shared/assets/doctor_sign_in.png'
 import { LoadingButton } from '@mui/lab'
-import GeneralInput from '../../../..//_shared/components/inputs/Input'
+import GeneralInput from '../../../../_shared/components/inputs/Input'
 import { GenericButton, Toast } from '../../../../_shared'
 import usePersonnelSignup from '../hook/usePersonnelSignup'
 import { FormProvider } from 'react-hook-form'

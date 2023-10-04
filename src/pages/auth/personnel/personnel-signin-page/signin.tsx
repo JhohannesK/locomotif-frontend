@@ -1,7 +1,7 @@
 import { AiOutlineUser } from 'react-icons/ai'
 import { FiKey } from 'react-icons/fi'
 import { colors } from '../../../../colors'
-import image from '../../../_shared/assets/doctor_sign_in.png'
+import image from '../../../../_shared/assets/doctor_sign_in.png'
 import {
   AuthButton,
   AuthContainer,
