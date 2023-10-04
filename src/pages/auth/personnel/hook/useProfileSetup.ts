@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 // import { useNavigate } from 'react-router-dom'
 
+axios.defaults.withCredentials = true
+
 const schema = z.object({
   specialty: z.string().min(3),
   registrationyear: z
