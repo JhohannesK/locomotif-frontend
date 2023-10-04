@@ -5,6 +5,7 @@ export const AuthContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  max-width: 1300px;
   height: 100vh;
   justify-content: flex-start;
 `
@@ -12,16 +13,6 @@ export const AuthContainer = styled.div`
 export const AuthContent = styled.form`
   width: clamp(260px, 90%, 500px);
   margin: auto;
-  // @media screen and (max-width: 1024px) {
-  //   width: 60%;
-  // }
-  // @media screen and (max-width: 769px) {
-  //   width: 70%;
-  // }
-
-  // @media screen and (max-width: 600px) {
-  //   width: 80%;
-  // }
 `
 
 export const AuthUpperContent = styled.div`
