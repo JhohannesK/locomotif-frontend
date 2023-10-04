@@ -52,8 +52,13 @@ const useProfileSetup = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: Schema) => {
-      console.log(data)
-      await axios.put(`${Constants.BaseURL}auth/profile/`, data)
+      const signUpdata = localStorage.getIte('PersonnelSignupData')
+      console.log({ ...signUpdata, ...data })
+      await axios.put(`${Constants.BaseURL}auth/profile/`, {
+        ...signUpdata,
+        ...data,
+      })
+      localStorage.removeItem('PersonnelSignupData')
     },
     onSuccess: () => {
       dispatch(setActiveSidebar({ activeSidebar: 4 }))
