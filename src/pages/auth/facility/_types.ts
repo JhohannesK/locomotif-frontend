@@ -20,12 +20,60 @@ export type Schema = z.infer<typeof schema>
 // Profile update
 
 export const profileSchema = z.object({
-  bio: z.string().min(20).max(1000),
-  digitaladdress: z.string().min(3).max(15),
-  telephone: z.string().min(8).max(15),
-  country: z.string().min(3).max(15),
-  region: z.string().min(3).max(15),
-  city: z.string().min(3).max(15),
+  bio: z.string().refine(
+    (value) => {
+      const trimmedValue = value.trim()
+      return trimmedValue.length === 0 || trimmedValue.length >= 20
+    },
+    {
+      message: 'Bio must be at least 20 characters or empty',
+    }
+  ),
+  digitaladdress: z.string().refine(
+    (value) => {
+      const trimmedValue = value.trim()
+      return trimmedValue.length === 0 || trimmedValue.length >= 3
+    },
+    {
+      message: 'Digital address must be at least 3 characters or empty',
+    }
+  ),
+  telephone: z.string().refine(
+    (value) => {
+      const trimmedValue = value.trim()
+      return trimmedValue.length === 0 || trimmedValue.length >= 8
+    },
+    {
+      message: 'Telephone must be at least 8 characters or empty',
+    }
+  ),
+  country: z.string().refine(
+    (value) => {
+      const trimmedValue = value.trim()
+      return trimmedValue.length === 0 || trimmedValue.length >= 3
+    },
+    {
+      message: 'Country must be at least 3 characters or empty',
+    }
+  ),
+  region: z.string().refine(
+    (value) => {
+      const trimmedValue = value.trim()
+      return trimmedValue.length === 0 || trimmedValue.length >= 3
+    },
+    {
+      message: 'Region must be at least 3 characters or empty',
+    }
+  ),
+  city: z.string().refine(
+    (value) => {
+      const trimmedValue = value.trim()
+      return trimmedValue.length === 0 || trimmedValue.length >= 3
+    },
+    {
+      message: 'City must be at least 3 characters or empty',
+    }
+  ),
 })
 
 export type ProfileSchema = z.infer<typeof profileSchema>

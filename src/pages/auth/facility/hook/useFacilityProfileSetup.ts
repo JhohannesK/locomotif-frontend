@@ -58,8 +58,12 @@ const useFacilityProfileSetup = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: FacilityProfilePayload) => {
-      console.log(data)
-      await axios.put(`${Constants.BaseURL}auth/profile/`, data)
+      await axios.put(`${Constants.BaseURL}auth/profile/`, data, {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
     },
     onSuccess: () => onHandleClick(4),
     onError: (err) => setErrorMessages(err, setError),

@@ -18,8 +18,7 @@ import { colors } from '../../../../colors'
 import { ButtonsBox, SelectBox } from '../styles'
 import useFacilityProfileSetup from '../hook/useFacilityProfileSetup'
 import { ProfileSchema } from '../_types'
-// import { FormEvent } from 'react'
-// import { FormEvent } from 'react'
+import { LoadingButton } from '@mui/lab'
 
 const FacilitySetUpProfile = ({
   handleActiveState,
@@ -135,26 +134,35 @@ const FacilitySetUpProfile = ({
                 size="large"
                 onClick={() => handleActiveState(4)}
               />
-              <GenericButton
-                title="Next"
-                sx={{
-                  backgroundColor: colors.button.pineGreen,
-                  width: '100%',
-                  borderRadius: '10px',
-                  color: '#F6FBFF',
-                  textAlign: 'center',
-                  fontSize: '14px',
-                  fontStyle: 'normal',
-                  fontWeight: '400',
-                  lineHeight: '137.14%',
-                }}
-                size="large"
-                onClick={handleDataSubmit}
-              />
+              {mutation.isLoading ? (
+                <LoadingButton
+                  loading
+                  sx={{
+                    backgroundColor: colors.button.pineGreen,
+                    width: '100%',
+                  }}
+                ></LoadingButton>
+              ) : (
+                <GenericButton
+                  title="Next"
+                  sx={{
+                    backgroundColor: colors.button.pineGreen,
+                    width: '100%',
+                    borderRadius: '10px',
+                    color: '#F6FBFF',
+                    textAlign: 'center',
+                    fontSize: '14px',
+                    fontStyle: 'normal',
+                    fontWeight: '400',
+                    lineHeight: '137.14%',
+                  }}
+                  size="large"
+                  onClick={handleDataSubmit}
+                />
+              )}
             </ButtonsBox>
           </AuthContent>
         </FormProvider>
-        {/* {mutation.isSuccess ? <div>okay okay</div> : <>oops</>} */}
       </AuthContainer>
     </>
   )
