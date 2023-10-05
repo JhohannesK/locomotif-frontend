@@ -10,6 +10,8 @@ import { setErrorMessages } from '../../../../utils/util'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 import { useDispatch } from 'react-redux'
 
+axios.defaults.withCredentials = true
+
 const schema = z
   .object({
     first_name: z.string().min(2),

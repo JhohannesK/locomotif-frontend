@@ -8,13 +8,14 @@ import {
   AuthFieldsLabel,
 } from '../../../../_shared/auth_styles'
 import GeneralInput from '../../../../_shared/components/inputs/Input'
-import { GenericButton, Toast } from '../../../../_shared'
-import useProfileSetup from '../../../Personnel/personnel-signup-page/hook/useProfileSetup'
+import { GenericButton, Toast, GenericSelect } from '../../../../_shared'
+import useProfileSetup from '../hook/useProfileSetup'
 import { FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
+import { SelectBox } from '../../facility/styles'
 
-const SignUpPage = () => {
+const SignUp = () => {
   const { mutation, onSubmit, methods, error } = useProfileSetup()
   const navigate = useNavigate()
 
@@ -51,7 +52,26 @@ const SignUpPage = () => {
                 placeholder="Jackson"
               />
               <AuthFieldsLabel>Location</AuthFieldsLabel>
-              <GeneralInput name="location" placeholder="Lartebiokorshie" />
+              <SelectBox>
+                <GenericSelect
+                  label={'Country'}
+                  data={['Ghana', 'The UK']}
+                  defaultValue="ama"
+                  sx={{ width: '30%' }}
+                />
+                <GenericSelect
+                  label={'Region'}
+                  data={['Greater Accra', 'Ashanti']}
+                  defaultValue="ama"
+                  sx={{ width: '30%' }}
+                />
+                <GenericSelect
+                  label={'City'}
+                  data={['Accra', 'Kumasi']}
+                  defaultValue="ama"
+                  sx={{ width: '30%' }}
+                />
+              </SelectBox>
               <AuthFieldsLabel>Digital Address</AuthFieldsLabel>
               <GeneralInput
                 name="digitaladdress"
@@ -110,4 +130,4 @@ const SignUpPage = () => {
   )
 }
 
-export default SignUpPage
+export default SignUp

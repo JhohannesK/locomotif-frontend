@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 // import { useNavigate } from 'react-router-dom'
 
+axios.defaults.withCredentials = true
+
 const schema = z.object({
   specialty: z.string().min(3),
   registrationyear: z
@@ -17,10 +19,12 @@ const schema = z.object({
     .positive()
     .gt(1950)
     .lte(new Date().getFullYear()),
-  DoB: z.string(),
-  // date().min(new Date('1900-01-01')).max(new Date()),
-  location: z.string().min(2).max(100),
-  digitaladdress: z.string().min(2).max(15),
+  telephone: z.string(),
+  date_of_birth: z.string(),
+  country: z.string().min(2).max(100),
+  region: z.string().min(2).max(100),
+  city: z.string().min(2).max(100),
+  digital_address: z.string().min(2).max(15),
 })
 
 type Schema = z.infer<typeof schema>
@@ -31,9 +35,12 @@ const useProfileSetup = () => {
   const defaultValues: Schema = {
     specialty: '',
     registrationyear: 2023,
-    DoB: '',
-    location: '',
-    digitaladdress: '',
+    telephone: '',
+    date_of_birth: '',
+    country: '',
+    region: '',
+    city: '',
+    digital_address: '',
   }
 
   const methods = useForm<Schema>({
@@ -45,8 +52,13 @@ const useProfileSetup = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: Schema) => {
-      console.log(data)
-      await axios.put(`${Constants.BaseURL}auth/profile/`, data)
+      const signUpdata = localStorage.getIte('PersonnelSignupData')
+      console.log({ ...signUpdata, ...data })
+      await axios.put(`${Constants.BaseURL}auth/profile/`, {
+        ...signUpdata,
+        ...data,
+      })
+      localStorage.removeItem('PersonnelSignupData')
     },
     onSuccess: () => {
       dispatch(setActiveSidebar({ activeSidebar: 4 }))

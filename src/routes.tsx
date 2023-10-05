@@ -2,19 +2,14 @@ import { createBrowserRouter } from 'react-router-dom'
 import Constants from './utils/constants'
 import App from './App'
 import SigninPageIns from './pages/Facility/facility-signin-page/signin_page'
-// import SignUpPageIns from './pages/Facility/facility-signup-page/signup_page'
-import SigninPage from './pages/Personnel/personnel-signin-page/signin_page'
-// import SignUpPage from './pages/Personnel/personnel-signup-page/signup_page'
+import SigninPage from './pages/auth/personnel/personnel-signin-page/signin'
 import HomePage from './pages/Personnel/personnel-home-page/home_page'
-// import { authState } from './redux/slices/authSlice'
-// import ProtectedRoute from './utils/ProtectedRoute'
 export const routhPaths = Constants.ROUTES
 import FacilityHomePage from './pages/Facility/facility-home-page/home_page'
 import PersonnelSignup from './pages/auth/personnel'
 import FacilitySignUp from './pages/auth/facility'
 import SignIn from './pages/auth/signin/signin'
 import LandingPage from './pages/landing-page/landingPage'
-// const userRole = authState?.role
 
 const routes = createBrowserRouter([
   {

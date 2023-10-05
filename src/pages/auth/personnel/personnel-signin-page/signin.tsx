@@ -1,7 +1,7 @@
 import { AiOutlineUser } from 'react-icons/ai'
 import { FiKey } from 'react-icons/fi'
-import { colors } from '../../../colors'
-import image from '../../../_shared/assets/doctor_sign_in.png'
+import { colors } from '../../../../colors'
+import image from '../../../../_shared/assets/doctor_sign_in.png'
 import {
   AuthButton,
   AuthContainer,
@@ -11,14 +11,14 @@ import {
   AuthLogo,
   AuthText,
   AuthUpperContent,
-} from '../../../_shared/auth_styles'
+} from '../../../../_shared/auth_styles'
 import { FormProvider } from 'react-hook-form'
 import { LoadingButton } from '@mui/lab'
-import { GenericInput, Toast } from '../../../_shared'
-import GeneralButton from '../../../_shared/components/button/Button'
-import useSignIn from './hook/useSignIn'
-import Constants from '../../../utils/constants'
-import routes from '../../../routes'
+import { GenericInput, Toast } from '../../../../_shared'
+import GeneralButton from '../../../../_shared/components/button/Button'
+import useSignIn from '../hook/useSignIn'
+import Constants from '../../../../utils/constants'
+import routes from '../../../../routes'
 
 function SigninPage() {
   const { methods, onSubmit, isError, isLoading, errorMessage } = useSignIn()
