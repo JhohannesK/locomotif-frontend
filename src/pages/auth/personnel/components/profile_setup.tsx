@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
 import { SelectBox } from '../../facility/styles'
 
-const SignUp = () => {
+const ProfileSetup = () => {
   const { mutation, onSubmit, methods, error } = useProfileSetup()
   const navigate = useNavigate()
 
@@ -31,8 +31,15 @@ const SignUp = () => {
               <h1>Set Up Your Profile</h1>
             </AuthUpperContent>
             <AuthFields>
-              <AuthFieldsLabel>Specialty</AuthFieldsLabel>
-              <GeneralInput name="specialty" placeholder="e.g: Neurosurgery" />
+              <AuthFieldsLabel>Specialties</AuthFieldsLabel>
+              <SelectBox>
+                <GenericSelect
+                  label={'Specialties'}
+                  data={['Gynaecology', 'Optomology', 'Dentistry']}
+                  defaultValue=""
+                  sx={{ width: '30%' }}
+                />
+              </SelectBox>
               <AuthFieldsLabel>Year of Registration</AuthFieldsLabel>
               <GeneralInput
                 name="registrationyear"
@@ -41,8 +48,8 @@ const SignUp = () => {
               />
               <AuthFieldsLabel>Date of Birth</AuthFieldsLabel>
               <GeneralInput
-                name="DoB"
-                type="date"
+                name="date_of_birth"
+                type="number"
                 InputProps={{
                   inputProps: {
                     min: `${new Date().getFullYear() - 70}-01-01`,
@@ -56,25 +63,25 @@ const SignUp = () => {
                 <GenericSelect
                   label={'Country'}
                   data={['Ghana', 'The UK']}
-                  defaultValue="ama"
+                  defaultValue=""
                   sx={{ width: '30%' }}
                 />
                 <GenericSelect
                   label={'Region'}
                   data={['Greater Accra', 'Ashanti']}
-                  defaultValue="ama"
+                  defaultValue=""
                   sx={{ width: '30%' }}
                 />
                 <GenericSelect
                   label={'City'}
                   data={['Accra', 'Kumasi']}
-                  defaultValue="ama"
+                  defaultValue=""
                   sx={{ width: '30%' }}
                 />
               </SelectBox>
               <AuthFieldsLabel>Digital Address</AuthFieldsLabel>
               <GeneralInput
-                name="digitaladdress"
+                name="digital_address"
                 placeholder="e.g: GA-123-9876"
               />
             </AuthFields>
@@ -130,4 +137,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default ProfileSetup

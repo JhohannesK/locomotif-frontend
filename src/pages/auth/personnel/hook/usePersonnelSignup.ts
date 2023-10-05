@@ -55,6 +55,7 @@ const usePersonnelSignup = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: a) => {
+      localStorage.removeItem('PersonnelSignupData')
       const newData = {
         email: data.email,
         password: data.password,
@@ -65,6 +66,7 @@ const usePersonnelSignup = () => {
           other_names: data.other_names,
         },
       }
+      console.log(newData)
       await axios.post(`${Constants.BaseURL}auth/signup/`, newData)
     },
     onSuccess: () => {
