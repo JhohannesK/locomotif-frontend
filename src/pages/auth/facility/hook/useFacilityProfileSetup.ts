@@ -33,6 +33,8 @@ interface TransitData {
   confirmPassword: string
 }
 
+axios.defaults.withCredentials = true
+
 const useFacilityProfileSetup = () => {
   const [error, setError] = useState<string>('')
 
@@ -58,12 +60,7 @@ const useFacilityProfileSetup = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: FacilityProfilePayload) => {
-      await axios.put(`${Constants.BaseURL}auth/profile/`, data, {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
+      await axios.put(`${Constants.BaseURL}auth/profile/`, data)
     },
     onSuccess: () => onHandleClick(4),
     onError: (err) => setErrorMessages(err, setError),
