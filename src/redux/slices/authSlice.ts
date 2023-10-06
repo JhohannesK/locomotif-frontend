@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IAuth, ResponseType } from '../@types'
+import { IAuth, ResponseType, SignInResponse } from '../@types'
 import { loadFromLocalStorage, saveToLocalStorage } from '../hooks/middleware'
 
 const response: IAuth = loadFromLocalStorage({ key: 'auth' })
@@ -23,8 +23,6 @@ const initialState: IAuth = {
     isAuthenticated: authState?.isAuthenticated ?? false,
   },
   signInResponse: {
-    access_token: '',
-    refresh_token: '',
     user_role: '',
   },
 }
@@ -33,8 +31,8 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    login(state, action: PayloadAction<ResponseType>) {
-      state.authResponse = action.payload
+    login(state, action: PayloadAction<SignInResponse>) {
+      state.signInResponse = action.payload
       saveToLocalStorage({ state, key: 'auth' })
     },
   },
