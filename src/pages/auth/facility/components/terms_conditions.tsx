@@ -18,6 +18,7 @@ const FacilityTermsAndCondions = ({
     name: string
     email: string
     password: string
+    confirmPassword: string
   }
 }) => {
   const { methods, onSubmit, mutation, error } = useFacilitySignUp()

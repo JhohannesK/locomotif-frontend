@@ -1,4 +1,4 @@
-import { GenericSelect } from '../../../../_shared'
+// import { GenericSelect } from '../../../../_shared'
 import { FormGroup, FormControlLabel, Checkbox, Slider } from '@mui/material'
 import {
   FilterContent,
@@ -43,11 +43,11 @@ const FilterPane = () => {
       <FilterTitle>Filter</FilterTitle>
       <FilterContent>
         <Filterheading>Location</Filterheading>
-        <GenericSelect
+        {/* <GenericSelect
           sx={{ width: '100%' }}
           defaultValue="Airport, Accra"
           data={['Airport, Accra', 'Kumasi', 'Tema', 'Takoradi']}
-        />
+        /> */}
       </FilterContent>
 
       <Filterheading>Shift System</Filterheading>

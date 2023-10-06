@@ -1,4 +1,3 @@
-import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -9,52 +8,24 @@ import { setErrorMessages } from '../../../../utils/util'
 // import { useNavigate } from 'react-router-dom'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 import { useDispatch } from 'react-redux'
+import { defaultValues, schema, Schema } from '../schema/validation-schema'
 
 axios.defaults.withCredentials = true
 
-const schema = z
-  .object({
-    first_name: z.string().min(2),
-    last_name: z.string().min(2),
-    other_names: z.string(),
-    user_role: z.string(),
-    email: z.string().min(8).max(100),
-    password: z.string().min(8).max(100),
-    confirmPassword: z.string().min(8).max(100),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: 'Passwords do not match',
-    path: ['confirmPassword'],
-  })
-
-type Schema = z.infer<typeof schema>
-
 const usePersonnelSignup = () => {
   const [error, setError] = useState<string>('')
-
-  const defaultValues: Schema = {
-    first_name: '',
-    last_name: '',
-    other_names: '',
-    user_role: 'personnel',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  }
 
   const methods = useForm<Schema>({
     resolver: zodResolver(schema),
     defaultValues,
   })
 
-  type a = Omit<Schema, 'confirmPassword'>
-
-  // const navigate = useNavigate()
+  type SchemaType = Omit<Schema, 'confirmPassword'>
 
   const dispatch = useDispatch()
 
   const mutation = useMutation({
-    mutationFn: async (data: a) => {
+    mutationFn: async (data: SchemaType) => {
       localStorage.removeItem('PersonnelSignupData')
       const newData = {
         email: data.email,
@@ -70,7 +41,6 @@ const usePersonnelSignup = () => {
       await axios.post(`${Constants.BaseURL}auth/signup/`, newData)
     },
     onSuccess: () => {
-      // navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
       dispatch(setActiveSidebar({ activeSidebar: 2 }))
     },
     onError: (err) => setErrorMessages(err, setError),

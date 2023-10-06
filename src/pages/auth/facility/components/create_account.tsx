@@ -25,6 +25,7 @@ const FacilityCreateAccount = ({
     name: string
     email: string
     password: string
+    confirmPassword: string
   }) => void
 }) => {
   const { methods } = useFacilitySignUp()
@@ -33,6 +34,7 @@ const FacilityCreateAccount = ({
     name: string
     email: string
     password: string
+    confirmPassword: string
   }) => {
     handleActiveState(2)
     handleUserData(data)
@@ -42,7 +44,7 @@ const FacilityCreateAccount = ({
     <>
       <AuthContainer>
         <FormProvider {...methods}>
-          <AuthContent>
+          <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
             <AuthUpperContent>
               <AuthUpperContentH2>Create Your Account</AuthUpperContentH2>
               <AuthUpperContentP>
@@ -71,6 +73,14 @@ const FacilityCreateAccount = ({
                 type="password"
                 placeholder="*********"
               />
+
+              <AuthFieldsLabel>Confirm Password</AuthFieldsLabel>
+              <GenericInput
+                name="confirmPassword"
+                label=""
+                type="password"
+                placeholder="*********"
+              />
             </AuthFields>
             <AuthButton>
               <GenericButton
@@ -87,7 +97,6 @@ const FacilityCreateAccount = ({
                   lineHeight: '137.14%',
                 }}
                 size="large"
-                onClick={methods.handleSubmit(onSubmit)}
               />
               {/* )} */}
               <AuthButtonH3>OR</AuthButtonH3>

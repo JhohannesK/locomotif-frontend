@@ -22,7 +22,6 @@ export const colors = {
   border: {
     danger: '#EA5455',
     active: '#0E6655',
-    pineGreen: '#0E6655',
     whiteSmoke: '#F5F5F5',
     raisinBlack: '#202030',
   },

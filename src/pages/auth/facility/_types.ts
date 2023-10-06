@@ -1,12 +1,39 @@
 import { z } from 'zod'
-
-export const schema = z.object({
-  name: z.string().nonempty({ message: 'Facility name is required' }).min(2),
-  email: z.string().email({ message: 'Please enter a valid email' }),
-  password: z
-    .string()
-    .nonempty({ message: 'Password is required' })
-    .min(8, { message: 'Password must be at least 8 characters' }),
-})
+import { profileSchema, schema } from './schema/validation'
 
 export type Schema = z.infer<typeof schema>
+
+export interface FacilitySignUpPayload {
+  email: string
+  password: string
+  user_role: 'facility'
+  extra_data: {
+    name: string
+  }
+}
+
+export interface FacilityProfilePayload {
+  name: string
+  email: string
+  telephone: string
+  bio: string
+  digital_address: string
+  country: string
+  region: string
+  city: string
+}
+
+export interface TransitData {
+  name: string
+  email: string
+  bio: string
+  digitaladdress: string
+  telephone: string
+  country: string
+  region: string
+  city: string
+  password: string
+  confirmPassword: string
+}
+
+export type ProfileSchema = z.infer<typeof profileSchema>

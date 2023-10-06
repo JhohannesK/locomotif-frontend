@@ -8,7 +8,7 @@ axios.defaults.withCredentials = true
 const useFetch = () => {
   const fetchPostings = async (): Promise<JobCardProps[]> => {
     const response = await axios.get<JobCardProps[]>(
-      `${Constants.DevBaseURL}auth/profile/`
+      `${Constants.BaseURL}auth/profile/`
     )
     return response.data
   }

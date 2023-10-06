@@ -28,6 +28,10 @@ const useSignIn = () => {
   const routeUserToPage = useSelector(
     (state: RootState) => state.auth.signInResponse.user_role
   )
+  console.log(
+    '🚀 ~ file: useSignIn.ts:31 ~ useSignIn ~ routeUserToPage:',
+    routeUserToPage
+  )
   console.log(routeUserToPage)
   const defaultValues: Schema = {
     email: '',
