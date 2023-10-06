@@ -16,6 +16,7 @@ const FacilitySignUp = () => {
     name: '',
     email: '',
     password: '',
+    confirmPassword: '',
   })
 
   const dispatch = useDispatch()
@@ -36,7 +37,10 @@ const FacilitySignUp = () => {
         <FacilityTermsAndCondions userData={userData} />
       </ConditionRenderComponent>
       <ConditionRenderComponent renderIf={activeState === 3}>
-        <FacilitySetUpProfile handleActiveState={onHandleClick} />
+        <FacilitySetUpProfile
+          handleActiveState={onHandleClick}
+          userData={userData}
+        />
       </ConditionRenderComponent>
       <ConditionRenderComponent renderIf={activeState === 4}>
         <FacilitySuccess />

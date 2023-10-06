@@ -25,6 +25,7 @@ const FacilityCreateAccount = ({
     name: string
     email: string
     password: string
+    confirmPassword: string
   }) => void
 }) => {
   const { methods } = useFacilitySignUp()
@@ -33,6 +34,7 @@ const FacilityCreateAccount = ({
     name: string
     email: string
     password: string
+    confirmPassword: string
   }) => {
     handleActiveState(2)
     handleUserData(data)
@@ -67,6 +69,14 @@ const FacilityCreateAccount = ({
 
               <GenericInput
                 name="password"
+                label=""
+                type="password"
+                placeholder="*********"
+              />
+
+              <AuthFieldsLabel>Confirm Password</AuthFieldsLabel>
+              <GenericInput
+                name="confirmPassword"
                 label=""
                 type="password"
                 placeholder="*********"

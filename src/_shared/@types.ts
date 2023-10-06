@@ -20,7 +20,7 @@ export type GeneralInputType = {
   icon?: React.ReactNode
   placeholder: string
   label?: string
-  type?: 'text' | 'password' | 'date' | 'number'
+  type?: 'text' | 'password' | 'date' | 'number' | 'multiline-input'
   disabled?: boolean
   InputProps?: {
     inputProps: { min: string; max: string }
@@ -54,6 +54,7 @@ export interface JobCardProps {
 }
 
 export interface SelectProps {
+  name?: string
   label?: string
   data: string[]
   defaultValue: string
