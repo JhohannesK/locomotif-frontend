@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Schema } from '../_types'
+import { FacilitySignUpPayload, Schema } from '../_types'
 import Constants from '../../../../utils/constants'
 import axios from 'axios'
 import { useMutation } from '@tanstack/react-query'
@@ -11,15 +11,6 @@ import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 import { schema, defaultValues } from '../schema/validation'
 
 axios.defaults.withCredentials = true
-
-interface FacilitySignUpPayload {
-  email: string
-  password: string
-  user_role: 'facility'
-  extra_data: {
-    name: string
-  }
-}
 
 const useFacilitySignUp = () => {
   const [error, setError] = useState<string>('')
@@ -40,7 +31,9 @@ const useFacilitySignUp = () => {
       await axios.post(`${Constants.BaseURL}auth/signup/`, data)
     },
     onSuccess: () => onHandleClick(3),
-    onError: (err) => setErrorMessages(err, setError),
+    onError: (err) => {
+      setErrorMessages(err, setError), onHandleClick(2)
+    },
   })
 
   const onSubmit = (data: Schema) => {
