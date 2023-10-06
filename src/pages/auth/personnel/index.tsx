@@ -13,15 +13,14 @@ const PersonnelSignup = () => {
   return (
     <Layout>
       <ConditionRenderComponent renderIf={activeState === 1}>
-        <ProfileSetup />
+        <SignUp />
       </ConditionRenderComponent>
       <ConditionRenderComponent renderIf={activeState === 2}>
-        <SignUp />
         <PersonnelTermsAndConditions />
       </ConditionRenderComponent>
-      <ConditionRenderComponent
-        renderIf={activeState === 3}
-      ></ConditionRenderComponent>
+      <ConditionRenderComponent renderIf={activeState === 3}>
+        <ProfileSetup />
+      </ConditionRenderComponent>
       <ConditionRenderComponent renderIf={activeState === 4}>
         <UploadCV />
       </ConditionRenderComponent>

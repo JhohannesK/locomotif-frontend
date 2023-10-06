@@ -49,14 +49,14 @@ const ProfileSetup = () => {
               <AuthFieldsLabel>Date of Birth</AuthFieldsLabel>
               <GeneralInput
                 name="date_of_birth"
-                type="number"
+                type="date"
                 InputProps={{
                   inputProps: {
                     min: `${new Date().getFullYear() - 70}-01-01`,
                     max: new Date().toJSON().split('T')[0],
                   },
                 }}
-                placeholder="Jackson"
+                placeholder="01-01-1900"
               />
               <AuthFieldsLabel>Location</AuthFieldsLabel>
               {/* <SelectBox>
