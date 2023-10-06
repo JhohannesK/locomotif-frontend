@@ -1,8 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Constants from './utils/constants'
 import App from './App'
-import SigninPageIns from './pages/Facility/facility-signin-page/signin_page'
-import SigninPage from './pages/auth/personnel/personnel-signin-page/signin'
 import HomePage from './pages/Personnel/personnel-home-page/home_page'
 export const routhPaths = Constants.ROUTES
 import FacilityHomePage from './pages/Facility/facility-home-page/home_page'
@@ -21,16 +19,8 @@ const routes = createBrowserRouter([
     element: <SignIn />,
   },
   {
-    path: routhPaths.FACILITY.facility_signin,
-    element: <SigninPageIns />,
-  },
-  {
     path: routhPaths.FACILITY.facility_signup,
     element: <FacilitySignUp />,
-  },
-  {
-    path: routhPaths.PERSONNEL.personnel_signin,
-    element: <SigninPage />,
   },
   {
     path: routhPaths.PERSONNEL.personnel_signup,
@@ -46,12 +36,7 @@ const routes = createBrowserRouter([
   },
   {
     path: routhPaths.PERSONNEL.personnel_dashboard,
-    element: (
-      // <ProtectedRoute allowedRoles={['doctor']} userRole={userRole}>
-      //   <HomePage />
-      // </ProtectedRoute>
-      <HomePage />
-    ),
+    element: <HomePage />,
   },
   {
     path: routhPaths.FACILITY.facility_dashboard,
