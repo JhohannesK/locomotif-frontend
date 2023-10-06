@@ -15,7 +15,7 @@ import {
 import { BiSearch } from 'react-icons/bi'
 
 import Layout from '../../../_shared/Layout'
-import JobCard from '../job-card/JobLIstingCard'
+// import JobCard from '../job-card/JobLIstingCard'
 import GeneralButton from '../../../_shared/components/button/Button'
 import { colors } from '../../../colors'
 import LeftPane from './LeftPane'
@@ -24,7 +24,7 @@ import { SearchInput } from '../../../_shared'
 import useFetch from './hook/useFetch'
 
 function PersonnelHomePage() {
-  const { data, isLoading } = useFetch()
+  const { isLoading } = useFetch()
 
   if (isLoading) {
     return <>loading </>
@@ -72,7 +72,7 @@ function PersonnelHomePage() {
             <LowerContentContainer>
               <PostingStyles>
                 <JobsContainer>
-                  {data?.map((posting) => {
+                  {/* {data?.map((posting) => {
                     return (
                       <JobCard
                         description={posting.description}
@@ -82,7 +82,7 @@ function PersonnelHomePage() {
                         shift={posting.shift}
                       />
                     )
-                  })}
+                  })} */}
                 </JobsContainer>
               </PostingStyles>
             </LowerContentContainer>
