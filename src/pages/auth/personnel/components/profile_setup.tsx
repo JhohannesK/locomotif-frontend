@@ -13,11 +13,14 @@ import useProfileSetup from '../hook/useProfileSetup'
 import { FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
+import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 // import { SelectBox } from '../../facility/styles'
+import { useDispatch } from 'react-redux'
 
 const ProfileSetup = () => {
   const { mutation, onSubmit, methods, error } = useProfileSetup()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -26,7 +29,7 @@ const ProfileSetup = () => {
       )}
       <AuthContainer>
         <FormProvider {...methods}>
-          <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
+          <AuthContent>
             <AuthUpperContent>
               <h1>Set Up Your Profile</h1>
             </AuthUpperContent>
@@ -103,6 +106,10 @@ const ProfileSetup = () => {
                 variantText="outlined"
               />
               <GenericButton
+                onClick={() => {
+                  methods.handleSubmit(onSubmit)
+                  dispatch(setActiveSidebar({ activeSidebar: 4 }))
+                }}
                 sx={{
                   backgroundColor: colors.button.pineGreen,
                   width: '100%',

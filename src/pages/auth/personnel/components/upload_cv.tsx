@@ -11,6 +11,8 @@ import {
 import { useDropzone } from 'react-dropzone'
 import { BiImages } from 'react-icons/bi'
 import { FiUpload } from 'react-icons/fi'
+import { useNavigate } from 'react-router-dom'
+import Constants from '../../../../utils/constants'
 
 const UploadCV = () => {
   const [uploads, setUploads] = useState<File[]>()
@@ -25,6 +27,8 @@ const UploadCV = () => {
     multiple: true,
     maxFiles: 3,
   })
+
+  const navigate = useNavigate()
 
   return (
     <AuthContainer>
@@ -69,6 +73,9 @@ const UploadCV = () => {
         </div>
         <StepNavigateButtons>
           <GenericButton
+            onClick={() =>
+              navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
+            }
             sx={{
               backgroundColor: colors.button.white,
               color: colors.text.pineGreen,

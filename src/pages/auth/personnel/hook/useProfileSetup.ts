@@ -14,18 +14,19 @@ import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 axios.defaults.withCredentials = true
 
 const schema = z.object({
-  specialty: z.string().min(3),
+  specialty: z.string().min(3).optional(),
   registrationyear: z
     .number()
     .positive()
     .gt(1950)
-    .lte(new Date().getFullYear()),
-  telephone: z.string(),
-  date_of_birth: z.string(),
-  country: z.string().min(2).max(100),
-  region: z.string().min(2).max(100),
-  city: z.string().min(2).max(100),
-  digital_address: z.string().min(2).max(15),
+    .lte(new Date().getFullYear())
+    .optional(),
+  telephone: z.string().optional(),
+  date_of_birth: z.string().optional(),
+  country: z.string().min(2).max(100).optional(),
+  region: z.string().min(2).max(100).optional(),
+  city: z.string().min(2).max(100).optional(),
+  digital_address: z.string().min(2).max(15).optional(),
 })
 
 type Schema = z.infer<typeof schema>
@@ -34,13 +35,13 @@ const useProfileSetup = () => {
   const [error, setError] = useState<string>('')
 
   const defaultValues: Schema = {
-    specialty: '',
+    // specialty: '',
     registrationyear: 2023,
     telephone: '',
     date_of_birth: '',
-    country: '',
-    region: '',
-    city: '',
+    // country: '',
+    // region: '',
+    // city: '',
     digital_address: '',
   }
 
