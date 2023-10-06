@@ -3,9 +3,7 @@ import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
-import Constants from '../../../../utils/constants'
 import { setErrorMessages } from '../../../../utils/util'
-// import { useNavigate } from 'react-router-dom'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 import { useDispatch } from 'react-redux'
 import { defaultValues, schema, Schema } from '../schema/validation-schema'
@@ -26,6 +24,9 @@ const usePersonnelSignup = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: SchemaType) => {
+      localStorage.removeItem('PersonnelSignUpData')
+      localStorage.removeItem('PersonnelSubmitData')
+      localStorage.setItem('PersonnelSignUpData', JSON.stringify(data))
       const newData = {
         email: data.email,
         password: data.password,
@@ -36,7 +37,7 @@ const usePersonnelSignup = () => {
           other_names: data.other_names,
         },
       }
-      await axios.post(`${Constants.BaseURL}auth/signup/`, newData)
+      localStorage.setItem('PersonnelSubmitData', JSON.stringify(newData))
     },
     onSuccess: () => {
       dispatch(setActiveSidebar({ activeSidebar: 2 }))

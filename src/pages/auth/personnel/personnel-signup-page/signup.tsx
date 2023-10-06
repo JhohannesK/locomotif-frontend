@@ -75,6 +75,10 @@ const SignUp = () => {
                   sx={{
                     backgroundColor: colors.button.pineGreen,
                     width: '100%',
+                    ':hover': {
+                      backgroundColor: colors.button.antiflashWhite,
+                      color: colors.text.pineGreen,
+                    },
                   }}
                 ></LoadingButton>
               ) : (
@@ -82,6 +86,10 @@ const SignUp = () => {
                   sx={{
                     backgroundColor: colors.button.pineGreen,
                     width: '100%',
+                    ':hover': {
+                      backgroundColor: colors.button.antiflashWhite,
+                      color: colors.text.pineGreen,
+                    },
                   }}
                   title="Sign Up"
                   size="large"

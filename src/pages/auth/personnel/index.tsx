@@ -5,8 +5,8 @@ import { RootState } from '../../../redux/store'
 import PersonnelTermsAndConditions from './components/terms_conditions'
 import SignUp from './personnel-signup-page/signup'
 import ProfileSetup from './components/profile_setup'
-import FacilitySuccess from '../facility/components/success'
 import UploadCV from './components/upload_cv'
+import PersonnelSuccess from './components/success'
 
 const PersonnelSignup = () => {
   const activeState = useSelector((state: RootState) => state.app.activeSidebar)
@@ -25,7 +25,7 @@ const PersonnelSignup = () => {
         <UploadCV />
       </ConditionRenderComponent>
       <ConditionRenderComponent renderIf={activeState === 5}>
-        <FacilitySuccess />
+        <PersonnelSuccess />
       </ConditionRenderComponent>
     </Layout>
   )

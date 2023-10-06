@@ -8,14 +8,14 @@ import {
   AuthFieldsLabel,
 } from '../../../../_shared/auth_styles'
 import GeneralInput from '../../../../_shared/components/inputs/Input'
-import { GenericButton, Toast, GenericSelect } from '../../../../_shared'
+import { GenericButton, Toast } from '../../../../_shared'
 import useProfileSetup from '../hook/useProfileSetup'
 import { FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
-import { SelectBox } from '../../facility/styles'
+// import { SelectBox } from '../../facility/styles'
 
-const SignUp = () => {
+const ProfileSetup = () => {
   const { mutation, onSubmit, methods, error } = useProfileSetup()
   const navigate = useNavigate()
 
@@ -31,8 +31,15 @@ const SignUp = () => {
               <h1>Set Up Your Profile</h1>
             </AuthUpperContent>
             <AuthFields>
-              <AuthFieldsLabel>Specialty</AuthFieldsLabel>
-              <GeneralInput name="specialty" placeholder="e.g: Neurosurgery" />
+              <AuthFieldsLabel>Specialties</AuthFieldsLabel>
+              {/* <SelectBox>
+                <GenericSelect
+                  label={'Specialties'}
+                  data={['Gynaecology', 'Optomology', 'Dentistry']}
+                  defaultValue=""
+                  sx={{ width: '30%' }}
+                />
+              </SelectBox> */}
               <AuthFieldsLabel>Year of Registration</AuthFieldsLabel>
               <GeneralInput
                 name="registrationyear"
@@ -41,7 +48,7 @@ const SignUp = () => {
               />
               <AuthFieldsLabel>Date of Birth</AuthFieldsLabel>
               <GeneralInput
-                name="DoB"
+                name="date_of_birth"
                 type="date"
                 InputProps={{
                   inputProps: {
@@ -49,32 +56,32 @@ const SignUp = () => {
                     max: new Date().toJSON().split('T')[0],
                   },
                 }}
-                placeholder="Jackson"
+                placeholder="01-01-1900"
               />
               <AuthFieldsLabel>Location</AuthFieldsLabel>
-              <SelectBox>
+              {/* <SelectBox>
                 <GenericSelect
                   label={'Country'}
                   data={['Ghana', 'The UK']}
-                  defaultValue="ama"
+                  defaultValue=""
                   sx={{ width: '30%' }}
                 />
                 <GenericSelect
                   label={'Region'}
                   data={['Greater Accra', 'Ashanti']}
-                  defaultValue="ama"
+                  defaultValue=""
                   sx={{ width: '30%' }}
                 />
                 <GenericSelect
                   label={'City'}
                   data={['Accra', 'Kumasi']}
-                  defaultValue="ama"
+                  defaultValue=""
                   sx={{ width: '30%' }}
                 />
-              </SelectBox>
+              </SelectBox> */}
               <AuthFieldsLabel>Digital Address</AuthFieldsLabel>
               <GeneralInput
-                name="digitaladdress"
+                name="digital_address"
                 placeholder="e.g: GA-123-9876"
               />
             </AuthFields>
@@ -104,24 +111,6 @@ const SignUp = () => {
                 title="Next"
                 size="medium"
               />
-              {/* {mutation.isLoading ? (
-                <LoadingButton
-                  loading
-                  sx={{
-                    backgroundColor: colors.button.pineGreen,
-                    width: '100%',
-                  }}
-                ></LoadingButton>
-              ) : (
-                <GenericButton
-                  sx={{
-                    backgroundColor: colors.button.pineGreen,
-                    width: '100%',
-                  }}
-                  title="Sign Up"
-                  size="large"
-                />
-              )} */}
             </StepNavigateButtons>
           </AuthContent>
         </FormProvider>
@@ -130,4 +119,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default ProfileSetup
