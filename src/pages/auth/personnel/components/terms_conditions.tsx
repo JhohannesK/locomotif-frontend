@@ -7,10 +7,19 @@ import { GenericButton } from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { useDispatch } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
+import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
+import Constants from '../../../../utils/constants'
+import axios from 'axios'
 
 const PersonnelTermsAndConditions = () => {
   const dispatch = useDispatch()
-
+  const signUp = async () => {
+    const newData = loadFromLocalStorage({ key: 'PersonnelSubmitData' })
+    console.log(newData)
+    await axios
+      .post(`${Constants.BaseURL}auth/signup/`, newData)
+      .then(() => dispatch(setActiveSidebar({ activeSidebar: 3 })))
+  }
   return (
     <>
       <AuthContainer>
@@ -20,7 +29,7 @@ const PersonnelTermsAndConditions = () => {
           </AuthUpperContent>
 
           <GenericButton
-            onClick={() => dispatch(setActiveSidebar({ activeSidebar: 3 }))}
+            onClick={() => signUp}
             title="I Agree"
             sx={{
               backgroundColor: colors.button.pineGreen,

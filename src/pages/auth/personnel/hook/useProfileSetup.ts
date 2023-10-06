@@ -8,6 +8,7 @@ import Constants from '../../../../utils/constants'
 import { setErrorMessages } from '../../../../utils/util'
 import { useDispatch } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
+import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 // import { useNavigate } from 'react-router-dom'
 
 axios.defaults.withCredentials = true
@@ -52,13 +53,13 @@ const useProfileSetup = () => {
 
   const mutation = useMutation({
     mutationFn: async (data: Schema) => {
-      const signUpdata = localStorage.getIte('PersonnelSignupData')
-      console.log({ ...signUpdata, ...data })
+      const signUpData = loadFromLocalStorage({ key: 'PersonnelSignUpData' })
+      console.log({ ...signUpData, ...data })
       await axios.put(`${Constants.BaseURL}auth/profile/`, {
-        ...signUpdata,
+        ...signUpData,
         ...data,
       })
-      localStorage.removeItem('PersonnelSignupData')
+      localStorage.removeItem('PersonnelSignUpData')
     },
     onSuccess: () => {
       dispatch(setActiveSidebar({ activeSidebar: 4 }))

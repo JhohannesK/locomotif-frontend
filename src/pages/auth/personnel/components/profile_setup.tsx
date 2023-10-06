@@ -8,12 +8,12 @@ import {
   AuthFieldsLabel,
 } from '../../../../_shared/auth_styles'
 import GeneralInput from '../../../../_shared/components/inputs/Input'
-import { GenericButton, Toast, GenericSelect } from '../../../../_shared'
+import { GenericButton, Toast } from '../../../../_shared'
 import useProfileSetup from '../hook/useProfileSetup'
 import { FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
-import { SelectBox } from '../../facility/styles'
+// import { SelectBox } from '../../facility/styles'
 
 const ProfileSetup = () => {
   const { mutation, onSubmit, methods, error } = useProfileSetup()
@@ -32,14 +32,14 @@ const ProfileSetup = () => {
             </AuthUpperContent>
             <AuthFields>
               <AuthFieldsLabel>Specialties</AuthFieldsLabel>
-              <SelectBox>
+              {/* <SelectBox>
                 <GenericSelect
                   label={'Specialties'}
                   data={['Gynaecology', 'Optomology', 'Dentistry']}
                   defaultValue=""
                   sx={{ width: '30%' }}
                 />
-              </SelectBox>
+              </SelectBox> */}
               <AuthFieldsLabel>Year of Registration</AuthFieldsLabel>
               <GeneralInput
                 name="registrationyear"
@@ -59,7 +59,7 @@ const ProfileSetup = () => {
                 placeholder="Jackson"
               />
               <AuthFieldsLabel>Location</AuthFieldsLabel>
-              <SelectBox>
+              {/* <SelectBox>
                 <GenericSelect
                   label={'Country'}
                   data={['Ghana', 'The UK']}
@@ -78,7 +78,7 @@ const ProfileSetup = () => {
                   defaultValue=""
                   sx={{ width: '30%' }}
                 />
-              </SelectBox>
+              </SelectBox> */}
               <AuthFieldsLabel>Digital Address</AuthFieldsLabel>
               <GeneralInput
                 name="digital_address"
@@ -111,24 +111,6 @@ const ProfileSetup = () => {
                 title="Next"
                 size="medium"
               />
-              {/* {mutation.isLoading ? (
-                <LoadingButton
-                  loading
-                  sx={{
-                    backgroundColor: colors.button.pineGreen,
-                    width: '100%',
-                  }}
-                ></LoadingButton>
-              ) : (
-                <GenericButton
-                  sx={{
-                    backgroundColor: colors.button.pineGreen,
-                    width: '100%',
-                  }}
-                  title="Sign Up"
-                  size="large"
-                />
-              )} */}
             </StepNavigateButtons>
           </AuthContent>
         </FormProvider>
