@@ -28,11 +28,11 @@ const useSignIn = () => {
   const routeUserToPage = useSelector(
     (state: RootState) => state.auth.signInResponse.user_role
   )
-  console.log(
-    '🚀 ~ file: useSignIn.ts:31 ~ useSignIn ~ routeUserToPage:',
-    routeUserToPage
-  )
-  console.log(routeUserToPage)
+  // console.log(
+  //   '🚀 ~ file: useSignIn.ts:31 ~ useSignIn ~ routeUserToPage:',
+  //   routeUserToPage
+  // )
+
   const defaultValues: Schema = {
     email: '',
     password: '',
@@ -51,6 +51,7 @@ const useSignIn = () => {
         .post(`${Constants.BaseURL}auth/login/`, datas)
         .then((res: AxiosResponse) => {
           const responseData = res.data
+          // console.log("this is not the real deal",responseData)
           dispatch(login({ ...responseData, isAuthenticated: true }))
         })
     },
