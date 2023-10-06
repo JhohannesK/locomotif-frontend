@@ -44,7 +44,7 @@ const FacilityCreateAccount = ({
     <>
       <AuthContainer>
         <FormProvider {...methods}>
-          <AuthContent>
+          <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
             <AuthUpperContent>
               <AuthUpperContentH2>Create Your Account</AuthUpperContentH2>
               <AuthUpperContentP>
@@ -95,9 +95,11 @@ const FacilityCreateAccount = ({
                   fontStyle: 'normal',
                   fontWeight: '400',
                   lineHeight: '137.14%',
+                  ':hover': {
+                    backgroundColor: colors.button.pineGreen,
+                  },
                 }}
                 size="large"
-                onClick={methods.handleSubmit(onSubmit)}
               />
               {/* )} */}
               <AuthButtonH3>OR</AuthButtonH3>
@@ -115,10 +117,10 @@ const FacilityCreateAccount = ({
                   lineHeight: '137.14%',
                   width: '100%',
                   borderRadius: '10px',
-                  hover: {
+                  ':hover': {
                     backgroundColor: '#FFF',
-                    borderColor: colors.button.pineGreen,
                   },
+                  pointerEvents: 'none', //Disables button
                 }}
                 size="large"
                 icon={

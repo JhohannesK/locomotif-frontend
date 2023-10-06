@@ -11,6 +11,9 @@ import {
   SignInButtons,
   Welcome,
   WelcomeBack,
+  createAccountProps,
+  googleSignInProps,
+  signInProps,
 } from './styles'
 import useSignIn from './hook/useSignIn'
 import { LoadingButton } from '@mui/lab'
@@ -59,21 +62,7 @@ const SignIn = () => {
                   }}
                 ></LoadingButton>
               ) : (
-                <GenericButton
-                  title="Sign In"
-                  sx={{
-                    backgroundColor: colors.button.pineGreen,
-                    width: '100%',
-                    borderRadius: '10px',
-                    color: '#F6FBFF',
-                    textAlign: 'center',
-                    fontSize: '14px',
-                    fontStyle: 'normal',
-                    fontWeight: '400',
-                    lineHeight: '137.14%',
-                  }}
-                  size="large"
-                />
+                <GenericButton title="Sign In" sx={signInProps} size="large" />
               )}
             </InputBoxes>
           </FormProvider>
@@ -82,19 +71,7 @@ const SignIn = () => {
             <GenericButton
               variantText="outlined"
               title="Continue with Google"
-              sx={{
-                backgroundColor: '#FFF',
-                borderColor: colors.button.pineGreen,
-                color: 'rgba(0, 0, 0, 0.60)',
-                textAlign: 'center',
-                fontSize: '14px',
-                width: '100%',
-                borderRadius: '12px',
-                hover: {
-                  backgroundColor: '#FFF',
-                  borderColor: colors.button.pineGreen,
-                },
-              }}
+              sx={googleSignInProps}
               size="large"
               icon={
                 <img
@@ -113,17 +90,7 @@ const SignIn = () => {
             <GenericButton
               variantText="outlined"
               title="Create An Account"
-              sx={{
-                backgroundColor: '#FFF',
-                borderColor: colors.button.pineGreen,
-                color: colors.background.pineGreen,
-                textAlign: 'center',
-                fontSize: '15px',
-                width: '100%',
-                height: '80%',
-                borderRadius: '12px',
-                border: '2px solid',
-              }}
+              sx={createAccountProps}
               onClick={() => {
                 routes.navigate(Constants.ROUTES.GetStarted)
               }}

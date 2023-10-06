@@ -11,6 +11,8 @@ import { login } from '../../../../redux/slices/authSlice'
 import { setErrorMessages } from '../../../../utils/util'
 import { RootState } from '../../../../redux/store'
 
+axios.defaults.withCredentials = true
+
 const schema = z.object({
   email: z.string().min(3),
   password: z.string().min(3).max(100),
@@ -25,6 +27,10 @@ const useSignIn = () => {
 
   const routeUserToPage = useSelector(
     (state: RootState) => state.auth.signInResponse.user_role
+  )
+  console.log(
+    '🚀 ~ file: useSignIn.ts:31 ~ useSignIn ~ routeUserToPage:',
+    routeUserToPage
   )
   console.log(routeUserToPage)
   const defaultValues: Schema = {

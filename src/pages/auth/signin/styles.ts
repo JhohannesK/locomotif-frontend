@@ -1,5 +1,52 @@
 import styled from 'styled-components'
 import Constants from '../../../utils/constants'
+import { colors } from '../../../colors'
+import { SxProps } from '@mui/material'
+
+export const signInProps: SxProps = {
+  backgroundColor: colors.button.pineGreen,
+  width: '100%',
+  borderRadius: '10px',
+  color: '#F6FBFF',
+  textAlign: 'center',
+  fontSize: '14px',
+  fontStyle: 'normal',
+  fontWeight: '400',
+  lineHeight: '137.14%',
+  ':hover': {
+    backgroundColor: colors.button.pineGreen,
+  },
+}
+
+export const googleSignInProps: SxProps = {
+  backgroundColor: '#FFF',
+  borderColor: colors.button.pineGreen,
+  color: 'rgba(0, 0, 0, 0.60)',
+  textAlign: 'center',
+  fontSize: '14px',
+  width: '100%',
+  borderRadius: '12px',
+  ':hover': {
+    backgroundColor: '#FFF',
+    borderColor: colors.button.pineGreen,
+  },
+}
+
+export const createAccountProps: SxProps = {
+  backgroundColor: '#FFF',
+  borderColor: colors.button.pineGreen,
+  color: colors.background.pineGreen,
+  textAlign: 'center',
+  fontSize: '15px',
+  width: '100%',
+  height: '80%',
+  borderRadius: '12px',
+  border: '2px solid',
+  ':hover': {
+    backgroundColor: '#FFF',
+    borderColor: colors.button.pineGreen,
+  },
+}
 
 export const Page = styled.div`
   height: 100vh;

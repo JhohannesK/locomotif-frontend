@@ -76,21 +76,21 @@ const FacilitySetUpProfile = ({
                   name="country"
                   label={'Country'}
                   data={['Ghana', 'The UK']}
-                  defaultValue="ama"
+                  defaultValue=""
                   sx={{ width: '30%' }}
                 />
                 <GenericSelect
                   name="region"
                   label={'Region'}
                   data={['Greater Accra', 'Ashanti']}
-                  defaultValue="ama"
+                  defaultValue=""
                   sx={{ width: '30%' }}
                 />
                 <GenericSelect
                   name="city"
                   label={'City'}
                   data={['Accra', 'Kumasi']}
-                  defaultValue="ama"
+                  defaultValue=""
                   sx={{ width: '30%' }}
                 />
               </SelectBox>
@@ -126,7 +126,7 @@ const FacilitySetUpProfile = ({
                   lineHeight: '137.14%',
                   width: '100%',
                   borderRadius: '10px',
-                  hover: {
+                  ':hover': {
                     backgroundColor: '#FFF',
                     borderColor: colors.button.pineGreen,
                   },

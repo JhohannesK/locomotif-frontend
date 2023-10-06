@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom'
 import { login } from '../../../../redux/slices/authSlice'
 import { setErrorMessages } from '../../../../utils/util'
 
+axios.defaults.withCredentials = true
+
 const useSignIn = () => {
   const navigate = useNavigate()
 
