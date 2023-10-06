@@ -8,6 +8,8 @@ import Constants from '../../../../utils/constants'
 import { setErrorMessages } from '../../../../utils/util'
 import { useNavigate } from 'react-router-dom'
 
+axios.defaults.withCredentials = true
+
 const schema = z.object({
   facility_code: z.string().min(4),
   password: z.string().min(8).max(100),

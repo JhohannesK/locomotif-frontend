@@ -76,21 +76,21 @@ const FacilitySetUpProfile = ({
                   name="country"
                   label={'Country'}
                   data={['Ghana', 'The UK']}
-                  defaultValue="ama"
+                  defaultValue=""
                   sx={{ width: '30%' }}
                 />
                 <GenericSelect
                   name="region"
                   label={'Region'}
                   data={['Greater Accra', 'Ashanti']}
-                  defaultValue="ama"
+                  defaultValue=""
                   sx={{ width: '30%' }}
                 />
                 <GenericSelect
                   name="city"
                   label={'City'}
                   data={['Accra', 'Kumasi']}
-                  defaultValue="ama"
+                  defaultValue=""
                   sx={{ width: '30%' }}
                 />
               </SelectBox>

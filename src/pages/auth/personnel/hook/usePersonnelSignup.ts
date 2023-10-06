@@ -6,14 +6,18 @@ import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import Constants from '../../../../utils/constants'
 import { setErrorMessages } from '../../../../utils/util'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
+import { setActiveSidebar } from '../../../../redux/slices/appSlice'
+import { useDispatch } from 'react-redux'
+
+axios.defaults.withCredentials = true
 
 const schema = z
   .object({
     first_name: z.string().min(2),
     last_name: z.string().min(2),
     other_names: z.string(),
-    role: z.string(),
+    user_role: z.string(),
     email: z.string().min(8).max(100),
     password: z.string().min(8).max(100),
     confirmPassword: z.string().min(8).max(100),
@@ -32,7 +36,7 @@ const usePersonnelSignup = () => {
     first_name: '',
     last_name: '',
     other_names: '',
-    role: 'personnel',
+    user_role: 'personnel',
     email: '',
     password: '',
     confirmPassword: '',
@@ -45,17 +49,27 @@ const usePersonnelSignup = () => {
 
   type a = Omit<Schema, 'confirmPassword'>
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+
+  const dispatch = useDispatch()
 
   const mutation = useMutation({
     mutationFn: async (data: a) => {
-      await axios.post(
-        `${Constants.BaseURL}auth/signup/medical_personnel/`,
-        data
-      )
+      const newData = {
+        email: data.email,
+        password: data.password,
+        user_role: data.user_role,
+        extra_data: {
+          first_name: data.first_name,
+          last_name: data.last_name,
+          other_names: data.other_names,
+        },
+      }
+      await axios.post(`${Constants.BaseURL}auth/signup/`, newData)
     },
     onSuccess: () => {
-      navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
+      // navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
+      dispatch(setActiveSidebar({ activeSidebar: 2 }))
     },
     onError: (err) => setErrorMessages(err, setError),
   })

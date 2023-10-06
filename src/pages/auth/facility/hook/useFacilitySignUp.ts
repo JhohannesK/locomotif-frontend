@@ -9,6 +9,8 @@ import { setErrorMessages } from '../../../../utils/util'
 import { useDispatch } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 
+axios.defaults.withCredentials = true
+
 interface FacilitySignUpPayload {
   email: string
   password: string

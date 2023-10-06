@@ -3,6 +3,8 @@ import { JobCardProps } from '../../../../_shared/@types'
 import Constants from '../../../../utils/constants'
 import axios from 'axios'
 
+axios.defaults.withCredentials = true
+
 const useFetch = () => {
   const fetchPostings = async (): Promise<JobCardProps[]> => {
     const response = await axios.get<JobCardProps[]>(

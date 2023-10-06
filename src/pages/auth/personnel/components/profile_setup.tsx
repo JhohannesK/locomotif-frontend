@@ -7,18 +7,17 @@ import {
   AuthContent,
   AuthFieldsLabel,
 } from '../../../../_shared/auth_styles'
-// import image from '../../../_shared/assets/doctor_sign_in.png'
-// import { LoadingButton } from '@mui/lab'
 import GeneralInput from '../../../../_shared/components/inputs/Input'
-import { GenericButton, Toast } from '../../../../_shared'
-import usePersonnelSignup from '../../../Personnel/personnel-signup-page/hook/usePersonnelSignup'
+import { GenericButton, Toast, GenericSelect } from '../../../../_shared'
+import useProfileSetup from '../hook/useProfileSetup'
 import { FormProvider } from 'react-hook-form'
-// import routes from '../../../../routes'
-// import Constants from '../../../../utils/constants'
-// import { BiMap } from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom'
+import Constants from '../../../../utils/constants'
+import { SelectBox } from '../../facility/styles'
 
-const SignUpPage = () => {
-  const { mutation, onSubmit, methods, error } = usePersonnelSignup()
+const SignUp = () => {
+  const { mutation, onSubmit, methods, error } = useProfileSetup()
+  const navigate = useNavigate()
 
   return (
     <>
@@ -29,13 +28,6 @@ const SignUpPage = () => {
         <FormProvider {...methods}>
           <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
             <AuthUpperContent>
-              {/* <AuthLogo>
-                <img
-                  src={image}
-                  alt="health-leaf icon"
-                  style={{ height: '80%', width: '80%', objectFit: 'contain' }}
-                />
-              </AuthLogo> */}
               <h1>Set Up Your Profile</h1>
             </AuthUpperContent>
             <AuthFields>
@@ -60,7 +52,26 @@ const SignUpPage = () => {
                 placeholder="Jackson"
               />
               <AuthFieldsLabel>Location</AuthFieldsLabel>
-              <GeneralInput name="location" placeholder="Lartebiokorshie" />
+              <SelectBox>
+                <GenericSelect
+                  label={'Country'}
+                  data={['Ghana', 'The UK']}
+                  defaultValue="ama"
+                  sx={{ width: '30%' }}
+                />
+                <GenericSelect
+                  label={'Region'}
+                  data={['Greater Accra', 'Ashanti']}
+                  defaultValue="ama"
+                  sx={{ width: '30%' }}
+                />
+                <GenericSelect
+                  label={'City'}
+                  data={['Accra', 'Kumasi']}
+                  defaultValue="ama"
+                  sx={{ width: '30%' }}
+                />
+              </SelectBox>
               <AuthFieldsLabel>Digital Address</AuthFieldsLabel>
               <GeneralInput
                 name="digitaladdress"
@@ -70,6 +81,9 @@ const SignUpPage = () => {
 
             <StepNavigateButtons>
               <GenericButton
+                onClick={() =>
+                  navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
+                }
                 sx={{
                   backgroundColor: colors.button.white,
                   color: colors.text.pineGreen,
@@ -116,4 +130,4 @@ const SignUpPage = () => {
   )
 }
 
-export default SignUpPage
+export default SignUp
