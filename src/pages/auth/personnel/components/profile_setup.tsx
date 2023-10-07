@@ -13,14 +13,11 @@ import useProfileSetup from '../hook/useProfileSetup'
 import { FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
-import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 // import { SelectBox } from '../../facility/styles'
-import { useDispatch } from 'react-redux'
 
 const ProfileSetup = () => {
   const { mutation, onSubmit, methods, error } = useProfileSetup()
   const navigate = useNavigate()
-  const dispatch = useDispatch()
 
   return (
     <>
@@ -34,7 +31,7 @@ const ProfileSetup = () => {
               <h1>Set Up Your Profile</h1>
             </AuthUpperContent>
             <AuthFields>
-              <AuthFieldsLabel>Specialties</AuthFieldsLabel>
+              {/* <AuthFieldsLabel>Specialties</AuthFieldsLabel> */}
               {/* <SelectBox>
                 <GenericSelect
                   label={'Specialties'}
@@ -61,7 +58,7 @@ const ProfileSetup = () => {
                 }}
                 placeholder="01-01-1900"
               />
-              <AuthFieldsLabel>Location</AuthFieldsLabel>
+              {/* <AuthFieldsLabel>Location</AuthFieldsLabel> */}
               {/* <SelectBox>
                 <GenericSelect
                   label={'Country'}
@@ -106,10 +103,7 @@ const ProfileSetup = () => {
                 variantText="outlined"
               />
               <GenericButton
-                onClick={() => {
-                  methods.handleSubmit(onSubmit)
-                  dispatch(setActiveSidebar({ activeSidebar: 4 }))
-                }}
+                onClick={methods.handleSubmit(onSubmit)}
                 sx={{
                   backgroundColor: colors.button.pineGreen,
                   width: '100%',
