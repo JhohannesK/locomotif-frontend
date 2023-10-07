@@ -126,7 +126,7 @@ const FacilitySetUpProfile = ({
                   lineHeight: '137.14%',
                   width: '100%',
                   borderRadius: '10px',
-                  hover: {
+                  ':hover': {
                     backgroundColor: '#FFF',
                     borderColor: colors.button.pineGreen,
                   },

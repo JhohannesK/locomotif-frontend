@@ -47,7 +47,7 @@ export const AuthLogo = styled.div`
 export const AuthFields = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.65rem;
 `
 
 export const AuthFieldsLabel = styled.h3`
