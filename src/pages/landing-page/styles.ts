@@ -106,66 +106,48 @@ export const JoinLocomotif = styled.div`
   }
 `
 
-export const Facility = styled.div`
-  // background-color: green;
+export const ImageCard = styled.div`
   width: 95%;
   position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  // height: 30rem;
+
+  height: 280px;
+  ${Constants.LAYOUT.MEDIA_QUERIES.SMALL_PX} {
+    height: 500px;
+  }
 
   img {
     width: 100%;
-    max-width: 400px;
+    //  max-width: 400px;
     object-fit: cover;
-    border-radius: 12px;
     height: 250px;
     ${Constants.LAYOUT.MEDIA_QUERIES.SMALL_PX} {
       height: 500px;
     }
-  }
-
-  div {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    right: 0;
-    text-align: left;
-    color: #fff;
-    /* Main Header */
-    font-family: Roboto;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
   }
 `
 
-export const Personnel = styled.div`
-  // background-color: green;
-  width: 95%;
-  position: relative;
-
-  img {
-    width: 100%;
-    max-width: 400px;
-    object-fit: cover;
-    border-radius: 12px;
-    height: 250px;
-    ${Constants.LAYOUT.MEDIA_QUERIES.SMALL_PX} {
-      height: 500px;
-    }
-  }
-
-  div {
-    color: #fff;
-    /* Semi bold */
-    font-family: Roboto;
+export const ImageCardText = styled.div`
+  position: absolute;
+  bottom: 16px;
+  left: 22px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  color: white;
+  ${Constants.LAYOUT.MEDIA_QUERIES.SMALL_PX} {
+    bottom: 26px;
+    left: 32px;
     font-size: 25px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    position: absolute;
-    bottom: 10px;
-    left: 5px;
-    right: 0;
-    text-align: left;
   }
+`
+
+export const ImageCardOverlay = styled.div`
+  position: absolute;
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
 `
