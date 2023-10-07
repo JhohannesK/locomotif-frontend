@@ -5,7 +5,7 @@ import Constants from '../../utils/constants'
 export const Page = styled.body`
   height: 100vh;
   width: 100vw;
-  background-color: ${colors.background.white};
+  background-color: ${colors.background.pineGreen};
   align-items: center;
   justify-content: center;
   display: flex;
@@ -23,6 +23,9 @@ export const Content = styled.div`
 export const Logo = styled.div`
   top: 0;
   color: var(--Primary-Color, #0e6655);
+  background-color: ${colors.background.whiteSmoke};
+  padding: 10px;
+  border-radius: 10px;
   font-family: Roboto;
   font-size: 30px;
   font-style: normal;
@@ -68,7 +71,7 @@ export const BottomContent = styled.div`
 `
 
 export const GetStarted = styled.div`
-  color: #000;
+  color: ${colors.text.white};
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Roboto;
   font-size: 1.5em;
@@ -79,11 +82,17 @@ export const GetStarted = styled.div`
     font-size: 2em;
   }
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX} {
-    font-size: 50px;
+    font-size: 4rem;
+    letter-spacing: 2px;
+  }
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_2} {
+    font-size: 3rem;
+    letter-spacing: 2px;
   }
 `
 export const JoinLocomotif = styled.div`
-  color: var(--Tertiary, rgba(0, 0, 0, 0.7));
+  color: ${colors.text.white};
   font-family: Roboto;
   font-size: 1em;
   font-style: normal;

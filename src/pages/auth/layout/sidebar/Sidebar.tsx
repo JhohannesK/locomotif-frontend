@@ -93,6 +93,7 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
           border: `1px solid ${colors.border.whiteSmoke}`,
           padding: '10px 20px',
           width: '100%',
+          color: 'white',
           borderRadius: '12px',
           fontSize: '14px',
         }}

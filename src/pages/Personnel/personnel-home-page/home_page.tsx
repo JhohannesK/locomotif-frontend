@@ -22,12 +22,13 @@ import LeftPane from './LeftPane'
 import FilterPane from './filter'
 import { SearchInput } from '../../../_shared'
 import useFetch from './hook/useFetch'
+import ShimmerLoading from '../../../_shared/shimmer/Shimmer'
 
 function PersonnelHomePage() {
   const { isLoading } = useFetch()
 
   if (isLoading) {
-    return <>loading </>
+    return <ShimmerLoading />
   }
   return (
     <Layout dashboardType="personnel">
