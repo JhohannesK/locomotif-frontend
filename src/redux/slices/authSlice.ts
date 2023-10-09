@@ -3,7 +3,6 @@ import { IAuth, ResponseType, SignInResponse } from '../@types'
 import { loadFromLocalStorage, saveToLocalStorage } from '../hooks/middleware'
 
 const response: IAuth = loadFromLocalStorage({ key: 'auth' })
-console.log('🚀 ~ file: authSlice.ts:6 ~ response:', response)
 export const authState: ResponseType = response?.authResponse ?? {
   first_name: '',
   last_name: '',

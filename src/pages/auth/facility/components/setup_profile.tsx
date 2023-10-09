@@ -43,10 +43,6 @@ const FacilitySetUpProfile = ({
     onSubmit(combinedData)
   }
 
-  const handleDataSubmit = () => {
-    methods.handleSubmit(passData)()
-  }
-
   return (
     <>
       {mutation.isError && (
@@ -54,7 +50,7 @@ const FacilitySetUpProfile = ({
       )}
       <AuthContainer>
         <FormProvider {...methods}>
-          <AuthContent onSubmit={(event) => event.preventDefault()}>
+          <AuthContent onSubmit={methods.handleSubmit(passData)}>
             <AuthUpperContent>
               <AuthUpperContentH2>Setup Your Profile</AuthUpperContentH2>
               <AuthUpperContentP>
@@ -157,7 +153,6 @@ const FacilitySetUpProfile = ({
                     lineHeight: '137.14%',
                   }}
                   size="large"
-                  onClick={handleDataSubmit}
                 />
               )}
             </ButtonsBox>
