@@ -22,7 +22,7 @@ const Constants = {
     PERSONNEL: {
       personnel_signin: '/personnel/signin',
       personnel_signup: '/personnel/signup',
-      personnel_dashboard: '/personnel/dashboard',
+      personnel_dashboard: '/personnel/find-job',
     },
   },
 

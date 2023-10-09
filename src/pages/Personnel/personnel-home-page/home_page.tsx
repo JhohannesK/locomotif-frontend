@@ -13,9 +13,9 @@ import {
   FilterContainer,
 } from './home_page_style'
 import { BiSearch } from 'react-icons/bi'
-
+import postingData from '../../mocks/postings.json'
 import Layout from '../../../_shared/Layout'
-// import JobCard from '../job-card/JobLIstingCard'
+import JobCard from '../job-card/JobLIstingCard'
 import GeneralButton from '../../../_shared/components/button/Button'
 import { colors } from '../../../colors'
 import LeftPane from './LeftPane'
@@ -23,6 +23,7 @@ import FilterPane from './filter'
 import { SearchInput } from '../../../_shared'
 import useFetch from './hook/useFetch'
 import ShimmerLoading from '../../../_shared/shimmer/Shimmer'
+import { JobCardType } from '../../../_shared/@types'
 
 function PersonnelHomePage() {
   const { isLoading } = useFetch()
@@ -36,9 +37,8 @@ function PersonnelHomePage() {
     return shimmerLoader
   }
 
-  // if (isLoading) {
-  //   return <ShimmerLoading />
-  // }
+  const allPostingData: JobCardType[] = postingData.postings
+  console.log(typeof postingData)
   return (
     <Layout dashboardType="personnel">
       <Wrapper>
@@ -82,18 +82,11 @@ function PersonnelHomePage() {
             <LowerContentContainer>
               <PostingStyles>
                 <JobsContainer>
-                  {isLoading ? displayShimmer() : null}
-                  {/* {data?.map((posting) => {
-                    return (
-                      <JobCard
-                        description={posting.description}
-                        facility={posting.facility}
-                        rate_per_6_hour_shift={posting.rate_per_6_hour_shift}
-                        required_role={posting.required_role}
-                        shift={posting.shift}
-                      />
-                    )
-                  })} */}
+                  {isLoading
+                    ? displayShimmer()
+                    : allPostingData?.map((posting) => {
+                        return <JobCard posting={posting} />
+                      })}
                 </JobsContainer>
               </PostingStyles>
             </LowerContentContainer>

@@ -42,15 +42,18 @@ export type GeneralBtnProps = {
   onClick?: () => void
 }
 
-export interface JobCardProps {
-  title?: string
+export type JobCardType = {
+  required_role: string[]
+  title: string
   description: string
-  required_role?: string
-  shift: 'MORNING' | 'AFTERNOON' | 'EVENING'
-  start_time?: string
-  end_time?: string
-  rate_per_6_hour_shift: number
-  facility: string
+  full_time: boolean
+  rate_per_month: number
+  application_deadline: string
+  isactive: boolean
+  medical_facility: string
+  created_at: string
+  start_time: string
+  end_time: string
 }
 
 export interface SelectProps {

@@ -43,6 +43,13 @@ export const TagStyles = styled.div`
   border-radius: 10px;
   opacity: 0.8;
 `
+
+export const Specialities = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`
+
 export const JobDescription = styled.p`
   font-size: 0.9rem;
   color: rgba(0, 0, 0, 0.6);
@@ -50,6 +57,7 @@ export const JobDescription = styled.p`
 
 export const HospitalName = styled.h3`
   font-size: 20px;
+  letter-spacing: 0.3px;
   color: ${colors.text.night};
 `
 
@@ -65,6 +73,7 @@ export const TagWithIcons = styled(TagStyles)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
   gap: 5px;
 `
 
