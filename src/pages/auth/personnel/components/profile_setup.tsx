@@ -8,12 +8,12 @@ import {
   AuthFieldsLabel,
 } from '../../../../_shared/auth_styles'
 import GeneralInput from '../../../../_shared/components/inputs/Input'
-import { GenericButton, Toast } from '../../../../_shared'
+import { GenericButton, GenericSelect, Toast } from '../../../../_shared'
 import useProfileSetup from '../hook/useProfileSetup'
 import { FormProvider } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
-// import { SelectBox } from '../../facility/styles'
+import { SelectBox } from '../../facility/styles'
 
 const ProfileSetup = () => {
   const { mutation, onSubmit, methods, error } = useProfileSetup()
@@ -26,20 +26,21 @@ const ProfileSetup = () => {
       )}
       <AuthContainer>
         <FormProvider {...methods}>
-          <AuthContent>
+          <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
             <AuthUpperContent>
               <h1>Set Up Your Profile</h1>
             </AuthUpperContent>
             <AuthFields>
-              {/* <AuthFieldsLabel>Specialties</AuthFieldsLabel> */}
-              {/* <SelectBox>
+              <AuthFieldsLabel>Specialties</AuthFieldsLabel>
+              <SelectBox>
                 <GenericSelect
+                  name="specilities"
                   label={'Specialties'}
                   data={['Gynaecology', 'Optomology', 'Dentistry']}
                   defaultValue=""
                   sx={{ width: '30%' }}
                 />
-              </SelectBox> */}
+              </SelectBox>
               <AuthFieldsLabel>Year of Registration</AuthFieldsLabel>
               <GeneralInput
                 name="registrationyear"
@@ -58,27 +59,30 @@ const ProfileSetup = () => {
                 }}
                 placeholder="01-01-1900"
               />
-              {/* <AuthFieldsLabel>Location</AuthFieldsLabel> */}
-              {/* <SelectBox>
+              <AuthFieldsLabel>Location</AuthFieldsLabel>
+              <SelectBox>
                 <GenericSelect
+                  name="country"
                   label={'Country'}
                   data={['Ghana', 'The UK']}
                   defaultValue=""
                   sx={{ width: '30%' }}
                 />
                 <GenericSelect
+                  name="region"
                   label={'Region'}
                   data={['Greater Accra', 'Ashanti']}
                   defaultValue=""
                   sx={{ width: '30%' }}
                 />
                 <GenericSelect
+                  name="city"
                   label={'City'}
                   data={['Accra', 'Kumasi']}
                   defaultValue=""
                   sx={{ width: '30%' }}
                 />
-              </SelectBox> */}
+              </SelectBox>
               <AuthFieldsLabel>Digital Address</AuthFieldsLabel>
               <GeneralInput
                 name="digital_address"
@@ -103,7 +107,6 @@ const ProfileSetup = () => {
                 variantText="outlined"
               />
               <GenericButton
-                onClick={methods.handleSubmit(onSubmit)}
                 sx={{
                   backgroundColor: colors.button.pineGreen,
                   width: '100%',

@@ -54,7 +54,7 @@ export interface JobCardProps {
 }
 
 export interface SelectProps {
-  name?: string
+  name: string
   label?: string
   data: string[]
   defaultValue: string

@@ -3,7 +3,7 @@ import { AppState } from '../@types'
 import { RootState } from '../store'
 
 const initialState: AppState = {
-  activeSidebar: 1,
+  activeSidebar: 3,
 }
 
 export const appSlice = createSlice({
