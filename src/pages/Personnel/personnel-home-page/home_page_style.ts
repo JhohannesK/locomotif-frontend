@@ -110,8 +110,12 @@ export const SearchBarContainer = styled.div`
 `
 
 export const JobsContainer = styled.div`
-  background-color: ${colors.background.pineGreen};
-  height: 20rem;
+  /* background-color: ${colors.background.pineGreen}; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  /* height: 80rem; */
   ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
     margin: 0;
     /* width: 100%; */

@@ -27,6 +27,15 @@ import ShimmerLoading from '../../../_shared/shimmer/Shimmer'
 function PersonnelHomePage() {
   const { isLoading } = useFetch()
 
+  function displayShimmer() {
+    const shimmerLoader: React.ReactNode[] = []
+    for (let i = 0; i < 5; i++) {
+      shimmerLoader.push(<ShimmerLoading key={i} height={'10rem'} />)
+    }
+
+    return shimmerLoader
+  }
+
   // if (isLoading) {
   //   return <ShimmerLoading />
   // }
@@ -73,7 +82,7 @@ function PersonnelHomePage() {
             <LowerContentContainer>
               <PostingStyles>
                 <JobsContainer>
-                  {isLoading ? <ShimmerLoading /> : null}
+                  {isLoading ? displayShimmer() : null}
                   {/* {data?.map((posting) => {
                     return (
                       <JobCard
