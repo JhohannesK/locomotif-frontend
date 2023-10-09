@@ -6,6 +6,7 @@ export const LeftPaneWrapper = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: 33px;
+  width: 100%;
 `
 
 export const WorkExperienceContainer = styled.div`
@@ -16,15 +17,15 @@ export const WorkExperienceContainer = styled.div`
 `
 
 export const InnerWorkExperienceContainer = styled.div`
-display: flex;
-flex-direction:column;
-align-items:flex-start;
-gap:5px
-left:13px;
-bottom:10px;
-padding-bottom:10px;
-padding-top:24px;
-padding-left:13px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  left: 13px;
+  bottom: 10px;
+  padding-bottom: 10px;
+  padding-top: 24px;
+  padding-left: 13px;
 `
 
 export const WorkExperienceTitleContainer = styled.div`
