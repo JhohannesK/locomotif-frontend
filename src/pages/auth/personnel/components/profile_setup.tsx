@@ -26,12 +26,12 @@ const ProfileSetup = () => {
       )}
       <AuthContainer>
         <FormProvider {...methods}>
-          <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
+          <AuthContent>
             <AuthUpperContent>
               <h1>Set Up Your Profile</h1>
             </AuthUpperContent>
             <AuthFields>
-              <AuthFieldsLabel>Specialties</AuthFieldsLabel>
+              {/* <AuthFieldsLabel>Specialties</AuthFieldsLabel> */}
               {/* <SelectBox>
                 <GenericSelect
                   label={'Specialties'}
@@ -58,7 +58,7 @@ const ProfileSetup = () => {
                 }}
                 placeholder="01-01-1900"
               />
-              <AuthFieldsLabel>Location</AuthFieldsLabel>
+              {/* <AuthFieldsLabel>Location</AuthFieldsLabel> */}
               {/* <SelectBox>
                 <GenericSelect
                   label={'Country'}
@@ -103,6 +103,7 @@ const ProfileSetup = () => {
                 variantText="outlined"
               />
               <GenericButton
+                onClick={methods.handleSubmit(onSubmit)}
                 sx={{
                   backgroundColor: colors.button.pineGreen,
                   width: '100%',

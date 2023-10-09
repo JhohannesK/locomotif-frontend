@@ -1,14 +1,15 @@
 import {
   BottomContent,
   Content,
-  Facility,
+  ImageCard,
   GetStarted,
   JoinLocomotif,
   Logo,
   MainContent,
   Page,
-  Personnel,
   TopContent,
+  ImageCardText,
+  ImageCardOverlay,
 } from './styles'
 import facility from '../../_shared/assets/facility.jpeg'
 import doctor from '../../_shared/assets/doctor.jpeg'
@@ -28,22 +29,24 @@ function LandingPage() {
             </JoinLocomotif>
           </TopContent>
           <BottomContent>
-            <Facility
+            <ImageCard
               onClick={() => {
                 routes.navigate(Constants.ROUTES.FACILITY.facility_signup)
               }}
             >
+              <ImageCardOverlay />
               <img src={facility} alt="facility" />
-              <div>Join As a Health Care Facility</div>
-            </Facility>
-            <Personnel
+              <ImageCardText>Join As a Health Care Facility</ImageCardText>
+            </ImageCard>
+            <ImageCard
               onClick={() => {
                 routes.navigate(Constants.ROUTES.PERSONNEL.personnel_signup)
               }}
             >
+              <ImageCardOverlay />
               <img src={doctor} alt="doctor" />
-              <div>Register As a Personnel</div>
-            </Personnel>
+              <ImageCardText>Register As a Personnel</ImageCardText>
+            </ImageCard>
           </BottomContent>
         </MainContent>
       </Content>

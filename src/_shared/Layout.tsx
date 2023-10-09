@@ -24,7 +24,6 @@ const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  max-width: 1999px;
   margin: 0 auto;
   background-color: ${colors.background.antiflashWhite};
 `

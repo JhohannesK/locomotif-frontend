@@ -27,9 +27,9 @@ import ShimmerLoading from '../../../_shared/shimmer/Shimmer'
 function PersonnelHomePage() {
   const { isLoading } = useFetch()
 
-  if (isLoading) {
-    return <ShimmerLoading />
-  }
+  // if (isLoading) {
+  //   return <ShimmerLoading />
+  // }
   return (
     <Layout dashboardType="personnel">
       <Wrapper>
@@ -73,6 +73,7 @@ function PersonnelHomePage() {
             <LowerContentContainer>
               <PostingStyles>
                 <JobsContainer>
+                  {isLoading ? <ShimmerLoading /> : null}
                   {/* {data?.map((posting) => {
                     return (
                       <JobCard

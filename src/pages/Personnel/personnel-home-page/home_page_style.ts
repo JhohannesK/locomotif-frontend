@@ -5,6 +5,8 @@ import Constants from '../../../utils/constants'
 export const Wrapper = styled.div`
   display: flex;
   /* align-items: center; */
+  max-width: 1400px;
+  margin: 0 auto;
   justify-content: center;
   gap: 3rem;
 `
@@ -25,7 +27,6 @@ export const HomePageContainer = styled.div`
 
 export const MidContent = styled.div`
   height: 15%;
-  /* width: 100%; */
   display: flex;
   flex-direction: column;
   color: ${colors.text.platinum};
@@ -109,6 +110,8 @@ export const SearchBarContainer = styled.div`
 `
 
 export const JobsContainer = styled.div`
+  background-color: ${colors.background.pineGreen};
+  height: 20rem;
   ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
     margin: 0;
     /* width: 100%; */
@@ -117,6 +120,7 @@ export const JobsContainer = styled.div`
 export const LeftPaneContainer = styled.div`
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
     display: flex;
+    width: 40%;
   }
   display: none;
 `

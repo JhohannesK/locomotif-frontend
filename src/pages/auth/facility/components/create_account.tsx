@@ -95,6 +95,9 @@ const FacilityCreateAccount = ({
                   fontStyle: 'normal',
                   fontWeight: '400',
                   lineHeight: '137.14%',
+                  ':hover': {
+                    backgroundColor: colors.button.pineGreen,
+                  },
                 }}
                 size="large"
               />
@@ -117,6 +120,7 @@ const FacilityCreateAccount = ({
                   ':hover': {
                     backgroundColor: '#FFF',
                   },
+                  pointerEvents: 'none', //Disables button
                 }}
                 size="large"
                 icon={

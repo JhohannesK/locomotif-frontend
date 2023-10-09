@@ -9,8 +9,9 @@ import { useDispatch } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 import Constants from '../../../../utils/constants'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { FormEvent } from 'react'
+import { login } from '../../../../redux/slices/authSlice'
 
 const PersonnelTermsAndConditions = () => {
   const dispatch = useDispatch()
@@ -20,6 +21,10 @@ const PersonnelTermsAndConditions = () => {
     console.log(newData)
     await axios
       .post(`${Constants.BaseURL}auth/signup/`, newData)
+      .then((res: AxiosResponse) => {
+        const responseData = res.data
+        dispatch(login({ ...responseData, isAuthenticated: true }))
+      })
       .then(() => dispatch(setActiveSidebar({ activeSidebar: 3 })))
   }
   return (
