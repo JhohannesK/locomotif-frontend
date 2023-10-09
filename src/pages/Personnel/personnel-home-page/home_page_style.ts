@@ -114,7 +114,7 @@ export const JobsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 10px;
   /* height: 80rem; */
   ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
     margin: 0;
