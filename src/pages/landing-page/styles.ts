@@ -9,6 +9,7 @@ export const Page = styled.body`
   align-items: center;
   justify-content: center;
   display: flex;
+  overflow-y: scroll;
 `
 export const Content = styled.div`
   display: flex;
