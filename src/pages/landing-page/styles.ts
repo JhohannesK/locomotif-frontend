@@ -9,6 +9,7 @@ export const Page = styled.body`
   align-items: center;
   justify-content: center;
   display: flex;
+  overflow-y: scroll;
 `
 export const Content = styled.div`
   display: flex;
@@ -134,6 +135,7 @@ export const ImageCardText = styled.div`
   bottom: 16px;
   left: 22px;
   font-size: 18px;
+  letter-spacing: 1px;
   font-style: normal;
   font-weight: 700;
   color: white;
@@ -149,5 +151,5 @@ export const ImageCardOverlay = styled.div`
   background-color: black;
   height: 100%;
   width: 100%;
-  opacity: 0.5;
+  opacity: 0.3;
 `

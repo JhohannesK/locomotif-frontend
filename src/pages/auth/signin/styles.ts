@@ -58,10 +58,10 @@ export const Page = styled.div`
 
 //remember to come and put the  gap here later on
 export const Content = styled.div`
-  height: 70%;
   width: 100%; /* Note: corrected from "100%^" to "100%" */
   display: flex;
   max-width: 650px;
+  min-width: 275px;
   margin: 14.5px;
   display: flex;
   flex-direction: column;
@@ -141,14 +141,16 @@ export const InputBoxLabels = styled.div`
 `
 
 export const SignInButtons = styled.div`
+  margin-top: 10px;
   width: 100%;
   height: 12.5%;
   display: flex;
   flex-direction: column;
-  gap: 10%;
+  gap: 10px;
 `
 
 export const CreateAccount = styled.div`
+  margin-top: 20px;
   width: 100%;
-  height: 9.3%;
+  height: 55px;
 `
