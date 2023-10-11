@@ -2,6 +2,7 @@ import { createTheme } from '@mui/material'
 import { colors } from '../colors'
 
 export const theme = createTheme({
+  breakpoints: {},
   components: {
     MuiButton: {
       styleOverrides: {

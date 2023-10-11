@@ -7,6 +7,7 @@ import {
   Filterheading,
 } from './styles'
 import * as React from 'react'
+// import { GenericSelect } from '../../../../_shared'
 
 const shifts = ['Morning Shift', 'Afternoon Shift', 'Evening/Night']
 const jobCategories = [
@@ -44,6 +45,7 @@ const FilterPane = () => {
       <FilterContent>
         <Filterheading>Location</Filterheading>
         {/* <GenericSelect
+          name="location"
           sx={{ width: '100%' }}
           defaultValue="Airport, Accra"
           data={['Airport, Accra', 'Kumasi', 'Tema', 'Takoradi']}
