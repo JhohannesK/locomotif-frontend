@@ -31,14 +31,15 @@ const ProfileSetup = () => {
               <h1>Set Up Your Profile</h1>
             </AuthUpperContent>
             <AuthFields>
-              <AuthFieldsLabel>Specialties</AuthFieldsLabel>
+              <AuthFieldsLabel>Specialities</AuthFieldsLabel>
               <SelectBox>
                 <GenericSelect
-                  name="specilities"
-                  label={'Specialties'}
+                  name="specialities"
+                  label={'Specialities'}
                   data={['Gynaecology', 'Optomology', 'Dentistry']}
                   defaultValue=""
-                  sx={{ width: '30%' }}
+                  multiple
+                  sx={{ minWidth: '30%', width: 'fit-content' }}
                 />
               </SelectBox>
               <AuthFieldsLabel>Year of Registration</AuthFieldsLabel>
@@ -47,15 +48,24 @@ const ProfileSetup = () => {
                 type="number"
                 placeholder="2023"
               />
+              <AuthFieldsLabel>Telephone</AuthFieldsLabel>
+              <GeneralInput
+                name="telephone"
+                type="tel"
+                placeholder="024-123-9876"
+                InputProps={{
+                  inputProps: {
+                    pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}',
+                  },
+                }}
+              />
               <AuthFieldsLabel>Date of Birth</AuthFieldsLabel>
               <GeneralInput
                 name="date_of_birth"
                 type="date"
                 InputProps={{
-                  inputProps: {
-                    min: `${new Date().getFullYear() - 70}-01-01`,
-                    max: new Date().toJSON().split('T')[0],
-                  },
+                  min: `${new Date().getFullYear() - 70}-01-01`,
+                  max: new Date().toJSON().split('T')[0],
                 }}
                 placeholder="01-01-1900"
               />
