@@ -21,23 +21,23 @@ import { colors } from '../../../colors'
 import LeftPane from './LeftPane'
 import FilterPane from './filter'
 import { SearchInput } from '../../../_shared'
-import useFetch from './hook/useFetch'
-import ShimmerLoading from '../../../_shared/shimmer/Shimmer'
+// import useFetch from './hook/useFetch'
+// import ShimmerLoading from '../../../_shared/shimmer/Shimmer'
 import { JobCardType } from '../../../_shared/@types'
 import BasicModal from '../components/modal/Modal'
 import React from 'react'
 
 function PersonnelHomePage() {
-  const { isLoading } = useFetch()
+  // const { isLoading } = useFetch()
 
-  function displayShimmer() {
-    const shimmerLoader: React.ReactNode[] = []
-    for (let i = 0; i < 5; i++) {
-      shimmerLoader.push(<ShimmerLoading key={i} height={'10rem'} />)
-    }
+  // function displayShimmer() {
+  //   const shimmerLoader: React.ReactNode[] = []
+  //   for (let i = 0; i < 5; i++) {
+  //     shimmerLoader.push(<ShimmerLoading key={i} height={'10rem'} />)
+  //   }
 
-    return shimmerLoader
-  }
+  //   return shimmerLoader
+  // }
 
   const allPostingData: JobCardType[] = postingData.postings
   const [open, setOpen] = React.useState(false)
@@ -88,7 +88,7 @@ function PersonnelHomePage() {
             <LowerContentContainer>
               <PostingStyles>
                 <JobsContainer>
-                  {isLoading
+                  {/* {isLoading
                     ? displayShimmer()
                     : allPostingData?.map((posting) => {
                         return (
@@ -97,12 +97,12 @@ function PersonnelHomePage() {
                             onClick={() => handleOpen()}
                           />
                         )
-                      })}
-                  {/* {allPostingData?.map((posting) => {
+                      })} */}
+                  {allPostingData?.map((posting) => {
                     return (
                       <JobCard posting={posting} onClick={() => handleOpen()} />
                     )
-                  })} */}
+                  })}
                 </JobsContainer>
               </PostingStyles>
             </LowerContentContainer>

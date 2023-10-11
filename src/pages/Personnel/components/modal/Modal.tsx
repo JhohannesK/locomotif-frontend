@@ -1,23 +1,8 @@
-import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import Modal from '@mui/material/Modal'
 import GeneralButton from '../../../../_shared/components/button/Button'
 import { colors } from '../../../../colors'
 import styled from 'styled-components'
-
-const style = {
-  position: 'absolute',
-  display: 'flex',
-  flexDirection: 'column',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  borderRadius: '20px',
-  boxShadow: 24,
-  p: 4,
-}
+import { Dialog, DialogContent, DialogTitle } from '@mui/material'
 
 export default function BasicModal({
   open,
@@ -27,20 +12,30 @@ export default function BasicModal({
   handleClose: () => void
 }) {
   return (
-    <div>
-      <Modal
+    <div
+      style={{
+        background: 'red',
+        borderRadius: '20px',
+      }}
+    >
+      <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+        <Wrapper>
+          <DialogTitle>
+            <Typography id="modal-modal-title" variant="h5" component="h2">
+              Are you sure you want to apply for this job?{' '}
+            </Typography>
+          </DialogTitle>
+          <DialogContent>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            </Typography>
+          </DialogContent>
+
           <ButtonStyles>
             <GeneralButton
               title="Decline"
@@ -61,11 +56,15 @@ export default function BasicModal({
               }}
             />
           </ButtonStyles>
-        </Box>
-      </Modal>
+        </Wrapper>
+      </Dialog>
     </div>
   )
 }
+
+const Wrapper = styled.div`
+  padding-bottom: 10px;
+`
 
 const ButtonStyles = styled.div`
   display: flex;
