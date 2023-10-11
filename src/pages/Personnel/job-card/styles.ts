@@ -7,11 +7,11 @@ export const JobContainer = styled.div`
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
-  padding: 20px;
+  width: 100%;
   gap: 10px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
+    width: 100%;
   }
 `
 
@@ -45,6 +45,11 @@ export const TagStyles = styled.div`
 `
 
 export const Specialities = styled.div`
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
+    display: none;
+    gap: 10px;
+    overflow-x: scroll;
+  }
   display: flex;
   align-items: center;
   gap: 10px;
@@ -56,7 +61,10 @@ export const JobDescription = styled.p`
 `
 
 export const HospitalName = styled.h3`
-  font-size: 20px;
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
+    font-size: 17px;
+  }
+  font-size: 22px;
   letter-spacing: 0.3px;
   color: ${colors.text.night};
 `
@@ -78,9 +86,23 @@ export const TagWithIcons = styled(TagStyles)`
 `
 
 export const AllTags = styled.div`
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
+    gap: 10px;
+  }
   display: flex;
   gap: 25px;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
+`
+
+export const ButtonStyles = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 5rem; */
+`
+
+export const Wrapper = styled.div`
+  padding: 20px;
 `

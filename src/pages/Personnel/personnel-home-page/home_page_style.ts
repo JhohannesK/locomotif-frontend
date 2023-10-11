@@ -67,6 +67,9 @@ export const AboutText = styled.p`
 `
 
 export const LowerContent = styled.section`
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
+    /* background: red; */
+  }
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -130,7 +133,7 @@ export const LeftPaneContainer = styled.div`
 `
 
 export const FilterContainer = styled.div`
-  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
+  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_3} {
     display: none;
   }
   display: flex;
