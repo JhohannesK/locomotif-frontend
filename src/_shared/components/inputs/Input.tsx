@@ -73,11 +73,7 @@ const GeneralInput = ({
                   ? showPassword
                     ? 'text'
                     : 'password'
-                  : type === 'date'
-                  ? 'date'
-                  : type === 'number'
-                  ? 'number'
-                  : 'text'
+                  : type
               }
               sx={{ ...sx }}
               InputProps={{

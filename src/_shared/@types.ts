@@ -20,11 +20,9 @@ export type GeneralInputType = {
   icon?: React.ReactNode
   placeholder: string
   label?: string
-  type?: 'text' | 'password' | 'date' | 'number' | 'multiline-input'
+  type?: 'text' | 'password' | 'date' | 'tel' | 'number' | 'multiline-input'
   disabled?: boolean
-  InputProps?: {
-    inputProps: { min: string; max: string }
-  }
+  InputProps?: object
 }
 
 export type GeneralBtnProps = {
@@ -62,6 +60,7 @@ export interface SelectProps {
   data: string[]
   defaultValue: string
   sx?: SxProps
+  multiple?: boolean
 }
 
 export type toastParams = {

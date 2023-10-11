@@ -6,6 +6,7 @@ const GenericSelect = ({
   name,
   label,
   data,
+  multiple,
   defaultValue,
   sx,
 }: SelectProps) => {
@@ -29,6 +30,9 @@ const GenericSelect = ({
             sx={{ ...sx }}
             defaultValue={defaultValue}
             error={!!errors[name as string]}
+            SelectProps={{
+              multiple: multiple,
+            }}
             helperText={
               errors[name as string]
                 ? (errors[name as string]?.message as unknown as string)
