@@ -22,7 +22,6 @@ export const FacilityLeftContainer = styled.div`
   flex-direction: column;
   gap: 29px;
 
-
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     width: 23%;
   }
@@ -32,9 +31,8 @@ export const FacilityLeftContainer = styled.div`
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX_3} {
-
-            display: none;
- 
+    display: none;
+  }
 `
 
 export const FacilityLeftUpperContent = styled.div`

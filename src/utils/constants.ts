@@ -5,6 +5,7 @@ const Constants = {
   ROUTES: {
     root: '/',
     GetStarted: '/getStarted',
+    PAGENOTFOUND: '/404',
     AUTH: {
       signin: '/signin',
       FACILITY: {
