@@ -8,6 +8,7 @@ import PersonnelSignup from './pages/auth/personnel'
 import FacilitySignUp from './pages/auth/facility'
 import SignIn from './pages/auth/signin/signin'
 import LandingPage from './pages/landing-page/landingPage'
+import PageNotFound from './pages/Page-not-found/page_not_found'
 
 const routes = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const routes = createBrowserRouter([
   {
     path: routhPaths.GetStarted,
     element: <LandingPage />,
+  },
+  {
+    path: routhPaths.PAGENOTFOUND,
+    element: <PageNotFound />,
   },
 ])
 
