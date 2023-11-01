@@ -9,6 +9,7 @@ import FacilitySignUp from './pages/auth/facility'
 import SignIn from './pages/auth/signin/signin'
 import LandingPage from './pages/landing-page/landingPage'
 import PageNotFound from './pages/Page-not-found/page_not_found'
+import ApplicationsPage from './pages/Personnel/personnel-applications-page/applicationsPage/applicationsPage'
 
 const routes = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const routes = createBrowserRouter([
   {
     path: routhPaths.PAGENOTFOUND,
     element: <PageNotFound />,
+  },
+  {
+    path: routhPaths.PERSONNEL.personnel_applications_page,
+    element: <ApplicationsPage />,
   },
 ])
 
