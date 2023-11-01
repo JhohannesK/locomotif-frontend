@@ -25,6 +25,7 @@ import { PiChartLineUpBold, PiClipboardTextLight } from 'react-icons/pi'
 import { ReactNode, useEffect, useMemo, useState } from 'react'
 import NavbarLeftPaneMenu from './LeftPaneMenu'
 import { AiOutlineFileSearch } from 'react-icons/ai'
+import { routhPaths } from '../../../routes'
 
 interface linksObject {
   link: string
@@ -50,9 +51,17 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
 
   const personnelLinks: linksObject[] = useMemo(
     () => [
-      { link: 'Find Jobs', path: '', icon: <BiBriefcase /> },
+      {
+        link: 'Find Jobs',
+        path: routhPaths.PERSONNEL.personnel_dashboard,
+        icon: <BiBriefcase />,
+      },
       { link: 'Find Facility', path: '', icon: <AiOutlineFileSearch /> },
-      { link: 'Applications', path: '', icon: <PiClipboardTextLight /> },
+      {
+        link: 'Applications',
+        path: routhPaths.PERSONNEL.personnel_applications_page,
+        icon: <PiClipboardTextLight />,
+      },
       { link: 'Profile', path: '', icon: <FaUserAlt /> },
     ],
     []
