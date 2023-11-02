@@ -12,6 +12,7 @@ import {
   ShiftTime,
   Status,
   TimeAndDate,
+  HospitalImage,
 } from './styles'
 const ApplicationsCard = ({
   application,
@@ -23,6 +24,7 @@ const ApplicationsCard = ({
       <MainContainer>
         <LeftSide>
           <HospitalNameAndImage>
+            <HospitalImage></HospitalImage>
             <HospitalName>{application.facilityName}</HospitalName>
           </HospitalNameAndImage>
           <PostingRoleAndId>
