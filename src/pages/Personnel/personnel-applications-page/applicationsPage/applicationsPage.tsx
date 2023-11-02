@@ -1,19 +1,32 @@
 import Layout from '../../../../_shared/Layout'
-import ApplicationsCard from '../applicationsCard/applicationsCard'
-import { Wrapper } from './styles'
+import LeftPane from '../../personnel-home-page/LeftPane'
+import { LeftPaneContainer } from '../../personnel-home-page/home_page_style'
+import ApplicationsCard, {
+  ApplicationsCardProps,
+} from '../applicationsCard/applicationsCard'
+import { FilterPane, RightPaneContainer, Wrapper } from './styles'
+import applicationsData from '../../../mocks/applications.json'
+import Grid from '@mui/material/Grid'
 
 const ApplicationsPage = () => {
+  const applicationsCardDetails: ApplicationsCardProps[] =
+    applicationsData.applications
   return (
     <Layout dashboardType="personnel">
       <Wrapper>
-        <ApplicationsCard
-          facilityName="Lester Hospital "
-          postingID="PSD-001"
-          date="12 Oct,2023"
-          postingRole="Cardiologist"
-          shiftTime="Morning"
-          status="Approved"
-        ></ApplicationsCard>
+        <LeftPaneContainer>
+          <LeftPane />
+        </LeftPaneContainer>
+        <RightPaneContainer>
+          <FilterPane></FilterPane>
+          <Grid container spacing={5}>
+            {applicationsCardDetails?.map((application, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <ApplicationsCard application={application} />
+              </Grid>
+            ))}
+          </Grid>
+        </RightPaneContainer>
       </Wrapper>
     </Layout>
   )

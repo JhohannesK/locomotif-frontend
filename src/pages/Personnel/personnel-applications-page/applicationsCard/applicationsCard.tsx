@@ -1,7 +1,6 @@
 import {
   CardContainer,
   Date,
-  HospitalImage,
   HospitalName,
   HospitalNameAndImage,
   LeftSide,
@@ -15,34 +14,29 @@ import {
   TimeAndDate,
 } from './styles'
 const ApplicationsCard = ({
-  facilityName,
-  postingID,
-  date,
-  postingRole,
-  shiftTime,
-  status,
-}: ApplicationsCardProps) => {
+  application,
+}: {
+  application: ApplicationsCardProps
+}) => {
   return (
     <CardContainer>
       <MainContainer>
         <LeftSide>
           <HospitalNameAndImage>
-            <HospitalImage>
-              {/* {place the image of the hospital here}*/}
-            </HospitalImage>
-            <HospitalName>{facilityName}</HospitalName>
+            <HospitalName>{application.facilityName}</HospitalName>
           </HospitalNameAndImage>
-
           <PostingRoleAndId>
-            <PostingId>{postingID}</PostingId>
-            <PostingRole>{postingRole}</PostingRole>
+            <PostingId>{application.postingID}</PostingId>
+            <PostingRole>{application.postingRole}</PostingRole>
           </PostingRoleAndId>
         </LeftSide>
         <RightSide>
-          <Status $status={status}> {status}</Status>
+          <Status $status={application.status}> {application.status}</Status>
           <TimeAndDate>
-            <ShiftTime $shiftTime={shiftTime}>{shiftTime}</ShiftTime>
-            <Date>{date}</Date>
+            <ShiftTime $shiftTime={application.shiftTime}>
+              {application.shiftTime}
+            </ShiftTime>
+            <Date>{application.date}</Date>
           </TimeAndDate>
         </RightSide>
       </MainContainer>
@@ -50,12 +44,12 @@ const ApplicationsCard = ({
   )
 }
 
-interface ApplicationsCardProps {
+export type ApplicationsCardProps = {
   facilityName: string
   postingID: string
   date: string
   postingRole: string
-  shiftTime: 'Morning' | 'Afternoon' | 'Evening'
-  status: 'Approved' | 'Declined' | 'Pending' | 'On Hold'
+  shiftTime: string
+  status: string
 }
 export default ApplicationsCard
