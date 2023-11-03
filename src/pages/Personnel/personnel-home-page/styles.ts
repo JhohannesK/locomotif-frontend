@@ -1,6 +1,23 @@
 import { styled } from 'styled-components'
 import { colors } from '../../../colors'
 import Constants from '../../../utils/constants'
+import { SxProps } from '@mui/material'
+
+export const SearchStyles: SxProps = {
+  width: '100%',
+  borderColor: 'red',
+  background: `${colors.background.white}`,
+  borderRadius: '10px',
+}
+
+export const ButtonStyles: SxProps = {
+  borderRadius: '15px',
+  border: '1px solid white',
+  padding: '10px',
+  width: '25%',
+  fontSize: '13px',
+  fontWeight: 'medium',
+}
 
 export const Wrapper = styled.div`
   display: flex;

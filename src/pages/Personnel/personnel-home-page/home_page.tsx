@@ -9,17 +9,16 @@ import {
   SearchBarContainer,
   Wrapper,
   AboutText,
-  LeftPaneContainer,
   FilterContainer,
-} from './home_page_style'
+  SearchStyles,
+  ButtonStyles,
+} from './styles'
 import { BiSearch } from 'react-icons/bi'
 import postingData from '../../mocks/postings.json'
 import Layout from '../../../_shared/Layout'
 import JobCard from '../components/job-card/JobLIstingCard'
 import GeneralButton from '../../../_shared/components/button/Button'
-import { colors } from '../../../colors'
-import LeftPane from './LeftPane'
-import FilterPane from './filter'
+import FilterPane from './components/filter'
 import { SearchInput } from '../../../_shared'
 // import useFetch from './hook/useFetch'
 // import ShimmerLoading from '../../../_shared/shimmer/Shimmer'
@@ -48,9 +47,7 @@ function PersonnelHomePage() {
     <Layout dashboardType="personnel">
       <BasicModal open={open} handleClose={handleClose} />
       <Wrapper>
-        <LeftPaneContainer>
-          <LeftPane />
-        </LeftPaneContainer>
+        <Layout.LeftSide />
         <HomePageContainer>
           <MidContent>
             <MidContentText>Find Your Dream Job Here!</MidContentText>
@@ -61,27 +58,12 @@ function PersonnelHomePage() {
             <SearchBarContainer>
               <SearchInput
                 name="Search"
-                sx={{
-                  width: '100%',
-                  borderColor: 'red',
-                  background: `${colors.background.white}`,
-                  borderRadius: '10px',
-                }}
+                sx={SearchStyles}
                 icon={<BiSearch />}
                 placeholder="Search job"
                 size={'small'}
               />
-              <GeneralButton
-                title="Search"
-                sx={{
-                  borderRadius: '15px',
-                  border: '1px solid white',
-                  padding: '10px',
-                  width: '25%',
-                  fontSize: '13px',
-                  fontWeight: 'medium',
-                }}
-              />
+              <GeneralButton title="Search" sx={ButtonStyles} />
             </SearchBarContainer>
           </MidContent>
           <LowerContent>

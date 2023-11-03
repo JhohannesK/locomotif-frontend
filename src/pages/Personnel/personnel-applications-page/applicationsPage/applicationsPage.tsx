@@ -1,12 +1,13 @@
 import Layout from '../../../../_shared/Layout'
-import LeftPane from '../../personnel-home-page/LeftPane'
-import { LeftPaneContainer } from '../../personnel-home-page/home_page_style'
+import LeftPane from '../../personnel-home-page/components/LeftPane'
+
 import ApplicationsCard, {
   ApplicationsCardProps,
 } from '../applicationsCard/applicationsCard'
 import { FilterPane, RightPaneContainer, Wrapper } from './styles'
 import applicationsData from '../../../mocks/applications.json'
 import Grid from '@mui/material/Grid'
+import { LeftPaneContainer } from '../../personnel-home-page/styles'
 
 const ApplicationsPage = () => {
   const applicationsCardDetails: ApplicationsCardProps[] =
