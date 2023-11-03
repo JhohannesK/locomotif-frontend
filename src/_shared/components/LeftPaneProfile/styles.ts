@@ -11,7 +11,7 @@ export const LeftPaneProfileContainer = styled.div`
   justify-content: space-evenly;
   padding: 10px 0px;
   height: 225px;
-  width: 100%;
+  width: 260px;
 `
 
 export const LeftProfileButtonContainer = styled.div``

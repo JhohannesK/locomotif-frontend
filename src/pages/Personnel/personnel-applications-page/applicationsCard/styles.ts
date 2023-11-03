@@ -5,21 +5,23 @@ export const CardContainer = styled.div`
   padding: 16px;
   border-radius: 12px;
   background: ${colors.background.white};
+  border: 1px solid var(--Border, #d9d9d9);
   width: 282px;
   height: 81px;
 `
 
 export const MainContainer = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   flex-direction: row;
-  gap: 40px;
+  gap: 53px;
 `
 
 export const LeftSide = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 50%;
 `
 
 export const HospitalNameAndImage = styled.div`
@@ -77,7 +79,7 @@ export const RightSide = styled.div`
 `
 
 interface StatusProps {
-  $status?: 'Approved' | 'Declined' | 'Pending' | 'On Hold' // Define allowed values
+  $status?: string
 }
 export const Status = styled.div<StatusProps>`
   border-radius: 20px;
@@ -126,7 +128,7 @@ export const TimeAndDate = styled.div`
   justify-content: center;
 `
 interface ShiftTimeProps {
-  $shiftTime?: 'Morning' | 'Afternoon' | 'Evening'
+  $shiftTime?: string
 }
 export const ShiftTime = styled.div<ShiftTimeProps>`
   display: flex;
