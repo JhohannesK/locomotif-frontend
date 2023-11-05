@@ -1,4 +1,4 @@
-import Layout from '../../../_shared/Layout'
+import Layout from '../../../_shared/Layout/Layout'
 import Dashboard from './dashboard'
 
 function FacilityHomePage() {

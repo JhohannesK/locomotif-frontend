@@ -22,10 +22,16 @@ import { FaMoneyBill } from 'react-icons/fa'
 import { BiCalendarEvent } from 'react-icons/bi'
 // import { Wrapper } from './styles'
 
-const JobCard = ({ posting }: { posting: JobCardType }) => {
+const JobCard = ({
+  posting,
+  handleOpen,
+}: {
+  posting: JobCardType
+  handleOpen: () => void
+}) => {
   // const theme = useTheme()
   return (
-    <JobContainer>
+    <JobContainer onClick={handleOpen}>
       <Wrapper>
         <JobContainerHead>
           <HospitalLogo>

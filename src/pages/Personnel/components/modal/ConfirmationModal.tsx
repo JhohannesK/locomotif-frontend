@@ -3,14 +3,11 @@ import GeneralButton from '../../../../_shared/components/button/Button'
 import { colors } from '../../../../colors'
 import styled from 'styled-components'
 import { Dialog, DialogContent, DialogTitle } from '@mui/material'
+import { useContext } from 'react'
+import { LayoutContext } from '../../../../_shared/Layout/context/LayoutContext'
 
-export default function BasicModal({
-  open,
-  handleClose,
-}: {
-  open: boolean
-  handleClose: () => void
-}) {
+export default function ConfirmationModal() {
+  const { open, handleClose } = useContext(LayoutContext)
   return (
     <div
       style={{
@@ -26,7 +23,7 @@ export default function BasicModal({
       >
         <Wrapper>
           <DialogTitle>
-            <Typography id="modal-modal-title" variant="h5" component="h2">
+            <Typography id="modal-modal-title" sx={{ fontWeight: 'bold' }}>
               Are you sure you want to apply for this job?{' '}
             </Typography>
           </DialogTitle>

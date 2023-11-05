@@ -1,4 +1,4 @@
-import Layout from '../../../../_shared/Layout'
+import Layout from '../../../../_shared/Layout/Layout'
 import LeftPane from '../../personnel-home-page/components/LeftPane'
 
 import ApplicationsCard, {
