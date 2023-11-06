@@ -54,7 +54,7 @@ export const MidContent = styled.div`
   padding: 30px 20px;
 `
 
-export const MidContentText = styled.h1`
+export const MidContentText = styled.p`
   color: ${colors.text.white};
   font-weight: 600;
   text-align: left;
