@@ -12,7 +12,7 @@ const GeneralButton = ({
   return (
     <Button
       variant={variantText}
-      sx={{ ...sx, borderRadius: '10px' }}
+      sx={{ ...sx }}
       size={size}
       onClick={onClick}
       type="submit"
