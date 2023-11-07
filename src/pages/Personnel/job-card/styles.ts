@@ -15,14 +15,17 @@ export const JobContainer = styled.div`
   }
 `
 
-export const HospitalLogo = styled.div``
+export const HospitalLogo = styled.div`
+  background: 'red';
+  height: 100%;
+`
 
 export const JobContainerHead = styled.div`
   color: #fff;
   display: flex;
   gap: 10px;
   justify-content: flex-start;
-  align-items: center;
+  align-items: start;
 `
 
 export const JobDescriptionContainer = styled.div`
