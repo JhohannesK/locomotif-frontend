@@ -28,13 +28,13 @@ const ApplicationsPage = () => {
           <ApplicationCardsContainer>
             <Grid
               container
-              spacing={2}
+              columnGap={2}
+              rowGap={2}
               justifyContent="center"
               alignItems="center"
-              columnSpacing={{ xs: 1, sm: 4, md: 9 }}
             >
               {applicationsCardDetails?.map((application, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
+                <Grid key={index}>
                   <ApplicationsCard application={application} />
                 </Grid>
               ))}
