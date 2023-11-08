@@ -12,7 +12,7 @@ import {
 } from './styles'
 import applicationsData from '../../../mocks/applications.json'
 import Grid from '@mui/material/Grid'
-import FilterApplications from '../filterApplicationCards/filterApplicationCards'
+import ApplicationFilterBar from '../filterApplicationCards/filterApplicationCards'
 
 const ApplicationsPage = () => {
   const applicationsCardDetails: ApplicationsCardProps[] =
@@ -24,7 +24,7 @@ const ApplicationsPage = () => {
           <LeftPane />
         </LeftPaneContainer>
         <RightPaneContainer>
-          <FilterApplications></FilterApplications>
+          <ApplicationFilterBar></ApplicationFilterBar>
           <ApplicationCardsContainer>
             <Grid
               container

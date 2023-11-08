@@ -6,7 +6,7 @@ import {
   FilterWrapper,
 } from './styles'
 
-const FilterApplications = () => {
+const ApplicationFilterBar = () => {
   return (
     <FilterWrapper>
       <ButtonsWrapper>
@@ -19,4 +19,4 @@ const FilterApplications = () => {
   )
 }
 
-export default FilterApplications
+export default ApplicationFilterBar
