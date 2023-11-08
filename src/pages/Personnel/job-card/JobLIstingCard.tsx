@@ -31,7 +31,7 @@ const JobCard = ({
 }) => {
   // const theme = useTheme()
   return (
-    <JobContainer onClick={handleOpen}>
+    <JobContainer>
       <Wrapper>
         <JobContainerHead>
           <HospitalLogo>
@@ -81,6 +81,7 @@ const JobCard = ({
                     borderRadius: '15px',
                     fontWeight: 'medium',
                   }}
+                  onClick={handleOpen}
                 />
               </ButtonStyles>
             </AllTags>
