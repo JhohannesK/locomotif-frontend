@@ -12,9 +12,24 @@ export const NavBar = styled.nav`
   width: 100%;
   align-self: center;
 `
-export const NavbarWrapper = styled.div``
+export const NavbarWrapper = styled.div`
+  max-width: 1400px;
+`
 
-export const LogoStyles = styled.div``
+export const LogoStyles = styled.div`
+  color: white;
+  background-color: ${colors.background.pineGreen};
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 600;
+`
+
+export const LeftStyles = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 65px;
+  flex-grow: 1;
+`
 
 export const NavBarMobileContainer = styled.div`
   margin: 0 auto;
@@ -33,7 +48,7 @@ export const NavBarRightContent = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 20%;
+  /* width: 20%; */
   height: 100%;
 `
 export const NavBarRightBox = styled.div`
@@ -51,8 +66,9 @@ export const NavBarRightIcons = styled.i`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 38px;
-  height: 38px;
+  /* width: 38px;
+  height: 38px; */
+  gap: 15px;
   font-size: 200%;
   opacity: 0.5;
   cursor: pointer;
@@ -60,21 +76,22 @@ export const NavBarRightIcons = styled.i`
 
 export const Navbarlinks = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
-  width: 40%;
+  gap: 30px;
+  /* width: 40%; */
   height: 100%;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    max-width: 35%;
+    font-size: 13px;
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
-    max-width: 35%;
+    /* max-width: 35%; */
   }
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
-    max-width: 30%;
+    /* max-width: 30%; */
   }
 `
 
@@ -82,7 +99,7 @@ export const LinkStyles = styled(Link)`
   text-decoration: none;
   color: ${colors.button.pineGreen};
   font-feature-settings: 'clig' off, 'liga' off;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 137.14%;
@@ -107,8 +124,8 @@ export const NavBarUserName = styled.h2`
 
 export const NavBarUserImage = styled.div`
   outline: 1px solid orange;
-  height: 3rem;
-  width: 3rem;
+  height: 1.9rem;
+  width: 1.9rem;
   clip-path: circle();
   background-color: red;
   margin-right: 10px;

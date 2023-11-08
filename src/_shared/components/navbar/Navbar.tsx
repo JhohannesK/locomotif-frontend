@@ -1,4 +1,5 @@
 import {
+  LeftStyles,
   LinkStyles,
   LogoStyles,
   MenuIcon,
@@ -90,7 +91,7 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
           <MenuIcon onClick={handleLeftPane}>
             <BiMenuAltLeft size={28} />
           </MenuIcon>
-          <LogoStyles>Locomotif</LogoStyles>
+          <LogoStyles>Loco</LogoStyles>
           <SearchIcon>
             <BiSearchAlt size={28} />
           </SearchIcon>
@@ -98,23 +99,23 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
       )}
 
       <NavBarLaptopContainer>
-        <LogoStyles>Locomotif</LogoStyles>
-        <Navbarlinks>
-          {linksHolder.map((linkObject, index) => {
-            return (
-              <LinkStyles key={index} to={linkObject.path}>
-                {linkObject.link}
-              </LinkStyles>
-            )
-          })}
-        </Navbarlinks>
+        <LeftStyles>
+          <LogoStyles>Loco</LogoStyles>
+          <Navbarlinks>
+            {linksHolder.map((linkObject, index) => {
+              return (
+                <LinkStyles key={index} to={linkObject.path}>
+                  {linkObject.link}
+                </LinkStyles>
+              )
+            })}
+          </Navbarlinks>
+        </LeftStyles>
         <NavBarRightContent>
           <NavBarRightBox>
             <NavBarRightIcons>
-              <RxEnvelopeClosed />
-            </NavBarRightIcons>
-            <NavBarRightIcons>
-              <FiBell />
+              <RxEnvelopeClosed size={23} />
+              <FiBell size={23} />
             </NavBarRightIcons>
             <NavBarUserImage>
               <img

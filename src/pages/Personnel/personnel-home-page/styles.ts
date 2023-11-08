@@ -105,6 +105,7 @@ export const LowerContentContainer = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: center;
+  padding-bottom: 2rem;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     justify-content: space-between;
