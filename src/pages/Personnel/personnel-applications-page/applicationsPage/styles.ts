@@ -29,7 +29,6 @@ export const LeftPaneContainer = styled.div`
 `
 
 export const ApplicationCardsContainer = styled.div`
-  background-color: red;
   align-items: center;
   justify-content: center;
 `
