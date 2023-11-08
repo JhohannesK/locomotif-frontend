@@ -12,7 +12,7 @@ import {
 } from './styles'
 import applicationsData from '../../../mocks/applications.json'
 import Grid from '@mui/material/Grid'
-import FilterApplications from '../filterApplicationCards/filterApplicationCards'
+import ApplicationFilterBar from '../filterApplicationCards/filterApplicationCards'
 
 const ApplicationsPage = () => {
   const applicationsCardDetails: ApplicationsCardProps[] =
@@ -24,17 +24,17 @@ const ApplicationsPage = () => {
           <LeftPane />
         </LeftPaneContainer>
         <RightPaneContainer>
-          <FilterApplications></FilterApplications>
+          <ApplicationFilterBar></ApplicationFilterBar>
           <ApplicationCardsContainer>
             <Grid
               container
-              spacing={2}
+              columnGap={2}
+              rowGap={2}
               justifyContent="center"
               alignItems="center"
-              columnSpacing={{ xs: 1, sm: 4, md: 9 }}
             >
               {applicationsCardDetails?.map((application, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index}>
+                <Grid key={index}>
                   <ApplicationsCard application={application} />
                 </Grid>
               ))}
