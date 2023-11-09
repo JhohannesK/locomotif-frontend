@@ -24,7 +24,6 @@ const ApplicationsPage = () => {
     status: [],
   })
 
-  console.log('filter', filterObject)
   return (
     <Layout dashboardType="personnel">
       <Wrapper>
@@ -35,7 +34,7 @@ const ApplicationsPage = () => {
           <ApplicationFilterBar
             filterObject={filterObject}
             setFilterObject={setFilterObject}
-          ></ApplicationFilterBar>
+          />
           <ApplicationCardsContainer>
             <Grid
               container

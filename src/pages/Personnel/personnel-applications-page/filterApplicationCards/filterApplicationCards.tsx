@@ -15,14 +15,6 @@ const ApplicationFilterBar = ({
   setFilterObject: (x: FilterObject) => void
 }) => {
   const addFilter = (filter: StatusType) => {
-    // if(filter=="all"){
-    //   const newObject:FilterObject = {
-    //     ...filterObject,
-    //     status:filterTitles,
-    //   }
-    //   setFilterObject(newObject)
-    //   console.log("filter",filterObject)
-    // } else {
     const newStatus = filterObject.status.includes(filter)
       ? filterObject.status.filter((already) => already != filter)
       : [...filterObject.status, filter]
@@ -31,11 +23,9 @@ const ApplicationFilterBar = ({
       status: newStatus,
     }
     setFilterObject(newObject)
-    console.log('filter', filterObject)
-    // }
   }
 
-  const filterTitles: ('pending' | 'accepted' | 'declined')[] = [
+  const filterTitles: readonly ('pending' | 'accepted' | 'declined')[] = [
     'accepted',
     'pending',
     'declined',
@@ -43,7 +33,6 @@ const ApplicationFilterBar = ({
   return (
     <FilterWrapper>
       <ButtonsWrapper>
-        {/* <GeneralButton onClick={()=> addFilter("all")} title="All" sx={filterObject.status.length!=filterTitles.length?ButtonStyles:AddStyles} /> */}
         {filterTitles.map((title) => (
           <GeneralButton
             onClick={() => addFilter(title)}
@@ -51,8 +40,6 @@ const ApplicationFilterBar = ({
             sx={filterObject.status.includes(title) ? AddStyles : ButtonStyles}
           />
         ))}
-        {/* <GeneralButton title= sx={ButtonStyles} /> */}
-        {/* <GeneralButton title= sx={ButtonStyles} /> */}
       </ButtonsWrapper>
     </FilterWrapper>
   )
