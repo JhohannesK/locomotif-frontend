@@ -13,10 +13,18 @@ import {
 import applicationsData from '../../../mocks/applications.json'
 import Grid from '@mui/material/Grid'
 import ApplicationFilterBar from '../filterApplicationCards/filterApplicationCards'
+import { useState } from 'react'
+import { FilterObject } from './@types'
 
 const ApplicationsPage = () => {
   const applicationsCardDetails: ApplicationsCardProps[] =
     applicationsData.applications
+
+  const [filterObject, setFilterObject] = useState<FilterObject>({
+    status: [],
+  })
+
+  console.log('filter', filterObject)
   return (
     <Layout dashboardType="personnel">
       <Wrapper>
@@ -24,7 +32,10 @@ const ApplicationsPage = () => {
           <LeftPane />
         </LeftPaneContainer>
         <RightPaneContainer>
-          <ApplicationFilterBar></ApplicationFilterBar>
+          <ApplicationFilterBar
+            filterObject={filterObject}
+            setFilterObject={setFilterObject}
+          ></ApplicationFilterBar>
           <ApplicationCardsContainer>
             <Grid
               container
