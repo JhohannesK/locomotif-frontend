@@ -3,17 +3,28 @@ import { colors } from '../../../colors'
 import Constants from '../../../utils/constants'
 import { Link } from 'react-router-dom'
 
-export const NavBar = styled.nav`
-  height: 4rem;
-  border-bottom: 2px solid ${colors.background.timberwolf};
-  background-color: ${colors.background.whiteSmoke};
-  padding: 3px 0px;
-  /* position: fixed; */
+export const Wrapper = styled.div`
+  background: ${colors.background.whiteSmoke};
   width: 100%;
-  align-self: center;
+  display: flex;
 `
-export const NavbarWrapper = styled.div`
-  max-width: 1400px;
+
+export const NavbarStyle = styled.div`
+  display: none;
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-content: space-between;
+    gap: 3rem;
+    width: 100%;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX_MAX} {
+    margin: 0 3rem;
+  }
 `
 
 export const LogoStyles = styled.div`
@@ -24,16 +35,14 @@ export const LogoStyles = styled.div`
   font-weight: 600;
 `
 
-export const LeftStyles = styled.div`
+export const LinkContainer = styled.div`
   display: flex;
-  align-items: center;
-  gap: 65px;
-  flex-grow: 1;
+  gap: 20px;
 `
 
 export const NavBarMobileContainer = styled.div`
   margin: 0 auto;
-  height: 100%;
+  height: 3.5rem;
   width: 90%;
   display: flex;
   justify-content: space-between;
@@ -43,6 +52,41 @@ export const NavBarMobileContainer = styled.div`
     display: none;
   }
 `
+
+// export const NavBarLaptopContainer = styled.div`
+//   display: none;
+
+//   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     margin: 0 auto;
+//     max-width: 1600px;
+//     height: 100%;
+//     /* width: 90%; */
+//   }
+// `
+
+// export const NavBar = styled.nav`
+//   height: 4rem;
+//   /* border-bottom: 2px solid ${colors.background.timberwolf}; */
+//   background-color: ${colors.background.whiteSmoke};
+//   padding: 3px 0px;
+//   /* position: fixed; */
+//   width: 100%;
+//   align-self: center;
+// `
+// export const NavbarWrapper = styled.div`
+//   max-width: 1400px;
+// `
+
+// export const LeftStyles = styled.div`
+//   display: flex;
+//   align-items: center;
+//   gap: 65px;
+//   flex-grow: 1;
+// `
+
 export const NavBarRightContent = styled.div`
   height: 100%;
   display: inline-flex;
@@ -52,8 +96,8 @@ export const NavBarRightContent = styled.div`
   height: 100%;
 `
 export const NavBarRightBox = styled.div`
-  width: 140px;
-  height: 45px;
+  /* width: 140px; */
+  /* height: 45px; */
   display: inline-flex;
   align-items: center;
   gap: 15px;
@@ -74,26 +118,26 @@ export const NavBarRightIcons = styled.i`
   cursor: pointer;
 `
 
-export const Navbarlinks = styled.div`
-  display: flex;
-  /* justify-content: space-between; */
-  align-items: center;
-  gap: 30px;
-  /* width: 40%; */
-  height: 100%;
+// export const Navbarlinks = styled.div`
+//   display: flex;
+//   /* justify-content: space-between; */
+//   align-items: center;
+//   gap: 30px;
+//   /* width: 40%; */
+//   height: 100%;
 
-  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    font-size: 13px;
-  }
+//   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
+//     font-size: 13px;
+//   }
 
-  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
-    /* max-width: 35%; */
-  }
+//   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
+//     /* max-width: 35%; */
+//   }
 
-  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
-    /* max-width: 30%; */
-  }
-`
+//   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
+//     /* max-width: 30%; */
+//   }
+// `
 
 export const LinkStyles = styled(Link)`
   text-decoration: none;
@@ -124,27 +168,14 @@ export const NavBarUserName = styled.h2`
 
 export const NavBarUserImage = styled.div`
   outline: 1px solid orange;
-  height: 1.9rem;
-  width: 1.9rem;
   clip-path: circle();
   background-color: red;
-  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-right: 10px; */
   background-size: cover;
   background-position: center center;
-`
-
-export const NavBarLaptopContainer = styled.div`
-  display: none;
-
-  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 1600px;
-    height: 100%;
-    width: 90%;
-  }
 `
 
 export const MenuIcon = styled.div`
@@ -158,7 +189,7 @@ export const SearchIcon = styled.div``
 export const NavbarMenu = styled.div`
   background: #fff;
   width: 250px;
-  // height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 29px;
@@ -167,7 +198,6 @@ export const NavbarMenu = styled.div`
   left: 0;
   top: 0;
   background: #fff;
-  width: 30%;
   padding: 10px 20px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
@@ -218,7 +248,7 @@ export const NavbarOptions = styled(Link)`
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
-  heigth: 35px;
+  height: 35px;
   width: 100%;
   color: rgba(0, 0, 0, 0.7);
   &:active {

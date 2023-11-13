@@ -1,17 +1,16 @@
 import {
-  LeftStyles,
+  LinkContainer,
   LinkStyles,
   LogoStyles,
   MenuIcon,
-  NavBar,
-  NavBarLaptopContainer,
   NavBarMobileContainer,
   NavBarRightBox,
   NavBarRightContent,
   NavBarRightIcons,
   NavBarUserImage,
-  Navbarlinks,
+  NavbarStyle,
   SearchIcon,
+  Wrapper,
 } from './navbarStyles'
 import image from '../../assets/user.jpeg'
 // import { useSelector } from 'react-redux'
@@ -24,7 +23,6 @@ import { FaUserAlt } from 'react-icons/fa'
 import { FaClockRotateLeft } from 'react-icons/fa6'
 import { PiChartLineUpBold, PiClipboardTextLight } from 'react-icons/pi'
 import { ReactNode, useEffect, useMemo, useState } from 'react'
-import NavbarLeftPaneMenu from './LeftPaneMenu'
 import { AiOutlineFileSearch } from 'react-icons/ai'
 import { routhPaths } from '../../../routes'
 
@@ -83,34 +81,27 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
     setIsLeftPaneOpen(!isLeftPaneOpen)
   }
   return (
-    <NavBar>
-      {isLeftPaneOpen ? (
-        <NavbarLeftPaneMenu closePane={handleLeftPane} menu={linksHolder} />
-      ) : (
-        <NavBarMobileContainer>
-          <MenuIcon onClick={handleLeftPane}>
-            <BiMenuAltLeft size={28} />
-          </MenuIcon>
-          <LogoStyles>Loco</LogoStyles>
-          <SearchIcon>
-            <BiSearchAlt size={28} />
-          </SearchIcon>
-        </NavBarMobileContainer>
-      )}
-
-      <NavBarLaptopContainer>
-        <LeftStyles>
-          <LogoStyles>Loco</LogoStyles>
-          <Navbarlinks>
-            {linksHolder.map((linkObject, index) => {
-              return (
-                <LinkStyles key={index} to={linkObject.path}>
-                  {linkObject.link}
-                </LinkStyles>
-              )
-            })}
-          </Navbarlinks>
-        </LeftStyles>
+    <Wrapper>
+      <NavBarMobileContainer>
+        <MenuIcon onClick={handleLeftPane}>
+          <BiMenuAltLeft size={28} />
+        </MenuIcon>
+        <LogoStyles>Loco</LogoStyles>
+        <SearchIcon>
+          <BiSearchAlt size={28} />
+        </SearchIcon>
+      </NavBarMobileContainer>
+      <NavbarStyle>
+        <LogoStyles>Loco</LogoStyles>
+        <LinkContainer>
+          {linksHolder.map((linkObject, index) => {
+            return (
+              <LinkStyles key={index} to={linkObject.path}>
+                {linkObject.link}
+              </LinkStyles>
+            )
+          })}
+        </LinkContainer>
         <NavBarRightContent>
           <NavBarRightBox>
             <NavBarRightIcons>
@@ -121,16 +112,60 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
               <img
                 src={image}
                 alt="user icon"
-                style={{ height: '100%', width: '100%', objectFit: 'cover' }}
+                style={{
+                  height: '1.9rem',
+                  width: '1.9rem',
+                  objectFit: 'cover',
+                }}
               />
             </NavBarUserImage>
           </NavBarRightBox>
-
-          {/* <NavBarUserName>{authResponse.first_name ?? 'user'}</NavBarUserName> */}
+          {/* 
+          <NavBarUserName>{authResponse.first_name ?? 'user'}</NavBarUserName> */}
         </NavBarRightContent>
-      </NavBarLaptopContainer>
-    </NavBar>
+      </NavbarStyle>
+    </Wrapper>
   )
+  //   // <NavBar>
+  //   //   {isLeftPaneOpen ? (
+  //   //     <NavbarLeftPaneMenu closePane={handleLeftPane} menu={linksHolder} />
+  //   //   ) : (
+  //   //
+  //   //   )}
+  //   //   <div>hello</div>
+  //     {/* <NavBarLaptopContainer>
+  //       <LeftStyles>
+  //         <LogoStyles>Loco</LogoStyles>
+  //         <Navbarlinks>
+  //           {linksHolder.map((linkObject, index) => {
+  //             return (
+  //               <LinkStyles key={index} to={linkObject.path}>
+  //                 {linkObject.link}
+  //               </LinkStyles>
+  //             )
+  //           })}
+  //         </Navbarlinks>
+  //       </LeftStyles>
+  //       <NavBarRightContent>
+  //         <NavBarRightBox>
+  //           <NavBarRightIcons>
+  //             <RxEnvelopeClosed size={23} />
+  //             <FiBell size={23} />
+  //           </NavBarRightIcons>
+  //           <NavBarUserImage>
+  //             <img
+  //               src={image}
+  //               alt="user icon"
+  //               style={{ height: '100%', width: '100%', objectFit: 'cover' }}
+  //             />
+  //           </NavBarUserImage>
+  //         </NavBarRightBox>
+
+  //         {/* <NavBarUserName>{authResponse.first_name ?? 'user'}</NavBarUserName> */}
+  //     {/* </NavBarRightContent>
+  //     </NavBarLaptopContainer>  */}
+  //   // </NavBar>
+  // // )
 }
 
 export default Navbar

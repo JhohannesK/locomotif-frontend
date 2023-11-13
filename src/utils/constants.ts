@@ -46,6 +46,7 @@ const Constants = {
       LAPTOP_PX: '@media only screen and (min-width: 1024px) ',
       LAPTOP_M_PX: '@media only screen and (min-width: 1360px) ',
       LAPTOP_L_PX: '@media only screen and (min-width: 1440px)',
+      LAPTOP_L_PX_MAX: '@media only screen and (max-width: 1440px)',
     },
   },
 

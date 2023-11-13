@@ -14,7 +14,6 @@ import {
   NavbarOptionsIcon,
 } from './navbarStyles'
 import {
-  FacilityLeftLowerContent,
   FacilityLeftMidContent,
   FacilityLeftUpperContent,
 } from '../../../pages/Facility/facility-home-page/LeftPane/styles'
@@ -71,7 +70,6 @@ function NavbarLeftPaneMenu({
             numberOfAvailableJobs={1}
           />
         </FacilityLeftMidContent>
-        <FacilityLeftLowerContent></FacilityLeftLowerContent>
       </NavbarMenu>
     </>
   )
