@@ -41,8 +41,6 @@ export const HospitalImage = styled.div`
 `
 
 export const HospitalName = styled.div`
-  color: var(--Primary, #000);
-  font-family: Inter;
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
@@ -56,8 +54,6 @@ export const PostingRoleAndId = styled.div`
 `
 
 export const PostingRole = styled.div`
-  color: var(--Primary, #000);
-  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -65,8 +61,6 @@ export const PostingRole = styled.div`
 `
 
 export const PostingId = styled.div`
-  color: var(--Default, rgba(0, 0, 0, 0.6));
-  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -111,7 +105,6 @@ export const Status = styled.div<StatusProps>`
         return '#D7FFF7'
     }
   }};
-  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -161,7 +154,6 @@ export const ShiftTime = styled.div<ShiftTimeProps>`
         return '#29ABFF'
     }
   }};
-  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -170,8 +162,6 @@ export const ShiftTime = styled.div<ShiftTimeProps>`
 `
 
 export const Date = styled.div`
-  color: var(--Default, rgba(0, 0, 0, 0.6));
-  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

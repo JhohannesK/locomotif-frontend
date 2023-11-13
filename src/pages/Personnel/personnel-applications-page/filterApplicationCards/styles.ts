@@ -17,7 +17,6 @@ export const FilterWrapper = styled.div`
 export const AddStyles: SxProps = {
   height: '100%',
   borderRadius: '20px',
-  fontFamily: 'Inter',
   fontSize: '12px',
   fontWeight: '400',
   padding: '8px 16px',
@@ -31,7 +30,6 @@ export const ButtonStyles: SxProps = {
   color: `${colors.button.pineGreen}`,
   padding: '8px 16px',
   fontSize: '12px',
-  fontFamily: 'Inter',
   fontWeight: 'normal',
 }
 

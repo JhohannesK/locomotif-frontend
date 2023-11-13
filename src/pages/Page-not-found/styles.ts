@@ -87,7 +87,6 @@ export const Info = styled.h3`
   color: rgba(0, 0, 0, 0.6);
 
   /* Paragraph Text */
-  font-family: Inter;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
