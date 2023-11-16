@@ -16,7 +16,7 @@ import {
 import {
   FacilityLeftMidContent,
   FacilityLeftUpperContent,
-} from '../../../pages/Facility/facility-home-page/LeftPane/styles'
+} from '../../../pages/Facility/components/LeftPane/styles'
 import { ReactNode } from 'react'
 
 interface linksObject {

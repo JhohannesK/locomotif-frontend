@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import Constants from './utils/constants'
 import App from './App'
 export const routhPaths = Constants.ROUTES
-import FacilityHomePage from './pages/Facility/facility-home-page/home_page'
+import FacilityHomePage from './pages/Facility/home_page'
 import PersonnelSignup from './pages/auth/personnel'
 import FacilitySignUp from './pages/auth/facility'
 import SignIn from './pages/auth/signin/signin'

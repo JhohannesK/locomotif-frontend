@@ -1,5 +1,5 @@
-import Layout from '../../../_shared/Layout/Layout'
-import Dashboard from './dashboard'
+import Layout from '../../_shared/Layout/Layout'
+import Dashboard from './facility-home-page/dashboard'
 
 function FacilityHomePage() {
   return (

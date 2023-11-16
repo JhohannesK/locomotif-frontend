@@ -1,5 +1,5 @@
 import { TextField } from '@mui/material'
-import FormSelect from '../select/Select'
+import FormSelect from '../../facility-home-page/select/Select'
 import {
   JobPostBox,
   JobPostButtons,
