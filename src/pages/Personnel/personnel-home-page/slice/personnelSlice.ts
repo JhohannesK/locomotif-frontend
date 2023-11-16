@@ -1,17 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const initialState: { isChecked: boolean } = {
-  isChecked: false,
+const initialState: { activeNav: number } = {
+  activeNav: 1,
 }
 
 export const personnelSlice = createSlice({
   name: 'personnel',
   initialState,
   reducers: {
-    setIsChecked(state, action: PayloadAction<boolean>) {
-      state.isChecked = action.payload
+    setHomepage(state, action: PayloadAction<number>) {
+      state.activeNav = action.payload
     },
   },
 })
 
-export const { setIsChecked } = personnelSlice.actions
+export const { setHomepage } = personnelSlice.actions

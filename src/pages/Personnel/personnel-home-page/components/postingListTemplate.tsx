@@ -1,7 +1,7 @@
 import { JobsContainer, LowerContentContainer, PostingStyles } from '../styles'
-import JobCard from '../../job-card/JobLIstingCard'
 import postingData from '../../../mocks/postings.json'
 import { JobCardType } from '../../../../_shared/@types'
+import JobCard from '../../components/job-card/JobLIstingCard'
 
 const PostingListTemplate = ({ handleOpen }: { handleOpen: () => void }) => {
   const allPostingData: JobCardType[] = postingData.postings

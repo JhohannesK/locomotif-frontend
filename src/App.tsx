@@ -1,12 +1,9 @@
-// import SignIn from './pages/auth/signin/signin'
-import ApplicationsPage from './pages/Personnel/personnel-applications-page/applicationsPage/applicationsPage'
+import SignIn from './pages/auth/signin/signin'
 
 function App() {
   return (
     <>
-      {/* <SignIn /> */}
-
-      <ApplicationsPage />
+      <SignIn />
     </>
   )
 }

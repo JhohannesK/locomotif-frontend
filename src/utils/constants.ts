@@ -103,6 +103,15 @@ const Constants = {
       },
     ],
   },
+
+  NAVBAR: {
+    Personnel: {
+      FINDJOB: 'Find Jobs',
+      APPLICATIONS: 'Applications',
+      PROFILE: 'Profile',
+      FINDFACILITY: 'Find Facility',
+    },
+  },
 }
 
 export default Constants

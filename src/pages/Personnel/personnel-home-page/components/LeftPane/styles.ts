@@ -6,7 +6,7 @@ export const LeftPaneWrapper = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: 33px;
-  width: 100%;
+  width: 17rem;
 `
 
 export const WorkExperienceContainer = styled.div`

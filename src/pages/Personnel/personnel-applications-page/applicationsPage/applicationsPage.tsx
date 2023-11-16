@@ -1,13 +1,9 @@
-import Layout from '../../../../_shared/Layout/Layout'
-import LeftPane from '../../personnel-home-page/components/LeftPane'
-
 import ApplicationsCard, {
   ApplicationsCardProps,
 } from '../applicationsCard/applicationsCard'
 import {
   RightPaneContainer,
   Wrapper,
-  LeftPaneContainer,
   ApplicationCardsContainer,
 } from './styles'
 import applicationsData from '../../../mocks/applications.json'
@@ -25,34 +21,29 @@ const ApplicationsPage = () => {
   })
 
   return (
-    <Layout dashboardType="personnel">
-      <Wrapper>
-        <LeftPaneContainer>
-          <LeftPane />
-        </LeftPaneContainer>
-        <RightPaneContainer>
-          <ApplicationFilterBar
-            filterObject={filterObject}
-            setFilterObject={setFilterObject}
-          />
-          <ApplicationCardsContainer>
-            <Grid
-              container
-              columnGap={2}
-              rowGap={2}
-              justifyContent="center"
-              alignItems="center"
-            >
-              {applicationsCardDetails?.map((application, index) => (
-                <Grid key={index}>
-                  <ApplicationsCard application={application} />
-                </Grid>
-              ))}
-            </Grid>
-          </ApplicationCardsContainer>
-        </RightPaneContainer>
-      </Wrapper>
-    </Layout>
+    <Wrapper>
+      <RightPaneContainer>
+        <ApplicationFilterBar
+          filterObject={filterObject}
+          setFilterObject={setFilterObject}
+        />
+        <ApplicationCardsContainer>
+          <Grid
+            container
+            columnGap={2}
+            rowGap={2}
+            justifyContent="center"
+            alignItems="center"
+          >
+            {applicationsCardDetails?.map((application, index) => (
+              <Grid key={index}>
+                <ApplicationsCard application={application} />
+              </Grid>
+            ))}
+          </Grid>
+        </ApplicationCardsContainer>
+      </RightPaneContainer>
+    </Wrapper>
   )
 }
 

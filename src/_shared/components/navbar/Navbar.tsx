@@ -25,25 +25,25 @@ import { PiChartLineUpBold, PiClipboardTextLight } from 'react-icons/pi'
 import { ReactNode, useEffect, useMemo, useState } from 'react'
 import { AiOutlineFileSearch } from 'react-icons/ai'
 import { routhPaths } from '../../../routes'
+import { useDispatch } from 'react-redux'
+import { setHomepage } from '../../../pages/Personnel/personnel-home-page/slice/personnelSlice'
+import Constants from '../../../utils/constants'
 
 interface linksObject {
-  link: string
+  name: string
   path: string
   icon: ReactNode
 }
 
 const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
-  // const authResponse = useSelector(
-  //   (state: RootState) => state.auth.authResponse
-  // )
+  const NavNames = Constants.NAVBAR.Personnel
 
-  // Use useMemo to memoize the links
   const facilityLinks: linksObject[] = useMemo(
     () => [
-      { link: 'Overview', path: '', icon: <RiLayoutGridFill /> },
-      { link: 'History', path: '', icon: <FaClockRotateLeft /> },
-      { link: 'Analysis', path: '', icon: <PiChartLineUpBold /> },
-      { link: 'Profile', path: '', icon: <FaUserAlt /> },
+      { name: 'Overview', path: '', icon: <RiLayoutGridFill /> },
+      { name: 'History', path: '', icon: <FaClockRotateLeft /> },
+      { name: 'Analysis', path: '', icon: <PiChartLineUpBold /> },
+      { name: 'Profile', path: '', icon: <FaUserAlt /> },
     ],
     []
   )
@@ -51,19 +51,24 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
   const personnelLinks: linksObject[] = useMemo(
     () => [
       {
-        link: 'Find Jobs',
+        name: NavNames.FINDJOB,
         path: routhPaths.PERSONNEL.personnel_dashboard,
         icon: <BiBriefcase />,
       },
-      { link: 'Find Facility', path: '', icon: <AiOutlineFileSearch /> },
+      { name: NavNames.FINDFACILITY, path: '', icon: <AiOutlineFileSearch /> },
       {
-        link: 'Applications',
+        name: NavNames.APPLICATIONS,
         path: routhPaths.PERSONNEL.personnel_applications_page,
         icon: <PiClipboardTextLight />,
       },
-      { link: 'Profile', path: '', icon: <FaUserAlt /> },
+      { name: NavNames.PROFILE, path: '', icon: <FaUserAlt /> },
     ],
-    []
+    [
+      NavNames.APPLICATIONS,
+      NavNames.FINDFACILITY,
+      NavNames.FINDJOB,
+      NavNames.PROFILE,
+    ]
   )
 
   const [linksHolder, setLinksHolder] = useState<linksObject[]>([])
@@ -80,6 +85,8 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
   const handleLeftPane = () => {
     setIsLeftPaneOpen(!isLeftPaneOpen)
   }
+
+  const dispatch = useDispatch()
   return (
     <Wrapper>
       <NavBarMobileContainer>
@@ -96,8 +103,12 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
         <LinkContainer>
           {linksHolder.map((linkObject, index) => {
             return (
-              <LinkStyles key={index} to={linkObject.path}>
-                {linkObject.link}
+              <LinkStyles
+                key={index}
+                to={linkObject.path}
+                onClick={() => dispatch(setHomepage(index + 1))}
+              >
+                {linkObject.name}
               </LinkStyles>
             )
           })}

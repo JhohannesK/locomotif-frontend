@@ -1,16 +1,11 @@
-import { Wrapper } from './styles'
 import Layout from '../../../_shared/Layout/Layout'
 
 function PersonnelHomePage() {
   return (
-    <Layout dashboardType="personnel">
-      <Layout.ConfirmationModal />
-      <Wrapper>
-        <Layout.LeftSide />
-        <Layout.PersonnelMidContent />
-        <Layout.PersonnelFilter />
-      </Wrapper>
-    </Layout>
+    <div style={{ width: '100%', display: 'flex', flexGrow: '1', gap: '20px' }}>
+      <Layout.PersonnelMidContent />
+      <Layout.PersonnelFilter />
+    </div>
   )
 }
 
