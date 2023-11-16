@@ -31,6 +31,7 @@ export const Wrapper = styled.div`
 export const HomePageContainer = styled.div`
   height: 100vh;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
@@ -145,7 +146,7 @@ export const JobsContainer = styled.div`
 export const LeftPaneContainer = styled.div`
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
     display: flex;
-    width: 40%;
+    width: 17rem;
   }
   display: none;
 `

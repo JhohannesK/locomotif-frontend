@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Constants from './utils/constants'
 import App from './App'
-import HomePage from './pages/Personnel/personnel-home-page/home_page'
 export const routhPaths = Constants.ROUTES
 import FacilityHomePage from './pages/Facility/facility-home-page/home_page'
 import PersonnelSignup from './pages/auth/personnel'
@@ -9,7 +8,7 @@ import FacilitySignUp from './pages/auth/facility'
 import SignIn from './pages/auth/signin/signin'
 import LandingPage from './pages/landing-page/landingPage'
 import PageNotFound from './pages/Page-not-found/page_not_found'
-import ApplicationsPage from './pages/Personnel/personnel-applications-page/applicationsPage/applicationsPage'
+import Page from './pages/Personnel'
 
 const routes = createBrowserRouter([
   {
@@ -38,7 +37,7 @@ const routes = createBrowserRouter([
   },
   {
     path: routhPaths.PERSONNEL.personnel_dashboard,
-    element: <HomePage />,
+    element: <Page />,
   },
   {
     path: routhPaths.FACILITY.facility_dashboard,
@@ -54,7 +53,7 @@ const routes = createBrowserRouter([
   },
   {
     path: routhPaths.PERSONNEL.personnel_applications_page,
-    element: <ApplicationsPage />,
+    element: <Page />,
   },
 ])
 

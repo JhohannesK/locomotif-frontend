@@ -24,10 +24,10 @@ import { BiCalendarEvent } from 'react-icons/bi'
 
 const JobCard = ({
   posting,
-  onClick,
+  handleOpen,
 }: {
   posting: JobCardType
-  onClick: () => void
+  handleOpen: () => void
 }) => {
   // const theme = useTheme()
   return (
@@ -37,8 +37,8 @@ const JobCard = ({
           <HospitalLogo>
             <div
               style={{
-                height: '3rem',
-                width: '3rem',
+                height: '4rem',
+                width: '4rem',
                 borderRadius: '50%',
                 background: `${colors.background.timberwolf}`,
               }}
@@ -55,40 +55,39 @@ const JobCard = ({
               <MdLocationOn />
               Accra, Ghana
             </TagWithIcons>
+            <JobDescription>{posting.description}</JobDescription>
+            <AllTags>
+              <TagWithIcons>
+                <LuTimerReset />
+                {posting.full_time ? 'Full Time' : 'Part Time'}
+              </TagWithIcons>
+              <TagWithIcons>
+                <FaMoneyBill />${posting.rate_per_month}
+              </TagWithIcons>
+              <TagWithIcons>
+                <BiCalendarEvent />
+                {posting.application_deadline}
+              </TagWithIcons>
+              <ButtonStyles>
+                <GeneralButton
+                  title="Apply Now"
+                  sx={{
+                    // [theme.breakpoints.down('sm')]: {
+                    //   fontSize: '10px',
+                    // },
+                    padding: '12px 2rem',
+                    height: '2.2rem',
+                    fontSize: '13px',
+                    borderRadius: '15px',
+                    fontWeight: 'medium',
+                  }}
+                  onClick={handleOpen}
+                />
+              </ButtonStyles>
+            </AllTags>
           </NameAndRoleStyles>
         </JobContainerHead>
-        <JobDescriptionContainer>
-          <JobDescription>{posting.description}</JobDescription>
-          <AllTags>
-            <TagWithIcons>
-              <LuTimerReset />
-              {posting.full_time ? 'Full Time' : 'Part Time'}
-            </TagWithIcons>
-            <TagWithIcons>
-              <FaMoneyBill />${posting.rate_per_month}
-            </TagWithIcons>
-            <TagWithIcons>
-              <BiCalendarEvent />
-              {posting.application_deadline}
-            </TagWithIcons>
-            <ButtonStyles>
-              <GeneralButton
-                title="Apply Now"
-                sx={{
-                  // [theme.breakpoints.down('sm')]: {
-                  //   fontSize: '10px',
-                  // },
-                  padding: '12px 2rem',
-                  height: '2.2rem',
-                  fontSize: '13px',
-                  borderRadius: '15px',
-                  fontWeight: 'medium',
-                }}
-                onClick={onClick}
-              />
-            </ButtonStyles>
-          </AllTags>
-        </JobDescriptionContainer>
+        <JobDescriptionContainer></JobDescriptionContainer>
       </Wrapper>
     </JobContainer>
   )
