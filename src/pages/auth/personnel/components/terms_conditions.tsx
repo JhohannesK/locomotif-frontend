@@ -11,7 +11,6 @@ import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 import Constants from '../../../../utils/constants'
 import axios, { AxiosResponse } from 'axios'
 import { FormEvent, useState } from 'react'
-import { login } from '../../../../redux/slices/authSlice'
 import { LoadingButton } from '@mui/lab'
 import { setErrorMessages } from '../../../../utils/util'
 
@@ -30,8 +29,8 @@ const PersonnelTermsAndConditions = () => {
       await axios
         .post(`${Constants.BaseURL}auth/signup/`, newData)
         .then((res: AxiosResponse) => {
-          const responseData = res.data
-          dispatch(login({ ...responseData, isAuthenticated: true }))
+          return res.data
+          // dispatch(login({ ...responseData, isAuthenticated: true }))
         })
         .then(() => dispatch(setActiveSidebar({ activeSidebar: 3 })))
     } catch (error) {

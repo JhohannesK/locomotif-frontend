@@ -2,6 +2,9 @@ const Constants = {
   BaseURL: 'https://locomotif-backend.onrender.com/api/',
   DevBaseURL: 'https://locomotif-backend-pr-65.onrender.com/api/',
 
+  PERSONNEL: 'personnel',
+  FACILITY: 'facility',
+
   ROUTES: {
     root: '/',
     GetStarted: '/getStarted',
