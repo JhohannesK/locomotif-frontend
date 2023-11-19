@@ -226,7 +226,7 @@ export const NavbarHeaderIcon = styled.i`
   align-items: center;
   width: 38px;
   height: 38px;
-  font-size: 200%;
+  font-size: 130%;
   cursor: pointer;
 `
 

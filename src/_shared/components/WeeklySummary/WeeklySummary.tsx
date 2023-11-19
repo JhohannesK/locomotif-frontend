@@ -26,7 +26,7 @@ function WeeklySummary({
               src={member_one}
               alt="member one"
               style={{
-                height: '100%',
+                // height: '100%', >> only the width is needed
                 width: '100%',
                 objectFit: 'cover',
               }}
@@ -43,7 +43,7 @@ function WeeklySummary({
               src={member_two}
               alt="member two"
               style={{
-                height: '100%',
+                // height: '100%', >> only the width is needed
                 width: '100%',
                 objectFit: 'cover',
               }}
@@ -60,7 +60,7 @@ function WeeklySummary({
               src={member_three}
               alt="member three"
               style={{
-                height: '100%',
+                // height: '100%', >> only the width is needed
                 width: '100%',
                 objectFit: 'cover',
               }}

@@ -1,8 +1,12 @@
 import { styled } from 'styled-components'
 import Constants from '../../../utils/constants'
+import { colors } from '../../../colors'
 
 export const FacilityLeftMidBox = styled.div`
-  width: 80%;
+  min-width: 80%;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     width: 90%;
@@ -14,10 +18,9 @@ export const FacilityLeftMidBox = styled.div`
 `
 
 export const FacilityLeftMidBoxContent = styled.div`
-  height: 45px;
   display: flex;
   justify-content: space-between;
-  margin: 10px 0;
+  align-items: center;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     height: 40px;
@@ -29,10 +32,7 @@ export const FacilityLeftMidBoxContent = styled.div`
 `
 
 export const LeftContent = styled.div`
-  max-height: 100%;
-  max-width: 30%;
-  width: auto;
-  height: auto;
+  width: 30px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     max-width: 22%;
@@ -43,9 +43,9 @@ export const LeftContent = styled.div`
   }
 `
 export const RightContent = styled.div`
-  width: 70%;
-  display: flex;
-  flex-direction: column;
+  width: 75%;
+  display: inline-flex;
+  align-items: center;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     width: 72%;
@@ -56,12 +56,13 @@ export const RightContent = styled.div`
   }
 `
 export const RightContentH4 = styled.h4`
-  color: rgba(0, 0, 0, 0.8);
+  color: ${colors.text.pineGreen};
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: 137.14%; /* 27.428px */
+  padding: 10px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     font-size: 18px;
@@ -93,10 +94,11 @@ export const FacilityLeftMidTitle = styled.h2`
   color: rgba(0, 0, 0, 0.8);
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: Roboto;
-  font-size: 25px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: 137.14%; /* 34.285px */
+  margin-bottom: 20px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     font-size: 20px;
