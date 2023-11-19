@@ -28,6 +28,8 @@ import { routhPaths } from '../../../routes'
 import { useDispatch } from 'react-redux'
 import { setHomepage } from '../../../pages/Personnel/personnel-home-page/slice/personnelSlice'
 import Constants from '../../../utils/constants'
+import { ConditionRenderComponent } from '../../../utils/ConditionRender'
+import LeftSidebar from '../sidebar/LeftSidebar'
 
 interface linksObject {
   name: string
@@ -90,6 +92,13 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
   return (
     <Wrapper>
       <NavBarMobileContainer>
+        <ConditionRenderComponent renderIf={isLeftPaneOpen}>
+          <LeftSidebar
+            closePane={handleLeftPane}
+            menu={linksHolder}
+            type={type}
+          />
+        </ConditionRenderComponent>
         <MenuIcon onClick={handleLeftPane}>
           <BiMenuAltLeft size={28} />
         </MenuIcon>
