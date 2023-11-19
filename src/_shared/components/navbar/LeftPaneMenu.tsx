@@ -20,7 +20,7 @@ import {
 import { ReactNode } from 'react'
 
 interface linksObject {
-  link: string
+  name: string
   path: string
   icon: ReactNode
 }
@@ -49,7 +49,7 @@ function NavbarLeftPaneMenu({
                   <NavbarOptionsIcon>{linkObject.icon}</NavbarOptionsIcon>
                 </NavbarOptionLeft>
                 <NavbarOptionRight>
-                  <NavbarOptionsH3>{linkObject.link}</NavbarOptionsH3>
+                  <NavbarOptionsH3>{linkObject.name}</NavbarOptionsH3>
                 </NavbarOptionRight>
               </NavbarOptions>
             )
