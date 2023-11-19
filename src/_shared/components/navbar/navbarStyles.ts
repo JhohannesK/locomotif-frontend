@@ -187,9 +187,6 @@ export const SearchIcon = styled.div``
 /* Left Pane */
 
 export const NavbarMenu = styled.div`
-  box-sizing: border-box;
-  overflow-y: scroll;
-  overflow-x: hidden;
   background: #fff;
   width: 250px;
   height: 100vh;
@@ -202,7 +199,6 @@ export const NavbarMenu = styled.div`
   top: 0;
   background: #fff;
   padding: 10px 20px;
-  padding-top: 0px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     display: none;
@@ -231,10 +227,6 @@ export const NavbarHeaderIcon = styled.i`
 `
 
 export const NavbarMenuHeader = styled.div`
-  position: sticky;
-  top: 0px;
-  padding: 10px 0;
-  background: #fff;
   width: 100%;
   display: inline-flex;
   justify-content: space-between;
