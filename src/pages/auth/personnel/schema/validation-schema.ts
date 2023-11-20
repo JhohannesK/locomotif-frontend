@@ -32,9 +32,9 @@ export const schema = z
     path: ['confirmPassword'],
   })
 
-export type Schema = z.infer<typeof schema>
+export type PersonnelProfileSchema = z.infer<typeof schema>
 
-export const defaultValues: Schema = {
+export const defaultValues: PersonnelProfileSchema = {
   first_name: '',
   last_name: '',
   other_names: '',

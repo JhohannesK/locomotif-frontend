@@ -3,22 +3,31 @@ import {
   AuthUpperContent,
   AuthContainer,
   AuthButton,
-  // AuthLogo,
   AuthFields,
   AuthContent,
   AuthFieldsLabel,
 } from '../../../../_shared/auth_styles'
-// import image from '../../../_shared/assets/doctor_sign_in.png'
 import { LoadingButton } from '@mui/lab'
 import GeneralInput from '../../../../_shared/components/inputs/Input'
 import { GenericButton, Toast } from '../../../../_shared'
 import usePersonnelSignup from '../hook/usePersonnelSignup'
 import { FormProvider } from 'react-hook-form'
-// import routes from '../../../routes'
-// import Constants from '../../../utils/constants'
+import React from 'react'
+import { PersonnelCreateAccount } from '../../_types'
 
-const SignUp = () => {
-  const { mutation, onSubmit, methods, error } = usePersonnelSignup()
+const SignUp = ({
+  handleActiveState,
+  handleUserData,
+}: {
+  handleActiveState: (index: number) => void
+  handleUserData: React.Dispatch<React.SetStateAction<PersonnelCreateAccount>>
+}) => {
+  const { mutation, methods, error } = usePersonnelSignup()
+
+  const onSubmit = (data: PersonnelCreateAccount) => {
+    handleActiveState(2)
+    handleUserData(data)
+  }
 
   return (
     <>
@@ -29,13 +38,6 @@ const SignUp = () => {
         <FormProvider {...methods}>
           <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
             <AuthUpperContent>
-              {/* <AuthLogo>
-                <img
-                  src={image}
-                  alt="health-leaf icon"
-                  style={{ height: '80%', width: '80%', objectFit: 'contain' }}
-                />
-              </AuthLogo> */}
               <h1>Create Your Account</h1>
               <p>Please input your details as specified below</p>
             </AuthUpperContent>

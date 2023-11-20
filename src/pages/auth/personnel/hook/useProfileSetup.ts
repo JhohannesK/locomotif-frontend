@@ -8,14 +8,14 @@ import Constants from '../../../../utils/constants'
 import { setErrorMessages } from '../../../../utils/util'
 import { useDispatch } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
-import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
+import { IPersonnelProfileData, IPersonnelProfilePayload } from '../../_types'
 // import { useNavigate } from 'react-router-dom'
 
 axios.defaults.withCredentials = true
 
 const schema = z.object({
   specialities: z.array(z.string().min(3).optional()),
-  registrationyear: z
+  year_of_registration: z
     .number()
     .positive()
     .gt(1950)
@@ -36,7 +36,7 @@ const useProfileSetup = () => {
 
   const defaultValues: Schema = {
     specialities: [],
-    registrationyear: 2023,
+    year_of_registration: 2023,
     telephone: '',
     date_of_birth: '',
     country: '',
@@ -52,23 +52,29 @@ const useProfileSetup = () => {
 
   const dispatch = useDispatch()
 
+  const onHandleClick = (index: number) => {
+    dispatch(setActiveSidebar({ activeSidebar: index }))
+  }
+
   const mutation = useMutation({
-    mutationFn: async (data: Schema) => {
-      const signUpData = loadFromLocalStorage({ key: 'PersonnelSignUpData' })
-      console.log({ ...signUpData, ...data })
-      await axios.put(`${Constants.BaseURL}auth/profile/`, {
-        ...signUpData,
-        ...data,
-      })
-      localStorage.removeItem('PersonnelSignUpData')
+    mutationFn: async (data: IPersonnelProfilePayload) => {
+      await axios.put(`${Constants.BaseURL}auth/profile/`, data)
     },
-    onSuccess: () => {
-      dispatch(setActiveSidebar({ activeSidebar: 4 }))
-    },
+    onSuccess: () => onHandleClick(4),
     onError: (err) => setErrorMessages(err, setError),
   })
 
-  const onSubmit = (data: Schema) => {
+  const onSubmit = (data: IPersonnelProfileData) => {
+    // const payload: IPersonnelProfilePayload = {
+    //   specialities: data.specialities,
+    //   year_of_registration: data.year_of_registration,
+    //   telephone: data.telephone,
+    //   date_of_birth: data.date_of_birth,
+    //   country: data.country,
+    //   region: data.region,
+    //   city: data.city,
+    //   digital_address: data.digital_address,
+    // }
     mutation.mutate(data)
   }
 

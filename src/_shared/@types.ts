@@ -32,6 +32,7 @@ export type GeneralBtnProps = {
   >
   sx?: SxProps
   title: string
+  type?: 'submit' | 'button'
   size?: OverridableStringUnion<
     'small' | 'medium' | 'large',
     ButtonPropsSizeOverrides

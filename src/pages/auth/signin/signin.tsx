@@ -15,20 +15,45 @@ import {
   googleSignInProps,
   signInProps,
 } from './styles'
-import useSignIn from './hook/useSignIn'
+import useSignIn, { PersonnelLoginSchema } from './hook/useSignIn'
 import { LoadingButton } from '@mui/lab'
 import { colors } from '../../../colors'
-// import { genCode } from "../../../utils/genCode";
 import googleLogo from '../../../_shared/assets/google_logo.png'
 import { AuthButtonH3 } from '../../../_shared/auth_styles'
 import routes from '../../../routes'
 import Constants from '../../../utils/constants'
+import { login } from '../slice/authSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
+import { RootState } from '../../../redux/store'
+import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const SignIn = () => {
-  const { methods, errorMessage, isError, isLoading, onSubmit } = useSignIn()
+  const { methods } = useSignIn()
+  const dispatch = useDispatch<ThunkDispatch<RootState, void, AnyAction>>()
+  const { isLoading, isLoggedIn, user_role, errorMessage } = useSelector(
+    (state: RootState) => state.auth
+  )
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      if (user_role.user_role == Constants.PERSONNEL) {
+        navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
+      }
+    }
+  }, [isLoggedIn, user_role, navigate])
+
+  const onSubmit = (data: PersonnelLoginSchema) => {
+    dispatch(login(data))
+  }
   return (
     <>
-      {isError && <Toast open={isError} type="error" children={errorMessage} />}
+      {errorMessage && (
+        <Toast open={!!errorMessage} type="error" children={errorMessage} />
+      )}
+
       <Page>
         <Content>
           <Logo>Loco</Logo>
