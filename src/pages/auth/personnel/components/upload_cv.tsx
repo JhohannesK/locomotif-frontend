@@ -95,6 +95,7 @@ const UploadCV = () => {
             }}
             title="Next"
             size="medium"
+            type="button"
           />
         </StepNavigateButtons>
       </AuthContent>

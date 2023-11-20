@@ -8,6 +8,7 @@ const GeneralButton = ({
   size,
   icon,
   onClick,
+  type = 'submit',
 }: GeneralBtnProps) => {
   return (
     <Button
@@ -15,7 +16,7 @@ const GeneralButton = ({
       sx={{ ...sx }}
       size={size}
       onClick={onClick}
-      type="submit"
+      type={type}
       startIcon={icon}
     >
       {title}

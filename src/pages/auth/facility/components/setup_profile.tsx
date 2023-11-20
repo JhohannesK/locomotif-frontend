@@ -17,12 +17,11 @@ import {
 import { colors } from '../../../../colors'
 import { ButtonsBox, SelectBox } from '../styles'
 import useFacilityProfileSetup from '../hook/useFacilityProfileSetup'
-import { ProfileSchema } from '../_types'
 import { LoadingButton } from '@mui/lab'
+import { ProfileSchema } from '../schema/validation'
 
 const FacilitySetUpProfile = ({
   handleActiveState,
-
   userData,
 }: {
   handleActiveState: (index: number) => void

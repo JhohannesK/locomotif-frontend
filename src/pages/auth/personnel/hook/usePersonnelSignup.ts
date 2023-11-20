@@ -6,47 +6,54 @@ import axios from 'axios'
 import { setErrorMessages } from '../../../../utils/util'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 import { useDispatch } from 'react-redux'
-import { defaultValues, schema, Schema } from '../schema/validation-schema'
+import {
+  PersonnelProfileSchema,
+  defaultValues,
+  schema,
+} from '../schema/validation-schema'
+import { PersonnelCreateAccount, PersonnelSignupPaylod } from '../../_types'
+import Constants from '../../../../utils/constants'
 
 axios.defaults.withCredentials = true
 
 const usePersonnelSignup = () => {
   const [error, setError] = useState<string>('')
 
-  const methods = useForm<Schema>({
+  const methods = useForm<PersonnelProfileSchema>({
     resolver: zodResolver(schema),
     defaultValues,
   })
 
-  type SchemaType = Omit<Schema, 'confirmPassword'>
+  // type SchemaType = Omit<Schema, 'confirmPassword'>
 
   const dispatch = useDispatch()
 
+  const onHandleClick = (index: number) => {
+    dispatch(setActiveSidebar({ activeSidebar: index }))
+  }
+
   const mutation = useMutation({
-    mutationFn: async (data: SchemaType) => {
-      localStorage.removeItem('PersonnelSignUpData')
-      localStorage.removeItem('PersonnelSubmitData')
-      localStorage.setItem('PersonnelSignUpData', JSON.stringify(data))
-      const newData = {
-        email: data.email,
-        password: data.password,
-        user_role: data.user_role,
-        extra_data: {
-          first_name: data.first_name,
-          last_name: data.last_name,
-          other_names: data.other_names,
-        },
-      }
-      localStorage.setItem('PersonnelSubmitData', JSON.stringify(newData))
+    mutationFn: async (data: PersonnelSignupPaylod) => {
+      await axios.post(`${Constants.BaseURL}auth/signup/`, data)
     },
-    onSuccess: () => {
-      dispatch(setActiveSidebar({ activeSidebar: 2 }))
+    onSuccess: () => onHandleClick(3),
+    onError: (err) => {
+      setErrorMessages(err, setError), onHandleClick(2)
     },
-    onError: (err) => setErrorMessages(err, setError),
   })
 
-  const onSubmit = (data: Schema) => {
-    mutation.mutate(data)
+  const onSubmit = (data: PersonnelCreateAccount) => {
+    const payload: PersonnelSignupPaylod = {
+      email: data.email,
+      password: data.password,
+      user_role: 'personnel',
+      extra_data: {
+        first_name: data.first_name,
+        last_name: data.last_name,
+        other_names: data.other_names,
+      },
+    }
+    mutation.mutate(payload)
   }
 
   return { onSubmit, mutation, methods, error }

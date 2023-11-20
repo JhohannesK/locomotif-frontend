@@ -1,5 +1,4 @@
 import z from 'zod'
-import { Schema } from '../_types'
 
 export const schema = z
   .object({
@@ -15,6 +14,8 @@ export const schema = z
     message: 'Passwords do not match',
     path: ['confirmPassword'],
   })
+
+export type Schema = z.infer<typeof schema>
 
 export const defaultValues: Schema = {
   name: '',
@@ -79,3 +80,5 @@ export const profileSchema = z.object({
     }
   ),
 })
+
+export type ProfileSchema = z.infer<typeof profileSchema>

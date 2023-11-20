@@ -40,23 +40,23 @@ export const login = createAsyncThunk<
   }
 })
 
-export const signup = createAsyncThunk(
-  'auth/signup',
-  async (data, { rejectWithValue }) => {
-    try {
-      const response = await axios
-        .post(`${Constants.BaseURL}auth/signup/`, data)
-        .then((res: AxiosResponse) => {
-          res.data
-          // dispatch(login({ ...responseData, isAuthenticated: true }))
-        })
-      return response
-    } catch (error) {
-      rejectWithValue(error)
-      throw error
-    }
-  }
-)
+// export const signup = createAsyncThunk(
+//   'auth/signup',
+//   async (data, { rejectWithValue }) => {
+//     try {
+//       const response = await axios
+//         .post(`${Constants.BaseURL}auth/signup/`, data)
+//         .then((res: AxiosResponse) => {
+//           res.data
+//           // dispatch(login({ ...responseData, isAuthenticated: true }))
+//         })
+//       return response
+//     } catch (error) {
+//       rejectWithValue(error)
+//       throw error
+//     }
+//   }
+// )
 
 const authSlice = createSlice({
   name: 'auth',
