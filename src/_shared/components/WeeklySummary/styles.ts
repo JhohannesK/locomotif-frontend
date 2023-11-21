@@ -19,7 +19,7 @@ export const FacilityLeftMidBox = styled.div`
 
 export const FacilityLeftMidBoxContent = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
@@ -32,7 +32,8 @@ export const FacilityLeftMidBoxContent = styled.div`
 `
 
 export const LeftContent = styled.div`
-  width: 30px;
+  width: 20px;
+  margin-right: 20px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     max-width: 22%;
@@ -43,9 +44,10 @@ export const LeftContent = styled.div`
   }
 `
 export const RightContent = styled.div`
-  width: 75%;
+  /* width: 75%; */
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     width: 72%;
@@ -58,7 +60,7 @@ export const RightContent = styled.div`
 export const RightContentH4 = styled.h4`
   color: ${colors.text.pineGreen};
   font-feature-settings: 'clig' off, 'liga' off;
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: 137.14%; /* 27.428px */
