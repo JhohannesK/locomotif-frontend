@@ -2,13 +2,17 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import Constants from '../../../../utils/constants'
 import { setErrorMessages } from '../../../../utils/util'
 import { useDispatch } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
-import { IPersonnelProfileData, IPersonnelProfilePayload } from '../../_types'
+import {
+  IPersonnelProfileData,
+  IPersonnelProfilePayload,
+  PersonnelSpecialities,
+} from '../../_types'
 // import { useNavigate } from 'react-router-dom'
 
 axios.defaults.withCredentials = true
@@ -56,6 +60,20 @@ const useProfileSetup = () => {
     dispatch(setActiveSidebar({ activeSidebar: index }))
   }
 
+  const fetchSpecialitiesMutation = useQuery<PersonnelSpecialities>({
+    queryKey: ['specialities'],
+    queryFn: async () => {
+      try {
+        const { data } = await axios.get(
+          `${Constants.BaseURL}postings/specialities/`
+        )
+        return data
+      } catch (error) {
+        return error
+      }
+    },
+  })
+
   const mutation = useMutation({
     mutationFn: async (data: IPersonnelProfilePayload) => {
       await axios.put(`${Constants.BaseURL}auth/profile/`, data)
@@ -78,7 +96,7 @@ const useProfileSetup = () => {
     mutation.mutate(data)
   }
 
-  return { onSubmit, mutation, methods, error }
+  return { onSubmit, mutation, methods, error, fetchSpecialitiesMutation }
 }
 
 export default useProfileSetup

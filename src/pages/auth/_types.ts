@@ -81,3 +81,7 @@ export interface PersonnelProfilePayload
     IPersonnelProfilePayload {
   CV?: string
 }
+
+export type PersonnelSpecialities = {
+  specialities: string[]
+}

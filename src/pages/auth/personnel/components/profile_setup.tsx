@@ -25,7 +25,8 @@ const ProfileSetup = ({
   handleActiveState: (index: number) => void
   userData: PersonnelCreateAccount
 }) => {
-  const { mutation, onSubmit, methods, error } = useProfileSetup()
+  const { mutation, onSubmit, methods, error, fetchSpecialitiesMutation } =
+    useProfileSetup()
 
   function passData(data: IPersonnelProfilePayload) {
     const combinedData: IPersonnelProfileData = {
@@ -52,7 +53,7 @@ const ProfileSetup = ({
                 <GenericSelect
                   name="specialities"
                   label={'Specialities'}
-                  data={['Gynaecology', 'Optomology', 'Dentistry']}
+                  data={fetchSpecialitiesMutation.data?.specialities ?? [' ']}
                   defaultValue=""
                   multiple
                   sx={{ minWidth: '30%', width: 'fit-content' }}
