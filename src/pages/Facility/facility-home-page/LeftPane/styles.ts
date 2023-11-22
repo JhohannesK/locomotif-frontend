@@ -6,7 +6,7 @@ export const FacilityLeftUpperContent = styled.div`
 `
 
 export const FacilityLeftMidContent = styled.div`
-  height: 250px;
+  /* height: 250px; */
   width: 100%;
   border-radius: 10px;
   border: 1px solid #d1d1d1;

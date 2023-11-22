@@ -38,7 +38,7 @@ function NavbarLeftPaneMenu({
         <NavbarMenuHeader>
           <LogoStyles>Locomotif</LogoStyles>
           <NavbarHeaderIcon onClick={() => closePane()}>
-            <RxCross1 />
+            <RxCross1 stroke-width="1" />
           </NavbarHeaderIcon>
         </NavbarMenuHeader>
         <NavbarOptionsBox>
