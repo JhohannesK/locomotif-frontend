@@ -41,18 +41,43 @@ export type GeneralBtnProps = {
   onClick?: () => void
 }
 
+// export type JobCardType = {
+//   required_role: string[]
+//   title: string
+//   description: string
+//   full_time: boolean
+//   rate_per_month: number
+//   application_deadline: string
+//   isactive: boolean
+//   medical_facility: string
+//   created_at: string
+//   start_time: string
+//   end_time: string
+// }
+
 export type JobCardType = {
-  required_role: string[]
+  id: number
   title: string
   description: string
   full_time: boolean
-  rate_per_month: number
   application_deadline: string
-  isactive: boolean
-  medical_facility: string
-  created_at: string
   start_time: string
-  end_time: string
+  end_time: string | null
+  rate_per_month: number
+  rate_per_6_hour_shift: string | null
+  shift_type: string | null
+  is_active: boolean
+  required_speciality: string
+  facility: {
+    name: string
+    bio: string
+    telephone: string
+    verified: boolean
+    country: string
+    region: string
+    city: string
+    digital_address: string
+  }
 }
 
 export interface SelectProps {

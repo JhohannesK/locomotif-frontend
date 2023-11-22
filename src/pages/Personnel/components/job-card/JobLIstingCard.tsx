@@ -5,13 +5,13 @@ import {
   JobContainerHead,
   JobDescriptionContainer,
   JobDescription,
-  TagStyles,
   NameAndRoleStyles,
   TagWithIcons,
   AllTags,
   Specialities,
   Wrapper,
   ButtonStyles,
+  TagStyles,
 } from './styles'
 import { JobCardType } from '../../../../_shared/@types'
 import { colors } from '../../../../colors'
@@ -45,11 +45,9 @@ const JobCard = ({
             />
           </HospitalLogo>
           <NameAndRoleStyles>
-            <HospitalName>{posting.medical_facility}</HospitalName>
+            <HospitalName>{posting.facility['name']}</HospitalName>
             <Specialities>
-              {posting.required_role.map((speciality, index) => (
-                <TagStyles key={index}>{speciality}</TagStyles>
-              ))}
+              <TagStyles>{posting.required_speciality}</TagStyles>
             </Specialities>
             <TagWithIcons>
               <MdLocationOn />

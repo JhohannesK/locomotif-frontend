@@ -171,6 +171,7 @@ export const NavBarUserImage = styled.div`
   clip-path: circle();
   background-color: red;
   display: flex;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   /* margin-right: 10px; */
