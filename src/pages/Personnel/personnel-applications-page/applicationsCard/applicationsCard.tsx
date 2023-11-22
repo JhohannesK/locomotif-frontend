@@ -16,11 +16,13 @@ import {
 } from './styles'
 const ApplicationsCard = ({
   application,
+  index,
 }: {
   application: ApplicationsCardProps
+  index: number
 }) => {
   return (
-    <CardContainer>
+    <CardContainer key={index}>
       <MainContainer>
         <LeftSide>
           <HospitalNameAndImage>

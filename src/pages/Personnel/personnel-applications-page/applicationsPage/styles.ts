@@ -29,6 +29,7 @@ export const LeftPaneContainer = styled.div`
 `
 
 export const ApplicationCardsContainer = styled.div`
+  display: flex;
   align-items: center;
   justify-content: center;
 `
