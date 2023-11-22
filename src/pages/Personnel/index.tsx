@@ -9,13 +9,14 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import Constants from '../../utils/constants'
 import { loadFromLocalStorage } from '../../redux/hooks/middleware'
+import { Backdrop, CircularProgress } from '@mui/material'
 
 const Page = () => {
   const Application = ConditionRender(ApplicationsPage)
   const Personnel = ConditionRender(PersonnelHomePage)
   const { activeNav } = useSelector((state: RootState) => state.personnel)
 
-  const { user_role, isLoggedIn } = useSelector(
+  const { user_role, isLoggedIn, isLogoutLoading } = useSelector(
     (state: RootState) => state.auth
   )
 
@@ -42,6 +43,12 @@ const Page = () => {
   return (
     <Layout dashboardType="personnel">
       <Layout.ConfirmationModal />
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={isLogoutLoading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Wrapper>
         <Layout.LeftSide />
         <Personnel renderIf={activeNav === 1} />

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { UserAuthState, UserAuthType } from './_types'
+import { PersonnelProfileType, UserAuthState, UserAuthType } from './_types'
 import { RootState } from '../../../redux/store'
 import axios, { AxiosResponse } from 'axios'
 import Constants from '../../../utils/constants'
@@ -9,10 +9,64 @@ const initialState: UserAuthType = {
   user_role: {
     user_role: undefined as unknown as UserAuthState,
   },
+  personnelProfile: {
+    first_name: '',
+    other_names: '',
+    last_name: '',
+    telephone: '',
+    date_of_birth: '',
+
+    verified: false,
+    ratings: 4,
+
+    CV: '',
+    year_of_registration: '',
+    specialities: [],
+
+    country: '',
+    region: '',
+    city: '',
+    digital_address: '',
+  },
   isLoading: false,
   isLoggedIn: false,
   errorMessage: undefined,
+  isLogoutLoading: false,
 }
+
+// function logUserIn(data: { email: string; password: string }): Promise<UserAuthState> {
+//   return axios.post(`${Constants.BaseURL}auth/login/`, data)
+// }
+
+export const fetchPersonnelProfile = createAsyncThunk<PersonnelProfileType>(
+  'auth/profile',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios
+        .get(`${Constants.BaseURL}auth/profile/`)
+        .then((res: AxiosResponse) => res.data)
+      return response
+    } catch (error) {
+      rejectWithValue(error)
+    }
+  }
+)
+
+export const logoutPersonnel = createAsyncThunk<
+  | {
+      message: string
+    }
+  | undefined
+>('auth/logout', async (_, { rejectWithValue }) => {
+  try {
+    const response: { message: string } = await axios
+      .get(`${Constants.BaseURL}auth/logout/`)
+      .then((res: AxiosResponse) => res?.data)
+    return response
+  } catch (error) {
+    rejectWithValue(error)
+  }
+})
 
 export const login = createAsyncThunk<
   { user_role: UserAuthState },
@@ -40,40 +94,10 @@ export const login = createAsyncThunk<
   }
 })
 
-// export const signup = createAsyncThunk(
-//   'auth/signup',
-//   async (data, { rejectWithValue }) => {
-//     try {
-//       const response = await axios
-//         .post(`${Constants.BaseURL}auth/signup/`, data)
-//         .then((res: AxiosResponse) => {
-//           res.data
-//           // dispatch(login({ ...responseData, isAuthenticated: true }))
-//         })
-//       return response
-//     } catch (error) {
-//       rejectWithValue(error)
-//       throw error
-//     }
-//   }
-// )
-
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    logout: (state) => {
-      state.isLoggedIn = false
-      state.user_role.user_role = undefined as unknown as UserAuthState
-      saveToLocalStorage({
-        state: {
-          user_role: undefined as unknown as UserAuthState,
-          isLoggedIn: false,
-        },
-        key: 'personnelAuth',
-      })
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
       state.isLoading = false
@@ -81,7 +105,7 @@ const authSlice = createSlice({
       state.isLoggedIn = true
       saveToLocalStorage({
         state: { user_role: action.payload.user_role, isLoggedIn: true },
-        key: 'personnelAuth',
+        key: Constants.LOCALSTORAGE_KEYS.PERSONNEL_AUTH,
       })
     })
     builder.addCase(login.pending, (state) => {
@@ -91,6 +115,34 @@ const authSlice = createSlice({
       state.isLoading = false
       state.isLoggedIn = false
       state.errorMessage = 'Login failed'
+    })
+
+    builder.addCase(fetchPersonnelProfile.fulfilled, (state, action) => {
+      state.personnelProfile = action.payload
+      saveToLocalStorage({
+        state: { PersonnelProfile: action.payload },
+        key: Constants.LOCALSTORAGE_KEYS.PERSONNEL_PROFILE,
+      })
+    })
+    builder.addCase(fetchPersonnelProfile.pending, (state) => {
+      state.isLoading = true
+    })
+    builder.addCase(fetchPersonnelProfile.rejected, (state) => {
+      state.isLoading = false
+      state.errorMessage = 'Failed to fetch profile'
+    })
+
+    builder.addCase(logoutPersonnel.fulfilled, () => {
+      localStorage.removeItem(Constants.LOCALSTORAGE_KEYS.PERSONNEL_AUTH)
+      localStorage.removeItem(Constants.LOCALSTORAGE_KEYS.PERSONNEL_PROFILE)
+      window.location.reload()
+    })
+    builder.addCase(logoutPersonnel.pending, (state) => {
+      state.isLogoutLoading = true
+    })
+    builder.addCase(logoutPersonnel.rejected, (state) => {
+      state.isLoading = false
+      state.errorMessage = 'Failed to logout'
     })
   },
 })

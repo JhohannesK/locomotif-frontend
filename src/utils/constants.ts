@@ -7,7 +7,7 @@ const Constants = {
 
   ROUTES: {
     root: '/',
-    GetStarted: '/getStarted',
+    GetStarted: '/get-started',
     PAGENOTFOUND: '/404',
     AUTH: {
       signin: '/signin',
@@ -114,6 +114,11 @@ const Constants = {
       PROFILE: 'Profile',
       FINDFACILITY: 'Find Facility',
     },
+  },
+
+  LOCALSTORAGE_KEYS: {
+    PERSONNEL_AUTH: 'personnelAuth',
+    PERSONNEL_PROFILE: 'personnelProfile',
   },
 }
 

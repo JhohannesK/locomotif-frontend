@@ -55,6 +55,10 @@ const routes = createBrowserRouter([
     path: routhPaths.PERSONNEL.personnel_applications_page,
     element: <Page />,
   },
+  {
+    path: '*',
+    element: <PageNotFound />,
+  },
 ])
 
 export default routes
