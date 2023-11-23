@@ -14,7 +14,6 @@ import { Backdrop, CircularProgress } from '@mui/material'
 const Page = () => {
   const Application = ConditionRender(ApplicationsPage)
   const Personnel = ConditionRender(PersonnelHomePage)
-  const { activeNav } = useSelector((state: RootState) => state.personnel)
 
   const { user_role, isLoggedIn, isLogoutLoading } = useSelector(
     (state: RootState) => state.auth
@@ -23,6 +22,9 @@ const Page = () => {
   const { pathname } = useLocation()
   const isMatch = pathname.includes(Constants.PERSONNEL)
   const navigate = useNavigate()
+  const activeNavIndex = loadFromLocalStorage({
+    key: Constants.LOCALSTORAGE_KEYS.ACTIVENAV,
+  })
 
   useEffect(() => {
     const personnelAuthData = loadFromLocalStorage({ key: 'personnelAuth' })
@@ -51,8 +53,8 @@ const Page = () => {
       </Backdrop>
       <Wrapper>
         <Layout.LeftSide />
-        <Personnel renderIf={activeNav === 1} />
-        <Application renderIf={activeNav === 3} />
+        <Personnel renderIf={activeNavIndex === 1} />
+        <Application renderIf={activeNavIndex === 3} />
       </Wrapper>
     </Layout>
   )
