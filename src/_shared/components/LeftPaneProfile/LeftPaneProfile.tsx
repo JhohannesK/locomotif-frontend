@@ -1,4 +1,8 @@
 import { colors } from '../../../colors'
+import { PersonnelProfilePayload } from '../../../pages/auth/_types'
+import { loadFromLocalStorage } from '../../../redux/hooks/middleware'
+import Constants from '../../../utils/constants'
+import AvatarDisplay from '../Avatar/Avatar'
 import GeneralButton from '../button/Button'
 import {
   LeftPaneProfileContainer,
@@ -6,30 +10,31 @@ import {
   LeftProfileWorkContainer,
   LeftProfileWorkExperienceAndWork,
   LeftProfileWorkExperienceContainer,
-  NavBarUserImageProfile,
 } from './styles'
-// import image from '../../../assets/user.jpeg'
 
-const LeftPaneProfile = ({
-  name,
-  jobTitle,
-  workExperience,
-}: LeftProfileProps) => {
+const LeftPaneProfile = () => {
+  const { PersonnelProfile } = loadFromLocalStorage({
+    key: Constants.LOCALSTORAGE_KEYS.PERSONNEL_PROFILE,
+  }) as { PersonnelProfile: PersonnelProfilePayload }
+
+  const fullName = `${PersonnelProfile?.last_name} ${PersonnelProfile?.first_name}`
+
   return (
     <LeftPaneProfileContainer>
-      <NavBarUserImageProfile>
-        {/* <img
-              src={image}
-              alt="health-leaf icon"
-              style={{ height: '100%', width: '100%', objectFit: 'cover' }}
-            /> */}
-      </NavBarUserImageProfile>
+      <AvatarDisplay
+        height={70}
+        width={70}
+        fullname={fullName}
+        imageSrc={'/src//_shared/assets/user.jpeg'}
+      />
       <LeftProfileWorkExperienceAndWork>
-        <LeftProfileNameContainer>{name}</LeftProfileNameContainer>
+        <LeftProfileNameContainer>{fullName}</LeftProfileNameContainer>
         <LeftProfileWorkContainer>
-          {jobTitle} |{' '}
+          {PersonnelProfile?.specialities?.map((job) => (
+            <>{job}</>
+          ))}
           <LeftProfileWorkExperienceContainer>
-            {workExperience}
+            {PersonnelProfile?.year_of_registration}
           </LeftProfileWorkExperienceContainer>
         </LeftProfileWorkContainer>
       </LeftProfileWorkExperienceAndWork>
@@ -52,9 +57,3 @@ const LeftPaneProfile = ({
   )
 }
 export default LeftPaneProfile
-
-interface LeftProfileProps {
-  name: string
-  jobTitle: string
-  workExperience: string
-}

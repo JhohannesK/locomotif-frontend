@@ -7,7 +7,6 @@ import {
   NavBarRightBox,
   NavBarRightContent,
   NavBarRightIcons,
-  NavBarUserImage,
   NavbarStyle,
   ProfileAvartar,
   SearchIcon,
@@ -32,6 +31,7 @@ import LeftSidebar from '../sidebar/LeftSidebar'
 import { Tooltip } from '@mui/material'
 import { IoIosArrowDown } from 'react-icons/io'
 import ProfileMenu from './components/ProfileMenu'
+import AvatarDisplay from '../Avatar/Avatar'
 
 interface linksObject {
   name: string
@@ -139,20 +139,10 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
               <RxEnvelopeClosed size={23} />
               <FiBell size={23} />
             </NavBarRightIcons>
-            <ProfileAvartar>
-              <NavBarUserImage onClick={handleOpenUserMenu}>
-                <Tooltip title="Open settings">
-                  <img
-                    src={image}
-                    alt="user icon"
-                    style={{
-                      height: '1.9rem',
-                      width: '1.9rem',
-                      objectFit: 'cover',
-                    }}
-                  />
-                </Tooltip>
-              </NavBarUserImage>
+            <ProfileAvartar onClick={handleOpenUserMenu}>
+              <Tooltip title="Open settings">
+                <AvatarDisplay height={40} width={40} imageSrc={image} />
+              </Tooltip>
               <NavBarRightIcons>
                 <IoIosArrowDown size={20} />
               </NavBarRightIcons>
@@ -162,8 +152,6 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
               handleCloseUserMenu={handleCloseUserMenu}
             />
           </NavBarRightBox>
-          {/* 
-          <NavBarUserName>{authResponse.first_name ?? 'user'}</NavBarUserName> */}
         </NavBarRightContent>
       </NavbarStyle>
     </Wrapper>

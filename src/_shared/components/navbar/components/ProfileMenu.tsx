@@ -21,6 +21,7 @@ const settings = [
     name: 'Log out',
     icon: <BiDoorOpen />,
     onClick: () => {},
+    sx: { color: 'red' },
   },
 ]
 
@@ -51,7 +52,7 @@ const ProfileMenu = ({ anchorElUser, handleCloseUserMenu }: IProfileMenu) => {
             dispatch(logoutPersonnel())
             handleCloseUserMenu()
           }}
-          sx={{ gap: '10px' }}
+          sx={{ gap: '10px', ...setting.sx }}
         >
           {setting.icon}
           <Typography fontSize={'16px'} textAlign="center">

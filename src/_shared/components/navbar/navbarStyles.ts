@@ -150,15 +150,10 @@ export const NavBarUserName = styled.h2`
 `
 
 export const NavBarUserImage = styled.div`
-  outline: 1px solid orange;
-  clip-path: circle();
-  background-color: red;
   display: flex;
   cursor: pointer;
   justify-content: center;
   align-items: center;
-  background-size: cover;
-  background-position: center center;
 `
 
 export const MenuIcon = styled.div`
