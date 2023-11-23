@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import Constants from '../../../../utils/constants'
 
 const initialState: { activeNav: number } = {
   activeNav: 1,
@@ -10,6 +11,10 @@ export const personnelSlice = createSlice({
   reducers: {
     setHomepage(state, action: PayloadAction<number>) {
       state.activeNav = action.payload
+      localStorage.setItem(
+        Constants.LOCALSTORAGE_KEYS.ACTIVENAV,
+        action.payload.toString()
+      )
     },
   },
 })

@@ -119,6 +119,7 @@ const Constants = {
   LOCALSTORAGE_KEYS: {
     PERSONNEL_AUTH: 'personnelAuth',
     PERSONNEL_PROFILE: 'personnelProfile',
+    ACTIVENAV: 'activeNav',
   },
 }
 
