@@ -1,17 +1,14 @@
 import { JobsContainer, LowerContentContainer, PostingStyles } from '../styles'
-// import postingData from '../../../mocks/postings.json'
-// import { JobCardType } from '../../../../_shared/@types'
-import JobCard from '../../components/job-card/JobLIstingCard'
+import JobCard from '../../components/posting-card/PostingCard'
 import usePersonnel from '../hook/usePersonnel'
 import ShimmerLoading from '../../../../_shared/shimmer/Shimmer'
 
 const PostingListTemplate = ({ handleOpen }: { handleOpen: () => void }) => {
-  // const allPostingData: JobCardType[] = postingData.postings
   const { data, isLoading } = usePersonnel()
 
   function displayShimmer() {
     const shimmerLoader: React.ReactNode[] = []
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
       shimmerLoader.push(<ShimmerLoading key={i} height={'10rem'} />)
     }
 
@@ -32,11 +29,6 @@ const PostingListTemplate = ({ handleOpen }: { handleOpen: () => void }) => {
                   />
                 )
               }) ?? []}
-          {/* {allPostingData?.map((posting, index) => {
-            return (
-              <JobCard key={index} posting={posting} handleOpen={handleOpen} />
-            )
-          })} */}
         </JobsContainer>
       </PostingStyles>
     </LowerContentContainer>

@@ -1,22 +1,20 @@
 import { useQuery } from '@tanstack/react-query'
-// import Constants from '../../../../utils/constants'
 import axios from 'axios'
-import { JobCardType } from '../../../../_shared/@types'
-// import postingData from '../../../mocks/postings.json'
+
 import Constants from '../../../../utils/constants'
+import { PostingCardType } from '../../@types'
 
 axios.defaults.withCredentials = true
 
 const usePersonnel = () => {
-  const fetchPostings = async (): Promise<JobCardType[]> => {
-    const response = await axios.get<JobCardType[]>(
+  const fetchPostings = async (): Promise<PostingCardType[]> => {
+    const response = await axios.get<PostingCardType[]>(
       `${Constants.BaseURL}postings/`
     )
     return response.data
-    // return postingData.postings
   }
 
-  const { data, isLoading } = useQuery<JobCardType[], Error>(
+  const { data, isLoading } = useQuery<PostingCardType[], Error>(
     ['postings'],
     fetchPostings
   )
