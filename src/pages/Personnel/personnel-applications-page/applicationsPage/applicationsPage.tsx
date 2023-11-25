@@ -10,7 +10,7 @@ import applicationsData from '../../../mocks/applications.json'
 import Grid from '@mui/material/Grid'
 import ApplicationFilterBar from '../filterApplicationCards/filterApplicationCards'
 import { useState } from 'react'
-import { FilterObject } from './@types'
+import { FilterObject } from '../../@types'
 
 const ApplicationsPage = () => {
   const applicationsCardDetails: ApplicationsCardProps[] =

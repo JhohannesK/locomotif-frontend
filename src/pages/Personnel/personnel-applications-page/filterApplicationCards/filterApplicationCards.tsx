@@ -1,5 +1,5 @@
 import GeneralButton from '../../../../_shared/components/button/Button'
-import { FilterObject, StatusType } from '../applicationsPage/@types'
+import { FilterObject, StatusType } from '../../@types'
 import {
   AddStyles,
   ButtonStyles,

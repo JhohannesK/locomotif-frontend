@@ -22,7 +22,39 @@ export const setErrorMessages = (
 
 export const getYearsOfExperience = () => {}
 
-export const convertDateToString = () => {}
+export const formatDate = (inputDate: string): string => {
+  const date = new Date(inputDate)
+
+  const options: Intl.DateTimeFormatOptions = {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }
+
+  const formattedDate: string = date.toLocaleDateString('en-US', options)
+
+  // Add the ordinal indicator manually
+  const dayWithOrdinal: string = addOrdinalIndicator(date.getDate())
+
+  return formattedDate.replace(date.getDate().toString(), dayWithOrdinal)
+}
+
+const addOrdinalIndicator = (day: number): string => {
+  if (day >= 11 && day <= 13) {
+    return `${day}th`
+  }
+
+  switch (day % 10) {
+    case 1:
+      return `${day}st`
+    case 2:
+      return `${day}nd`
+    case 3:
+      return `${day}rd`
+    default:
+      return `${day}th`
+  }
+}
 
 export function stringToColor(string: string) {
   let hash = 0
