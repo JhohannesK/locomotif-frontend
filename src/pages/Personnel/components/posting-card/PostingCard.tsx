@@ -1,4 +1,4 @@
-import { Card, Typography } from '@mui/material'
+import { Card, Tooltip, Typography } from '@mui/material'
 import { PostingCardType } from '../../@types'
 import {
   CardSx,
@@ -11,10 +11,10 @@ import {
   PostingDescription,
 } from './styles'
 import AvatarDisplay from '../../../../_shared/components/Avatar/Avatar'
-import Tag from './Tag'
 import { HiLocationMarker } from 'react-icons/hi'
 import { FiBookmark } from 'react-icons/fi'
 import { formatDate } from '../../../../utils/util'
+import Tag from './Tag'
 
 const PostingCard = ({
   posting,
@@ -46,15 +46,17 @@ const PostingCard = ({
               </LocationAndSpeciality>
             </FacilityNameLocation>
           </HeaderWrapper>
-          <div style={{ cursor: 'pointer' }}>
-            <FiBookmark size={25} />
-          </div>
+          <Tooltip title="Save this job">
+            <div style={{ cursor: 'pointer' }}>
+              <FiBookmark size={25} />
+            </div>
+          </Tooltip>
         </FacilityDetailsHeading>
         <PostingDescription onClick={handleOpen}>
           <Typography variant="body2">{posting.description}</Typography>
         </PostingDescription>
         <DateAndReview>
-          <Typography variant="body2">
+          <Typography style={{ opacity: 0.6 }} variant="body2">
             {formatDate(posting.application_deadline)}
           </Typography>
           <Typography variant="body2" fontWeight={600}>

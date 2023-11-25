@@ -139,14 +139,14 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
               <RxEnvelopeClosed size={23} />
               <FiBell size={23} />
             </NavBarRightIcons>
-            <ProfileAvartar onClick={handleOpenUserMenu}>
-              <Tooltip title="Open settings">
+            <Tooltip title="Open settings">
+              <ProfileAvartar onClick={handleOpenUserMenu}>
                 <AvatarDisplay height={40} width={40} imageSrc={image} />
-              </Tooltip>
-              <NavBarRightIcons>
-                <IoIosArrowDown size={20} />
-              </NavBarRightIcons>
-            </ProfileAvartar>
+                <NavBarRightIcons>
+                  <IoIosArrowDown size={20} />
+                </NavBarRightIcons>
+              </ProfileAvartar>
+            </Tooltip>
             <ProfileMenu
               anchorElUser={anchorElUser}
               handleCloseUserMenu={handleCloseUserMenu}

@@ -10,10 +10,13 @@ import { useEffect } from 'react'
 import Constants from '../../utils/constants'
 import { loadFromLocalStorage } from '../../redux/hooks/middleware'
 import { Backdrop, CircularProgress } from '@mui/material'
+import PostingPage from './posting/Posting'
 
 const Page = () => {
   const Application = ConditionRender(ApplicationsPage)
   const Personnel = ConditionRender(PersonnelHomePage)
+  const Posting = ConditionRender(PostingPage)
+  const LeftPane = ConditionRender(Layout.LeftSide)
 
   const { user_role, isLoggedIn, isLogoutLoading } = useSelector(
     (state: RootState) => state.auth
@@ -52,10 +55,11 @@ const Page = () => {
         <CircularProgress color="inherit" />
       </Backdrop>
       <Wrapper>
-        <Layout.LeftSide />
+        <LeftPane renderIf={activeNavIndex < 5} />
         <Personnel renderIf={activeNavIndex === 1} />
         <Application renderIf={activeNavIndex === 3} />
       </Wrapper>
+      <Posting renderIf={activeNavIndex === 5} />
     </Layout>
   )
 }

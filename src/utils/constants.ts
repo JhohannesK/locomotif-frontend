@@ -28,6 +28,7 @@ const Constants = {
       personnel_signup: '/personnel/signup',
       personnel_dashboard: '/personnel/find-job',
       personnel_applications_page: '/personnel/applications-page',
+      post: 'personnel/post',
     },
   },
 

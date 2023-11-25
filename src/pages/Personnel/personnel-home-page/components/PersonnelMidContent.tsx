@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   AboutText,
   ButtonStyles,
@@ -13,10 +12,8 @@ import { SearchInput } from '../../../../_shared'
 import GeneralButton from '../../../../_shared/components/button/Button'
 import { BiSearch } from 'react-icons/bi'
 import PostingListTemplate from './postingListTemplate'
-import { LayoutContext } from '../../../../_shared/Layout/context/LayoutContext'
 
 const PersonnelMidContent = () => {
-  const { handleOpen } = React.useContext(LayoutContext)
   return (
     <HomePageContainer>
       <MidContent>
@@ -37,7 +34,7 @@ const PersonnelMidContent = () => {
         </SearchBarContainer>
       </MidContent>
       <LowerContent>
-        <PostingListTemplate handleOpen={handleOpen} />
+        <PostingListTemplate />
       </LowerContent>
     </HomePageContainer>
   )

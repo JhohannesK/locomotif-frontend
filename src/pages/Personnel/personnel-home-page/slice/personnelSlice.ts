@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import Constants from '../../../../utils/constants'
 
 const initialState: { activeNav: number } = {
-  activeNav: 1,
+  activeNav: 5,
 }
 
 export const personnelSlice = createSlice({

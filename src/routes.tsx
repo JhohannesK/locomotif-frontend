@@ -9,6 +9,7 @@ import SignIn from './pages/auth/signin/signin'
 import LandingPage from './pages/landing-page/landingPage'
 import PageNotFound from './pages/Page-not-found/page_not_found'
 import Page from './pages/Personnel'
+import Posting from './pages/Personnel/posting/Posting'
 
 const routes = createBrowserRouter([
   {
@@ -38,6 +39,12 @@ const routes = createBrowserRouter([
   {
     path: routhPaths.PERSONNEL.personnel_dashboard,
     element: <Page />,
+    children: [
+      {
+        path: routhPaths.PERSONNEL.post,
+        element: <Posting />,
+      },
+    ],
   },
   {
     path: routhPaths.FACILITY.facility_dashboard,
