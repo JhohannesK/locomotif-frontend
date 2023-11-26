@@ -169,7 +169,7 @@ export const NavbarMenu = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
   background: #fff;
-  width: 250px;
+  width: 365px;
   height: 100vh;
   display: flex;
   flex-direction: column;

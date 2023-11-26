@@ -5,18 +5,24 @@ import { PostingCardType } from '../../@types'
 
 axios.defaults.withCredentials = true
 
-const usePersonnel = () => {
+const usePersonnel = (URL: string) => {
   const fetchPostings = async (): Promise<PostingCardType[]> => {
     const response = await axios.get<PostingCardType[]>(
-      `${Constants.BaseURL}postings/`
+      `${Constants.BaseURL}${URL}`
+    )
+    console.log(
+      '🚀 ~ file: usePersonnel.ts:13 ~ fetchPostings ~ response:',
+      response.data
     )
     return response.data
   }
 
-  const { data, isLoading } = useQuery<PostingCardType[], Error>(
-    ['postings'],
-    fetchPostings
-  )
+  const { data, isLoading } = useQuery<PostingCardType[], Error>({
+    queryKey: ['postings', URL],
+    queryFn: fetchPostings,
+    notifyOnChangeProps: ['data'],
+  })
+  console.log(URL)
 
   return {
     data,

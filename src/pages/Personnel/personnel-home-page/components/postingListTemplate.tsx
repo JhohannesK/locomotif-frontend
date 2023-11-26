@@ -1,15 +1,20 @@
 import { JobsContainer, LowerContentContainer, PostingStyles } from '../styles'
 import JobCard from '../../components/posting-card/PostingCard'
-import usePersonnel from '../hook/usePersonnel'
 import ShimmerLoading from '../../../../_shared/shimmer/Shimmer'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
 import { useDispatch } from 'react-redux'
 import { setHomepage } from '../slice/personnelSlice'
+import { PostingCardType } from '../../@types'
 
-const PostingListTemplate = () => {
+const PostingListTemplate = ({
+  data,
+  isLoading,
+}: {
+  data: PostingCardType[]
+  isLoading: boolean
+}) => {
   const navigate = useNavigate()
-  const { data, isLoading } = usePersonnel()
   const dispatch = useDispatch()
 
   function displayShimmer() {

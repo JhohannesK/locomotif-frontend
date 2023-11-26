@@ -12,8 +12,15 @@ import { SearchInput } from '../../../../_shared'
 import GeneralButton from '../../../../_shared/components/button/Button'
 import { BiSearch } from 'react-icons/bi'
 import PostingListTemplate from './postingListTemplate'
+import { PostingCardType } from '../../@types'
 
-const PersonnelMidContent = () => {
+const PersonnelMidContent = ({
+  data,
+  isLoading,
+}: {
+  data: PostingCardType[]
+  isLoading: boolean
+}) => {
   return (
     <HomePageContainer>
       <MidContent>
@@ -34,7 +41,7 @@ const PersonnelMidContent = () => {
         </SearchBarContainer>
       </MidContent>
       <LowerContent>
-        <PostingListTemplate />
+        <PostingListTemplate data={data} isLoading={isLoading} />
       </LowerContent>
     </HomePageContainer>
   )

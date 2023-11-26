@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { PersonnelSliceType } from '../../../../_shared/@types'
 import Constants from '../../../../utils/constants'
 
-const initialState: { activeNav: number } = {
-  activeNav: 5,
+const initialState: PersonnelSliceType = {
+  activeNav: 1,
+  endpoint: 'postings/',
 }
 
 export const personnelSlice = createSlice({
@@ -16,7 +18,10 @@ export const personnelSlice = createSlice({
         action.payload.toString()
       )
     },
+    setEndpoint(state, action: PayloadAction<string>) {
+      state.endpoint = action.payload
+    },
   },
 })
 
-export const { setHomepage } = personnelSlice.actions
+export const { setHomepage, setEndpoint } = personnelSlice.actions
