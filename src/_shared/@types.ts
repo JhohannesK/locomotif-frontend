@@ -55,6 +55,17 @@ export type GeneralBtnProps = {
 //   end_time: string
 // }
 
+export type Facility = {
+  name: string
+  bio: string
+  telephone: string
+  verified: boolean
+  country: string
+  region: string
+  city: string
+  digital_address: string
+}
+
 export type JobCardType = {
   id: number
   title: string
@@ -68,16 +79,7 @@ export type JobCardType = {
   shift_type: string | null
   is_active: boolean
   required_speciality: string
-  facility: {
-    name: string
-    bio: string
-    telephone: string
-    verified: boolean
-    country: string
-    region: string
-    city: string
-    digital_address: string
-  }
+  facility: Facility
 }
 
 export interface SelectProps {
@@ -93,4 +95,17 @@ export type toastParams = {
   open: boolean
   type?: 'success' | 'error' | 'info' | 'warning'
   children?: React.ReactNode
+}
+
+export interface SpecialitiesType {
+  specialities: string[]
+}
+
+export type PersonnelSliceType = {
+  activeNav: number
+  endpoint: string
+}
+
+export type FilterRecordType = {
+  [key: string]: boolean
 }

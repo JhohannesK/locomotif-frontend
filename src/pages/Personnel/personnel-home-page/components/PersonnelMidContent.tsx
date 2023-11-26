@@ -14,8 +14,15 @@ import GeneralButton from '../../../../_shared/components/button/Button'
 import { BiSearch } from 'react-icons/bi'
 import PostingListTemplate from './postingListTemplate'
 import { LayoutContext } from '../../../../_shared/Layout/context/LayoutContext'
+import { JobCardType } from '../../../../_shared/@types'
 
-const PersonnelMidContent = () => {
+const PersonnelMidContent = ({
+  data,
+  isLoading,
+}: {
+  data: JobCardType[]
+  isLoading: boolean
+}) => {
   const { handleOpen } = React.useContext(LayoutContext)
   return (
     <HomePageContainer>
@@ -37,7 +44,11 @@ const PersonnelMidContent = () => {
         </SearchBarContainer>
       </MidContent>
       <LowerContent>
-        <PostingListTemplate handleOpen={handleOpen} />
+        <PostingListTemplate
+          data={data}
+          isLoading={isLoading}
+          handleOpen={handleOpen}
+        />
       </LowerContent>
     </HomePageContainer>
   )

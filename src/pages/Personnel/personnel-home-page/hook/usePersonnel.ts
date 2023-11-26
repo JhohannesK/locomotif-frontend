@@ -7,19 +7,22 @@ import Constants from '../../../../utils/constants'
 
 axios.defaults.withCredentials = true
 
-const usePersonnel = () => {
+/**
+ * @param URL {string} All postings URL(endpoint)
+ */
+const usePersonnel = (URL: string) => {
   const fetchPostings = async (): Promise<JobCardType[]> => {
     const response = await axios.get<JobCardType[]>(
-      `${Constants.BaseURL}postings/`
+      `${Constants.BaseURL}${URL}`
     )
     return response.data
-    // return postingData.postings
   }
 
   const { data, isLoading } = useQuery<JobCardType[], Error>(
     ['postings'],
     fetchPostings
   )
+  console.log(URL)
 
   return {
     data,
