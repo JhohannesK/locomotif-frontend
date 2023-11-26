@@ -3,11 +3,12 @@ import Navbar from '../components/navbar/Navbar'
 import styled from 'styled-components'
 import { colors } from '../../colors'
 import Constants from '../../utils/constants'
-import { LeftSide } from '../../pages/Personnel/personnel-home-page/components/LeftPane'
+import LeftPane from '../../pages/Personnel/personnel-home-page/components/LeftPane'
 import PersonnelMidContent from '../../pages/Personnel/personnel-home-page/components/PersonnelMidContent'
 import ConfirmationModal from '../../pages/Personnel/components/modal/ConfirmationModal'
 import LayoutProvider from './context/LayoutContext'
 import FilterPane from '../../pages/Personnel/personnel-home-page/components/filter'
+import { useSetupInterceptor } from '../../utils/useSetupInterceptor'
 
 const Layout = ({
   children,
@@ -16,6 +17,7 @@ const Layout = ({
   children: React.ReactNode
   dashboardType: 'personnel' | 'facility'
 }) => {
+  useSetupInterceptor()
   return (
     <LayoutProvider>
       <LayoutWrapper>
@@ -28,7 +30,7 @@ const Layout = ({
 
 export default Layout
 
-Layout.LeftSide = LeftSide
+Layout.LeftSide = LeftPane
 Layout.PersonnelMidContent = PersonnelMidContent
 Layout.ConfirmationModal = ConfirmationModal
 Layout.PersonnelFilter = FilterPane

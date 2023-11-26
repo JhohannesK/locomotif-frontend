@@ -34,7 +34,7 @@ export const DescriptionBox = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  width: 50%;
+  width: max-content;
   ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
     width: 80%;
   }

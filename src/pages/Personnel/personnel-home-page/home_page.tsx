@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux'
-import { JobCardType } from '../../../_shared/@types'
 import Layout from '../../../_shared/Layout/Layout'
 import usePersonnel from './hook/usePersonnel'
 import { RootState } from '../../../redux/store'
+import { PostingCardType } from '../@types'
 
 function PersonnelHomePage() {
   const filter = useSelector((state: RootState) => state.personnel.endpoint)
@@ -11,7 +11,7 @@ function PersonnelHomePage() {
   return (
     <div style={{ width: '100%', display: 'flex', flexGrow: '1', gap: '20px' }}>
       <Layout.PersonnelMidContent
-        data={data as JobCardType[]}
+        data={data as PostingCardType[]}
         isLoading={isLoading}
       />
       <Layout.PersonnelFilter />

@@ -29,13 +29,15 @@ export default function ConfirmationModal() {
           </DialogTitle>
           <DialogContent>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              Your application will be sent to the Medical Facility. Check your
+              application board frequently for response on your application. All
+              the best!!
             </Typography>
           </DialogContent>
 
           <ButtonStyles>
             <GeneralButton
-              title="Decline"
+              title="Cancel"
               sx={{
                 padding: '1rem 2rem',
                 background: 'white',
@@ -47,7 +49,7 @@ export default function ConfirmationModal() {
               }}
             />
             <GeneralButton
-              title="Proceed"
+              title="Confirm"
               sx={{
                 padding: '1rem 2rem',
               }}

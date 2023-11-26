@@ -1,30 +1,34 @@
 import { JobsContainer, LowerContentContainer, PostingStyles } from '../styles'
-// import postingData from '../../../mocks/postings.json'
-// import { JobCardType } from '../../../../_shared/@types'
-import JobCard from '../../components/job-card/JobLIstingCard'
-// import usePersonnel from '../hook/usePersonnel'
+import JobCard from '../../components/posting-card/PostingCard'
 import ShimmerLoading from '../../../../_shared/shimmer/Shimmer'
-import { JobCardType } from '../../../../_shared/@types'
+import { useNavigate } from 'react-router-dom'
+import Constants from '../../../../utils/constants'
+import { useDispatch } from 'react-redux'
+import { setHomepage } from '../slice/personnelSlice'
+import { PostingCardType } from '../../@types'
 
 const PostingListTemplate = ({
-  handleOpen,
   data,
   isLoading,
 }: {
-  handleOpen: () => void
-  data: JobCardType[]
+  data: PostingCardType[]
   isLoading: boolean
 }) => {
-  // const allPostingData: JobCardType[] = postingData.postings
-  // const { data, isLoading } = usePersonnel()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   function displayShimmer() {
     const shimmerLoader: React.ReactNode[] = []
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
       shimmerLoader.push(<ShimmerLoading key={i} height={'10rem'} />)
     }
 
     return shimmerLoader
+  }
+
+  const handleOpen = () => {
+    dispatch(setHomepage(5))
+    navigate(Constants.ROUTES.PERSONNEL.post)
   }
   return (
     <LowerContentContainer>
@@ -41,11 +45,6 @@ const PostingListTemplate = ({
                   />
                 )
               }) ?? []}
-          {/* {allPostingData?.map((posting, index) => {
-            return (
-              <JobCard key={index} posting={posting} handleOpen={handleOpen} />
-            )
-          })} */}
         </JobsContainer>
       </PostingStyles>
     </LowerContentContainer>

@@ -7,20 +7,13 @@ import {
   NavBarRightBox,
   NavBarRightContent,
   NavBarRightIcons,
-  NavBarUserImage,
   NavbarStyle,
+  ProfileAvartar,
   SearchIcon,
   Wrapper,
 } from './navbarStyles'
 import image from '../../assets/user.jpeg'
-// import { useSelector } from 'react-redux'
-// import { RootState } from '../../../store'
-import {
-  BiBriefcase,
-  BiDoorOpen,
-  BiMenuAltLeft,
-  BiSearchAlt,
-} from 'react-icons/bi'
+import { BiBriefcase, BiMenuAltLeft, BiSearchAlt } from 'react-icons/bi'
 import { RxEnvelopeClosed } from 'react-icons/rx'
 import { FiBell } from 'react-icons/fi'
 import { RiLayoutGridFill } from 'react-icons/ri'
@@ -28,17 +21,17 @@ import { FaUserAlt } from 'react-icons/fa'
 import { FaClockRotateLeft } from 'react-icons/fa6'
 import { PiChartLineUpBold, PiClipboardTextLight } from 'react-icons/pi'
 import { ReactNode, useEffect, useMemo, useState } from 'react'
-import { AiOutlineFileSearch, AiOutlineUser } from 'react-icons/ai'
+import { AiOutlineFileSearch } from 'react-icons/ai'
 import { routhPaths } from '../../../routes'
 import { useDispatch } from 'react-redux'
 import { setHomepage } from '../../../pages/Personnel/personnel-home-page/slice/personnelSlice'
 import Constants from '../../../utils/constants'
 import { ConditionRenderComponent } from '../../../utils/ConditionRender'
 import LeftSidebar from '../sidebar/LeftSidebar'
-import { Menu, MenuItem, Tooltip, Typography } from '@mui/material'
-import { logoutPersonnel } from '../../../pages/auth/slice/authSlice'
-import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
-import { RootState } from '../../../redux/store'
+import { Tooltip } from '@mui/material'
+import { IoIosArrowDown } from 'react-icons/io'
+import ProfileMenu from './components/ProfileMenu'
+import AvatarDisplay from '../Avatar/Avatar'
 
 interface linksObject {
   name: string
@@ -47,6 +40,7 @@ interface linksObject {
 }
 
 const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
+  const dispatch = useDispatch()
   const NavNames = Constants.NAVBAR.Personnel
 
   const facilityLinks: linksObject[] = useMemo(
@@ -93,20 +87,6 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
   }
-  const dispatch = useDispatch<ThunkDispatch<RootState, void, AnyAction>>()
-
-  const settings = [
-    {
-      name: 'Open Profile',
-      icon: <AiOutlineUser />,
-      onClick: () => {},
-    },
-    {
-      name: 'Log out',
-      icon: <BiDoorOpen />,
-      onClick: () => {},
-    },
-  ]
 
   useEffect(() => {
     if (type === 'facility') {
@@ -159,55 +139,19 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
               <RxEnvelopeClosed size={23} />
               <FiBell size={23} />
             </NavBarRightIcons>
-            <NavBarUserImage onClick={handleOpenUserMenu}>
-              <Tooltip title="Open settings">
-                <img
-                  src={image}
-                  alt="user icon"
-                  style={{
-                    height: '1.9rem',
-                    width: '1.9rem',
-                    objectFit: 'cover',
-                  }}
-                />
-              </Tooltip>
-            </NavBarUserImage>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting, index) => (
-                <MenuItem
-                  key={index}
-                  onClick={() => {
-                    dispatch(logoutPersonnel())
-                    // localStorage.clear()
-                    handleCloseUserMenu()
-                  }}
-                  sx={{ gap: '10px' }}
-                >
-                  {setting.icon}
-                  <Typography fontSize={'16px'} textAlign="center">
-                    {setting.name}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            <Tooltip title="Open settings">
+              <ProfileAvartar onClick={handleOpenUserMenu}>
+                <AvatarDisplay height={40} width={40} imageSrc={image} />
+                <NavBarRightIcons>
+                  <IoIosArrowDown size={20} />
+                </NavBarRightIcons>
+              </ProfileAvartar>
+            </Tooltip>
+            <ProfileMenu
+              anchorElUser={anchorElUser}
+              handleCloseUserMenu={handleCloseUserMenu}
+            />
           </NavBarRightBox>
-          {/* 
-          <NavBarUserName>{authResponse.first_name ?? 'user'}</NavBarUserName> */}
         </NavBarRightContent>
       </NavbarStyle>
     </Wrapper>

@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   AboutText,
   ButtonStyles,
@@ -13,17 +12,15 @@ import { SearchInput } from '../../../../_shared'
 import GeneralButton from '../../../../_shared/components/button/Button'
 import { BiSearch } from 'react-icons/bi'
 import PostingListTemplate from './postingListTemplate'
-import { LayoutContext } from '../../../../_shared/Layout/context/LayoutContext'
-import { JobCardType } from '../../../../_shared/@types'
+import { PostingCardType } from '../../@types'
 
 const PersonnelMidContent = ({
   data,
   isLoading,
 }: {
-  data: JobCardType[]
+  data: PostingCardType[]
   isLoading: boolean
 }) => {
-  const { handleOpen } = React.useContext(LayoutContext)
   return (
     <HomePageContainer>
       <MidContent>
@@ -44,11 +41,7 @@ const PersonnelMidContent = ({
         </SearchBarContainer>
       </MidContent>
       <LowerContent>
-        <PostingListTemplate
-          data={data}
-          isLoading={isLoading}
-          handleOpen={handleOpen}
-        />
+        <PostingListTemplate data={data} isLoading={isLoading} />
       </LowerContent>
     </HomePageContainer>
   )

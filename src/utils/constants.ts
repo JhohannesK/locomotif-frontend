@@ -28,6 +28,7 @@ const Constants = {
       personnel_signup: '/personnel/signup',
       personnel_dashboard: '/personnel/find-job',
       personnel_applications_page: '/personnel/applications-page',
+      post: 'personnel/post',
     },
   },
 
@@ -119,6 +120,7 @@ const Constants = {
   LOCALSTORAGE_KEYS: {
     PERSONNEL_AUTH: 'personnelAuth',
     PERSONNEL_PROFILE: 'personnelProfile',
+    ACTIVENAV: 'activeNav',
   },
 }
 
