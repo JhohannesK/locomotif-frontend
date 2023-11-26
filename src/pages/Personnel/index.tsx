@@ -18,7 +18,10 @@ const Page = () => {
   const Personnel = ConditionRender(PersonnelHomePage)
   const Posting = ConditionRender(PostingPage)
   const LeftPane = ConditionRender(Layout.LeftSide)
-  const { fetchProfile } = usePersonnel()
+
+  const filter = useSelector((state: RootState) => state.personnel.endpoint)
+  const { data, isLoading, fetchProfile } = usePersonnel(filter)
+  // const { fetchProfile } = usePersonnel()
 
   const { user_role, isLoggedIn, isLogoutLoading } = useSelector(
     (state: RootState) => state.auth
@@ -63,7 +66,11 @@ const Page = () => {
       </Backdrop>
       <Wrapper>
         <LeftPane renderIf={activeNavIndex < 5} />
-        <Personnel renderIf={activeNavIndex === 1} />
+        <Personnel
+          data={data}
+          isLoading={isLoading}
+          renderIf={activeNavIndex === 1}
+        />
         <Application renderIf={activeNavIndex === 3} />
       </Wrapper>
       <Posting renderIf={activeNavIndex === 5} />

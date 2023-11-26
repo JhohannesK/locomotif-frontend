@@ -55,3 +55,17 @@ export type toastParams = {
   type?: 'success' | 'error' | 'info' | 'warning'
   children?: React.ReactNode
 }
+
+export interface SpecialitiesType {
+  specialities: string[]
+}
+
+export type PersonnelSliceType = {
+  activeNav: number
+  postingId: number | undefined
+  endpoint: string
+}
+
+export type FilterRecordType = {
+  [key: string]: boolean
+}

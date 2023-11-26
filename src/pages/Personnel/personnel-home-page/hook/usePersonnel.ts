@@ -9,24 +9,26 @@ import { RootState } from '../../../../redux/store'
 
 axios.defaults.withCredentials = true
 
-const usePersonnel = () => {
+const usePersonnel = (URL: string) => {
+  console.log('🚀 ~ file: usePersonnel.ts:13 ~ usePersonnel ~ URL:', URL)
   const dispatch = useDispatch<ThunkDispatch<RootState, void, AnyAction>>()
+
   const fetchPostings = async (): Promise<PostingCardType[]> => {
     const response = await axios.get<PostingCardType[]>(
-      `${Constants.BaseURL}postings/`
+      `${Constants.BaseURL}${URL}`
     )
     return response.data
   }
 
+  const { data, isLoading } = useQuery<PostingCardType[], Error>({
+    queryKey: ['postings', URL],
+    queryFn: fetchPostings,
+    notifyOnChangeProps: ['data'],
+  })
   const fetchProfile = () => {
     console.log('fetching profile')
     dispatch(fetchPersonnelProfile())
   }
-
-  const { data, isLoading } = useQuery<PostingCardType[], Error>(
-    ['postings'],
-    fetchPostings
-  )
 
   return {
     data,
