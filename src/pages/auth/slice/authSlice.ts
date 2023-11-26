@@ -60,7 +60,7 @@ export const logoutPersonnel = createAsyncThunk<
 >('auth/logout', async (_, { rejectWithValue }) => {
   try {
     const response: { message: string } = await axios
-      .get(`${Constants.BaseURL}auth/logout/`)
+      .post(`${Constants.BaseURL}auth/logout/`)
       .then((res: AxiosResponse) => res?.data)
     return response
   } catch (error) {
@@ -82,9 +82,12 @@ export const login = createAsyncThunk<
         return res.data
       })
       .catch((err) => {
-        console.log(err)
+        console.log('something weird init', err)
         dispatch(
-          login.rejected(err, '', { email: data.email, password: 'password' })
+          login.rejected(err, '', {
+            email: data.email,
+            password: data.password,
+          })
         )
       })
     return response
@@ -118,6 +121,7 @@ const authSlice = createSlice({
     })
 
     builder.addCase(fetchPersonnelProfile.fulfilled, (state, action) => {
+      state.isLoading = false
       state.personnelProfile = action.payload
       saveToLocalStorage({
         state: { PersonnelProfile: action.payload },
@@ -135,7 +139,7 @@ const authSlice = createSlice({
     builder.addCase(logoutPersonnel.fulfilled, () => {
       localStorage.removeItem(Constants.LOCALSTORAGE_KEYS.PERSONNEL_AUTH)
       localStorage.removeItem(Constants.LOCALSTORAGE_KEYS.PERSONNEL_PROFILE)
-      window.location.reload()
+      window.location.href = Constants.ROUTES.GetStarted
     })
     builder.addCase(logoutPersonnel.pending, (state) => {
       state.isLogoutLoading = true

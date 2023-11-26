@@ -11,12 +11,14 @@ import Constants from '../../utils/constants'
 import { loadFromLocalStorage } from '../../redux/hooks/middleware'
 import { Backdrop, CircularProgress } from '@mui/material'
 import PostingPage from './posting/Posting'
+import usePersonnel from './personnel-home-page/hook/usePersonnel'
 
 const Page = () => {
   const Application = ConditionRender(ApplicationsPage)
   const Personnel = ConditionRender(PersonnelHomePage)
   const Posting = ConditionRender(PostingPage)
   const LeftPane = ConditionRender(Layout.LeftSide)
+  const { fetchProfile } = usePersonnel()
 
   const { user_role, isLoggedIn, isLogoutLoading } = useSelector(
     (state: RootState) => state.auth
@@ -43,7 +45,12 @@ const Page = () => {
     } else {
       navigate(Constants.ROUTES.GetStarted)
     }
-  }, [isLoggedIn, user_role, isMatch, navigate])
+  }, [isLoggedIn, user_role, isMatch, navigate, fetchProfile])
+
+  useEffect(() => {
+    fetchProfile()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <Layout dashboardType="personnel">

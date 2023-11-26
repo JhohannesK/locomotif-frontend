@@ -44,7 +44,7 @@ export const HomePageContainer = styled.div`
 `
 
 export const MidContent = styled.div`
-  height: 15%;
+  height: max-content;
   display: flex;
   flex-direction: column;
   color: ${colors.text.platinum};
@@ -128,7 +128,7 @@ export const SearchBarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
 `
 
 export const JobsContainer = styled.div`

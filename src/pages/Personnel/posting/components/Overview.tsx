@@ -8,8 +8,9 @@ import {
 import GeneralButton from '../../../../_shared/components/button/Button'
 import { useContext } from 'react'
 import { LayoutContext } from '../../../../_shared/Layout/context/LayoutContext'
+import { PostingCardType } from '../../@types'
 
-const Overview = () => {
+const Overview = ({ data }: { data?: PostingCardType }) => {
   const { handleOpen } = useContext(LayoutContext)
   return (
     <OverviewWrapper variant="outlined" sx={{ py: 2, px: 2, borderRadius: 3 }}>
@@ -22,7 +23,7 @@ const Overview = () => {
             Job Type
           </Typography>
           <Typography fontWeight={500} variant="body1">
-            Full Time
+            {data?.shift_type}
           </Typography>
         </ListItemView>
         <ListItemView>
