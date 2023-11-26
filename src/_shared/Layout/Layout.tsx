@@ -8,6 +8,7 @@ import PersonnelMidContent from '../../pages/Personnel/personnel-home-page/compo
 import ConfirmationModal from '../../pages/Personnel/components/modal/ConfirmationModal'
 import LayoutProvider from './context/LayoutContext'
 import FilterPane from '../../pages/Personnel/personnel-home-page/components/filter'
+import { useSetupInterceptor } from '../../utils/useSetupInterceptor'
 
 const Layout = ({
   children,
@@ -16,6 +17,7 @@ const Layout = ({
   children: React.ReactNode
   dashboardType: 'personnel' | 'facility'
 }) => {
+  useSetupInterceptor()
   return (
     <LayoutProvider>
       <LayoutWrapper>
