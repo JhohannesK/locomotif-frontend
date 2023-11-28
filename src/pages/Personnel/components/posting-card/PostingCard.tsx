@@ -24,7 +24,7 @@ const PostingCard = ({
   handleOpen: () => void
 }) => {
   return (
-    <Card variant="outlined" sx={CardSx}>
+    <Card variant="outlined" sx={CardSx} onClick={handleOpen}>
       <CardWrapper>
         <FacilityDetailsHeading>
           <HeaderWrapper>
@@ -52,7 +52,7 @@ const PostingCard = ({
             </div>
           </Tooltip>
         </FacilityDetailsHeading>
-        <PostingDescription onClick={handleOpen}>
+        <PostingDescription>
           <Typography variant="body2">{posting.description}</Typography>
         </PostingDescription>
         <DateAndReview>

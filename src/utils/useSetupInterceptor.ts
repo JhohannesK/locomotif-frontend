@@ -19,7 +19,7 @@ export const useSetupInterceptor = () => {
             navigate(Constants.ROUTES.PAGENOTFOUND)
           } else if (status === 401) {
             // console.log('Redirecting to login page');
-            navigate(Constants.ROUTES.GetStarted)
+            navigate(Constants.ROUTES.AUTH.signin)
           }
         }
       }

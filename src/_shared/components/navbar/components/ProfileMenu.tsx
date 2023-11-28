@@ -5,6 +5,7 @@ import { RootState } from '../../../../redux/store'
 import { AiOutlineUser } from 'react-icons/ai'
 import { BiDoorOpen } from 'react-icons/bi'
 import { logoutPersonnel } from '../../../../pages/auth/slice/authSlice'
+import { colors } from '../../../../colors'
 
 interface IProfileMenu {
   anchorElUser: null | HTMLElement
@@ -30,7 +31,7 @@ const ProfileMenu = ({ anchorElUser, handleCloseUserMenu }: IProfileMenu) => {
 
   return (
     <Menu
-      sx={{ mt: '45px' }}
+      sx={{ mt: '45px', background: colors.background.white }}
       id="menu-appbar"
       anchorEl={anchorElUser}
       anchorOrigin={{

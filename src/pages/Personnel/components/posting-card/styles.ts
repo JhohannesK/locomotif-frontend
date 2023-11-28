@@ -6,6 +6,7 @@ export const CardSx: SxProps = {
   borderRadius: '12px',
   minWidth: '95%',
   padding: '20px',
+  cursor: 'pointer',
 
   '@media screen and (max-width: 600px)': {
     width: '55px',
