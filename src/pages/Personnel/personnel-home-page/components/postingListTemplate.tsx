@@ -19,7 +19,7 @@ const PostingListTemplate = ({
 
   function displayShimmer() {
     const shimmerLoader: React.ReactNode[] = []
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 3; i++) {
       shimmerLoader.push(<ShimmerLoading key={i} height={'10rem'} />)
     }
 

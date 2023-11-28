@@ -3,7 +3,7 @@ import { PersonnelSliceType } from '../../../../_shared/@types'
 import Constants from '../../../../utils/constants'
 
 const initialState: PersonnelSliceType = {
-  activeNav: 1,
+  activeNav: 0,
   endpoint: 'postings/',
   postingId: undefined,
 }
@@ -22,7 +22,7 @@ export const personnelSlice = createSlice({
     setPostingId(state, action: PayloadAction<number>) {
       state.postingId = action.payload
       localStorage.setItem(
-        Constants.LOCALSTORAGE_KEYS.ACTIVENAV,
+        Constants.LOCALSTORAGE_KEYS.POSTINGID,
         action.payload.toString()
       )
     },

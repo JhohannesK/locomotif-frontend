@@ -20,10 +20,6 @@ const LeftPaneProfile = () => {
     key: Constants.LOCALSTORAGE_KEYS.PERSONNEL_PROFILE,
   }) as { PersonnelProfile: PersonnelProfilePayload }
   const isLoading = useSelector((state: RootState) => state.auth.isLoading)
-  console.log(
-    '🚀 ~ file: LeftPaneProfile.tsx:23 ~ LeftPaneProfile ~ isLoading:',
-    isLoading
-  )
 
   const fullName = `${PersonnelProfile?.last_name} ${PersonnelProfile?.first_name}`
 

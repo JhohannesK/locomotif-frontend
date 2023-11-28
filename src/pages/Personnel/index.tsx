@@ -21,7 +21,6 @@ const Page = () => {
 
   const filter = useSelector((state: RootState) => state.personnel.endpoint)
   const { data, isLoading, fetchProfile } = usePersonnel(filter)
-  // const { fetchProfile } = usePersonnel()
 
   const { user_role, isLoggedIn, isLogoutLoading } = useSelector(
     (state: RootState) => state.auth

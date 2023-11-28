@@ -34,10 +34,6 @@ const initialState: UserAuthType = {
   isLogoutLoading: false,
 }
 
-// function logUserIn(data: { email: string; password: string }): Promise<UserAuthState> {
-//   return axios.post(`${Constants.BaseURL}auth/login/`, data)
-// }
-
 export const fetchPersonnelProfile = createAsyncThunk<PersonnelProfileType>(
   'auth/profile',
   async (_, { rejectWithValue }) => {
@@ -139,7 +135,7 @@ const authSlice = createSlice({
     builder.addCase(logoutPersonnel.fulfilled, () => {
       localStorage.removeItem(Constants.LOCALSTORAGE_KEYS.PERSONNEL_AUTH)
       localStorage.removeItem(Constants.LOCALSTORAGE_KEYS.PERSONNEL_PROFILE)
-      window.location.href = Constants.ROUTES.GetStarted
+      window.location.href = Constants.ROUTES.AUTH.signin
     })
     builder.addCase(logoutPersonnel.pending, (state) => {
       state.isLogoutLoading = true
