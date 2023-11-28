@@ -2,17 +2,20 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import Constants from '../../../../utils/constants'
 import { PostingCardType } from '../../@types'
+import { useDispatch } from 'react-redux'
+import { fetchPersonnelProfile } from '../../../auth/slice/authSlice'
+import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
+import { RootState } from '../../../../redux/store'
 
 axios.defaults.withCredentials = true
 
 const usePersonnel = (URL: string) => {
+  console.log('🚀 ~ file: usePersonnel.ts:13 ~ usePersonnel ~ URL:', URL)
+  const dispatch = useDispatch<ThunkDispatch<RootState, void, AnyAction>>()
+
   const fetchPostings = async (): Promise<PostingCardType[]> => {
     const response = await axios.get<PostingCardType[]>(
       `${Constants.BaseURL}${URL}`
-    )
-    console.log(
-      '🚀 ~ file: usePersonnel.ts:13 ~ fetchPostings ~ response:',
-      response.data
     )
     return response.data
   }
@@ -22,11 +25,15 @@ const usePersonnel = (URL: string) => {
     queryFn: fetchPostings,
     notifyOnChangeProps: ['data'],
   })
-  console.log(URL)
+  const fetchProfile = () => {
+    console.log('fetching profile')
+    dispatch(fetchPersonnelProfile())
+  }
 
   return {
     data,
     isLoading,
+    fetchProfile,
   }
 }
 

@@ -4,7 +4,7 @@ import ShimmerLoading from '../../../../_shared/shimmer/Shimmer'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
 import { useDispatch } from 'react-redux'
-import { setHomepage } from '../slice/personnelSlice'
+import { setHomepage, setPostingId } from '../slice/personnelSlice'
 import { PostingCardType } from '../../@types'
 
 const PostingListTemplate = ({
@@ -26,8 +26,9 @@ const PostingListTemplate = ({
     return shimmerLoader
   }
 
-  const handleOpen = () => {
+  const handleOpen = (id: number) => {
     dispatch(setHomepage(5))
+    dispatch(setPostingId(id))
     navigate(Constants.ROUTES.PERSONNEL.post)
   }
   return (
@@ -41,7 +42,7 @@ const PostingListTemplate = ({
                   <JobCard
                     key={index}
                     posting={posting}
-                    handleOpen={handleOpen}
+                    handleOpen={() => handleOpen(posting.id)}
                   />
                 )
               }) ?? []}
