@@ -31,7 +31,10 @@ const ProfileMenu = ({ anchorElUser, handleCloseUserMenu }: IProfileMenu) => {
 
   return (
     <Menu
-      sx={{ mt: '45px', background: colors.background.white }}
+      sx={{
+        mt: '45px',
+        '& ul.MuiList-root': { background: colors.background.white },
+      }}
       id="menu-appbar"
       anchorEl={anchorElUser}
       anchorOrigin={{
