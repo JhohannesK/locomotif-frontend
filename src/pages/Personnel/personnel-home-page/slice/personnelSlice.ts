@@ -5,6 +5,7 @@ import Constants from '../../../../utils/constants'
 const initialState: PersonnelSliceType = {
   activeNav: 1,
   endpoint: 'postings/',
+  postingId: undefined,
 }
 
 export const personnelSlice = createSlice({
@@ -18,10 +19,17 @@ export const personnelSlice = createSlice({
         action.payload.toString()
       )
     },
+    setPostingId(state, action: PayloadAction<number>) {
+      state.postingId = action.payload
+      localStorage.setItem(
+        Constants.LOCALSTORAGE_KEYS.ACTIVENAV,
+        action.payload.toString()
+      )
+    },
     setEndpoint(state, action: PayloadAction<string>) {
       state.endpoint = action.payload
     },
   },
 })
 
-export const { setHomepage, setEndpoint } = personnelSlice.actions
+export const { setHomepage, setEndpoint, setPostingId } = personnelSlice.actions

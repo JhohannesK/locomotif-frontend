@@ -22,7 +22,7 @@ import googleLogo from '../../../_shared/assets/google_logo.png'
 import { AuthButtonH3 } from '../../../_shared/auth_styles'
 import routes from '../../../routes'
 import Constants from '../../../utils/constants'
-import { fetchPersonnelProfile, login } from '../slice/authSlice'
+import { login } from '../slice/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
 import { RootState } from '../../../redux/store'
@@ -47,7 +47,6 @@ const SignIn = () => {
 
   const onSubmit = (data: PersonnelLoginSchema) => {
     dispatch(login(data))
-    dispatch(fetchPersonnelProfile())
   }
   return (
     <>

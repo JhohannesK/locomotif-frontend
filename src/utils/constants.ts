@@ -121,6 +121,7 @@ const Constants = {
     PERSONNEL_AUTH: 'personnelAuth',
     PERSONNEL_PROFILE: 'personnelProfile',
     ACTIVENAV: 'activeNav',
+    POSTINGID: 'postingId',
   },
 }
 

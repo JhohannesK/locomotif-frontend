@@ -4,8 +4,10 @@ import Overview from './components/Overview'
 import JobDescription from './components/Job-description'
 import RatingAndReview from './components/Rating-and-Review'
 import { PostingWrapper } from './styles'
+// import usePosting from './hook/usePosting'
 
 const PostingPage = () => {
+  // const { data } = usePosting()
   return (
     <PostingWrapper>
       <Header />

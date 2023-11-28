@@ -62,6 +62,7 @@ export interface SpecialitiesType {
 
 export type PersonnelSliceType = {
   activeNav: number
+  postingId: number | undefined
   endpoint: string
 }
 

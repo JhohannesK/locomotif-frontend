@@ -11,12 +11,17 @@ import Constants from '../../utils/constants'
 import { loadFromLocalStorage } from '../../redux/hooks/middleware'
 import { Backdrop, CircularProgress } from '@mui/material'
 import PostingPage from './posting/Posting'
+import usePersonnel from './personnel-home-page/hook/usePersonnel'
 
 const Page = () => {
   const Application = ConditionRender(ApplicationsPage)
   const Personnel = ConditionRender(PersonnelHomePage)
   const Posting = ConditionRender(PostingPage)
   const LeftPane = ConditionRender(Layout.LeftSide)
+
+  const filter = useSelector((state: RootState) => state.personnel.endpoint)
+  const { data, isLoading, fetchProfile } = usePersonnel(filter)
+  // const { fetchProfile } = usePersonnel()
 
   const { user_role, isLoggedIn, isLogoutLoading } = useSelector(
     (state: RootState) => state.auth
@@ -43,7 +48,12 @@ const Page = () => {
     } else {
       navigate(Constants.ROUTES.GetStarted)
     }
-  }, [isLoggedIn, user_role, isMatch, navigate])
+  }, [isLoggedIn, user_role, isMatch, navigate, fetchProfile])
+
+  useEffect(() => {
+    fetchProfile()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <Layout dashboardType="personnel">
@@ -56,7 +66,11 @@ const Page = () => {
       </Backdrop>
       <Wrapper>
         <LeftPane renderIf={activeNavIndex < 5} />
-        <Personnel renderIf={activeNavIndex === 1} />
+        <Personnel
+          data={data}
+          isLoading={isLoading}
+          renderIf={activeNavIndex === 1}
+        />
         <Application renderIf={activeNavIndex === 3} />
       </Wrapper>
       <Posting renderIf={activeNavIndex === 5} />
