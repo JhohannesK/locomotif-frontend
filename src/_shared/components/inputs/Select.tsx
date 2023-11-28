@@ -1,56 +1,41 @@
-import { MenuItem, TextField } from '@mui/material'
-import { SelectProps } from '../../@types'
-import { Controller, useFormContext } from 'react-hook-form'
+import * as React from 'react'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import Select, { SelectChangeEvent, SelectProps } from '@mui/material/Select'
 
-const GenericSelect = ({
-  name,
+export default function GenericSelect({
   label,
   data,
-  multiple,
-  defaultValue,
-  sx,
-}: SelectProps) => {
-  const {
-    control,
-    formState: { errors },
-  } = useFormContext()
+}: SelectProps & {
+  label: string
+  data: string[]
+  name?: string
+  defaultValue?: string
+  multiple?: boolean
+  sx?: { width: string }
+}) {
+  const [age, setAge] = React.useState('')
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value)
+  }
 
   return (
-    <>
-      <Controller
-        control={control}
-        name={name as string}
-        defaultValue=""
-        render={({ field }) => (
-          <TextField
-            {...field}
-            id={label}
-            select
-            label={label}
-            sx={{ ...sx }}
-            defaultValue={defaultValue}
-            error={!!errors[name as string]}
-            SelectProps={{
-              multiple: multiple,
-            }}
-            helperText={
-              errors[name as string]
-                ? (errors[name as string]?.message as unknown as string)
-                : ''
-            }
-          >
-            {data
-              ? data.map((option, key) => (
-                  <MenuItem key={key} value={option}>
-                    {option}
-                  </MenuItem>
-                ))
-              : null}
-          </TextField>
-        )}
-      />
-    </>
+    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+      <InputLabel id="demo-select-small-label">{label}</InputLabel>
+      <Select
+        labelId="demo-select-small-label"
+        id="demo-select-small"
+        value={age}
+        label={label}
+        onChange={handleChange}
+      >
+        <MenuItem disabled>none</MenuItem>
+        {data.map((item: string) => (
+          <MenuItem value={item}>{item}</MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   )
 }
-
-export default GenericSelect
