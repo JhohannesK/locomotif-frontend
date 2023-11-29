@@ -40,7 +40,7 @@ const PersonnelSuccess = () => {
           }}
           size="large"
           onClick={() =>
-            navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
+            navigate(Constants.ROUTES.PAGES.PERSONNEL.personnel_findJob)
           }
         />
       </AuthContent>

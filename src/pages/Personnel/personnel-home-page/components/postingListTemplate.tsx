@@ -29,7 +29,7 @@ const PostingListTemplate = ({
   const handleOpen = (id: number) => {
     dispatch(setHomepage(5))
     dispatch(setPostingId(id))
-    navigate(Constants.ROUTES.PERSONNEL.post)
+    navigate(Constants.ROUTES.PAGES.PERSONNEL.post)
   }
   return (
     <LowerContentContainer>

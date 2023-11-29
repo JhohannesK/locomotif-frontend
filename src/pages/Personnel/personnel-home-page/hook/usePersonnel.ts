@@ -10,7 +10,6 @@ import { RootState } from '../../../../redux/store'
 axios.defaults.withCredentials = true
 
 const usePersonnel = (URL: string) => {
-  console.log('🚀 ~ file: usePersonnel.ts:13 ~ usePersonnel ~ URL:', URL)
   const dispatch = useDispatch<ThunkDispatch<RootState, void, AnyAction>>()
 
   const fetchPostings = async (): Promise<PostingCardType[]> => {
@@ -26,7 +25,6 @@ const usePersonnel = (URL: string) => {
     notifyOnChangeProps: ['data'],
   })
   const fetchProfile = () => {
-    console.log('fetching profile')
     dispatch(fetchPersonnelProfile())
   }
 

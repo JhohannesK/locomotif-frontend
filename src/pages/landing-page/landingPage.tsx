@@ -31,7 +31,7 @@ function LandingPage() {
           <BottomContent>
             <ImageCard
               onClick={() => {
-                routes.navigate(Constants.ROUTES.FACILITY.facility_signup)
+                routes.navigate(Constants.ROUTES.AUTH.FACILITY.facility_signup)
               }}
             >
               <ImageCardOverlay />
@@ -40,7 +40,9 @@ function LandingPage() {
             </ImageCard>
             <ImageCard
               onClick={() => {
-                routes.navigate(Constants.ROUTES.PERSONNEL.personnel_signup)
+                routes.navigate(
+                  Constants.ROUTES.AUTH.PERSONNEL.personnel_signup
+                )
               }}
             >
               <ImageCardOverlay />

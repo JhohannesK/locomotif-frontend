@@ -12,7 +12,7 @@ const Header = () => {
   const dispatch = useDispatch()
 
   const navigateBack = () => {
-    navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
+    navigate(Constants.ROUTES.PAGES.PERSONNEL.personnel_findJob)
     dispatch(setHomepage(1))
   }
 

@@ -25,11 +25,11 @@ export const Wrapper = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   justify-content: center;
-  gap: 3rem;
+  gap: 2.8rem;
 `
 
 export const HomePageContainer = styled.div`
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-grow: 1;
   flex-direction: column;
