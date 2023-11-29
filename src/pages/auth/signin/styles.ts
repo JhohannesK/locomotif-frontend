@@ -18,6 +18,23 @@ export const signInProps: SxProps = {
   },
 }
 
+export const ClearBtnProps: SxProps = {
+  background: colors.background.white,
+  width: '100%',
+  borderRadius: '10px',
+  color: '#344054',
+  textAlign: 'center',
+  fontSize: '14px',
+  fontStyle: 'normal',
+  fontWeight: '500',
+  lineHeight: '137.14%',
+  border: '1px solid #D0D5DD',
+  ':hover': {
+    backgroundColor: colors.button.aquamarine,
+    color: colors.text.pineGreen,
+  },
+}
+
 export const googleSignInProps: SxProps = {
   backgroundColor: '#FFF',
   borderColor: colors.button.pineGreen,

@@ -53,7 +53,7 @@ export const FilterTextBubble = styled.span`
   font-weight: 600;
   line-height: 137.14%;
   background: #d9d9d9b2;
-  padding: 8px 10px;
+  padding: 7px 10px;
   margin-left: 5px;
   border-radius: 5px;
 `
