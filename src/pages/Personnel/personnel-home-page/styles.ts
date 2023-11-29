@@ -29,7 +29,7 @@ export const Wrapper = styled.div`
 `
 
 export const HomePageContainer = styled.div`
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-grow: 1;
   flex-direction: column;
