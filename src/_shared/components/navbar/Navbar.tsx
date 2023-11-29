@@ -57,13 +57,13 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
     () => [
       {
         name: NavNames.FINDJOB,
-        path: routhPaths.PERSONNEL.personnel_dashboard,
+        path: routhPaths.PAGES.PERSONNEL.personnel_findJob,
         icon: <BiBriefcase />,
       },
       { name: NavNames.FINDFACILITY, path: '', icon: <AiOutlineFileSearch /> },
       {
         name: NavNames.APPLICATIONS,
-        path: routhPaths.PERSONNEL.personnel_applications_page,
+        path: routhPaths.PAGES.PERSONNEL.personnel_applications_page,
         icon: <PiClipboardTextLight />,
       },
       { name: NavNames.PROFILE, path: '', icon: <FaUserAlt /> },

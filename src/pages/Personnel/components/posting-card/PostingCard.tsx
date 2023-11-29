@@ -38,7 +38,7 @@ const PostingCard = ({
                 {posting.facility.name}
               </Typography>
               <LocationAndSpeciality>
-                <Tag label={posting.facility.region} />
+                <Tag label={posting.required_speciality} />
                 <Tag
                   icon={<HiLocationMarker />}
                   label={`${posting.facility.region}, ${posting.facility.city}`}

@@ -12,23 +12,22 @@ const Constants = {
     AUTH: {
       signin: '/signin',
       FACILITY: {
-        new_facility_signup: '/facility/new-signup',
+        facility_signup: '/facility/signup',
       },
       PERSONNEL: {
-        new_personnel_signup: '/personnel/new-signup',
+        personnel_signup: '/personnel/signup',
       },
     },
-    FACILITY: {
-      facility_signin: '/facility/signin',
-      facility_signup: '/facility/signup',
-      facility_dashboard: '/facility/dashboard',
-    },
-    PERSONNEL: {
-      personnel_signin: '/personnel/signin',
-      personnel_signup: '/personnel/signup',
-      personnel_dashboard: '/personnel/find-job',
-      personnel_applications_page: '/personnel/applications-page',
-      post: 'personnel/post',
+    PAGES: {
+      FACILITY: {
+        facility_dashboard: '/facility/dashboard',
+      },
+      PERSONNEL: {
+        personnel: '/personnel',
+        personnel_findJob: '/personnel/find-job',
+        personnel_applications_page: '/personnel/applications-page',
+        post: '/personnel/post',
+      },
     },
   },
 
