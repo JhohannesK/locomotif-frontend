@@ -42,3 +42,8 @@ a {
 ::-ms-reveal {
   display: none;
 }
+
+.css-19ejyg8-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
+.css-19ejyg8-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+  color: #036b5e !important;
+}

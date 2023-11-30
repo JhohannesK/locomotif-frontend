@@ -67,5 +67,9 @@ export type PersonnelSliceType = {
 }
 
 export type FilterRecordType = {
-  [key: string]: boolean
+  [key: number]: boolean
+}
+
+export type ShiftTypesType = {
+  shift_types: string[]
 }

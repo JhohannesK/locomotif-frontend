@@ -4,11 +4,13 @@ import { FilterRecordType } from '../../../../_shared/@types'
 type InitialDataType = {
   speciality: FilterRecordType
   shifts: FilterRecordType
+  shift_types: FilterRecordType
 }
 
 const initialState: InitialDataType = {
   speciality: {},
   shifts: {},
+  shift_types: {},
 }
 
 export const filterSlice = createSlice({
@@ -24,6 +26,15 @@ export const filterSlice = createSlice({
         [action.payload.key]: action.payload.value,
       }
     },
+    setShiftTypes(
+      state,
+      action: PayloadAction<{ key: number; value: boolean }>
+    ) {
+      state.shift_types = {
+        ...state.shift_types,
+        [action.payload.key]: action.payload.value,
+      }
+    },
     setShifts(state, action: PayloadAction<{ key: number; value: boolean }>) {
       state.shifts = {
         ...state.shifts,
@@ -33,4 +44,4 @@ export const filterSlice = createSlice({
   },
 })
 
-export const { setSpeciality, setShifts } = filterSlice.actions
+export const { setSpeciality, setShifts, setShiftTypes } = filterSlice.actions

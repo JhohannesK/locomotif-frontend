@@ -20,11 +20,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AnyAction, ThunkDispatch } from '@reduxjs/toolkit'
 import { RootState } from '../../../../../redux/store'
 import { setEndpoint } from '../../slice/personnelSlice'
-import useFilter from '../../hook/useFilters'
+import useSpecialities from '../../hook/useSpecialities'
 import { FilterRecordType } from '../../../../../_shared/@types'
-import { setShifts, setSpeciality } from '../../slice/filterSlice'
+import {
+  setShiftTypes,
+  setShifts,
+  setSpeciality,
+} from '../../slice/filterSlice'
 import { GenericButton, GenericSelect } from '../../../../../_shared'
-import { signInProps } from '../../../../auth/signin/styles'
+import { ClearBtnProps, signInProps } from '../../../../auth/signin/styles'
+import useShiftType from '../../hook/useShiftType'
 
 const shifts = ['One-Time', 'Full-Time']
 
@@ -37,10 +42,15 @@ const FilterPane = () => {
 
   const [customSalary] = React.useState<boolean>(false)
 
-  const { data: Specialties, isLoading: isLoadingSpecialties } = useFilter()
+  const { data: Specialties, isLoading: isLoadingSpecialties } =
+    useSpecialities()
+  const { data: shiftTypes, isLoading: isLoadingShiftTypes } = useShiftType()
 
   const specialityRecord = useSelector(
     (state: RootState) => state.filter.speciality
+  )
+  const shiftTypeRecord = useSelector(
+    (state: RootState) => state.filter.shift_types
   )
   const shiftRecord = useSelector((state: RootState) => state.filter.shifts)
 
@@ -49,28 +59,58 @@ const FilterPane = () => {
   const queryBackend = () => {
     const str: { [key: string]: string } = {}
 
-    if (StrFrmRecord(specialityRecord).length > 0) {
-      str['required_speciality'] = StrFrmRecord(specialityRecord).slice(0, -1)
+    if (strFrmRecord(specialityRecord).length > 0) {
+      str['required_speciality'] = strFrmRecord(specialityRecord)
     }
-    if (StrFrmRecord(shiftRecord).length > 0) {
-      str['shift_type'] = StrFrmRecord(shiftRecord).slice(0, -1)
+    if (strFrmRecord(shiftRecord).length > 0) {
+      str['full_time'] = strFrmRecord(shiftRecord)
     }
     if (customSalary) {
       str['salary_range'] = `${value[0]}-${value[1]}`
     }
+    if (strFrmRecord(shiftTypeRecord).length > 0) {
+      str['shift_type'] = strFrmRecord(shiftTypeRecord)
+    }
+    console.log(str)
 
     const queryStr = new URLSearchParams(str)
     dispatch(setEndpoint('postings/?' + queryStr.toString()))
   }
 
-  function StrFrmRecord(cat: FilterRecordType): string {
+  const clearFilter = () => {
+    dispatch(setEndpoint('postings/?'))
+    Object.entries(specialityRecord).forEach(([key]) => {
+      console.log(key)
+      dispatch(
+        setSpeciality({
+          key: +key,
+          value: false,
+        })
+      )
+    })
+    Object.entries(shiftTypeRecord).forEach(([key]) => {
+      console.log(key)
+      dispatch(
+        setShiftTypes({
+          key: +key,
+          value: false,
+        })
+      )
+    })
+  }
+
+  function strFrmRecord(cat: FilterRecordType): string {
     let str: string = ''
     Object.entries(cat).forEach((entery) => {
       if (entery[1]) {
         str += `${entery[0]},`
       }
     })
-    return str
+    return str.slice(0, -1)
+  }
+
+  function toSentenceCase(str: string) {
+    return str.toLowerCase().charAt(0).toUpperCase() + str.slice(1)
   }
 
   function hundleSpecialities(
@@ -79,6 +119,17 @@ const FilterPane = () => {
   ) {
     dispatch(
       setSpeciality({
+        key: index,
+        value: event.target.checked,
+      })
+    )
+  }
+  function handleShiftTypes(
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) {
+    dispatch(
+      setShiftTypes({
         key: index,
         value: event.target.checked,
       })
@@ -117,7 +168,7 @@ const FilterPane = () => {
         <FilterContent>
           <Filterheading>Location</Filterheading>
           <GenericSelect label="Location" data={['Accra', 'Kumasi', 'Ho']} />
-          <Filterheading>Shift System</Filterheading>
+          <Filterheading>Job Type</Filterheading>
           <FormGroup>
             {shifts.map((shift, index) => (
               <FormControlLabel
@@ -131,15 +182,49 @@ const FilterPane = () => {
                 }
                 label={shift}
                 sx={{
-                  margin: '0px 0px 0px 0px',
+                  margin: '0px',
+                  '&.MuiFormControlLabel-root': {
+                    color: '#00000099',
+                  },
                 }}
               />
             ))}
           </FormGroup>
 
-          {!isLoadingSpecialties ? (
+          <Filterheading>Shift Type</Filterheading>
+          {isLoadingShiftTypes ? (
+            'Loading....'
+          ) : (
             <>
-              <Filterheading>Specialties</Filterheading>
+              <FormGroup>
+                {shiftTypes?.map((shift, index) => (
+                  <FormControlLabel
+                    key={index}
+                    control={
+                      <Checkbox
+                        name={shift}
+                        checked={shiftTypeRecord[index] ?? false}
+                        onChange={(event) => handleShiftTypes(event, index)}
+                      />
+                    }
+                    label={toSentenceCase(shift) + ' Shift'}
+                    sx={{
+                      margin: '0px 0px 0px 0px',
+                      '&.MuiFormControlLabel-root': {
+                        color: '#00000099',
+                      },
+                    }}
+                  />
+                ))}
+              </FormGroup>
+            </>
+          )}
+
+          <Filterheading>Specialties</Filterheading>
+          {isLoadingSpecialties ? (
+            'Loading....'
+          ) : (
+            <>
               <FormGroup>
                 {Specialties?.map((job, index) => (
                   <FormControlLabel
@@ -151,16 +236,17 @@ const FilterPane = () => {
                         onChange={(event) => hundleSpecialities(event, index)}
                       />
                     }
-                    label={job}
+                    label={toSentenceCase(job)}
                     sx={{
                       margin: '0px 0px 0px 0px',
+                      '&.MuiFormControlLabel-root': {
+                        color: '#00000099',
+                      },
                     }}
                   />
                 ))}
               </FormGroup>
             </>
-          ) : (
-            'Loading....'
           )}
 
           <Filterheading>
@@ -171,14 +257,20 @@ const FilterPane = () => {
               control={<Checkbox name={'custon'} />}
               label={'Under $1000'}
               sx={{
-                margin: '0px 0px 0px 0px',
+                margin: '0px',
+                '&.MuiFormControlLabel-root': {
+                  color: '#00000099',
+                },
               }}
             />
             <FormControlLabel
               control={<Checkbox name={'custon'} />}
               label={'$1000 - $5000'}
               sx={{
-                margin: '0px 0px 0px 0px',
+                margin: '0px',
+                '&.MuiFormControlLabel-root': {
+                  color: '#00000099',
+                },
               }}
             />
           </FormGroup>
@@ -191,8 +283,7 @@ const FilterPane = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '0px ',
-                margin: '0px 0px 0px 15px',
+                padding: '10px 0',
               }}
             >
               <FormControlLabel
@@ -207,14 +298,15 @@ const FilterPane = () => {
                     style={{
                       border: ' 1px solid #d6d6d6',
                       borderRadius: '5px',
-                      padding: '1px 5px',
+                      paddingLeft: '5px',
                     }}
                   />
                 }
                 sx={{
-                  // color: 'red',
-                  '&.Mui-checked': {
-                    color: 'red',
+                  '&.MuiFormControlLabel-root': {
+                    flexDirection: 'row-reverse',
+                    gap: '5px',
+                    margin: 0,
                   },
                 }}
               />
@@ -230,15 +322,15 @@ const FilterPane = () => {
                     style={{
                       border: ' 1px solid #d6d6d6',
                       borderRadius: '5px',
-                      padding: '1px 5px',
+                      paddingLeft: '5px',
                     }}
                   />
                 }
                 label={<FilterTextBubble>Max</FilterTextBubble>}
                 sx={{
-                  // color: 'red',
-                  '&.Mui-checked': {
-                    color: 'red',
+                  '&.MuiFormControlLabel-root': {
+                    flexDirection: 'row-reverse',
+                    gap: '5px',
                   },
                 }}
               />
@@ -253,13 +345,30 @@ const FilterPane = () => {
               min={1000}
               max={100000}
               step={1000}
+              sx={{
+                '&.MuiSlider-root': {
+                  color: '#036B5E',
+                },
+                // '&.css-eg0mwd-MuiSlider-thumb': {
+                //   outline: '4px solid white !important',
+                //   boxShadow: '0px 0px 8px 1px black',
+                // },
+              }}
             />
           </FormGroup>
+          {/* Apply Filter Btn */}
           <GenericButton
             title="Apply"
             sx={signInProps}
             size="large"
             onClick={queryBackend}
+          />
+          {/* Clear Filter Btn */}
+          <GenericButton
+            title="Clear"
+            sx={ClearBtnProps}
+            size="large"
+            onClick={clearFilter}
           />
         </FilterContent>
       </FilterWrapper>
