@@ -19,14 +19,19 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <Avatar
-        sx={{ bgcolor: 'white', color: `${colors.text.night}` }}
+        sx={{
+          bgcolor: 'white',
+          color: `${colors.text.night}`,
+          height: 60,
+          width: 60,
+        }}
         onClick={navigateBack}
       >
         <IoIosArrowBack />
       </Avatar>
       <Card
         sx={{
-          paddingY: '10px',
+          paddingY: '15px',
           flexGrow: 1,
           paddingLeft: 2,
           borderRadius: 3,

@@ -1,8 +1,13 @@
 import { LiaStar } from 'react-icons/lia'
 import { Rate, RatingStyles, ReviewAndRatingWrapper } from '../styles'
 import { Divider, Typography } from '@mui/material'
+import { PostingCardType } from '../../@types'
 
-const RatingAndReview = () => {
+const RatingAndReview = ({ data }: { data: PostingCardType }) => {
+  console.log(
+    '🚀 ~ file: Rating-and-Review.tsx:7 ~ RatingAndReview ~ data:',
+    data
+  )
   return (
     <ReviewAndRatingWrapper
       variant="outlined"

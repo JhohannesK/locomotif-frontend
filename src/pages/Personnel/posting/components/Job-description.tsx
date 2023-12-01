@@ -1,7 +1,15 @@
+import ShimmerLoading from '../../../../_shared/shimmer/Shimmer'
+import { PostingCardType } from '../../@types'
 import { DescriptionWrapper } from '../styles'
 import { Typography } from '@mui/material'
 
-const JobDescription = () => {
+const JobDescription = ({
+  data,
+  isLoading,
+}: {
+  data: PostingCardType
+  isLoading: boolean
+}) => {
   return (
     <DescriptionWrapper
       variant="outlined"
@@ -11,11 +19,7 @@ const JobDescription = () => {
         Job Description
       </Typography>
       <Typography variant="body1">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-        voluptate, quae, voluptas, officia quos nemo quidem voluptatibus
-        voluptatum fugiat, doloribus excepturi. Quisquam voluptate, quae,
-        voluptas, officia quos nemo quidem voluptatibus voluptatum fugiat,
-        doloribus excepturi.
+        {isLoading ? <ShimmerLoading count={5} /> : data?.description}
       </Typography>
     </DescriptionWrapper>
   )

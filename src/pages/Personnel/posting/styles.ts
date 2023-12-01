@@ -5,9 +5,11 @@ import { colors } from '../../../colors'
 export const PostingWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: 1400px;
   margin: 0 auto;
   justify-content: center;
+  /* align-items: center; */
   @media only screen and (max-width: 900px) {
     margin-bottom: 100vh;
   }

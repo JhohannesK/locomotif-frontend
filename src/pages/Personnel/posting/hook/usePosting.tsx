@@ -4,21 +4,21 @@ import Constants from '../../../../utils/constants'
 import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 
 const usePosting = () => {
-  const personnelId = loadFromLocalStorage({
+  const postingId = loadFromLocalStorage({
     key: Constants.LOCALSTORAGE_KEYS.POSTINGID,
   })
-  const getPostingByPersonnelId = async (personnelId: number) => {
+  const getPostingByPostingId = async (postingId: number) => {
     const response = await axios.get(
-      `${Constants.BaseURL}posting/${personnelId}`
+      `${Constants.BaseURL}postings/${postingId}`
     )
     const data = await response.data
     return data
   }
 
   const { data, isLoading } = useQuery({
-    queryKey: ['posting', personnelId],
-    queryFn: () => getPostingByPersonnelId(personnelId),
-    enabled: personnelId !== undefined,
+    queryKey: ['posting', postingId],
+    queryFn: () => getPostingByPostingId(postingId),
+    enabled: postingId !== undefined,
   })
   return {
     data,
