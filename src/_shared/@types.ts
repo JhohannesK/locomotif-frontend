@@ -32,26 +32,13 @@ export type GeneralBtnProps = {
   >
   sx?: SxProps
   title: string
+  type?: 'submit' | 'button'
   size?: OverridableStringUnion<
     'small' | 'medium' | 'large',
     ButtonPropsSizeOverrides
   >
   icon?: React.ReactNode
   onClick?: () => void
-}
-
-export type JobCardType = {
-  required_role: string[]
-  title: string
-  description: string
-  full_time: boolean
-  rate_per_month: number
-  application_deadline: string
-  isactive: boolean
-  medical_facility: string
-  created_at: string
-  start_time: string
-  end_time: string
 }
 
 export interface SelectProps {
@@ -67,4 +54,22 @@ export type toastParams = {
   open: boolean
   type?: 'success' | 'error' | 'info' | 'warning'
   children?: React.ReactNode
+}
+
+export interface SpecialitiesType {
+  specialities: string[]
+}
+
+export type PersonnelSliceType = {
+  activeNav: number
+  postingId: number | undefined
+  endpoint: string
+}
+
+export type FilterRecordType = {
+  [key: number]: boolean
+}
+
+export type ShiftTypesType = {
+  shift_types: string[]
 }

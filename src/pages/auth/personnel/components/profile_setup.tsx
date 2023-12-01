@@ -11,13 +11,30 @@ import GeneralInput from '../../../../_shared/components/inputs/Input'
 import { GenericButton, GenericSelect, Toast } from '../../../../_shared'
 import useProfileSetup from '../hook/useProfileSetup'
 import { FormProvider } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
-import Constants from '../../../../utils/constants'
 import { SelectBox } from '../../facility/styles'
+import {
+  IPersonnelProfileData,
+  PersonnelCreateAccount,
+  IPersonnelProfilePayload,
+} from '../../_types'
 
-const ProfileSetup = () => {
-  const { mutation, onSubmit, methods, error } = useProfileSetup()
-  const navigate = useNavigate()
+const ProfileSetup = ({
+  handleActiveState,
+  userData,
+}: {
+  handleActiveState: (index: number) => void
+  userData: PersonnelCreateAccount
+}) => {
+  const { mutation, onSubmit, methods, error, fetchSpecialitiesMutation } =
+    useProfileSetup()
+
+  function passData(data: IPersonnelProfilePayload) {
+    const combinedData: IPersonnelProfileData = {
+      ...data,
+      ...userData,
+    }
+    onSubmit(combinedData)
+  }
 
   return (
     <>
@@ -26,7 +43,7 @@ const ProfileSetup = () => {
       )}
       <AuthContainer>
         <FormProvider {...methods}>
-          <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
+          <AuthContent onSubmit={methods.handleSubmit(passData)}>
             <AuthUpperContent>
               <h1>Set Up Your Profile</h1>
             </AuthUpperContent>
@@ -36,7 +53,7 @@ const ProfileSetup = () => {
                 <GenericSelect
                   name="specialities"
                   label={'Specialities'}
-                  data={['Gynaecology', 'Optomology', 'Dentistry']}
+                  data={fetchSpecialitiesMutation.data?.specialities ?? [' ']}
                   defaultValue=""
                   multiple
                   sx={{ minWidth: '30%', width: 'fit-content' }}
@@ -44,7 +61,7 @@ const ProfileSetup = () => {
               </SelectBox>
               <AuthFieldsLabel>Year of Registration</AuthFieldsLabel>
               <GeneralInput
-                name="registrationyear"
+                name="year_of_registration"
                 type="number"
                 placeholder="2023"
               />
@@ -102,9 +119,7 @@ const ProfileSetup = () => {
 
             <StepNavigateButtons>
               <GenericButton
-                onClick={() =>
-                  navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
-                }
+                onClick={() => handleActiveState(4)}
                 sx={{
                   backgroundColor: colors.button.white,
                   color: colors.text.pineGreen,
@@ -122,7 +137,7 @@ const ProfileSetup = () => {
                   width: '100%',
                   borderRadius: '10px',
                 }}
-                title="Next"
+                title="Continue"
                 size="medium"
               />
             </StepNavigateButtons>

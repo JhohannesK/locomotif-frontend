@@ -2,29 +2,32 @@ const Constants = {
   BaseURL: 'https://locomotif-backend.onrender.com/api/',
   DevBaseURL: 'https://locomotif-backend-pr-65.onrender.com/api/',
 
+  PERSONNEL: 'personnel',
+  FACILITY: 'facility',
+
   ROUTES: {
     root: '/',
-    GetStarted: '/getStarted',
+    GetStarted: '/get-started',
     PAGENOTFOUND: '/404',
     AUTH: {
       signin: '/signin',
       FACILITY: {
-        new_facility_signup: '/facility/new-signup',
+        facility_signup: '/facility/signup',
       },
       PERSONNEL: {
-        new_personnel_signup: '/personnel/new-signup',
+        personnel_signup: '/personnel/signup',
       },
     },
-    FACILITY: {
-      facility_signin: '/facility/signin',
-      facility_signup: '/facility/signup',
-      facility_dashboard: '/facility/dashboard',
-    },
-    PERSONNEL: {
-      personnel_signin: '/personnel/signin',
-      personnel_signup: '/personnel/signup',
-      personnel_dashboard: '/personnel/find-job',
-      personnel_applications_page: '/personnel/applications-page',
+    PAGES: {
+      FACILITY: {
+        facility_dashboard: '/facility/dashboard',
+      },
+      PERSONNEL: {
+        personnel: '/personnel',
+        personnel_findJob: '/personnel/find-job',
+        personnel_applications_page: '/personnel/applications-page',
+        post: '/personnel/post',
+      },
     },
   },
 
@@ -111,6 +114,13 @@ const Constants = {
       PROFILE: 'Profile',
       FINDFACILITY: 'Find Facility',
     },
+  },
+
+  LOCALSTORAGE_KEYS: {
+    PERSONNEL_AUTH: 'personnelAuth',
+    PERSONNEL_PROFILE: 'personnelProfile',
+    ACTIVENAV: 'activeNav',
+    POSTINGID: 'postingId',
   },
 }
 

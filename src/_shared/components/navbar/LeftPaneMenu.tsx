@@ -20,7 +20,7 @@ import {
 import { ReactNode } from 'react'
 
 interface linksObject {
-  link: string
+  name: string
   path: string
   icon: ReactNode
 }
@@ -38,7 +38,7 @@ function NavbarLeftPaneMenu({
         <NavbarMenuHeader>
           <LogoStyles>Locomotif</LogoStyles>
           <NavbarHeaderIcon onClick={() => closePane()}>
-            <RxCross1 />
+            <RxCross1 stroke-width="1" />
           </NavbarHeaderIcon>
         </NavbarMenuHeader>
         <NavbarOptionsBox>
@@ -49,7 +49,7 @@ function NavbarLeftPaneMenu({
                   <NavbarOptionsIcon>{linkObject.icon}</NavbarOptionsIcon>
                 </NavbarOptionLeft>
                 <NavbarOptionRight>
-                  <NavbarOptionsH3>{linkObject.link}</NavbarOptionsH3>
+                  <NavbarOptionsH3>{linkObject.name}</NavbarOptionsH3>
                 </NavbarOptionRight>
               </NavbarOptions>
             )
@@ -57,11 +57,7 @@ function NavbarLeftPaneMenu({
         </NavbarOptionsBox>
 
         <FacilityLeftUpperContent>
-          <LeftPaneProfile
-            name="Ridge Hospital"
-            jobTitle="Cardiac Hospital"
-            workExperience="Airport, Accra"
-          />
+          <LeftPaneProfile />
         </FacilityLeftUpperContent>
         <FacilityLeftMidContent>
           <WeeklySummary

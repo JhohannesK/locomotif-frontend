@@ -106,38 +106,21 @@ export const NavBarRightBox = styled.div`
     margin-left: 100px;
   }
 `
-export const NavBarRightIcons = styled.i`
+export const NavBarRightIcons = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 38px;
-  height: 38px; */
   gap: 15px;
   font-size: 200%;
   opacity: 0.5;
   cursor: pointer;
 `
-
-// export const Navbarlinks = styled.div`
-//   display: flex;
-//   /* justify-content: space-between; */
-//   align-items: center;
-//   gap: 30px;
-//   /* width: 40%; */
-//   height: 100%;
-
-//   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-//     font-size: 13px;
-//   }
-
-//   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
-//     /* max-width: 35%; */
-//   }
-
-//   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
-//     /* max-width: 30%; */
-//   }
-// `
+export const ProfileAvartar = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`
 
 export const LinkStyles = styled(Link)`
   text-decoration: none;
@@ -167,15 +150,10 @@ export const NavBarUserName = styled.h2`
 `
 
 export const NavBarUserImage = styled.div`
-  outline: 1px solid orange;
-  clip-path: circle();
-  background-color: red;
   display: flex;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
-  /* margin-right: 10px; */
-  background-size: cover;
-  background-position: center center;
 `
 
 export const MenuIcon = styled.div`
@@ -187,8 +165,11 @@ export const SearchIcon = styled.div``
 /* Left Pane */
 
 export const NavbarMenu = styled.div`
+  box-sizing: border-box;
+  overflow-y: scroll;
+  overflow-x: hidden;
   background: #fff;
-  width: 250px;
+  width: 365px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -199,6 +180,7 @@ export const NavbarMenu = styled.div`
   top: 0;
   background: #fff;
   padding: 10px 20px;
+  padding-top: 0px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
     display: none;
@@ -222,11 +204,15 @@ export const NavbarHeaderIcon = styled.i`
   align-items: center;
   width: 38px;
   height: 38px;
-  font-size: 200%;
+  font-size: 130%;
   cursor: pointer;
 `
 
 export const NavbarMenuHeader = styled.div`
+  position: sticky;
+  top: 0px;
+  padding: 10px 0;
+  background: #fff;
   width: 100%;
   display: inline-flex;
   justify-content: space-between;

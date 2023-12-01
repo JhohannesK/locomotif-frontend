@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../../../colors'
+import { colors } from '../../../../../colors'
 import { SxProps } from '@mui/material'
 
 export const FilterWrapper = styled.div`

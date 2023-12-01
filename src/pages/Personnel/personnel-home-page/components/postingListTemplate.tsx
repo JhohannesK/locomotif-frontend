@@ -1,38 +1,51 @@
 import { JobsContainer, LowerContentContainer, PostingStyles } from '../styles'
-import postingData from '../../../mocks/postings.json'
-import { JobCardType } from '../../../../_shared/@types'
-import JobCard from '../../components/job-card/JobLIstingCard'
+import JobCard from '../../components/posting-card/PostingCard'
+import ShimmerLoading from '../../../../_shared/shimmer/Shimmer'
+import { useNavigate } from 'react-router-dom'
+import Constants from '../../../../utils/constants'
+import { useDispatch } from 'react-redux'
+import { setHomepage, setPostingId } from '../slice/personnelSlice'
+import { PostingCardType } from '../../@types'
 
-const PostingListTemplate = ({ handleOpen }: { handleOpen: () => void }) => {
-  const allPostingData: JobCardType[] = postingData.postings
+const PostingListTemplate = ({
+  data,
+  isLoading,
+}: {
+  data: PostingCardType[]
+  isLoading: boolean
+}) => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-  // function displayShimmer() {
-  //   const shimmerLoader: React.ReactNode[] = []
-  //   for (let i = 0; i < 5; i++) {
-  //     shimmerLoader.push(<ShimmerLoading key={i} height={'10rem'} />)
-  //   }
+  function displayShimmer() {
+    const shimmerLoader: React.ReactNode[] = []
+    for (let i = 0; i < 3; i++) {
+      shimmerLoader.push(<ShimmerLoading key={i} height={'10rem'} />)
+    }
 
-  //   return shimmerLoader
-  // }
+    return shimmerLoader
+  }
+
+  const handleOpen = (id: number) => {
+    dispatch(setHomepage(5))
+    dispatch(setPostingId(id))
+    navigate(Constants.ROUTES.PAGES.PERSONNEL.post)
+  }
   return (
     <LowerContentContainer>
       <PostingStyles>
         <JobsContainer>
-          {/* {isLoading
-                    ? displayShimmer()
-                    : allPostingData?.map((posting) => {
-                        return (
-                          <JobCard
-                            posting={posting}
-                            onClick={() => handleOpen()}
-                          />
-                        )
-                      })} */}
-          {allPostingData?.map((posting, index) => {
-            return (
-              <JobCard key={index} posting={posting} handleOpen={handleOpen} />
-            )
-          })}
+          {isLoading
+            ? displayShimmer()
+            : data?.map((posting, index) => {
+                return (
+                  <JobCard
+                    key={index}
+                    posting={posting}
+                    handleOpen={() => handleOpen(posting.id)}
+                  />
+                )
+              }) ?? []}
         </JobsContainer>
       </PostingStyles>
     </LowerContentContainer>

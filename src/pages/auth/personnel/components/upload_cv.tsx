@@ -74,7 +74,7 @@ const UploadCV = () => {
         <StepNavigateButtons>
           <GenericButton
             onClick={() =>
-              navigate(Constants.ROUTES.PERSONNEL.personnel_dashboard)
+              navigate(Constants.ROUTES.PAGES.PERSONNEL.personnel_findJob)
             }
             sx={{
               backgroundColor: colors.button.white,
@@ -95,6 +95,7 @@ const UploadCV = () => {
             }}
             title="Next"
             size="medium"
+            type="button"
           />
         </StepNavigateButtons>
       </AuthContent>

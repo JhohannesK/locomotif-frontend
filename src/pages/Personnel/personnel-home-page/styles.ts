@@ -25,11 +25,11 @@ export const Wrapper = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   justify-content: center;
-  gap: 3rem;
+  gap: 2.8rem;
 `
 
 export const HomePageContainer = styled.div`
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -44,7 +44,7 @@ export const HomePageContainer = styled.div`
 `
 
 export const MidContent = styled.div`
-  height: 15%;
+  height: max-content;
   display: flex;
   flex-direction: column;
   color: ${colors.text.platinum};
@@ -128,7 +128,7 @@ export const SearchBarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
 `
 
 export const JobsContainer = styled.div`

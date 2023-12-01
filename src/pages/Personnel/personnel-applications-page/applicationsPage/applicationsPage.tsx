@@ -1,6 +1,6 @@
 import ApplicationsCard, {
   ApplicationsCardProps,
-} from '../applicationsCard/applicationsCard'
+} from '../components/applicationsCard/applicationsCard'
 import {
   RightPaneContainer,
   Wrapper,
@@ -8,9 +8,10 @@ import {
 } from './styles'
 import applicationsData from '../../../mocks/applications.json'
 import Grid from '@mui/material/Grid'
-import ApplicationFilterBar from '../filterApplicationCards/filterApplicationCards'
+import ApplicationFilterBar from '../components/filterApplicationCards/filterApplicationCards'
 import { useState } from 'react'
-import { FilterObject } from './@types'
+import { FilterObject } from '../../@types'
+import PersonnelLayout from '../../../../_shared/Layout/Layout'
 
 const ApplicationsPage = () => {
   const applicationsCardDetails: ApplicationsCardProps[] =
@@ -22,6 +23,7 @@ const ApplicationsPage = () => {
 
   return (
     <Wrapper>
+      <PersonnelLayout.LeftSide />
       <RightPaneContainer>
         <ApplicationFilterBar
           filterObject={filterObject}
@@ -32,13 +34,17 @@ const ApplicationsPage = () => {
             container
             columnGap={2}
             rowGap={2}
-            justifyContent="center"
+            sx={{
+              '@media (max-width: 1200px)': {
+                justifyContent: 'center',
+                columnGap: '20px',
+              },
+            }}
+            justifyContent="space-between"
             alignItems="center"
           >
             {applicationsCardDetails?.map((application, index) => (
-              <Grid key={index}>
-                <ApplicationsCard application={application} />
-              </Grid>
+              <ApplicationsCard application={application} index={index} />
             ))}
           </Grid>
         </ApplicationCardsContainer>

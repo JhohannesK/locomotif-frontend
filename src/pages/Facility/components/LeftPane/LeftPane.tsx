@@ -19,11 +19,7 @@ function FacilityLeftPane() {
   return (
     <>
       <FacilityLeftUpperContent>
-        <LeftPaneProfile
-          name="Ridge Hospital"
-          jobTitle="Cardiac Hospital"
-          workExperience="Airport, Accra"
-        />
+        <LeftPaneProfile />
       </FacilityLeftUpperContent>
       <FacilityLeftMidContent>
         <WeeklySummary

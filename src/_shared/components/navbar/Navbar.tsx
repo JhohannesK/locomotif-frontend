@@ -7,14 +7,12 @@ import {
   NavBarRightBox,
   NavBarRightContent,
   NavBarRightIcons,
-  NavBarUserImage,
   NavbarStyle,
+  ProfileAvartar,
   SearchIcon,
   Wrapper,
 } from './navbarStyles'
 import image from '../../assets/user.jpeg'
-// import { useSelector } from 'react-redux'
-// import { RootState } from '../../../store'
 import { BiBriefcase, BiMenuAltLeft, BiSearchAlt } from 'react-icons/bi'
 import { RxEnvelopeClosed } from 'react-icons/rx'
 import { FiBell } from 'react-icons/fi'
@@ -28,6 +26,12 @@ import { routhPaths } from '../../../routes'
 import { useDispatch } from 'react-redux'
 import { setHomepage } from '../../../pages/Personnel/personnel-home-page/slice/personnelSlice'
 import Constants from '../../../utils/constants'
+import { ConditionRenderComponent } from '../../../utils/ConditionRender'
+import LeftSidebar from '../sidebar/LeftSidebar'
+import { Tooltip } from '@mui/material'
+import { IoIosArrowDown } from 'react-icons/io'
+import ProfileMenu from './components/ProfileMenu'
+import AvatarDisplay from '../Avatar/Avatar'
 
 interface linksObject {
   name: string
@@ -36,6 +40,7 @@ interface linksObject {
 }
 
 const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
+  const dispatch = useDispatch()
   const NavNames = Constants.NAVBAR.Personnel
 
   const facilityLinks: linksObject[] = useMemo(
@@ -52,13 +57,13 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
     () => [
       {
         name: NavNames.FINDJOB,
-        path: routhPaths.PERSONNEL.personnel_dashboard,
+        path: routhPaths.PAGES.PERSONNEL.personnel_findJob,
         icon: <BiBriefcase />,
       },
       { name: NavNames.FINDFACILITY, path: '', icon: <AiOutlineFileSearch /> },
       {
         name: NavNames.APPLICATIONS,
-        path: routhPaths.PERSONNEL.personnel_applications_page,
+        path: routhPaths.PAGES.PERSONNEL.personnel_applications_page,
         icon: <PiClipboardTextLight />,
       },
       { name: NavNames.PROFILE, path: '', icon: <FaUserAlt /> },
@@ -73,6 +78,15 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
 
   const [linksHolder, setLinksHolder] = useState<linksObject[]>([])
   const [isLeftPaneOpen, setIsLeftPaneOpen] = useState<boolean>(false)
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null)
+
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget)
+  }
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null)
+  }
 
   useEffect(() => {
     if (type === 'facility') {
@@ -86,10 +100,16 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
     setIsLeftPaneOpen(!isLeftPaneOpen)
   }
 
-  const dispatch = useDispatch()
   return (
     <Wrapper>
       <NavBarMobileContainer>
+        <ConditionRenderComponent renderIf={isLeftPaneOpen}>
+          <LeftSidebar
+            closePane={handleLeftPane}
+            menu={linksHolder}
+            type={type}
+          />
+        </ConditionRenderComponent>
         <MenuIcon onClick={handleLeftPane}>
           <BiMenuAltLeft size={28} />
         </MenuIcon>
@@ -119,64 +139,23 @@ const Navbar = ({ type }: { type: 'personnel' | 'facility' }) => {
               <RxEnvelopeClosed size={23} />
               <FiBell size={23} />
             </NavBarRightIcons>
-            <NavBarUserImage>
-              <img
-                src={image}
-                alt="user icon"
-                style={{
-                  height: '1.9rem',
-                  width: '1.9rem',
-                  objectFit: 'cover',
-                }}
-              />
-            </NavBarUserImage>
+            <Tooltip title="Open settings">
+              <ProfileAvartar onClick={handleOpenUserMenu}>
+                <AvatarDisplay height={40} width={40} imageSrc={image} />
+                <NavBarRightIcons>
+                  <IoIosArrowDown size={20} />
+                </NavBarRightIcons>
+              </ProfileAvartar>
+            </Tooltip>
+            <ProfileMenu
+              anchorElUser={anchorElUser}
+              handleCloseUserMenu={handleCloseUserMenu}
+            />
           </NavBarRightBox>
-          {/* 
-          <NavBarUserName>{authResponse.first_name ?? 'user'}</NavBarUserName> */}
         </NavBarRightContent>
       </NavbarStyle>
     </Wrapper>
   )
-  //   // <NavBar>
-  //   //   {isLeftPaneOpen ? (
-  //   //     <NavbarLeftPaneMenu closePane={handleLeftPane} menu={linksHolder} />
-  //   //   ) : (
-  //   //
-  //   //   )}
-  //   //   <div>hello</div>
-  //     {/* <NavBarLaptopContainer>
-  //       <LeftStyles>
-  //         <LogoStyles>Loco</LogoStyles>
-  //         <Navbarlinks>
-  //           {linksHolder.map((linkObject, index) => {
-  //             return (
-  //               <LinkStyles key={index} to={linkObject.path}>
-  //                 {linkObject.link}
-  //               </LinkStyles>
-  //             )
-  //           })}
-  //         </Navbarlinks>
-  //       </LeftStyles>
-  //       <NavBarRightContent>
-  //         <NavBarRightBox>
-  //           <NavBarRightIcons>
-  //             <RxEnvelopeClosed size={23} />
-  //             <FiBell size={23} />
-  //           </NavBarRightIcons>
-  //           <NavBarUserImage>
-  //             <img
-  //               src={image}
-  //               alt="user icon"
-  //               style={{ height: '100%', width: '100%', objectFit: 'cover' }}
-  //             />
-  //           </NavBarUserImage>
-  //         </NavBarRightBox>
-
-  //         {/* <NavBarUserName>{authResponse.first_name ?? 'user'}</NavBarUserName> */}
-  //     {/* </NavBarRightContent>
-  //     </NavBarLaptopContainer>  */}
-  //   // </NavBar>
-  // // )
 }
 
 export default Navbar

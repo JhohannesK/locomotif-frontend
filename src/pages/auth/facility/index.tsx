@@ -11,10 +11,6 @@ import { useState } from 'react'
 
 const FacilitySignUp = () => {
   const activeState = useSelector((state: RootState) => state.app.activeSidebar)
-  console.log(
-    '🚀 ~ file: index.tsx:14 ~ FacilitySignUp ~ activeState:',
-    activeState
-  )
 
   const [userData, setUserData] = useState({
     name: '',

@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { FacilityProfilePayload, ProfileSchema, TransitData } from '../_types'
+import { FacilityProfilePayload, ITransitData } from '../../_types'
 import Constants from '../../../../utils/constants'
 import axios from 'axios'
 import { useMutation } from '@tanstack/react-query'
@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form'
 import { setErrorMessages } from '../../../../utils/util'
 import { useDispatch } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
-import { profileSchema } from '../schema/validation'
+import { ProfileSchema, profileSchema } from '../schema/validation'
 
 axios.defaults.withCredentials = true
 
@@ -43,7 +43,7 @@ const useFacilityProfileSetup = () => {
     onError: (err) => setErrorMessages(err, setError),
   })
 
-  const onSubmit = (data: TransitData) => {
+  const onSubmit = (data: ITransitData) => {
     const payload: FacilityProfilePayload = {
       email: data.email,
       name: data.name,

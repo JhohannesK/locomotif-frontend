@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { FacilitySignUpPayload, Schema } from '../_types'
+import { FacilitySignUpPayload } from '../../_types'
 import Constants from '../../../../utils/constants'
 import axios from 'axios'
 import { useMutation } from '@tanstack/react-query'
@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form'
 import { setErrorMessages } from '../../../../utils/util'
 import { useDispatch } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
-import { schema, defaultValues } from '../schema/validation'
+import { schema, defaultValues, Schema } from '../schema/validation'
 
 axios.defaults.withCredentials = true
 
