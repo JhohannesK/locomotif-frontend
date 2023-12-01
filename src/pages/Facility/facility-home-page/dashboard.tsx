@@ -6,7 +6,6 @@ import {
 } from './home_page_style'
 import FacilityLeftPane from '../components/LeftPane/LeftPane'
 import MiddlePane from '../components/MIddlePane/MiddlePane'
-import RightPane from '../components/RightPane/RightPane'
 
 function Dashboard() {
   return (
@@ -18,9 +17,7 @@ function Dashboard() {
         <FacilityMidContainer>
           <MiddlePane />
         </FacilityMidContainer>
-        <FacilityRightContainer>
-          <RightPane />
-        </FacilityRightContainer>
+        <FacilityRightContainer></FacilityRightContainer>
       </FacilityDashboard>
     </>
   )

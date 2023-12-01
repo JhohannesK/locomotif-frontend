@@ -11,6 +11,8 @@ import Posting from './pages/Personnel/posting/Posting'
 import PersonnelLayout from './_shared/Layout/Layout'
 import FindJob from './pages/Personnel/personnel-home-page/find-job'
 import ApplicationsPage from './pages/Personnel/personnel-applications-page/applicationsPage/applicationsPage'
+import FacilityHomePage from './pages/Facility/home_page'
+import FacilityLayout from './pages/Facility/components/Layout/Layout'
 
 const routes = createBrowserRouter([
   {
@@ -48,6 +50,16 @@ const routes = createBrowserRouter([
       {
         path: routhPaths.PAGES.PERSONNEL.personnel_applications_page,
         element: <ApplicationsPage />,
+      },
+    ],
+  },
+  {
+    path: routhPaths.PAGES.FACILITY.facility,
+    element: <FacilityLayout />,
+    children: [
+      {
+        path: routhPaths.PAGES.FACILITY.facility,
+        element: <FacilityHomePage />,
       },
     ],
   },

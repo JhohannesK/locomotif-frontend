@@ -20,7 +20,7 @@ const Constants = {
     },
     PAGES: {
       FACILITY: {
-        facility_dashboard: '/facility/dashboard',
+        facility: '/facility/',
       },
       PERSONNEL: {
         personnel: '/personnel',

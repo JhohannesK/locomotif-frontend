@@ -1,8 +1,4 @@
-import { useSelector } from 'react-redux'
 import { colors } from '../../../colors'
-import { PersonnelProfilePayload } from '../../../pages/auth/_types'
-import { loadFromLocalStorage } from '../../../redux/hooks/middleware'
-import Constants from '../../../utils/constants'
 import ShimmerLoading from '../../shimmer/Shimmer'
 import AvatarDisplay from '../Avatar/Avatar'
 import GeneralButton from '../button/Button'
@@ -13,16 +9,20 @@ import {
   LeftProfileWorkExperienceAndWork,
   LeftProfileWorkExperienceContainer,
 } from './styles'
-import { RootState } from '../../../redux/store'
 
-const LeftPaneProfile = () => {
-  const { PersonnelProfile } = loadFromLocalStorage({
-    key: Constants.LOCALSTORAGE_KEYS.PERSONNEL_PROFILE,
-  }) as { PersonnelProfile: PersonnelProfilePayload }
-  const isLoading = useSelector((state: RootState) => state.auth.isLoading)
+interface ILeftPaneProfileProps {
+  imageSrc?: string
+  fullName?: string
+  specialities?: React.ReactNode
+  isLoading?: boolean
+}
 
-  const fullName = `${PersonnelProfile?.last_name} ${PersonnelProfile?.first_name}`
-
+const LeftPaneProfile = ({
+  imageSrc,
+  fullName,
+  specialities,
+  isLoading,
+}: ILeftPaneProfileProps) => {
   return (
     <LeftPaneProfileContainer>
       {isLoading ? (
@@ -32,17 +32,15 @@ const LeftPaneProfile = () => {
           height={70}
           width={70}
           fullname={fullName}
-          imageSrc={'/src//_shared/assets/user.jpeg'}
+          imageSrc={imageSrc}
         />
       )}
       <LeftProfileWorkExperienceAndWork>
         <LeftProfileNameContainer>{fullName}</LeftProfileNameContainer>
         <LeftProfileWorkContainer>
-          {PersonnelProfile?.specialities?.map((job) => (
-            <>{job}</>
-          ))}
+          {specialities}
           <LeftProfileWorkExperienceContainer>
-            {PersonnelProfile?.year_of_registration}
+            {/* {PersonnelProfile?.year_of_registration} */}
           </LeftProfileWorkExperienceContainer>
         </LeftProfileWorkContainer>
       </LeftProfileWorkExperienceAndWork>

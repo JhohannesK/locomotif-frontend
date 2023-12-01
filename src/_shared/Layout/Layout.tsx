@@ -3,7 +3,6 @@ import Navbar from '../components/navbar/Navbar'
 import styled from 'styled-components'
 import { colors } from '../../colors'
 import Constants from '../../utils/constants'
-import LeftPane from '../../pages/Personnel/personnel-home-page/components/LeftPane'
 import PersonnelMidContent from '../../pages/Personnel/personnel-home-page/components/PersonnelMidContent'
 import ConfirmationModal from '../components/modal/ConfirmationModal'
 import LayoutProvider from './context/LayoutContext'
@@ -15,6 +14,7 @@ import { RootState } from '../../redux/store'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { loadFromLocalStorage } from '../../redux/hooks/middleware'
 import { Backdrop, CircularProgress } from '@mui/material'
+import PersonnelLeftPane from '../../pages/Personnel/personnel-home-page/components/PersonnelLeftPane'
 
 const PersonnelLayout = () => {
   useSetupInterceptor()
@@ -72,7 +72,7 @@ const PersonnelLayout = () => {
 
 export default PersonnelLayout
 
-PersonnelLayout.LeftSide = LeftPane
+PersonnelLayout.LeftSide = PersonnelLeftPane
 PersonnelLayout.PersonnelMidContent = PersonnelMidContent
 PersonnelLayout.ConfirmationModal = ConfirmationModal
 PersonnelLayout.PersonnelFilter = FilterPane

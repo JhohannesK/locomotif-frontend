@@ -3,7 +3,7 @@ import { colors } from '../../../colors'
 
 export const LeftPaneProfileContainer = styled.div`
   border-radius: 10px;
-  border: 1px solid rgba(209, 209, 209, 0.5);
+  border: 1px solid #d1d1d1;
   background: #fff;
   display: flex;
   align-items: center;
