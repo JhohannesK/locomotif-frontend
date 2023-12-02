@@ -1,3 +1,4 @@
+import { formatDate } from '../../../../../utils/util'
 import {
   CardContainer,
   Date,
@@ -37,10 +38,10 @@ const ApplicationsCard = ({
         <RightSide>
           <Status $status={application.status}> {application.status}</Status>
           <TimeAndDate>
-            <ShiftTime $shiftTime={application.shiftTime}>
-              {application.shiftTime}
+            <ShiftTime $shiftTime={application.shiftType}>
+              {application.shiftType}
             </ShiftTime>
-            <Date>{application.date}</Date>
+            <Date>{formatDate(application.date)}</Date>
           </TimeAndDate>
         </RightSide>
       </MainContainer>
@@ -53,7 +54,7 @@ export type ApplicationsCardProps = {
   postingID: string
   date: string
   postingRole: string
-  shiftTime: string
+  shiftType: string
   status: string
 }
 export default ApplicationsCard

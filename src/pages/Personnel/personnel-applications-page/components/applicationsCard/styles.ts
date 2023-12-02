@@ -6,7 +6,7 @@ export const CardContainer = styled.div`
   border-radius: 12px;
   background: ${colors.background.white};
   border: 1px solid var(--Border, #d9d9d9);
-  width: 19rem;
+  /* width: 19rem; */
   height: 81px;
 `
 

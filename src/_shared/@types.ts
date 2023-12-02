@@ -69,3 +69,37 @@ export type PersonnelSliceType = {
 export type FilterRecordType = {
   [key: string]: boolean
 }
+
+export interface FacilityType {
+  name: string
+  bio: string
+  telephone: string
+  verified: boolean
+  country: string
+  region: string
+  city: string
+  digital_address: string
+}
+
+export interface PostingType {
+  id: number
+  title: string
+  description: string
+  full_time: boolean
+  application_deadline: string
+  start_time: string
+  end_time: string | null
+  rate_per_month: number
+  rate_per_6_hour_shift: number | null
+  shift_type: string | null
+  is_active: boolean
+  required_speciality: string
+  facility: FacilityType
+}
+
+export interface ApplicationType {
+  id: number
+  status: string
+  created_at: string
+  posting: PostingType
+}
