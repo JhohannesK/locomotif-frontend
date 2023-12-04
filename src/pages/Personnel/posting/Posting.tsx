@@ -4,14 +4,12 @@ import Overview from './components/Overview'
 import JobDescription from './components/Job-description'
 import RatingAndReview from './components/Rating-and-Review'
 import { PostingWrapper } from './styles'
-import ConfirmationModal from '../../../_shared/components/modal/ConfirmationModal'
 import usePosting from './hook/usePosting'
 
 const PostingPage = () => {
   const { data, isLoading } = usePosting()
   return (
     <PostingWrapper>
-      <ConfirmationModal />
       <Header />
       <Grid container spacing={2} columns={18} height={'calc(100vh - 18rem)'}>
         <Grid item xs={18} md={4}>

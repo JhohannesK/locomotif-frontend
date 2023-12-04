@@ -11,15 +11,13 @@ import {
 import { useContext } from 'react'
 import { LayoutContext } from '../../Layout/context/LayoutContext'
 import { CgDanger } from 'react-icons/cg'
-import { BsCheck } from 'react-icons/bs'
+import { AiFillCheckCircle } from 'react-icons/ai'
+import usePosting from '../../../pages/Personnel/posting/hook/usePosting'
 
-export default function ConfirmationModal({
-  isDanger,
-}: {
-  isDanger?: boolean
-}) {
-  const { open, handleClose, isSuccess } = useContext(LayoutContext)
-  console.log('🚀 ~ file: ConfirmationModal.tsx:17 ~ isSuccess:', isSuccess)
+export default function ConfirmationModal() {
+  const { open, handleClose, isSuccess, isDanger, setDanger } =
+    useContext(LayoutContext)
+  const { mutate } = usePosting()
   return (
     <div
       style={{
@@ -38,54 +36,97 @@ export default function ConfirmationModal({
             {isDanger ? (
               <CgDanger size={40} color={'red'} />
             ) : isSuccess ? (
-              <CheckMark>
-                <BsCheck size={30} color={'white'} />
-              </CheckMark>
+              <AiFillCheckCircle
+                size={40}
+                color={colors.background.pineGreen}
+              />
             ) : null}
-            <Typography id="modal-modal-title" sx={{ fontWeight: 'bold' }}>
+            <Typography
+              id="modal-modal-title"
+              sx={{ fontWeight: 'bold' }}
+              fontSize={'18px'}
+            >
               Are you sure you want to apply for this job?{' '}
             </Typography>
           </DialogTitle>
           <DialogContent>
-            <Typography id="modal-modal-description" sx={{ mt: 0 }}>
+            <Typography
+              id="modal-modal-description"
+              sx={{ mt: 0 }}
+              fontSize={'14px'}
+            >
               Your application will be sent to the Medical Facility. Check your
               application board frequently for response on your application. All
               the best!!
             </Typography>
           </DialogContent>
           <DialogActions>
-            {isSuccess ? (
-              <ButtonStyles>
+            <ButtonStyles>
+              {isSuccess ? (
                 <GeneralButton
                   title="Explore other jobs"
                   sx={{
                     padding: '1rem 2rem',
+                    flexGrow: 1,
                   }}
                 />
-              </ButtonStyles>
-            ) : (
-              <ButtonStyles>
-                <GeneralButton
-                  title="Cancel"
-                  onClick={handleClose}
-                  sx={{
-                    padding: '1rem 2rem',
-                    background: 'white',
-                    border: `1px solid ${colors.background.pineGreen}`,
-                    color: `${colors.background.pineGreen}`,
-                    ':hover': {
-                      color: 'white',
-                    },
-                  }}
-                />
-                <GeneralButton
-                  title="Confirm"
-                  sx={{
-                    padding: '1rem 2rem',
-                  }}
-                />
-              </ButtonStyles>
-            )}
+              ) : isDanger ? (
+                <>
+                  <GeneralButton
+                    title="Cancel"
+                    onClick={() => {
+                      handleClose()
+                      setDanger(false)
+                    }}
+                    sx={{
+                      padding: '1rem 2rem',
+                      background: 'white',
+                      // flexGrow: 1,
+                      border: `1px solid ${colors.background.pineGreen}`,
+                      color: `${colors.background.pineGreen}`,
+                      ':hover': {
+                        color: 'white',
+                      },
+                    }}
+                  />
+                  <GeneralButton
+                    onClick={mutate}
+                    title="Retry"
+                    sx={{
+                      padding: '1rem 2rem',
+                      flexGrow: 1,
+                    }}
+                  />
+                </>
+              ) : (
+                <>
+                  <GeneralButton
+                    title="Cancel"
+                    onClick={() => {
+                      handleClose()
+                      setDanger(false)
+                    }}
+                    sx={{
+                      padding: '1rem 2rem',
+                      background: 'white',
+                      border: `1px solid ${colors.background.pineGreen}`,
+                      color: `${colors.background.pineGreen}`,
+                      ':hover': {
+                        color: 'white',
+                      },
+                    }}
+                  />
+                  <GeneralButton
+                    onClick={mutate}
+                    title="Confirm"
+                    sx={{
+                      padding: '1rem 2rem',
+                      flexGrow: 1,
+                    }}
+                  />
+                </>
+              )}
+            </ButtonStyles>
           </DialogActions>
         </Wrapper>
       </Dialog>
@@ -95,6 +136,7 @@ export default function ConfirmationModal({
 
 const Wrapper = styled.div`
   padding-bottom: 10px;
+  width: 450px;
 `
 
 const ButtonStyles = styled.div`
@@ -102,13 +144,15 @@ const ButtonStyles = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  width: 100%;
+  //
 `
-const CheckMark = styled.div`
-  background: ${colors.background.pineGreen};
-  border-radius: '50%';
-  display: 'flex';
-  justify-content: 'center';
-  align-items: 'center';
-  width: '40px';
-  height: '40px';
-`
+// const CheckMark = styled.div`
+//   background: ${colors.background.pineGreen};
+//   border-radius: '50%';
+//   display: 'flex';
+//   justify-content: 'center';
+//   align-items: 'center';
+//   width: '40px';
+//   height: '40px';
+// `

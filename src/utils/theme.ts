@@ -27,6 +27,23 @@ export const theme = createTheme({
       },
     },
 
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          borderRadius: '12px',
+        },
+      },
+    },
+
+    MuiDialogActions: {
+      styleOverrides: {
+        root: {
+          padding: '1rem 1rem',
+          justifyContent: 'center',
+        },
+      },
+    },
+
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
