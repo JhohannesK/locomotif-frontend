@@ -17,15 +17,6 @@ const PostingListTemplate = ({
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  function displayShimmer() {
-    const shimmerLoader: React.ReactNode[] = []
-    for (let i = 0; i < 3; i++) {
-      shimmerLoader.push(<ShimmerLoading key={i} height={'10rem'} />)
-    }
-
-    return shimmerLoader
-  }
-
   const handleOpen = (id: number) => {
     dispatch(setHomepage(5))
     dispatch(setPostingId(id))
@@ -35,17 +26,20 @@ const PostingListTemplate = ({
     <LowerContentContainer>
       <PostingStyles>
         <JobsContainer>
-          {isLoading
-            ? displayShimmer()
-            : data?.map((posting, index) => {
-                return (
-                  <JobCard
-                    key={index}
-                    posting={posting}
-                    handleOpen={() => handleOpen(posting.id)}
-                  />
-                )
-              }) ?? []}
+          {isLoading ? (
+            <ShimmerLoading height={'10rem'} count={3} width="100%" />
+          ) : (
+            // displayShimmer()
+            data?.map((posting, index) => {
+              return (
+                <JobCard
+                  key={index}
+                  posting={posting}
+                  handleOpen={() => handleOpen(posting.id)}
+                />
+              )
+            }) ?? []
+          )}
         </JobsContainer>
       </PostingStyles>
     </LowerContentContainer>

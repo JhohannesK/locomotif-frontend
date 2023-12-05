@@ -26,7 +26,7 @@ const LeftPaneProfile = ({
   return (
     <LeftPaneProfileContainer>
       {isLoading ? (
-        <ShimmerLoading height={'5rem'} width={'5rem'} borderRadius="50%" />
+        <ShimmerLoading height={'5rem'} width={'5rem'} borderradius="50%" />
       ) : (
         <AvatarDisplay
           height={70}

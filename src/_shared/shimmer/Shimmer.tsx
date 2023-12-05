@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components'
 interface ShimmerLoadingProps {
   height?: string
   width?: string
-  borderRadius?: string
+  borderradius?: string
   count?: number
 }
 const shimmer = keyframes`
@@ -18,7 +18,7 @@ const shimmer = keyframes`
 const ShimmerWrapper = styled.div<ShimmerLoadingProps>`
   width: ${({ width }) => width || '100%'};
   height: ${({ height }) => height || '2rem'};
-  border-radius: ${({ borderRadius }) => borderRadius || '10px'};
+  border-radius: ${({ borderradius }) => borderradius || '10px'};
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 600px 100%;
   animation: ${shimmer} 2s infinite;
@@ -27,7 +27,7 @@ const ShimmerWrapper = styled.div<ShimmerLoadingProps>`
 const ShimmerLoading = ({
   height,
   width,
-  borderRadius,
+  borderradius,
   count,
 }: ShimmerLoadingProps) => {
   function displayShimmer() {
@@ -38,7 +38,7 @@ const ShimmerLoading = ({
           key={i}
           height={height}
           width={width}
-          borderRadius={borderRadius}
+          borderradius={borderradius}
         />
       )
     }
@@ -46,9 +46,15 @@ const ShimmerLoading = ({
     return shimmerLoader
   }
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px',
+        width: '100%',
+      }}
+    >
       {displayShimmer()}
-      {/* <ShimmerWrapper height={height} width={width} borderRadius={borderRadius} /> */}
     </div>
   )
 }
