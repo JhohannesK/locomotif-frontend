@@ -5,6 +5,7 @@ import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 import { RootState } from '../../../../redux/store'
 import { PersonnelProfilePayload } from '../../../auth/_types'
 import Constants from '../../../../utils/constants'
+import React from 'react'
 
 const PersonnelLeftPane = () => {
   const { PersonnelProfile } = loadFromLocalStorage({
@@ -23,8 +24,8 @@ const PersonnelLeftPane = () => {
           isLoading={isLoading}
           specialities={
             <>
-              {PersonnelProfile?.specialities?.map((job) => (
-                <>{job}</>
+              {PersonnelProfile?.specialities?.map((job, index) => (
+                <React.Fragment key={index}>{job}</React.Fragment>
               ))}
             </>
           }
