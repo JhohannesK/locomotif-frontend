@@ -4,10 +4,29 @@ import Overview from './components/Overview'
 import JobDescription from './components/Job-description'
 import RatingAndReview from './components/Rating-and-Review'
 import { PostingWrapper } from './styles'
-import usePosting from './hook/usePosting'
+import axios from 'axios'
+import { useQuery } from '@tanstack/react-query'
+import Constants from '../../../utils/constants'
+import { loadFromLocalStorage } from '../../../redux/hooks/middleware'
 
 const PostingPage = () => {
-  const { data, isLoading } = usePosting()
+  const postingId = loadFromLocalStorage({
+    key: Constants.LOCALSTORAGE_KEYS.POSTINGID,
+  })
+  const getPostingByPostingId = async (postingId: number) => {
+    const response = await axios.get(
+      `${Constants.BaseURL}postings/${postingId}`
+    )
+    const data = await response.data
+    return data
+  }
+
+  const { data, isLoading } = useQuery({
+    queryKey: ['getPosting', postingId],
+    queryFn: () => getPostingByPostingId(postingId),
+    enabled: postingId !== undefined,
+  })
+
   return (
     <PostingWrapper>
       <Header />
