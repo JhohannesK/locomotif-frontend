@@ -35,10 +35,25 @@ function MiddlePane() {
           sx={{ width: '100%' }}
           data={['Surgeon', 'Doctor']}
         />
-        <FormSelect label={'Type Of Work'} menu={['Surgeon']} />
+        <GenericSelect
+          label={'Speciality'}
+          sx={{ width: '100%' }}
+          data={['Surgeon', 'Doctor']}
+        />
+        <GenericSelect
+          label={'Speciality'}
+          sx={{ width: '100%' }}
+          data={['Surgeon', 'Doctor']}
+        />
+        <GenericSelect
+          label={'Speciality'}
+          sx={{ width: '100%' }}
+          data={['Surgeon', 'Doctor']}
+        />
+        {/* <FormSelect label={'Type Of Work'} menu={['Surgeon']} />
         <FormSelect label={'Location'} menu={['Airport,Accra']} />
         <FormSelect label={'Date Added'} menu={['Surgeon']} />
-        <FormSelect label={'Salary'} menu={['$1500']} />
+        <FormSelect label={'Salary'} menu={['$1500']} /> */}
       </JobPostOptions>
       <JobPostButtons>
         <GeneralButton

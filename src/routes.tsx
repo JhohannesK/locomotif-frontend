@@ -14,27 +14,7 @@ import ApplicationsPage from './pages/Personnel/personnel-applications-page/appl
 import FacilityHomePage from './pages/Facility/home_page'
 import FacilityLayout from './pages/Facility/components/Layout/Layout'
 
-const routes = createBrowserRouter([
-  {
-    path: routhPaths.root,
-    element: <App />,
-  },
-  {
-    path: routhPaths.GetStarted,
-    element: <LandingPage />,
-  },
-  {
-    path: routhPaths.AUTH.signin,
-    element: <SignIn />,
-  },
-  {
-    path: routhPaths.AUTH.FACILITY.facility_signup,
-    element: <FacilitySignUp />,
-  },
-  {
-    path: routhPaths.AUTH.PERSONNEL.personnel_signup,
-    element: <PersonnelSignup />,
-  },
+const personnel = [
   {
     path: routhPaths.PAGES.PERSONNEL.personnel,
     element: <PersonnelLayout />,
@@ -53,6 +33,9 @@ const routes = createBrowserRouter([
       },
     ],
   },
+]
+
+const facility = [
   {
     path: routhPaths.PAGES.FACILITY.facility,
     element: <FacilityLayout />,
@@ -63,11 +46,39 @@ const routes = createBrowserRouter([
       },
     ],
   },
+]
+
+const auth = [
+  {
+    path: routhPaths.GetStarted,
+    element: <LandingPage />,
+  },
+  {
+    path: routhPaths.AUTH.signin,
+    element: <SignIn />,
+  },
+  {
+    path: routhPaths.AUTH.FACILITY.facility_signup,
+    element: <FacilitySignUp />,
+  },
+  {
+    path: routhPaths.AUTH.PERSONNEL.personnel_signup,
+    element: <PersonnelSignup />,
+  },
+]
+
+const routes = createBrowserRouter([
+  ...personnel,
+  ...facility,
+  ...auth,
+  {
+    path: routhPaths.root,
+    element: <App />,
+  },
   {
     path: routhPaths.PAGENOTFOUND,
     element: <PageNotFound />,
   },
-
   {
     path: '*',
     element: <PageNotFound />,

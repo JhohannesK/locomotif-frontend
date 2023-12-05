@@ -25,9 +25,9 @@ export default function GenericSelect({
 
   return (
     <FormControl sx={{ ...sx, m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">{label}</InputLabel>
+      <InputLabel>{label}</InputLabel>
       <Select
-        labelId="demo-select-small-label"
+        // labelId="demo-select-small-label"
         id="demo-select-small"
         value={age}
         label={label}

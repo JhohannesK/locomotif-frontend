@@ -58,26 +58,7 @@ export const theme = createTheme({
         },
       },
     },
-    MuiSelect: {
-      styleOverrides: {
-        select: {
-          fontFamily: 'Roboto',
-          width: '100%',
 
-          '.MuiOutlinedInput-notchedOutline': {
-            borderColor: '#E34824',
-          },
-          '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#E34824',
-            borderWidth: 'thin',
-          },
-          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#E34824',
-            borderWidth: 'thin',
-          },
-        },
-      },
-    },
     MuiTextField: {
       styleOverrides: {
         root: {
