@@ -3,39 +3,20 @@ import { colors } from '../../../../colors'
 import Constants from '../../../../utils/constants'
 
 export const JobPostBox = styled.div`
-  // height: 300px;
+  flex-grow: 1;
+  width: 100%;
   background: ${colors.button.white};
   border-radius: 10px;
   border: 1px solid #d1d1d1;
-  padding: 10px;
+  padding: 20px;
 `
 
 export const JobPostButtons = styled.div`
-  width: 50%;
   margin-top: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    width: 65%;
-  }
-
-  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
-    max-width: 50%;
-  }
-
-  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_L_PX} {
-    max-width: 45%;
-  }
-
-  ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_MOBILE_PX} {
-    width: 60%;
-  }
-
-  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE_SM} {
-    width: 85%;
-  }
+  justify-content: start;
+  gap: 10px;
 `
 
 export const JobPostHeader = styled.div`
@@ -53,6 +34,7 @@ export const JobPostOptions = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_MOBILE_PX} {
     gap: 10px;

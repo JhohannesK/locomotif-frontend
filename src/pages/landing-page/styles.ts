@@ -27,7 +27,7 @@ export const Logo = styled.div`
   background-color: ${colors.background.whiteSmoke};
   padding: 10px;
   border-radius: 10px;
-  font-family: Roboto;
+
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
@@ -74,7 +74,6 @@ export const BottomContent = styled.div`
 export const GetStarted = styled.div`
   color: ${colors.text.white};
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Roboto;
   font-size: 1.5em;
   font-style: normal;
   font-weight: 700;
@@ -94,7 +93,7 @@ export const GetStarted = styled.div`
 `
 export const JoinLocomotif = styled.div`
   color: ${colors.text.white};
-  font-family: Roboto;
+  font-family: Inter;
   font-size: 1em;
   font-style: normal;
   font-weight: 400;

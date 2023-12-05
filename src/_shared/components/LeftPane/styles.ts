@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { colors } from '../../../../../colors'
+import { colors } from '../../../colors'
 
 export const LeftPaneWrapper = styled.div`
   display: inline-flex;
@@ -31,7 +31,7 @@ export const InnerWorkExperienceContainer = styled.div`
 export const WorkExperienceTitleContainer = styled.div`
   color: ${colors.text.night};
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Roboto;
+
   font-size: 20px;
   font-style: normal;
   font-weight: 700;

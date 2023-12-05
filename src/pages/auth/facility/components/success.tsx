@@ -39,9 +39,7 @@ const FacilitySuccess = () => {
             marginTop: '2rem',
           }}
           size="large"
-          onClick={() =>
-            navigate(Constants.ROUTES.PAGES.FACILITY.facility_dashboard)
-          }
+          onClick={() => navigate(Constants.ROUTES.PAGES.FACILITY.facility)}
         />
       </AuthContent>
     </div>

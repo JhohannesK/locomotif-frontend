@@ -3,7 +3,7 @@ import { colors } from '../../../colors'
 
 export const LeftPaneProfileContainer = styled.div`
   border-radius: 10px;
-  border: 1px solid rgba(209, 209, 209, 0.5);
+  border: 1px solid #d1d1d1;
   background: #fff;
   display: flex;
   align-items: center;
@@ -18,7 +18,7 @@ export const LeftProfileButtonContainer = styled.div``
 
 export const LeftProfileNameContainer = styled.div`
   color: #000000;
-  font-family: Roboto;
+
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -26,7 +26,6 @@ export const LeftProfileNameContainer = styled.div`
 `
 
 export const LeftProfileWorkContainer = styled.div`
-  font-family: Roboto;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -35,7 +34,6 @@ export const LeftProfileWorkContainer = styled.div`
 `
 
 export const LeftProfileWorkExperienceContainer = styled.span`
-  font-family: Roboto;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;

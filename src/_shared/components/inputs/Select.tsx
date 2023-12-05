@@ -3,6 +3,8 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent, SelectProps } from '@mui/material/Select'
+import { OutlinedInput, SxProps } from '@mui/material'
+import { colors } from '../../../colors'
 
 export default function GenericSelect({
   label,
@@ -13,7 +15,7 @@ export default function GenericSelect({
   name?: string
   defaultValue?: string
   multiple?: boolean
-  sx?: { width: string }
+  sx?: SxProps
 }) {
   const [age, setAge] = React.useState('')
 
@@ -22,14 +24,17 @@ export default function GenericSelect({
   }
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small-label">{label}</InputLabel>
+    <FormControl sx={{ width: '100%' }} size="small" key={label}>
+      <InputLabel sx={{ background: `${colors.background.whiteSmoke}`, px: 1 }}>
+        {label}
+      </InputLabel>
       <Select
-        labelId="demo-select-small-label"
+        // labelId="demo-select-small-label"
         id="demo-select-small"
         value={age}
         label={label}
         onChange={handleChange}
+        input={<OutlinedInput />}
       >
         <MenuItem disabled>none</MenuItem>
         {data.map((item: string) => (

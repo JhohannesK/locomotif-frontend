@@ -4,9 +4,8 @@ import {
   FacilityMidContainer,
   FacilityRightContainer,
 } from './home_page_style'
-import FacilityLeftPane from './LeftPane/LeftPane'
-import MiddlePane from './MIddlePane/MiddlePane'
-import RightPane from './RightPane/RightPane'
+import FacilityLeftPane from '../components/LeftPane/LeftPane'
+import MiddlePane from '../components/MIddlePane/MiddlePane'
 
 function Dashboard() {
   return (
@@ -18,9 +17,7 @@ function Dashboard() {
         <FacilityMidContainer>
           <MiddlePane />
         </FacilityMidContainer>
-        <FacilityRightContainer>
-          <RightPane />
-        </FacilityRightContainer>
+        <FacilityRightContainer></FacilityRightContainer>
       </FacilityDashboard>
     </>
   )

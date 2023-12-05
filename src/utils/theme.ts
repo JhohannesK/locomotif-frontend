@@ -9,8 +9,8 @@ export const theme = createTheme({
         root: {
           fontSize: '1rem',
           fontWeight: 'bold',
-          fontFamily: 'Roboto',
           color: 'white',
+          fontFamily: 'Inter',
           background: colors.button.pineGreen,
           textTransform: 'revert',
           transition: 'all 0.3s ease-in-out',
@@ -31,6 +31,7 @@ export const theme = createTheme({
       styleOverrides: {
         paper: {
           borderRadius: '12px',
+          fontFamily: 'Inter',
         },
       },
     },
@@ -44,12 +45,23 @@ export const theme = createTheme({
       },
     },
 
+    MuiInputBase: {
+      styleOverrides: {
+        input: {},
+      },
+    },
+
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          fontFamily: 'Roboto',
+          fontFamily: 'Inter',
           gap: '1rem',
           width: '100%',
+          // '&:focus': {
+          //   borderRadius: 4,
+          //   borderColor: colors.border.active,
+          //   boxShadow: `0 0 0 0.1rem ${colors.background.pineGreen}`,
+          // },
         },
         input: {
           '::placeholder': {
@@ -58,30 +70,11 @@ export const theme = createTheme({
         },
       },
     },
-    MuiSelect: {
-      styleOverrides: {
-        select: {
-          fontFamily: 'Roboto',
-          width: '100%',
 
-          '.MuiOutlinedInput-notchedOutline': {
-            borderColor: '#E34824',
-          },
-          '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#E34824',
-            borderWidth: 'thin',
-          },
-          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#E34824',
-            borderWidth: 'thin',
-          },
-        },
-      },
-    },
     MuiTextField: {
       styleOverrides: {
         root: {
-          fontFamily: 'Roboto',
+          fontFamily: 'Inter',
           '& label.Mui-focused': {
             color: colors.button.pineGreen,
           },
@@ -97,7 +90,7 @@ export const theme = createTheme({
     MuiAccordion: {
       styleOverrides: {
         root: {
-          fontFamily: 'Roboto',
+          fontFamily: 'Inter',
           width: '100%',
           '& .MuiAccordionSummary-content': {
             '& .MuiTypography-root': {
@@ -119,7 +112,23 @@ export const theme = createTheme({
           '& .MuiLoadingButton-loadingIndicator': {
             color: 'white',
           },
-          fontFamily: 'Roboto',
+          fontFamily: 'Inter',
+        },
+      },
+    },
+
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Inter',
+        },
+      },
+    },
+
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Inter',
         },
       },
     },

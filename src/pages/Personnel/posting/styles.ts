@@ -60,7 +60,7 @@ export const BtnStyles: SxProps = {
   padding: '10px',
   flexGrow: 1,
   width: '100%',
-  border: `1px solid ${colors.border.whiteSmoke}`,
+  border: `1px solid ${colors.border.timberwolf}`,
 }
 
 // Styles for description

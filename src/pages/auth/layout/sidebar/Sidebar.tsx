@@ -90,7 +90,7 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
         onClick={() => navigate(Constants.ROUTES.AUTH.signin)}
         title="Already have an Acccout? Sign in"
         sx={{
-          border: `1px solid ${colors.border.whiteSmoke}`,
+          border: `1px solid ${colors.border.timberwolf}`,
           padding: '10px 20px',
           width: '100%',
           color: 'white',
