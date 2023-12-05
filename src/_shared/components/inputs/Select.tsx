@@ -29,16 +29,18 @@ export default function GenericSelect({
         {label}
       </InputLabel>
       <Select
-        // labelId="demo-select-small-label"
+        key={label}
         id="demo-select-small"
         value={age}
         label={label}
         onChange={handleChange}
-        input={<OutlinedInput />}
+        input={<OutlinedInput key={label} />}
       >
         <MenuItem disabled>none</MenuItem>
-        {data.map((item: string) => (
-          <MenuItem value={item}>{item}</MenuItem>
+        {data.map((item: string, index) => (
+          <MenuItem key={index} value={item}>
+            {item}
+          </MenuItem>
         ))}
       </Select>
     </FormControl>

@@ -74,15 +74,14 @@ export const BottomContent = styled.div`
 export const GetStarted = styled.div`
   color: ${colors.text.white};
   font-feature-settings: 'clig' off, 'liga' off;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 137.14%; /* 68.57px */
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_480_PX} {
     font-size: 2em;
   }
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_PX} {
-    font-size: 4rem;
+    font-size: 3.5rem;
     letter-spacing: 2px;
   }
 
@@ -107,7 +106,7 @@ export const JoinLocomotif = styled.div`
 `
 
 export const ImageCard = styled.div`
-  width: 95%;
+  width: 100%;
   position: relative;
   border-radius: 12px;
   overflow: hidden;

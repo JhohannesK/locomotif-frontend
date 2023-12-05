@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import Constants from '../../../../utils/constants'
 import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
@@ -11,14 +11,6 @@ const usePosting = () => {
   })
   const { setDanger } = useContext(LayoutContext)
 
-  const getPostingByPostingId = async (postingId: number) => {
-    const response = await axios.get(
-      `${Constants.BaseURL}postings/${postingId}`
-    )
-    const data = await response.data
-    return data
-  }
-
   const applyForPosting = async (postingId: number) => {
     const response = await axios.post(
       `${Constants.BaseURL}postings/applications/`,
@@ -27,12 +19,6 @@ const usePosting = () => {
     const data = await response.data
     return data
   }
-
-  const { data, isLoading } = useQuery({
-    queryKey: ['getPosting', postingId],
-    queryFn: () => getPostingByPostingId(postingId),
-    enabled: postingId !== undefined,
-  })
 
   const { mutate } = useMutation({
     mutationKey: ['createPosting', postingId],
@@ -43,8 +29,6 @@ const usePosting = () => {
   })
 
   return {
-    data,
-    isLoading,
     mutate,
   }
 }
