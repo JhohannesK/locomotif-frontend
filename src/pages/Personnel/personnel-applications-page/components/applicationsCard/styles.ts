@@ -15,6 +15,7 @@ export const MainContainer = styled.div`
   align-items: flex-start;
   flex-direction: row;
   gap: 53px;
+  justify-content: space-between;
 `
 
 export const LeftSide = styled.div`

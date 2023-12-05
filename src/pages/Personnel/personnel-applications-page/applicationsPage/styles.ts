@@ -31,6 +31,6 @@ export const LeftPaneContainer = styled.div`
 
 export const ApplicationCardsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 20px;
 `
