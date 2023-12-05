@@ -30,6 +30,7 @@ import {
 import { GenericButton, GenericSelect } from '../../../../../_shared'
 import { ClearBtnProps, signInProps } from '../../../../auth/signin/styles'
 import useShiftType from '../../hook/useShiftType'
+import ShimmerLoading from '../../../../../_shared/shimmer/Shimmer'
 
 const shifts = ['One-Time', 'Full-Time']
 
@@ -194,7 +195,7 @@ const FilterPane = () => {
 
           <Filterheading>Shift Type</Filterheading>
           {isLoadingShiftTypes ? (
-            'Loading....'
+            <ShimmerLoading height="2rem" count={3} />
           ) : (
             <>
               <FormGroup>
@@ -223,7 +224,7 @@ const FilterPane = () => {
 
           <Filterheading>Specialties</Filterheading>
           {isLoadingSpecialties ? (
-            'Loading....'
+            <ShimmerLoading height="2rem" count={3} />
           ) : (
             <>
               <FormGroup>
