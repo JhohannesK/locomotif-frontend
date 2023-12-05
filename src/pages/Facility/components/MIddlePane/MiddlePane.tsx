@@ -32,7 +32,7 @@ function MiddlePane() {
       <JobPostOptions>
         <GenericSelect
           label={'Speciality'}
-          sx={{ width: '100%' }}
+          sx={{ width: '15rem' }}
           data={['Surgeon', 'Doctor']}
         />
         <GenericSelect
@@ -61,11 +61,11 @@ function MiddlePane() {
           sx={{
             backgroundColor: colors.button.pineGreen,
             color: '#FFF',
-            fontSize: '12px',
+            // fontSize: '12px',
             fontStyle: 'normal',
             fontWeight: '400',
             lineHeight: '137.14%',
-            padding: '10px 34px',
+            // padding: '10px 34px',
             borderRadius: '10px',
             width: '127px',
           }}
@@ -78,11 +78,9 @@ function MiddlePane() {
             backgroundColor: '#FFF',
             border: `1px solid ${colors.button.pineGreen}`,
             color: colors.button.pineGreen,
-            fontSize: '12px',
             fontStyle: 'normal',
             fontWeight: '400',
             lineHeight: '137.14%',
-            padding: '10px 34px',
             borderRadius: '10px',
             width: '127px',
           }}

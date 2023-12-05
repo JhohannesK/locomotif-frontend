@@ -8,7 +8,7 @@ export const JobPostBox = styled.div`
   background: ${colors.button.white};
   border-radius: 10px;
   border: 1px solid #d1d1d1;
-  padding: 10px;
+  padding: 20px;
 `
 
 export const JobPostButtons = styled.div`
@@ -34,6 +34,7 @@ export const JobPostOptions = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
 
   ${Constants.LAYOUT.MEDIA_QUERIES.TABLET_MOBILE_PX} {
     gap: 10px;

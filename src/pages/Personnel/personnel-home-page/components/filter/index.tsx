@@ -185,6 +185,7 @@ const FilterPane = () => {
                   margin: '0px',
                   '&.MuiFormControlLabel-root': {
                     color: '#00000099',
+                    fontFamily: 'Inter',
                   },
                 }}
               />

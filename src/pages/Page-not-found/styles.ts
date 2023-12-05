@@ -22,7 +22,7 @@ export const Logo = styled.div`
   color: ${colors.background.pineGreen};
   padding: 10px;
   border-radius: 10px;
-  font-family: Roboto;
+
   font-size: 30px;
   font-style: normal;
   font-weight: 700;

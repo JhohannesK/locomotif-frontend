@@ -31,7 +31,7 @@ export const InnerWorkExperienceContainer = styled.div`
 export const WorkExperienceTitleContainer = styled.div`
   color: ${colors.text.night};
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Roboto;
+
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
