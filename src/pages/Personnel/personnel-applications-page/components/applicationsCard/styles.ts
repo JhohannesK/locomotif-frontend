@@ -1,13 +1,18 @@
 import styled from 'styled-components'
 import { colors } from '../../../../../colors'
+import Constants from '../../../../../utils/constants'
 
 export const CardContainer = styled.div`
   padding: 16px;
   border-radius: 12px;
   background: ${colors.background.white};
   border: 1px solid var(--Border, #d9d9d9);
-  /* width: 19rem; */
+  max-width: 19rem;
   height: 81px;
+
+  ${Constants.LAYOUT.MEDIA_QUERIES.MOBILE} {
+    max-width: 100%;
+  }
 `
 
 export const MainContainer = styled.div`
@@ -120,6 +125,7 @@ export const TimeAndDate = styled.div`
   width: 100%;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 `
 interface ShiftTimeProps {
   $shiftTime?: string

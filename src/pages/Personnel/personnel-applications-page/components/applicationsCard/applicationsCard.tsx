@@ -60,6 +60,9 @@ export type ApplicationsCardProps = {
   date: string
   postingRole: string
   shiftType: string
-  status: string
+  status: Status
 }
+
+export type Status = 'ACCEPTED' | 'PENDING' | 'DECLINED'
+
 export default ApplicationsCard

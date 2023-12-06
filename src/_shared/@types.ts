@@ -4,7 +4,7 @@ import {
   SxProps,
 } from '@mui/material'
 import { OverridableStringUnion } from '@mui/types'
-
+import { Status } from '../pages/Personnel/personnel-applications-page/components/applicationsCard/applicationsCard'
 export type SearchInputType = {
   name: string
   sx?: SxProps
@@ -99,7 +99,7 @@ export interface PostingType {
 
 export interface ApplicationType {
   id: number
-  status: string
+  status: Status
   created_at: string
   posting: PostingType
 }
