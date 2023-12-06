@@ -1,3 +1,4 @@
+import { formatDate } from '../../../../../utils/util'
 import {
   CardContainer,
   Date,
@@ -21,13 +22,18 @@ const ApplicationsCard = ({
   application: ApplicationsCardProps
   index: number
 }) => {
+  const MAX_LENGTH = 20
   return (
     <CardContainer key={index}>
       <MainContainer>
         <LeftSide>
           <HospitalNameAndImage>
             <HospitalImage></HospitalImage>
-            <HospitalName>{application.facilityName}</HospitalName>
+            <HospitalName>
+              {application.facilityName.length < MAX_LENGTH
+                ? application.facilityName
+                : application.facilityName.slice(0, MAX_LENGTH) + '...'}
+            </HospitalName>
           </HospitalNameAndImage>
           <PostingRoleAndId>
             <PostingId>{application.postingID}</PostingId>
@@ -37,10 +43,10 @@ const ApplicationsCard = ({
         <RightSide>
           <Status $status={application.status}> {application.status}</Status>
           <TimeAndDate>
-            <ShiftTime $shiftTime={application.shiftTime}>
-              {application.shiftTime}
+            <ShiftTime $shiftTime={application.shiftType}>
+              {application.shiftType}
             </ShiftTime>
-            <Date>{application.date}</Date>
+            <Date>{formatDate(application.date)}</Date>
           </TimeAndDate>
         </RightSide>
       </MainContainer>
@@ -53,7 +59,10 @@ export type ApplicationsCardProps = {
   postingID: string
   date: string
   postingRole: string
-  shiftTime: string
-  status: string
+  shiftType: string
+  status: Status
 }
+
+export type Status = 'ACCEPTED' | 'PENDING' | 'DECLINED'
+
 export default ApplicationsCard

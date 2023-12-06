@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   display: flex;
   /* align-items: center; */
   max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
   justify-content: center;
   gap: 3rem;
@@ -17,8 +18,8 @@ export const RightPaneContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
 `
 
 export const LeftPaneContainer = styled.div`
@@ -29,7 +30,7 @@ export const LeftPaneContainer = styled.div`
 `
 
 export const ApplicationCardsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 20px;
 `

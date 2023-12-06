@@ -4,7 +4,7 @@ import {
   SxProps,
 } from '@mui/material'
 import { OverridableStringUnion } from '@mui/types'
-
+import { Status } from '../pages/Personnel/personnel-applications-page/components/applicationsCard/applicationsCard'
 export type SearchInputType = {
   name: string
   sx?: SxProps
@@ -72,4 +72,38 @@ export type FilterRecordType = {
 
 export type ShiftTypesType = {
   shift_types: string[]
+}
+
+export interface FacilityType {
+  name: string
+  bio: string
+  telephone: string
+  verified: boolean
+  country: string
+  region: string
+  city: string
+  digital_address: string
+}
+
+export interface PostingType {
+  id: number
+  title: string
+  description: string
+  full_time: boolean
+  application_deadline: string
+  start_time: string
+  end_time: string | null
+  rate_per_month: number
+  rate_per_6_hour_shift: number | null
+  shift_type: string | null
+  is_active: boolean
+  required_speciality: string
+  facility: FacilityType
+}
+
+export interface ApplicationType {
+  id: number
+  status: Status
+  created_at: string
+  posting: PostingType
 }

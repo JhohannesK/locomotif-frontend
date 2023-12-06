@@ -9,9 +9,13 @@ export const FilterWrapper = styled.div`
   border-radius: 12px;
   border: 1px solid var(--Border, #d9d9d9);
   background: ${colors.background.white};
-  width: 100%;
   height: 4rem;
   gap: 20rem;
+  padding: 0 1.5rem;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 `
 
 export const AddStyles: SxProps = {

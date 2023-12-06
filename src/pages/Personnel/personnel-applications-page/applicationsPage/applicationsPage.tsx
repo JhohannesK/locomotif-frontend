@@ -1,52 +1,52 @@
-import ApplicationsCard, {
-  ApplicationsCardProps,
-} from '../components/applicationsCard/applicationsCard'
+import ApplicationsCard from '../components/applicationsCard/applicationsCard'
 import {
   RightPaneContainer,
   Wrapper,
   ApplicationCardsContainer,
 } from './styles'
-import applicationsData from '../../../mocks/applications.json'
-import Grid from '@mui/material/Grid'
 import ApplicationFilterBar from '../components/filterApplicationCards/filterApplicationCards'
-import { useState } from 'react'
-import { FilterObject } from '../../@types'
 import PersonnelLayout from '../../../../_shared/Layout/Layout'
+import usePersonnelApplication from '../hook/useApplication'
 
 const ApplicationsPage = () => {
-  const applicationsCardDetails: ApplicationsCardProps[] =
-    applicationsData.applications
+  const { data: applicationsCardDetails } = usePersonnelApplication()
 
-  const [filterObject, setFilterObject] = useState<FilterObject>({
-    status: [],
-  })
+  const approvedApplications = applicationsCardDetails?.filter(
+    (application) => application.status === 'ACCEPTED'
+  )
+  const pendingApplications = applicationsCardDetails?.filter(
+    (application) => application.status === 'PENDING'
+  )
+
+  const declinedApplications = applicationsCardDetails
+    ?.filter((application) => application.status === 'DECLINED')
+    .sort((a, b) => {
+      const dateA = new Date(a.date)
+      const dateB = new Date(b.date)
+      return dateB.getTime() - dateA.getTime()
+    })
 
   return (
     <Wrapper>
       <PersonnelLayout.LeftSide />
       <RightPaneContainer>
-        <ApplicationFilterBar
-          filterObject={filterObject}
-          setFilterObject={setFilterObject}
-        />
+        <ApplicationFilterBar title="Approved Applications" />
         <ApplicationCardsContainer>
-          <Grid
-            container
-            columnGap={2}
-            rowGap={2}
-            sx={{
-              '@media (max-width: 1200px)': {
-                justifyContent: 'center',
-                columnGap: '20px',
-              },
-            }}
-            justifyContent="space-between"
-            alignItems="center"
-          >
-            {applicationsCardDetails?.map((application, index) => (
-              <ApplicationsCard application={application} index={index} />
-            ))}
-          </Grid>
+          {approvedApplications?.map((application, index) => (
+            <ApplicationsCard application={application} index={index} />
+          ))}
+        </ApplicationCardsContainer>
+        <ApplicationFilterBar title="Application In Progress" />
+        <ApplicationCardsContainer>
+          {pendingApplications?.map((application, index) => (
+            <ApplicationsCard application={application} index={index} />
+          ))}
+        </ApplicationCardsContainer>
+        <ApplicationFilterBar title="Declined Applications" />
+        <ApplicationCardsContainer>
+          {declinedApplications?.map((application, index) => (
+            <ApplicationsCard application={application} index={index} />
+          ))}
         </ApplicationCardsContainer>
       </RightPaneContainer>
     </Wrapper>
