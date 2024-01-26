@@ -1,6 +1,4 @@
 import { RxCross1 } from 'react-icons/rx'
-import LeftPaneProfile from '../LeftPaneProfile/LeftPaneProfile'
-import WeeklySummary from '../WeeklySummary/WeeklySummary'
 import {
   LogoStyles,
   NavbarHeaderIcon,
@@ -13,10 +11,6 @@ import {
   NavbarOptionsH3,
   NavbarOptionsIcon,
 } from './navbarStyles'
-import {
-  FacilityLeftMidContent,
-  FacilityLeftUpperContent,
-} from '../../../pages/Facility/components/LeftPane/styles'
 import { ReactNode } from 'react'
 
 interface linksObject {
@@ -55,21 +49,9 @@ function NavbarLeftPaneMenu({
             )
           })}
         </NavbarOptionsBox>
-
-        <FacilityLeftUpperContent>
-          <LeftPaneProfile />
-        </FacilityLeftUpperContent>
-        <FacilityLeftMidContent>
-          <WeeklySummary
-            numberOfNewCandidates={3}
-            numberOfProcessingApplications={2}
-            numberOfAvailableJobs={1}
-          />
-        </FacilityLeftMidContent>
       </NavbarMenu>
     </>
   )
 }
 
-// interface LeftPaneProps {};
 export default NavbarLeftPaneMenu

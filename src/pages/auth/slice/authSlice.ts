@@ -29,7 +29,7 @@ const initialState: UserAuthType = {
     digital_address: '',
   },
   isLoading: false,
-  isLoggedIn: false,
+  isLoggedIn: true,
   errorMessage: undefined,
   isLogoutLoading: false,
 }

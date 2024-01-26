@@ -11,8 +11,7 @@ import Posting from './pages/Personnel/posting/Posting'
 import PersonnelLayout from './_shared/Layout/Layout'
 import FindJob from './pages/Personnel/personnel-home-page/find-job'
 import ApplicationsPage from './pages/Personnel/personnel-applications-page/applicationsPage/applicationsPage'
-import FacilityHomePage from './pages/Facility/home_page'
-import FacilityLayout from './pages/Facility/components/Layout/Layout'
+import Overview from './pages/Facility/Overview/Overview'
 
 const personnel = [
   {
@@ -38,11 +37,11 @@ const personnel = [
 const facility = [
   {
     path: routhPaths.PAGES.FACILITY.facility,
-    element: <FacilityLayout />,
+    element: <Overview />,
     children: [
       {
         path: routhPaths.PAGES.FACILITY.facility,
-        element: <FacilityHomePage />,
+        element: <Overview />,
       },
     ],
   },

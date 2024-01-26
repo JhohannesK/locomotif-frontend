@@ -18,6 +18,19 @@ export const signInProps: SxProps = {
   },
 }
 
+export const Bloba = styled.div`
+  width: 14rem;
+  height: 15rem;
+  background: green;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 0;
+  left: -30px;
+  border-radius: 30%;
+`
+
 export const ClearBtnProps: SxProps = {
   background: colors.background.white,
   width: '100%',
@@ -71,6 +84,14 @@ export const Page = styled.div`
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
+  position: relative;
+
+  background: #dbf5dd38;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4.9px);
+  -webkit-backdrop-filter: blur(4.9px);
+  /* border: 1px solid rgba(181, 230, 185, 0.3); */
 `
 
 //remember to come and put the  gap here later on

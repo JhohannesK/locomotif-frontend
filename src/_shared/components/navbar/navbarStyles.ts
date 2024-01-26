@@ -4,7 +4,7 @@ import Constants from '../../../utils/constants'
 import { Link } from 'react-router-dom'
 
 export const Wrapper = styled.div`
-  background: ${colors.background.whiteSmoke};
+  background: ${colors.background.white};
   width: 100%;
   display: flex;
 `
@@ -18,7 +18,7 @@ export const NavbarStyle = styled.div`
     justify-content: space-between;
     gap: 3rem;
     width: 100%;
-    height: 3.5rem;
+    height: 87px;
     align-items: center;
     justify-content: space-between;
   }
