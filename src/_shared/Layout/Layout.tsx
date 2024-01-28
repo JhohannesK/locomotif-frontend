@@ -7,44 +7,43 @@ import PersonnelMidContent from '../../pages/Personnel/personnel-home-page/compo
 import ConfirmationModal from '../components/modal/ConfirmationModal'
 import LayoutProvider from './context/LayoutContext'
 import FilterPane from '../../pages/Personnel/personnel-home-page/components/filter'
-import { useSetupInterceptor } from '../../utils/useSetupInterceptor'
+// import { useSetupInterceptor } from '../../utils/useSetupInterceptor'
 import { useSelector } from 'react-redux'
 import usePersonnel from '../../pages/Personnel/personnel-home-page/hook/usePersonnel'
 import { RootState } from '../../redux/store'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { loadFromLocalStorage } from '../../redux/hooks/middleware'
+import { Outlet } from 'react-router-dom'
+// import { loadFromLocalStorage } from '../../redux/hooks/middleware'
 import { Backdrop, CircularProgress } from '@mui/material'
 import PersonnelLeftPane from '../../pages/Personnel/personnel-home-page/components/PersonnelLeftPane'
 
 const PersonnelLayout = () => {
-  useSetupInterceptor()
+  // useSetupInterceptor()
 
   const filter = useSelector((state: RootState) => state.personnel.endpoint)
   const { fetchProfile } = usePersonnel(filter)
 
-  const { user_role, isLoggedIn, isLogoutLoading } = useSelector(
-    (state: RootState) => state.auth
-  )
+  const { isLogoutLoading } = useSelector((state: RootState) => state.auth)
 
-  const { pathname } = useLocation()
-  const isMatch = pathname.includes(Constants.PERSONNEL)
-  const navigate = useNavigate()
+  //INFO: this is commented out because backend is not working properly
+  // const { pathname } = useLocation()
+  // const isMatch = pathname.includes(Constants.PERSONNEL)
+  // const navigate = useNavigate()
 
-  useEffect(() => {
-    const personnelAuthData = loadFromLocalStorage({ key: 'personnelAuth' })
+  // useEffect(() => {
+  //   const personnelAuthData = loadFromLocalStorage({ key: 'personnelAuth' })
 
-    if (
-      personnelAuthData.user_role == Constants.PERSONNEL &&
-      personnelAuthData.isLoggedIn
-    ) {
-      if (!isMatch) {
-        navigate(Constants.ROUTES.GetStarted)
-      }
-      return
-    } else {
-      navigate(Constants.ROUTES.GetStarted)
-    }
-  }, [isLoggedIn, user_role, isMatch, navigate, fetchProfile])
+  //   if (
+  //     personnelAuthData.user_role == Constants.PERSONNEL &&
+  //     personnelAuthData.isLoggedIn
+  //   ) {
+  //     if (!isMatch) {
+  //       navigate(Constants.ROUTES.GetStarted)
+  //     }
+  //     return
+  //   } else {
+  //     navigate(Constants.ROUTES.GetStarted)
+  //   }
+  // }, [isLoggedIn, user_role, isMatch, navigate, fetchProfile])
 
   useEffect(() => {
     fetchProfile()

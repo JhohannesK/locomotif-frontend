@@ -64,7 +64,7 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
         <StepperWrapper>
           {steps.map((step, index) => (
             <BoxStyle
-              grayOut={activeSidebar}
+              grayout={activeSidebar}
               tabIndex={index}
               disabled={onDisable(index)}
               key={index}
