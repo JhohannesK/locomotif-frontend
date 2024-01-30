@@ -11,15 +11,14 @@ import {
   Wrapper,
 } from './style'
 // import { AiOutlineCheckCircle } from 'react-icons/ai'
-import { BsCircle } from 'react-icons/bs'
 import GeneralButton from '../../../../_shared/components/button/Button'
 import { colors } from '../../../../colors'
 import { RootState } from '../../../../redux/store'
-import { BiStopCircle } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
 import { Steps } from '../../_types'
 import { useEffect } from 'react'
+import { CheckedRadioBtn, RadioBtn } from '../../../../_shared'
 
 const Sidebar = ({ steps }: { steps: Steps }) => {
   const navigate = useNavigate()
@@ -73,9 +72,13 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
               {/* <AiOutlineCheckCircle /> */}
 
               {activeSidebar === index ? (
-                <BiStopCircle size="23" />
+                <CheckedRadioBtn
+                  colorOp={true}
+                  outerRadius="1.5rem"
+                  innerRadius=".5rem"
+                />
               ) : (
-                <BsCircle size="23" />
+                <RadioBtn colorOp={true} height="2rem" width="2rem" />
               )}
               <TextWrapper>
                 <TitleStyles>{step.title}</TitleStyles>

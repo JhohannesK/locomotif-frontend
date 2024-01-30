@@ -1,7 +1,7 @@
 export const colors = {
   background: {
     pineGreen: '#0E6655',
-    white: '#FEFFFE',
+    white: '#FFFFFF',
     whiteSmoke: '#F8F8F8',
     timberwolf: '#D1D1D1',
     antiflashWhite: '#EDEDED',

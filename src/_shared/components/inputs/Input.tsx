@@ -11,6 +11,7 @@ const GeneralInput = ({
   label,
   type,
   name,
+  rows,
   disabled,
   InputProps,
 }: GeneralInputType) => {
@@ -42,9 +43,15 @@ const GeneralInput = ({
               id="outlined-multiline-static"
               label=""
               multiline
-              rows={4}
+              placeholder={placeholder}
+              rows={rows ?? 4}
               defaultValue=" "
               fullWidth
+              sx={{ ...sx }}
+              inputProps={{
+                ...InputProps,
+                style: {},
+              }}
               error={!!errors[name]}
               helperText={
                 errors[name] ? (errors[name]?.message as unknown as string) : ''

@@ -9,6 +9,7 @@ import { colors } from '../../../colors'
 export default function GenericSelect({
   label,
   data,
+  sx,
 }: SelectProps & {
   label: string
   data: string[]
@@ -35,6 +36,12 @@ export default function GenericSelect({
         label={label}
         onChange={handleChange}
         input={<OutlinedInput key={label} />}
+        inputProps={{
+          style: {
+            borderRadius: '10px',
+          },
+        }}
+        sx={{ borderRadius: '10px', height: '3rem', ...sx }}
       >
         <MenuItem disabled>none</MenuItem>
         {data.map((item: string, index) => (

@@ -22,6 +22,7 @@ export type GeneralInputType = {
   label?: string
   type?: 'text' | 'password' | 'date' | 'tel' | 'number' | 'multiline-input'
   disabled?: boolean
+  rows?: number
   InputProps?: object
 }
 

@@ -47,7 +47,22 @@ export const theme = createTheme({
 
     MuiInputBase: {
       styleOverrides: {
-        input: {},
+        input: {
+          paddingLeft: '1px',
+          borderRadius: '10px',
+          fontFamily: 'Inter',
+        },
+        root: {
+          '& label.Mui-focused': {
+            color: colors.button.pineGreen,
+          },
+
+          '& .MuiOutlinedInput-root': {
+            '&.Mui-focused fieldset': {
+              borderColor: colors.button.pineGreen,
+            },
+          },
+        },
       },
     },
 
@@ -55,8 +70,17 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           fontFamily: 'Inter',
-          gap: '1rem',
           width: '100%',
+          borderRadius: '10px',
+          '& label.Mui-focused': {
+            color: colors.button.pineGreen,
+          },
+
+          '& .MuiOutlinedInput-root': {
+            '&.Mui-focused fieldset': {
+              borderColor: colors.button.pineGreen,
+            },
+          },
           // '&:focus': {
           //   borderRadius: 4,
           //   borderColor: colors.border.active,
@@ -74,6 +98,7 @@ export const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
+          borderRadius: '10px',
           fontFamily: 'Inter',
           '& label.Mui-focused': {
             color: colors.button.pineGreen,

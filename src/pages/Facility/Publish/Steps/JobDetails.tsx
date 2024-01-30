@@ -1,0 +1,150 @@
+import styled from 'styled-components'
+import { colors } from '../../../../colors'
+import { FormProvider, useForm } from 'react-hook-form'
+import {
+  CheckedRadioBtn,
+  GenericButton,
+  GenericInput,
+  GenericSelect,
+  RadioBtn,
+} from '../../../../_shared'
+import { InputBoxLabels } from '../../../auth/signin/styles'
+import Checkbox from '@mui/material/Checkbox'
+import { FormControlLabel, RadioGroup } from '@mui/material'
+
+const JobDetails = () => {
+  const methods = useForm()
+  return (
+    <Container>
+      <Wrapper>
+        <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>Job Details</p>
+        <FormProvider {...methods}>
+          <FormContainer action="">
+            <div>
+              <InputBoxLabels>Job title</InputBoxLabels>
+              <GenericSelect
+                data={['Surgeon', 'Doctor']}
+                name="Job title"
+                label=""
+                placeholder="Surgeon"
+                sx={{ borderRadius: '0.5rem' }}
+              />
+            </div>
+            <div>
+              <InputBoxLabels>Job Description</InputBoxLabels>
+              <GenericInput
+                type="multiline-input"
+                name="Job title"
+                label=""
+                placeholder="200 characters allowed"
+                rows={8}
+                sx={{ borderRadius: '0.5rem' }}
+              />
+            </div>
+            <div>
+              <InputBoxLabels>
+                Why are you advertising this role?
+              </InputBoxLabels>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="Replacing someone who's leaving"
+                name="radio-buttons-group"
+              >
+                <FormControlLabel
+                  label="Replacing someone who's leaving"
+                  value={"Replacing someone who's leaving"}
+                  control={
+                    <Checkbox
+                      icon={<RadioBtn height="1.5rem" width="1.5rem" />}
+                      checkedIcon={
+                        <CheckedRadioBtn
+                          outerRadius="1.1rem"
+                          innerRadius=".5rem"
+                        />
+                      }
+                    />
+                  }
+                />
+                <FormControlLabel
+                  label="This is a new job"
+                  value={'This is a new job'}
+                  control={
+                    <Checkbox
+                      icon={<RadioBtn height="1.5rem" width="1.5rem" />}
+                      checkedIcon={
+                        <CheckedRadioBtn
+                          outerRadius="1.1rem"
+                          innerRadius=".5rem"
+                        />
+                      }
+                    />
+                  }
+                />
+                <FormControlLabel
+                  label="Temporary Position"
+                  value={'Temporary Position'}
+                  control={
+                    <Checkbox
+                      icon={<RadioBtn height="1.5rem" width="1.5rem" />}
+                      checkedIcon={
+                        <CheckedRadioBtn
+                          outerRadius="1.1rem"
+                          innerRadius=".5rem"
+                        />
+                      }
+                    />
+                  }
+                />
+              </RadioGroup>
+            </div>
+            <ButtonWrapper>
+              <GenericButton
+                type="button"
+                sx={{
+                  width: '8rem',
+                  bgcolor: 'white',
+                  border: `1px solid ${colors.text.pineGreen}`,
+                  color: `${colors.text.pineGreen}`,
+                }}
+                title="Previous"
+              />
+              <GenericButton sx={{ width: '8rem' }} title="Next" />
+            </ButtonWrapper>
+          </FormContainer>
+        </FormProvider>
+      </Wrapper>
+    </Container>
+  )
+}
+
+export default JobDetails
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid ${colors.border.timberwolf};
+  border-radius: 0.5rem;
+  min-width: 100%;
+  box-shadow: 0px 2px 2px rgba(87, 86, 86, 0.25);
+  background-color: ${colors.background.white};
+`
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+`
+
+export const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+`

@@ -12,6 +12,7 @@ import PersonnelLayout from './_shared/Layout/Layout'
 import FindJob from './pages/Personnel/personnel-home-page/find-job'
 import ApplicationsPage from './pages/Personnel/personnel-applications-page/applicationsPage/applicationsPage'
 import Overview from './pages/Facility/Overview/Overview'
+import JobDetails from './pages/Facility/Publish/RootLayout'
 
 const personnel = [
   {
@@ -44,6 +45,10 @@ const facility = [
         element: <Overview />,
       },
     ],
+  },
+  {
+    path: routhPaths.PAGES.FACILITY.publish,
+    element: <JobDetails />,
   },
 ]
 

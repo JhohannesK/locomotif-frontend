@@ -21,6 +21,7 @@ const Constants = {
     PAGES: {
       FACILITY: {
         facility: '/facility/',
+        publish: '/facility/create/post',
       },
       PERSONNEL: {
         personnel: '/personnel',
