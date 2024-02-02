@@ -29,7 +29,9 @@ export const DetailsWrapper = styled.div`
 
 export const NameWrapper = styled.div`
   color: rgba(0, 0, 0, 0.8);
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
 
   font-size: 15px;
   font-style: normal;
@@ -39,7 +41,9 @@ export const NameWrapper = styled.div`
 
 export const TitleWrapper = styled.div`
   color: rgba(0, 0, 0, 0.6);
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
 
   font-size: 14px;
   font-style: normal;
@@ -49,7 +53,9 @@ export const TitleWrapper = styled.div`
 
 export const DateWrapper = styled.div`
   color: rgba(0, 0, 0, 0.8);
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
 
   font-size: 14px;
   font-style: normal;

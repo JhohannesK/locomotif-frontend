@@ -73,7 +73,9 @@ export const BottomContent = styled.div`
 
 export const GetStarted = styled.div`
   color: ${colors.text.white};
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;

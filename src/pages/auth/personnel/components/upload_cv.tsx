@@ -55,9 +55,7 @@ const UploadCV = () => {
               borderRadius: '10px',
             }}
           >
-            {uploads?.map((upload) => (
-              <p>{upload.name}</p>
-            ))}
+            {uploads?.map((upload) => <p>{upload.name}</p>)}
           </div>
           <GenericButton
             onClick={open}

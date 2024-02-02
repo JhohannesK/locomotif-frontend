@@ -18,4 +18,5 @@ export type SignInResponse = {
 
 export interface AppState {
   activeSidebar: number
+  activeJobPublishingStep: number
 }

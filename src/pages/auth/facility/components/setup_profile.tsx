@@ -129,7 +129,7 @@ const FacilitySetUpProfile = ({
                 size="large"
                 onClick={() => handleActiveState(4)}
               />
-              {mutation.isLoading ? (
+              {mutation.isPending ? (
                 <LoadingButton
                   loading
                   sx={{

@@ -39,7 +39,7 @@ const FacilityTermsAndCondions = ({
               <UpperContentH1>Agree to our terms and Conditions</UpperContentH1>
             </AuthUpperContent>
 
-            {mutation.isLoading ? (
+            {mutation.isPending ? (
               <LoadingButton
                 loading
                 sx={{

@@ -71,7 +71,7 @@ const SignUp = ({
             </AuthFields>
 
             <AuthButton>
-              {mutation.isLoading ? (
+              {mutation.isPending ? (
                 <LoadingButton
                   loading
                   sx={{

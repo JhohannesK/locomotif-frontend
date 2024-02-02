@@ -228,7 +228,7 @@ const FilterPane = () => {
           ) : (
             <>
               <FormGroup>
-                {Specialties?.map((job, index) => (
+                {Specialties?.map((job: string, index: number) => (
                   <FormControlLabel
                     key={index}
                     control={

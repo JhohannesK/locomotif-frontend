@@ -13,10 +13,10 @@ const useSpecialities = () => {
     return response.data
   }
 
-  const { data, isLoading } = useQuery<SpecialitiesType, Error>(
-    ['specialities'],
-    fetchSpecialties
-  )
+  const { data, isLoading } = useQuery<SpecialitiesType, Error>({
+    queryKey: ['specialities'],
+    queryFn: fetchSpecialties,
+  })
 
   return {
     data: data?.specialities,

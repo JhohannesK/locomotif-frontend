@@ -125,7 +125,9 @@ export const ProfileAvartar = styled.div`
 export const LinkStyles = styled(Link)`
   text-decoration: none;
   color: ${colors.button.pineGreen};
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -251,7 +253,9 @@ export const NavbarOptionsIcon = styled.i`
   cursor: pointer;
 `
 export const NavbarOptionsH3 = styled.h3`
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;

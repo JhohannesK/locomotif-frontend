@@ -36,7 +36,9 @@ export const UpperContentH1 = styled.h1`
   width: 100%;
   color: #000;
   text-align: center;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
   font-size: 40px;
   font-style: normal;
   font-weight: 700;

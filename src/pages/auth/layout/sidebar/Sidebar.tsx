@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 import {
   BoxStyle,
@@ -19,13 +19,14 @@ import Constants from '../../../../utils/constants'
 import { Steps } from '../../_types'
 import { useEffect } from 'react'
 import { CheckedRadioBtn, RadioBtn } from '../../../../_shared'
+import { useAppDispatch } from '../../../../redux/hooks/hook'
 
 const Sidebar = ({ steps }: { steps: Steps }) => {
   const navigate = useNavigate()
   const activeSidebar = useSelector(
     (state: RootState) => state.app.activeSidebar
   )
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(setActiveSidebar({ activeSidebar: 1 }))

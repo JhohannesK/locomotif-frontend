@@ -34,7 +34,7 @@ const PersonnelTermsAndConditions = ({
             <AuthUpperContent>
               <h1>Agree to our terms and Conditions</h1>
             </AuthUpperContent>
-            {mutation.isLoading ? (
+            {mutation.isPending ? (
               <LoadingButton
                 loading
                 sx={{

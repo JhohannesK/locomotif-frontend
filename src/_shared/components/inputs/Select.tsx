@@ -2,16 +2,21 @@ import * as React from 'react'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
-import Select, { SelectChangeEvent, SelectProps } from '@mui/material/Select'
-import { OutlinedInput, SxProps } from '@mui/material'
+import {
+  OutlinedInput,
+  Select,
+  SelectChangeEvent,
+  SelectProps,
+} from '@mui/material'
 import { colors } from '../../../colors'
+import { SxProps } from '@mui/system'
 
 export default function GenericSelect({
   label,
   data,
-  sx,
+  // sx,
 }: SelectProps & {
-  label: string
+  label?: string
   data: string[]
   name?: string
   defaultValue?: string
@@ -30,21 +35,18 @@ export default function GenericSelect({
         {label}
       </InputLabel>
       <Select
-        key={label}
-        id="demo-select-small"
         value={age}
-        label={label}
-        onChange={handleChange}
         input={<OutlinedInput key={label} />}
         inputProps={{
           style: {
             borderRadius: '10px',
           },
         }}
-        sx={{ borderRadius: '10px', height: '3rem', ...sx }}
+        // sx={{ borderRadius: '10px', height: '3rem', ...sx }}
+        onChange={handleChange}
       >
         <MenuItem disabled>none</MenuItem>
-        {data.map((item: string, index) => (
+        {data.map((item, index) => (
           <MenuItem key={index} value={item}>
             {item}
           </MenuItem>

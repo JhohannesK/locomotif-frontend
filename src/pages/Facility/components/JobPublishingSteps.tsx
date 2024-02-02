@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import Radiobtn from '../../../_shared/components/Radiobtn'
 import { colors } from '../../../colors'
 import GeneralButton from '../../../_shared/components/button/Button'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks/hook'
+import { setActiveJobPublishingStep } from '../../../redux/slices/appSlice'
+import { useEffect } from 'react'
+import { CheckedRadioBtn } from '../../../_shared'
 
 const steps = [
   'Job Details',
@@ -17,6 +21,44 @@ const steps = [
 ]
 
 const JobPublishingSteps = () => {
+  const activeSidebar = useAppSelector(
+    (state) => state.app.activeJobPublishingStep
+  )
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(setActiveJobPublishingStep({ activeJobPublishingStep: 1 }))
+  }, [dispatch])
+
+  const onHandleClick = (index: number) => {
+    dispatch(setActiveJobPublishingStep({ activeJobPublishingStep: index }))
+  }
+
+  const onDisable = (index: number): boolean => {
+    switch (activeSidebar) {
+      case 0:
+        return index > 0
+      case 1:
+        return index > 1
+      case 2:
+        return index > 2
+      case 3:
+        return index > 3
+      case 4:
+        return index > 3
+      case 5:
+        return index > 4
+      case 6:
+        return index > 5
+      case 7:
+        return index > 6
+      case 8:
+        return index > 7
+      default:
+        return false
+    }
+  }
+
   return (
     <Container>
       <Wrapper>
@@ -25,8 +67,21 @@ const JobPublishingSteps = () => {
         </p>
         {steps.map((step, index) => {
           return (
-            <StepRow key={index}>
-              <Radiobtn height="1.5rem" width="1.5rem" />
+            <StepRow
+              key={index}
+              onClick={() => {
+                onHandleClick(index)
+                dispatch(
+                  setActiveJobPublishingStep({ activeJobPublishingStep: index })
+                )
+              }}
+              disabled={onDisable(index)}
+            >
+              {!onDisable(index) ? (
+                <CheckedRadioBtn outerRadius="1.5rem" innerRadius=".5rem" />
+              ) : (
+                <Radiobtn height="1.5rem" width="1.5rem" />
+              )}
               <p>{step}</p>
             </StepRow>
           )
@@ -52,14 +107,18 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.4rem;
   padding: 1rem;
 `
 
-export const StepRow = styled.div`
+export const StepRow = styled.button`
   display: flex;
   flex-direction: row;
   gap: 1rem;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.3rem;
+  background: transparent;
+  border: none;
+  /* TODO: Use default pointer when not active */
+  cursor: pointer;
 `

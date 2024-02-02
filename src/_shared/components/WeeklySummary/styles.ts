@@ -59,7 +59,9 @@ export const RightContent = styled.div`
 `
 export const RightContentH4 = styled.h4`
   color: ${colors.text.pineGreen};
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
@@ -77,7 +79,9 @@ export const RightContentH4 = styled.h4`
 
 export const RightContentP = styled.p`
   color: rgba(0, 0, 0, 0.7);
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
 
   font-size: 15px;
   font-style: normal;
@@ -94,7 +98,9 @@ export const RightContentP = styled.p`
 `
 export const FacilityLeftMidTitle = styled.h2`
   color: rgba(0, 0, 0, 0.8);
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
 
   font-size: 20px;
   font-style: normal;

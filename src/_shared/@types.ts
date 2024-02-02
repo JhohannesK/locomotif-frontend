@@ -1,7 +1,7 @@
+import { SxProps } from '@mui/system'
 import {
   ButtonPropsSizeOverrides,
   ButtonPropsVariantOverrides,
-  SxProps,
 } from '@mui/material'
 import { OverridableStringUnion } from '@mui/types'
 import { Status } from '../pages/Personnel/personnel-applications-page/components/applicationsCard/applicationsCard'

@@ -1,12 +1,16 @@
 import { FormProvider, useForm } from 'react-hook-form'
-import { ButtonWrapper, Container, FormContainer, Wrapper } from './JobDetails'
+import { ButtonWrapper, Container, Wrapper } from './JobDetails'
 import { InputBoxLabels } from '../../../auth/signin/styles'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { CheckedRadioBtn, GenericButton, RadioBtn } from '../../../../_shared'
 import { colors } from '../../../../colors'
+import { useAppDispatch } from '../../../../redux/hooks/hook'
+import { setActiveJobPublishingStep } from '../../../../redux/slices/appSlice'
+import styled from 'styled-components'
 
 const ContractDetails = () => {
   const methods = useForm()
+  const dispatch = useAppDispatch()
   return (
     <Container>
       <Wrapper>
@@ -70,16 +74,22 @@ const ContractDetails = () => {
               </RadioGroup>
             </div>
 
-            <div>
+            <div
+              style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+            >
               <InputBoxLabels>
                 What's the contract duration? (Only for temporary contracts)
               </InputBoxLabels>
-              {/* <NumberInput
-                aria-label="Demo number input"
-                placeholder="Type a number…"
-                value={value}
-                onChange={(event, val) => setValue(val)}
-              /> */}
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <InputWrapper>
+                  <InputLabel>Months</InputLabel>
+                  <LocoInput type="number" max={7} />
+                </InputWrapper>
+                <InputWrapper>
+                  <InputLabel>Days</InputLabel>
+                  <LocoInput type="number" max={31} maxLength={2} />
+                </InputWrapper>
+              </div>
             </div>
 
             <div>
@@ -146,8 +156,22 @@ const ContractDetails = () => {
                   color: `${colors.text.pineGreen}`,
                 }}
                 title="Previous"
+                onClick={() => {
+                  dispatch(
+                    setActiveJobPublishingStep({ activeJobPublishingStep: 0 })
+                  )
+                }}
               />
-              <GenericButton sx={{ width: '8rem' }} title="Next" />
+              <GenericButton
+                type="button"
+                sx={{ width: '8rem' }}
+                title="Next"
+                onClick={() => {
+                  dispatch(
+                    setActiveJobPublishingStep({ activeJobPublishingStep: 2 })
+                  )
+                }}
+              />
             </ButtonWrapper>
           </FormContainer>
         </FormProvider>
@@ -157,3 +181,32 @@ const ContractDetails = () => {
 }
 
 export default ContractDetails
+
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+`
+
+export const InputWrapper = styled.div`
+  display: flex;
+  gap: 0.4rem;
+`
+
+export const InputLabel = styled.p`
+  /* color: ${colors.text.platinum}; */
+  background: rgba(217, 217, 217, 0.7);
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+`
+export const LocoInput = styled.input`
+  border: 1px solid ${colors.border.timberwolf};
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 68px;
+
+  &:focus {
+    outline: none;
+  }
+`

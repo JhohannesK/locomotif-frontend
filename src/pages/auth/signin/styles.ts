@@ -131,7 +131,9 @@ export const Welcome = styled.div`
 
 export const WelcomeBack = styled.div`
   color: #000;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
 
   font-size: 30px;
   font-style: normal;
@@ -146,7 +148,9 @@ export const WelcomeBack = styled.div`
 export const Instructions = styled.div`
   color: rgba(0, 0, 0, 0.6);
   text-align: center;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
 
   font-size: 12px;
   font-style: normal;

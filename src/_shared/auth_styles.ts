@@ -25,7 +25,9 @@ export const AuthUpperContent = styled.div`
 `
 export const AuthUpperContentH2 = styled.div`
   color: #000;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
@@ -34,7 +36,9 @@ export const AuthUpperContentH2 = styled.div`
 export const AuthUpperContentP = styled.p`
   color: rgba(0, 0, 0, 0.6);
   text-align: center;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -93,7 +97,9 @@ export const AuthButtonH3 = styled.h3`
   width: 100%;
   color: rgba(0, 0, 0, 0.8);
   text-align: center;
-  font-feature-settings: 'clig' off, 'liga' off;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

@@ -55,18 +55,18 @@ export const BoxStyle = styled.button<{ grayout: number; tabIndex: number }>`
         ? 'default'
         : 'pointer'
       : props.grayout === 2
-      ? props.tabIndex > 2
-        ? 'default'
-        : 'pointer'
-      : props.grayout === 3
-      ? props.tabIndex < 3
-        ? 'default'
-        : 'pointer'
-      : props.grayout === 4
-      ? props.tabIndex < 3
-        ? 'default'
-        : 'pointer'
-      : 'pointer'};
+        ? props.tabIndex > 2
+          ? 'default'
+          : 'pointer'
+        : props.grayout === 3
+          ? props.tabIndex < 3
+            ? 'default'
+            : 'pointer'
+          : props.grayout === 4
+            ? props.tabIndex < 3
+              ? 'default'
+              : 'pointer'
+            : 'pointer'};
   background-color: inherit;
   outline: none;
   border: none;
@@ -76,18 +76,18 @@ export const BoxStyle = styled.button<{ grayout: number; tabIndex: number }>`
         ? colors.text.inactive
         : colors.text.white
       : props.grayout === 2
-      ? props.tabIndex > 2
-        ? colors.text.inactive
-        : colors.text.white
-      : props.grayout === 3
-      ? props.tabIndex < 3
-        ? colors.text.inactive
-        : colors.text.white
-      : props.grayout === 4
-      ? props.tabIndex < 3
-        ? colors.text.inactive
-        : colors.text.white
-      : colors.text.white};
+        ? props.tabIndex > 2
+          ? colors.text.inactive
+          : colors.text.white
+        : props.grayout === 3
+          ? props.tabIndex < 3
+            ? colors.text.inactive
+            : colors.text.white
+          : props.grayout === 4
+            ? props.tabIndex < 3
+              ? colors.text.inactive
+              : colors.text.white
+            : colors.text.white};
 `
 
 export const TextWrapper = styled.div`
