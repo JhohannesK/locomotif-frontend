@@ -47,7 +47,7 @@ const ConponentToRender = () => {
       <ConditionRenderComponent renderIf={active === 5}>
         <PersonnelSpecification />
       </ConditionRenderComponent>
-      <ConditionRenderComponent renderIf={active === 6}>
+      {/* <ConditionRenderComponent renderIf={active === 6}>
         <PayType />
       </ConditionRenderComponent>
       <ConditionRenderComponent renderIf={active === 7}>
@@ -58,7 +58,7 @@ const ConponentToRender = () => {
       </ConditionRenderComponent>
       <ConditionRenderComponent renderIf={active === 9}>
         <PayType />
-      </ConditionRenderComponent>
+      </ConditionRenderComponent> */}
     </>
   )
 }

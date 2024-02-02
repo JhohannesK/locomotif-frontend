@@ -45,15 +45,15 @@ const JobPublishingSteps = () => {
       case 3:
         return index > 3
       case 4:
-        return index > 3
-      case 5:
         return index > 4
-      case 6:
+      case 5:
         return index > 5
-      case 7:
+      case 6:
         return index > 6
-      case 8:
+      case 7:
         return index > 7
+      case 8:
+        return index > 8
       default:
         return false
     }
