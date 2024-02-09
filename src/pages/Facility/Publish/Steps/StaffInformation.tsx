@@ -66,6 +66,7 @@ const StaffInformation = () => {
                   />
                 }
               />
+              {/* TODO: When the user selects any option, display that option in the input box and make input readonly */}
               <div>
                 <InputBoxLabels>Area of work</InputBoxLabels>
                 <GenericInput

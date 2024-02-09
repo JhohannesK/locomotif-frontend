@@ -29,7 +29,6 @@ const GeneralInput = ({
     formState: { errors },
   } = useFormContext()
 
-  console.log('🚀 ~ file: Input.tsx:29 ~ errors:', errors)
   return (
     <>
       {type === 'multiline-input' ? (
