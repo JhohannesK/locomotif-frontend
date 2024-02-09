@@ -4,7 +4,7 @@ import { RootState } from '../store'
 
 const initialState: AppState = {
   activeSidebar: 1,
-  activeJobPublishingStep: 1,
+  activeJobPublishingStep: 8,
 }
 
 export const appSlice = createSlice({

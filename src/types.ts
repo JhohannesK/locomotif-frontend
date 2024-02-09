@@ -15,5 +15,5 @@ export enum TJobSteps {
   'Professional Registration',
   'Contact Details',
   'Recruiter Information',
-  'Preview Posing',
+  'Preview Posting',
 }
