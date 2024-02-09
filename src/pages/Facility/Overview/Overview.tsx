@@ -3,13 +3,22 @@ import ProfileCard from '../components/ProfileCard'
 import Layout from '../Layout'
 import ApplicationUpdate from './ApplicationUpdate'
 import Constants from '../../../utils/constants'
+import { GenericButton } from '../../../_shared'
+import { useNavigate } from 'react-router-dom'
 
 function Overview() {
+  const navigate = useNavigate()
+  const { publish } = Constants.ROUTES.PAGES.FACILITY
   return (
     <Layout>
       <Wrapper>
         <CardContainer>
           <ProfileCard />
+          <GenericButton
+            title="Create Post"
+            sx={{ width: '100%', maxWidth: '20rem' }}
+            onClick={() => navigate(publish)}
+          />
         </CardContainer>
         <Container>
           <ApplicationUpdate />
@@ -24,9 +33,9 @@ export default Overview
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1201px) {
     flex-direction: row;
-    gap: 1rem;
+    gap: 4rem;
   }
   max-width: 1700px;
   width: 100vw;
@@ -41,7 +50,7 @@ const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  width: 23%;
+  width: 20rem;
   @media screen and (max-width: 1200px) {
     width: 100%;
     align-items: center;

@@ -2,11 +2,14 @@ import { IoIosArrowBack } from 'react-icons/io'
 import styled from 'styled-components'
 import { colors } from '../../../colors'
 import Constants from '../../../utils/constants'
+import { useNavigate } from 'react-router-dom'
 
 const Header = () => {
+  const navigate = useNavigate()
+  const { facility } = Constants.ROUTES.PAGES.FACILITY
   return (
     <Wrapper>
-      <IconStyle>
+      <IconStyle onClick={() => navigate(facility)}>
         <IoIosArrowBack />
       </IconStyle>
       <TextBox>
@@ -42,6 +45,7 @@ const IconStyle = styled.div`
   background-color: ${colors.background.white};
   border-radius: 50%;
   box-shadow: 0px 2px 2px rgba(87, 86, 86, 0.25);
+  cursor: pointer;
 `
 
 const TextBox = styled.div`
