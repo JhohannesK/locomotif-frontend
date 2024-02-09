@@ -1,7 +1,7 @@
-import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
+import { FormControlLabel, Radio } from '@mui/material'
 import { CheckedRadioBtn, RadioBtn } from '..'
 import styled from 'styled-components'
-import { IoIosArrowDown } from 'react-icons/io'
+import { IoIosArrowDown, IoIosArrowForward } from 'react-icons/io'
 import { useState } from 'react'
 
 const LocoDropdown = ({ items, title }: { items: string[]; title: string }) => {
@@ -13,15 +13,16 @@ const LocoDropdown = ({ items, title }: { items: string[]; title: string }) => {
         <div>
           <p style={{ fontSize: '18px' }}>{title}</p>
         </div>
-        <div>
-          <IoIosArrowDown />
-        </div>
+        <div>{open ? <IoIosArrowDown /> : <IoIosArrowForward />}</div>
       </HeaderArrow>
       <ListContainer open={open}>
-        <RadioGroup
+        {/* <RadioGroup
           aria-labelledby="demo-radio-buttons-group-label"
           defaultValue="Full time"
           name="radio-buttons-group"
+        > */}
+        <div
+          style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
         >
           {items.map((item, index) => (
             <FormControlLabel
@@ -38,7 +39,8 @@ const LocoDropdown = ({ items, title }: { items: string[]; title: string }) => {
               }
             />
           ))}
-        </RadioGroup>
+        </div>
+        {/* </RadioGroup> */}
       </ListContainer>
     </GroupCard>
   )

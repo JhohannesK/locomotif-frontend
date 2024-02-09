@@ -138,6 +138,8 @@ export const Container = styled.div`
   min-width: 100%;
   box-shadow: 0px 2px 2px rgba(87, 86, 86, 0.25);
   background-color: ${colors.background.white};
+  height: calc(100vh - 250px);
+  overflow-y: auto;
 `
 
 export const Wrapper = styled.div`
@@ -145,6 +147,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
+  height: 100%;
 `
 
 export const FormContainer = styled.form`
