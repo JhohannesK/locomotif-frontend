@@ -3,6 +3,25 @@ import { colors } from '../../../../colors'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { ButtonWrapper, Container, Wrapper } from './JobDetails'
+import LocoDropdown from '../../../../_shared/components/Dropdown'
+
+const medicalList = [
+  'Senior consultant',
+  'Specialist',
+  'Medical officer',
+  'House officer',
+  'Lab technician',
+  'Nurse',
+]
+
+const AlliedHealthList = [
+  'Dieticians',
+  'Occupational therapist',
+  'Physiotherapist',
+  'Radiographer',
+  'Speech therapist',
+  'Pharmacist',
+]
 
 const StaffInformation = () => {
   const dispatch = useAppDispatch()
@@ -12,7 +31,11 @@ const StaffInformation = () => {
         <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
           Staff Information
         </p>
-        <p>Staff Information</p>
+        <LocoDropdown items={medicalList} title="Medical" />
+        <LocoDropdown
+          items={AlliedHealthList}
+          title="Allied and Health Professionals"
+        />
         <ButtonWrapper>
           <GenericButton
             type="button"

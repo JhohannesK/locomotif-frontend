@@ -4,7 +4,7 @@ import { RootState } from '../store'
 
 const initialState: AppState = {
   activeSidebar: 1,
-  activeJobPublishingStep: 0,
+  activeJobPublishingStep: 1,
 }
 
 export const appSlice = createSlice({
@@ -23,10 +23,7 @@ export const appSlice = createSlice({
     ) => {
       state.activeJobPublishingStep = action.payload.activeJobPublishingStep
     },
-    nextPage: (
-      state
-      // action: PayloadAction<Pick<AppState, 'activeJobPublishingStep'>>
-    ) => {
+    nextPage: (state) => {
       state.activeJobPublishingStep += 1
     },
     prevPage: (state) => {
