@@ -2,7 +2,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { GenericButton, GenericInput } from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
-import { setActiveJobPublishingStep } from '../../../../redux/slices/appSlice'
+import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { ButtonWrapper, Container, FormContainer, Wrapper } from './JobDetails'
 import { InputBoxLabels } from '../../../auth/signin/styles'
 
@@ -68,9 +68,7 @@ const Location = () => {
             }}
             title="Previous"
             onClick={() => {
-              dispatch(
-                setActiveJobPublishingStep({ activeJobPublishingStep: 2 })
-              )
+              dispatch(prevPage())
             }}
           />
           <GenericButton
@@ -78,9 +76,7 @@ const Location = () => {
             sx={{ width: '8rem' }}
             title="Next"
             onClick={() => {
-              dispatch(
-                setActiveJobPublishingStep({ activeJobPublishingStep: 4 })
-              )
+              dispatch(nextPage())
             }}
           />
         </ButtonWrapper>

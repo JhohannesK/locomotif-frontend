@@ -19,7 +19,7 @@ const JobLayout = ({
           <Header />
         </div>
         <InnerContainer>
-          <StepperContainer style={{ minWidth: '20rem' }}>
+          <StepperContainer style={{ minWidth: '19rem' }}>
             {steppers}
           </StepperContainer>
           <div style={{ width: '100%' }}>{jobDetails}</div>

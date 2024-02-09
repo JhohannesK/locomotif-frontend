@@ -1,3 +1,5 @@
+import { TJobSteps } from '../types'
+
 export interface IAuth {
   authResponse: ResponseType
   signInResponse: SignInResponse
@@ -18,5 +20,5 @@ export type SignInResponse = {
 
 export interface AppState {
   activeSidebar: number
-  activeJobPublishingStep: number
+  activeJobPublishingStep: TJobSteps
 }

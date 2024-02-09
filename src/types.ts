@@ -4,3 +4,16 @@ export interface ProtectedRouteProps {
   userRole: Roles // User's role ('personnel' or 'facility')
   children?: React.ReactNode
 }
+
+export enum TJobSteps {
+  'Job Details',
+  'Staff information',
+  'Contract Details',
+  'Pay type',
+  'Location',
+  'Personel Specification',
+  'Professional Registration',
+  'Contact Details',
+  'Recruiter Information',
+  'Preview Posing',
+}

@@ -7,7 +7,7 @@ import { CheckedRadioBtn, GenericButton, RadioBtn } from '../../../../_shared'
 import { InputWrapper, LocoInput } from './ContractDetails'
 import { colors } from '../../../../colors'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
-import { setActiveJobPublishingStep } from '../../../../redux/slices/appSlice'
+import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 
 const PayType = () => {
   const methods = useForm()
@@ -114,9 +114,7 @@ const PayType = () => {
                 }}
                 title="Previous"
                 onClick={() => {
-                  dispatch(
-                    setActiveJobPublishingStep({ activeJobPublishingStep: 1 })
-                  )
+                  dispatch(prevPage())
                 }}
               />
               <GenericButton
@@ -124,9 +122,7 @@ const PayType = () => {
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {
-                  dispatch(
-                    setActiveJobPublishingStep({ activeJobPublishingStep: 3 })
-                  )
+                  dispatch(nextPage())
                 }}
               />
             </ButtonWrapper>

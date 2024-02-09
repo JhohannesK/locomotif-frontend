@@ -1,4 +1,5 @@
 import { useAppSelector } from '../../../redux/hooks/hook'
+import { TJobSteps } from '../../../types'
 import { ConditionRenderComponent } from '../../../utils/ConditionRender'
 import Layout from '../Layout'
 import JobPublishingSteps from '../components/JobPublishingSteps'
@@ -29,22 +30,28 @@ const ConponentToRender = () => {
 
   return (
     <>
-      <ConditionRenderComponent renderIf={active === 0}>
+      <ConditionRenderComponent renderIf={active === TJobSteps['Job Details']}>
         <JobDetails />
       </ConditionRenderComponent>
-      <ConditionRenderComponent renderIf={active === 1}>
+      <ConditionRenderComponent
+        renderIf={active === TJobSteps['Contract Details']}
+      >
         <ContractDetails />
       </ConditionRenderComponent>
-      <ConditionRenderComponent renderIf={active === 2}>
+      <ConditionRenderComponent renderIf={active === TJobSteps['Pay type']}>
         <PayType />
       </ConditionRenderComponent>
-      <ConditionRenderComponent renderIf={active === 3}>
+      <ConditionRenderComponent renderIf={active === TJobSteps.Location}>
         <Location />
       </ConditionRenderComponent>
-      <ConditionRenderComponent renderIf={active === 4}>
+      <ConditionRenderComponent
+        renderIf={active === TJobSteps['Staff information']}
+      >
         <StaffInformation />
       </ConditionRenderComponent>
-      <ConditionRenderComponent renderIf={active === 5}>
+      <ConditionRenderComponent
+        renderIf={active === TJobSteps['Personel Specification']}
+      >
         <PersonnelSpecification />
       </ConditionRenderComponent>
       {/* <ConditionRenderComponent renderIf={active === 6}>

@@ -3,16 +3,15 @@ import Radiobtn from '../../../_shared/components/Radiobtn'
 import { colors } from '../../../colors'
 import GeneralButton from '../../../_shared/components/button/Button'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks/hook'
-import { setActiveJobPublishingStep } from '../../../redux/slices/appSlice'
-import { useEffect } from 'react'
 import { CheckedRadioBtn } from '../../../_shared'
+import { moveToPage } from '../../../redux/slices/appSlice'
 
 const steps = [
   'Job Details',
+  'Staff information',
   'Contract Details',
   'Pay type',
   'Location',
-  'Staff information',
   'Personel Specification',
   'Professional Registration',
   'Contact Details',
@@ -26,12 +25,8 @@ const JobPublishingSteps = () => {
   )
   const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    dispatch(setActiveJobPublishingStep({ activeJobPublishingStep: 1 }))
-  }, [dispatch])
-
   const onHandleClick = (index: number) => {
-    dispatch(setActiveJobPublishingStep({ activeJobPublishingStep: index }))
+    dispatch(moveToPage({ activeJobPublishingStep: index }))
   }
 
   const onDisable = (index: number): boolean => {
@@ -71,9 +66,7 @@ const JobPublishingSteps = () => {
               key={index}
               onClick={() => {
                 onHandleClick(index)
-                dispatch(
-                  setActiveJobPublishingStep({ activeJobPublishingStep: index })
-                )
+                // dispatch(moveToPage({activeJobPublishingStep: index}))
               }}
               disabled={onDisable(index)}
             >

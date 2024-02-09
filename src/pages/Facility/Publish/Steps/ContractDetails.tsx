@@ -5,7 +5,7 @@ import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { CheckedRadioBtn, GenericButton, RadioBtn } from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
-import { setActiveJobPublishingStep } from '../../../../redux/slices/appSlice'
+import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import styled from 'styled-components'
 
 const ContractDetails = () => {
@@ -157,9 +157,7 @@ const ContractDetails = () => {
                 }}
                 title="Previous"
                 onClick={() => {
-                  dispatch(
-                    setActiveJobPublishingStep({ activeJobPublishingStep: 0 })
-                  )
+                  dispatch(prevPage())
                 }}
               />
               <GenericButton
@@ -167,9 +165,7 @@ const ContractDetails = () => {
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {
-                  dispatch(
-                    setActiveJobPublishingStep({ activeJobPublishingStep: 2 })
-                  )
+                  dispatch(nextPage())
                 }}
               />
             </ButtonWrapper>

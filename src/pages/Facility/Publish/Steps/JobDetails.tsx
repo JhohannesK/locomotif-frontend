@@ -12,7 +12,7 @@ import { InputBoxLabels } from '../../../auth/signin/styles'
 import Checkbox from '@mui/material/Checkbox'
 import { FormControlLabel, RadioGroup } from '@mui/material'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
-import { setActiveJobPublishingStep } from '../../../../redux/slices/appSlice'
+import { nextPage } from '../../../../redux/slices/appSlice'
 
 const JobDetails = () => {
   const methods = useForm()
@@ -101,7 +101,7 @@ const JobDetails = () => {
               </RadioGroup>
             </div>
             <ButtonWrapper>
-              <GenericButton
+              {/* <GenericButton
                 type="button"
                 sx={{
                   width: '8rem',
@@ -110,15 +110,13 @@ const JobDetails = () => {
                   color: `${colors.text.pineGreen}`,
                 }}
                 title="Previous"
-              />
+/> */}
               <GenericButton
                 type="button"
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {
-                  dispatch(
-                    setActiveJobPublishingStep({ activeJobPublishingStep: 1 })
-                  )
+                  dispatch(nextPage())
                 }}
               />
             </ButtonWrapper>

@@ -1,7 +1,7 @@
 import { GenericButton } from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
-import { setActiveJobPublishingStep } from '../../../../redux/slices/appSlice'
+import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { ButtonWrapper, Container, Wrapper } from './JobDetails'
 
 const StaffInformation = () => {
@@ -24,9 +24,7 @@ const StaffInformation = () => {
             }}
             title="Previous"
             onClick={() => {
-              dispatch(
-                setActiveJobPublishingStep({ activeJobPublishingStep: 3 })
-              )
+              dispatch(prevPage())
             }}
           />
           <GenericButton
@@ -34,9 +32,7 @@ const StaffInformation = () => {
             sx={{ width: '8rem' }}
             title="Next"
             onClick={() => {
-              dispatch(
-                setActiveJobPublishingStep({ activeJobPublishingStep: 5 })
-              )
+              dispatch(nextPage())
             }}
           />
         </ButtonWrapper>
