@@ -140,6 +140,7 @@ export const Container = styled.div`
   background-color: ${colors.background.white};
   height: calc(100vh - 250px);
   overflow-y: auto;
+  max-height: 90rem;
 `
 
 export const Wrapper = styled.div`
@@ -154,6 +155,8 @@ export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  height: 100%;
+  justify-content: space-between;
 `
 
 export const ButtonWrapper = styled.div`

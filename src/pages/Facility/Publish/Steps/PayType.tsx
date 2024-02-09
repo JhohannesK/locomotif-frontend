@@ -14,6 +14,7 @@ const PayType = () => {
   const dispatch = useAppDispatch()
   return (
     <Container>
+      {/* FIXME: fix layout on mobile */}
       <Wrapper>
         <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>Pay Type</p>
 

@@ -1,58 +1,56 @@
 import { FormProvider, useForm } from 'react-hook-form'
-import { GenericButton, GenericInput } from '../../../../_shared'
-import { colors } from '../../../../colors'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
-import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { ButtonWrapper, Container, FormContainer, Wrapper } from './JobDetails'
 import { InputBoxLabels } from '../../../auth/signin/styles'
+import { GenericButton, GenericInput } from '../../../../_shared'
+import { colors } from '../../../../colors'
+import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 
-const Location = () => {
+const ContactDetails = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
   return (
     <Container>
       <Wrapper>
-        <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>Location</p>
+        <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
+          Contact Details
+        </p>
         <FormProvider {...methods}>
           <FormContainer style={{ marginBottom: '3rem' }}>
-            <div>
+            <div
+              style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
+            >
               <div>
-                <InputBoxLabels>Address line 1</InputBoxLabels>
+                <InputBoxLabels>Name</InputBoxLabels>
                 <GenericInput
-                  name="line-1"
-                  placeholder="Address 1"
+                  name="name"
+                  placeholder="Name"
                   sx={{ width: '100%' }}
                 />
               </div>
               <div>
-                <InputBoxLabels>Address line 2(optional)</InputBoxLabels>
+                <InputBoxLabels>Job Title(Optional)</InputBoxLabels>
                 <GenericInput
-                  name="line-1"
-                  placeholder="Address 1"
+                  name="title"
+                  placeholder="Your job title"
                   sx={{ width: '100%' }}
                 />
               </div>
               <div>
-                <InputBoxLabels>Town or city Address</InputBoxLabels>
+                <InputBoxLabels>Email Address</InputBoxLabels>
                 <GenericInput
-                  name="line-1"
-                  placeholder="Address 1"
+                  placeholder="someone@gmail.com"
+                  name="email"
                   sx={{ width: '100%' }}
+                  type="email"
                 />
               </div>
               <div>
-                <InputBoxLabels>Region Address (option)</InputBoxLabels>
+                <InputBoxLabels>Telephone number</InputBoxLabels>
                 <GenericInput
-                  name="line-1"
-                  placeholder="Address 1"
-                  sx={{ width: '100%' }}
-                />
-              </div>
-              <div>
-                <InputBoxLabels>Digital Address</InputBoxLabels>
-                <GenericInput
-                  name="line-1"
-                  placeholder="Address 1"
+                  name="tel"
+                  placeholder="0342342343"
+                  type="tel"
                   sx={{ width: '100%' }}
                 />
               </div>
@@ -87,4 +85,4 @@ const Location = () => {
   )
 }
 
-export default Location
+export default ContactDetails
