@@ -19,7 +19,7 @@ const JobDetails = () => {
   const dispatch = useAppDispatch()
   return (
     <Container>
-      <Wrapper>
+      <Wrapper style={{ height: '100%' }}>
         <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>Job Details</p>
         <FormProvider {...methods}>
           <FormContainer action="">
@@ -148,7 +148,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
-  height: 100%;
+  /* height: 100%; */
 `
 
 export const FormContainer = styled.form`

@@ -11,6 +11,7 @@ const GeneralInput = ({
   label,
   type,
   name,
+  value,
   rows,
   disabled,
   InputProps,
@@ -69,6 +70,7 @@ const GeneralInput = ({
               id={label}
               {...field}
               label={label}
+              value={value}
               disabled={disabled === true ? true : false}
               placeholder={placeholder}
               error={!!errors[name]}

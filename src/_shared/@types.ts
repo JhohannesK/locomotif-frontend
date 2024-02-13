@@ -20,14 +20,8 @@ export type GeneralInputType = {
   icon?: React.ReactNode
   placeholder: string
   label?: string
-  type?:
-    | 'text'
-    | 'password'
-    | 'date'
-    | 'tel'
-    | 'number'
-    | 'multiline-input'
-    | 'email'
+  value?: string
+  type?: React.HTMLInputTypeAttribute | undefined
   disabled?: boolean
   rows?: number
   InputProps?: object

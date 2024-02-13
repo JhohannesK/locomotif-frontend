@@ -12,13 +12,20 @@ import LocoDropdown from '../../../../_shared/components/Dropdown'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { InputBoxLabels } from '../../../auth/signin/styles'
 import { FormProvider, useForm } from 'react-hook-form'
+import React from 'react'
 
 const StaffInformation = () => {
   const dispatch = useAppDispatch()
   const methods = useForm()
+  const [value, setValue] = React.useState('')
+  console.log('🚀 ~ StaffInformation ~ value:', value)
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue((event.target as HTMLInputElement).value)
+  }
   return (
     <Container>
-      <Wrapper>
+      <Wrapper style={{ height: '100%' }}>
         <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
           Staff Information
         </p>
@@ -37,6 +44,8 @@ const StaffInformation = () => {
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="Full time"
               name="radio-buttons-group"
+              value={value}
+              onChange={handleChange}
             >
               <LocoDropdown items={medicalList} title="Medical" />
               <LocoDropdown
@@ -73,6 +82,7 @@ const StaffInformation = () => {
                   name="area"
                   placeholder="Surgoen"
                   sx={{ width: '100%' }}
+                  value={value}
                 />
               </div>
             </RadioGroup>

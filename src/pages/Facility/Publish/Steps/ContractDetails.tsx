@@ -13,7 +13,7 @@ const ContractDetails = () => {
   const dispatch = useAppDispatch()
   return (
     <Container>
-      <Wrapper>
+      <Wrapper style={{ height: '100%' }}>
         <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
           Contract Details
         </p>

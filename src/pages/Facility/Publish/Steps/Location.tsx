@@ -5,17 +5,18 @@ import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { ButtonWrapper, Container, FormContainer, Wrapper } from './JobDetails'
 import { InputBoxLabels } from '../../../auth/signin/styles'
+import styled from 'styled-components'
 
 const Location = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
   return (
     <Container>
-      <Wrapper>
+      <Wrapper style={{ height: '100%' }}>
         <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>Location</p>
         <FormProvider {...methods}>
           <FormContainer style={{ marginBottom: '3rem' }}>
-            <div>
+            <FormWrapper>
               <div>
                 <InputBoxLabels>Address line 1</InputBoxLabels>
                 <GenericInput
@@ -56,7 +57,7 @@ const Location = () => {
                   sx={{ width: '100%' }}
                 />
               </div>
-            </div>
+            </FormWrapper>
             <ButtonWrapper>
               <GenericButton
                 type="button"
@@ -88,3 +89,10 @@ const Location = () => {
 }
 
 export default Location
+
+const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+`

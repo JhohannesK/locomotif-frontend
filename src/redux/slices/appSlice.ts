@@ -1,10 +1,11 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { AppState } from '../@types'
 import { RootState } from '../store'
+import { TJobSteps } from '../../types'
 
 const initialState: AppState = {
   activeSidebar: 1,
-  activeJobPublishingStep: 8,
+  activeJobPublishingStep: TJobSteps['Personel Specification'],
 }
 
 export const appSlice = createSlice({

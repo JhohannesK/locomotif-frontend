@@ -38,7 +38,7 @@ export default JobLayout
 export const Container = styled.div`
   display: flex;
   width: 100%;
-  max-width: 2500px;
+  max-width: 1500px;
   margin: 2rem auto;
 `
 
