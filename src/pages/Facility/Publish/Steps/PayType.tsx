@@ -90,28 +90,33 @@ const PayType = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '1rem',
+                  overflowX: 'scroll',
                 }}
               >
                 <InputBoxLabels>Pay Range Amount</InputBoxLabels>
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                  <InputWrapper>
-                    <LocoSelect>
-                      <option value="">GHS</option>
-                      <option value="">USD</option>
-                      <option value="">GBP</option>
-                    </LocoSelect>
-                  </InputWrapper>
-                  From
-                  <LocoInput type="number" max={7} />
-                  To
-                  <LocoInput type="number" max={7} />/
-                  <InputWrapper>
-                    <LocoSelect>
-                      <option value="Month">Month</option>
-                      <option value="Month">Year</option>
-                    </LocoSelect>
-                  </InputWrapper>
-                </div>
+                <SelectStyles>
+                  <FromDiv>
+                    <InputWrapper>
+                      <LocoSelect>
+                        <option value="">GHS</option>
+                        <option value="">USD</option>
+                        <option value="">GBP</option>
+                      </LocoSelect>
+                    </InputWrapper>
+                    From
+                    <LocoInput type="number" max={7} />
+                  </FromDiv>
+                  <ToDiv>
+                    To
+                    <LocoInput type="number" max={7} />/
+                    <InputWrapper>
+                      <LocoSelect>
+                        <option value="Month">Month</option>
+                        <option value="Month">Year</option>
+                      </LocoSelect>
+                    </InputWrapper>
+                  </ToDiv>
+                </SelectStyles>
               </div>
               <ButtonWrapper>
                 <GenericButton
@@ -169,4 +174,22 @@ const LocoSelect = styled.select`
   &:focus {
     outline: none;
   }
+`
+
+const SelectStyles = styled.div`
+  @media screen and (max-width: 582px) {
+    flex-direction: column;
+  }
+  display: flex;
+  gap: 1rem;
+`
+
+const FromDiv = styled.div`
+  display: flex;
+  gap: 1rem;
+`
+
+const ToDiv = styled.div`
+  display: flex;
+  gap: 1rem;
 `

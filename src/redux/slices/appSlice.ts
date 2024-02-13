@@ -5,7 +5,7 @@ import { TJobSteps } from '../../types'
 
 const initialState: AppState = {
   activeSidebar: 1,
-  activeJobPublishingStep: TJobSteps['Job Details'],
+  activeJobPublishingStep: TJobSteps['Pay type'],
 }
 
 export const appSlice = createSlice({
