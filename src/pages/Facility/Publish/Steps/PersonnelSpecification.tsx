@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { ButtonWrapper, Container, FormContainer, Wrapper } from './JobDetails'
 import { InputBoxLabels } from '../../../auth/signin/styles'
+import styled from 'styled-components'
 
 const PersonnelSpecification = () => {
   const dispatch = useAppDispatch()
@@ -61,9 +62,7 @@ const PersonnelSpecification = () => {
                 placeholder="200 characters allowed"
                 sx={{ borderRadius: '0.5rem', width: '20rem' }}
               />
-              <ButtonWrapper
-                style={{ justifyContent: 'flex-start', paddingTop: '5px' }}
-              >
+              <PdfWrapper style={{}}>
                 <GenericButton
                   type="button"
                   sx={{
@@ -79,7 +78,7 @@ const PersonnelSpecification = () => {
                   sx={{ width: '8rem' }}
                   title="Add Pdf"
                 />
-              </ButtonWrapper>
+              </PdfWrapper>
             </div>
             <ButtonWrapper>
               <GenericButton
@@ -112,3 +111,11 @@ const PersonnelSpecification = () => {
 }
 
 export default PersonnelSpecification
+
+const PdfWrapper = styled(ButtonWrapper)`
+  justify-content: flex-start;
+  padding-top: 5px;
+  @media screen and (max-width: 680px) {
+    justify-content: center;
+  }
+`

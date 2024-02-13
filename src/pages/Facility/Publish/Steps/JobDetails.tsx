@@ -162,5 +162,9 @@ export const FormContainer = styled.form`
 export const ButtonWrapper = styled.div`
   display: flex;
   gap: 1rem;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
   justify-content: flex-end;
 `
