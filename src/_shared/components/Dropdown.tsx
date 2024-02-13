@@ -52,7 +52,7 @@ const GroupCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  cursor: pointer;
+  cursor: default;
   width: 100%;
   margin-top: 1rem;
 `
@@ -68,6 +68,6 @@ const HeaderArrow = styled.div`
 
 const ListContainer = styled.div<{ open: boolean }>`
   display: ${({ open }) => (open ? 'flex' : 'none')};
-  transition: all 0.3s ease-in-out;
-  animation-duration: 200ms;
+  /* transition: all 0.3s ease-in-out;
+  animation-duration: 200ms; */
 `

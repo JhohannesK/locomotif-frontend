@@ -42,7 +42,6 @@ const StaffInformation = () => {
             <RadioGroup
               sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
               aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="Full time"
               name="radio-buttons-group"
               value={value}
               onChange={handleChange}

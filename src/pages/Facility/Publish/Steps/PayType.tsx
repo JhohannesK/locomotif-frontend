@@ -113,30 +113,30 @@ const PayType = () => {
                   </InputWrapper>
                 </div>
               </div>
+              <ButtonWrapper>
+                <GenericButton
+                  type="button"
+                  sx={{
+                    width: '8rem',
+                    bgcolor: 'white',
+                    border: `1px solid ${colors.text.pineGreen}`,
+                    color: `${colors.text.pineGreen}`,
+                  }}
+                  title="Previous"
+                  onClick={() => {
+                    dispatch(prevPage())
+                  }}
+                />
+                <GenericButton
+                  type="button"
+                  sx={{ width: '8rem' }}
+                  title="Next"
+                  onClick={() => {
+                    dispatch(nextPage())
+                  }}
+                />
+              </ButtonWrapper>
             </FormWrapper>
-            <ButtonWrapper>
-              <GenericButton
-                type="button"
-                sx={{
-                  width: '8rem',
-                  bgcolor: 'white',
-                  border: `1px solid ${colors.text.pineGreen}`,
-                  color: `${colors.text.pineGreen}`,
-                }}
-                title="Previous"
-                onClick={() => {
-                  dispatch(prevPage())
-                }}
-              />
-              <GenericButton
-                type="button"
-                sx={{ width: '8rem' }}
-                title="Next"
-                onClick={() => {
-                  dispatch(nextPage())
-                }}
-              />
-            </ButtonWrapper>
           </FormContainer>
         </FormProvider>
       </Wrapper>
