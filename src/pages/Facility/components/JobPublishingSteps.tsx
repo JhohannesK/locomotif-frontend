@@ -14,7 +14,6 @@ const steps = [
   'Location',
   'Personel Specification',
   'Professional Registration',
-  'Contact Details',
   'Recruiter Information',
   'Preview Posing',
 ]

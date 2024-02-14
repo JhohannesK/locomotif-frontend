@@ -3,7 +3,12 @@ import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { ButtonWrapper, Container, FormContainer, Wrapper } from './JobDetails'
 import { InputBoxLabels } from '../../../auth/signin/styles'
-import { CheckedRadioBtn, GenericButton, RadioBtn } from '../../../../_shared'
+import {
+  CheckedRadioBtn,
+  GenericButton,
+  GenericInput,
+  RadioBtn,
+} from '../../../../_shared'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { colors } from '../../../../colors'
 
@@ -59,6 +64,18 @@ const ProfessionalRegistration = () => {
                     }
                   />
                 </RadioGroup>
+              </div>
+            </div>
+            <div>
+              <div>
+                <InputBoxLabels>
+                  Select your pre-application questions
+                </InputBoxLabels>
+                <div>
+                  <span>Do you have a </span>
+                  <GenericInput name="qualif" placeholder="Surgeon" />
+                  <span> qualification or the equivalent?</span>
+                </div>
               </div>
             </div>
             <ButtonWrapper>

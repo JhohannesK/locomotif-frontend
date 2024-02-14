@@ -1,16 +1,10 @@
 import { FormProvider, useForm } from 'react-hook-form'
+import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { ButtonWrapper, Container, FormContainer, Wrapper } from './JobDetails'
-import {
-  CheckedRadioBtn,
-  GenericButton,
-  GenericInput,
-  RadioBtn,
-} from '../../../../_shared'
+import { InputBoxLabels } from '../../../auth/signin/styles'
+import { GenericButton, GenericInput } from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
-import { InputBoxLabels } from '../../../auth/signin/styles'
-import { useAppDispatch } from '../../../../redux/hooks/hook'
-import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 
 const RecruiterInformation = () => {
   const methods = useForm()
@@ -27,51 +21,36 @@ const RecruiterInformation = () => {
               style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
             >
               <div>
-                <div>
-                  <InputBoxLabels>
-                    Are you teh recruiter for this job?
-                  </InputBoxLabels>
-                  <RadioGroup
-                    aria-labelledby="label-for-yes-no"
-                    defaultValue="yes"
-                    name="radio-buttons-group"
-                  >
-                    <FormControlLabel
-                      label="Yes"
-                      value={'yes'}
-                      control={
-                        <Radio
-                          icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                          checkedIcon={
-                            <CheckedRadioBtn
-                              outerRadius="1.1rem"
-                              innerRadius=".5rem"
-                            />
-                          }
-                        />
-                      }
-                    />
-                    <FormControlLabel
-                      label="No"
-                      value={'no'}
-                      control={
-                        <Radio
-                          icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                          checkedIcon={
-                            <CheckedRadioBtn
-                              outerRadius="1.1rem"
-                              innerRadius=".5rem"
-                            />
-                          }
-                        />
-                      }
-                    />
-                  </RadioGroup>
-                </div>
                 <InputBoxLabels>Name</InputBoxLabels>
                 <GenericInput
                   name="name"
                   placeholder="Name"
+                  sx={{ width: '100%' }}
+                />
+              </div>
+              <div>
+                <InputBoxLabels>Job Title(Optional)</InputBoxLabels>
+                <GenericInput
+                  name="title"
+                  placeholder="Your job title"
+                  sx={{ width: '100%' }}
+                />
+              </div>
+              <div>
+                <InputBoxLabels>Email Address</InputBoxLabels>
+                <GenericInput
+                  placeholder="someone@gmail.com"
+                  name="email"
+                  sx={{ width: '100%' }}
+                  type="email"
+                />
+              </div>
+              <div>
+                <InputBoxLabels>Telephone number</InputBoxLabels>
+                <GenericInput
+                  name="tel"
+                  placeholder="0342342343"
+                  type="tel"
                   sx={{ width: '100%' }}
                 />
               </div>

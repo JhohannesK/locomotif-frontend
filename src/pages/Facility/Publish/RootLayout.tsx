@@ -5,7 +5,6 @@ import Layout from '../Layout'
 import JobPublishingSteps from '../components/JobPublishingSteps'
 import PrevPostings from '../components/PrevPostings'
 import JobLayout from './Layout'
-import ContactDetails from './Steps/ContactDetails'
 import ContractDetails from './Steps/ContractDetails'
 import JobDetails from './Steps/JobDetails'
 import Location from './Steps/Location'
@@ -13,9 +12,8 @@ import PayType from './Steps/PayType'
 import PersonnelSpecification from './Steps/PersonnelSpecification'
 import PreviewPosting from './Steps/PreviewPosting'
 import ProfessionalRegistration from './Steps/ProfessionalRegistration'
-import RecruiterInformation from './Steps/Recruiter-information'
 import StaffInformation from './Steps/StaffInformation'
-// import JobDetails from './Steps/JobDetails'
+import RecruiterInformation from './Steps/RecruiterInformation'
 
 const RootLayout = () => {
   return (
@@ -62,11 +60,6 @@ const ConponentToRender = () => {
         renderIf={active === TJobSteps['Professional Registration']}
       >
         <ProfessionalRegistration />
-      </ConditionRenderComponent>
-      <ConditionRenderComponent
-        renderIf={active === TJobSteps['Contact Details']}
-      >
-        <ContactDetails />
       </ConditionRenderComponent>
       <ConditionRenderComponent
         renderIf={active === TJobSteps['Recruiter Information']}

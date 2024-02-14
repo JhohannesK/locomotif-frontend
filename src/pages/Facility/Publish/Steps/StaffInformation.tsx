@@ -18,7 +18,6 @@ const StaffInformation = () => {
   const dispatch = useAppDispatch()
   const methods = useForm()
   const [value, setValue] = React.useState('')
-  console.log('🚀 ~ StaffInformation ~ value:', value)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue((event.target as HTMLInputElement).value)
@@ -57,6 +56,10 @@ const StaffInformation = () => {
               />
               <LocoDropdown
                 items={NursesAndMidwiferyList}
+                title="Nurses and Midwifery"
+              />
+              <LocoDropdown
+                items={EstatesAndAncillaryList}
                 title="Nurses and Midwifery"
               />
               <FormControlLabel
@@ -122,7 +125,7 @@ const medicalList = [
   'Specialist',
   'Medical officer',
   'House officer',
-  'Lab technician',
+  'Laboratory Scientist',
   'Nurse',
   'Dentist',
 ]
@@ -134,6 +137,14 @@ const AlliedHealthList = [
   'Radiographer',
   'Speech therapist',
   'Pharmacist',
+  'Podiatrists',
+  'Speech pathologists',
+  'Hospital Assistants',
+  'Radiographer',
+  'Laboratory Scientist',
+  'Anesthetist',
+  'Physician’s assistants',
+  'Dietitians',
 ]
 
 const AdministativeList = [
@@ -148,4 +159,13 @@ const NursesAndMidwiferyList = [
   'Nurses & Midwifery',
   'Special Nurses',
   'Nurst assistant',
+]
+
+const EstatesAndAncillaryList = [
+  'Porter',
+  'Catering',
+  'Laundry',
+  'Maintenance',
+  'Security',
+  'Driver',
 ]

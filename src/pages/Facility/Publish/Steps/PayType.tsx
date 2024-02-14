@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from 'react-hook-form'
-import { ButtonWrapper, Container, Wrapper } from './JobDetails'
+import { ButtonWrapper, Container, FormContainer, Wrapper } from './JobDetails'
 import styled from 'styled-components'
 import { InputBoxLabels } from '../../../auth/signin/styles'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
@@ -8,10 +8,14 @@ import { InputWrapper, LocoInput } from './ContractDetails'
 import { colors } from '../../../../colors'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
+import React from 'react'
 
 const PayType = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
+  const [value, setValue] = React.useState('')
+  const isFPDisabled = value !== 'FP'
+  const isPRDisabled = value !== 'PR'
   return (
     <Container>
       {/* FIXME: fix layout on mobile */}
@@ -25,12 +29,14 @@ const PayType = () => {
                 <InputBoxLabels>Select Pay Type</InputBoxLabels>
                 <RadioGroup
                   aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="Fixed pay"
+                  defaultValue="FP"
                   name="radio-buttons-group"
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
                 >
                   <FormControlLabel
                     label="Fixed pay"
-                    value={'Fixed pay'}
+                    value={'FP'}
                     control={
                       <Radio
                         icon={<RadioBtn height="1.5rem" width="1.5rem" />}
@@ -45,7 +51,7 @@ const PayType = () => {
                   />
                   <FormControlLabel
                     label="Pay Range"
-                    value={'Pay Range'}
+                    value={'PR'}
                     control={
                       <Radio
                         icon={<RadioBtn height="1.5rem" width="1.5rem" />}
@@ -60,88 +66,75 @@ const PayType = () => {
                   />
                 </RadioGroup>
               </div>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '1rem',
-                }}
-              >
+              <FPStyles disabled={value !== 'FP'}>
                 <InputBoxLabels>Fixed Pay Amount</InputBoxLabels>
                 <div style={{ display: 'flex', gap: '1rem' }}>
                   <InputWrapper>
-                    <LocoSelect>
+                    <LocoSelect disabled={isFPDisabled}>
                       <option value="">GHS</option>
                       <option value="">USD</option>
                       <option value="">GBP</option>
                     </LocoSelect>
                   </InputWrapper>
-                  <LocoInput type="number" max={7} />/
+                  <LocoInput type="number" max={7} disabled={isFPDisabled} />/
                   <InputWrapper>
-                    <LocoSelect>
+                    <LocoSelect disabled={isFPDisabled}>
                       <option value="Month">Month</option>
                       <option value="Month">Year</option>
                     </LocoSelect>
                   </InputWrapper>
                 </div>
-              </div>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '1rem',
-                  overflowX: 'scroll',
-                }}
-              >
+              </FPStyles>
+              <PRStyles disabled={isPRDisabled}>
                 <InputBoxLabels>Pay Range Amount</InputBoxLabels>
                 <SelectStyles>
                   <FromDiv>
                     <InputWrapper>
-                      <LocoSelect>
+                      <LocoSelect disabled={isPRDisabled}>
                         <option value="">GHS</option>
                         <option value="">USD</option>
                         <option value="">GBP</option>
                       </LocoSelect>
                     </InputWrapper>
                     From
-                    <LocoInput type="number" max={7} />
+                    <LocoInput type="number" max={7} disabled={isPRDisabled} />
                   </FromDiv>
                   <ToDiv>
                     To
                     <LocoInput type="number" max={7} />/
                     <InputWrapper>
-                      <LocoSelect>
+                      <LocoSelect disabled={isPRDisabled}>
                         <option value="Month">Month</option>
                         <option value="Month">Year</option>
                       </LocoSelect>
                     </InputWrapper>
                   </ToDiv>
                 </SelectStyles>
-              </div>
-              <ButtonWrapper>
-                <GenericButton
-                  type="button"
-                  sx={{
-                    width: '8rem',
-                    bgcolor: 'white',
-                    border: `1px solid ${colors.text.pineGreen}`,
-                    color: `${colors.text.pineGreen}`,
-                  }}
-                  title="Previous"
-                  onClick={() => {
-                    dispatch(prevPage())
-                  }}
-                />
-                <GenericButton
-                  type="button"
-                  sx={{ width: '8rem' }}
-                  title="Next"
-                  onClick={() => {
-                    dispatch(nextPage())
-                  }}
-                />
-              </ButtonWrapper>
+              </PRStyles>
             </FormWrapper>
+            <ButtonWrapper>
+              <GenericButton
+                type="button"
+                sx={{
+                  width: '8rem',
+                  bgcolor: 'white',
+                  border: `1px solid ${colors.text.pineGreen}`,
+                  color: `${colors.text.pineGreen}`,
+                }}
+                title="Previous"
+                onClick={() => {
+                  dispatch(prevPage())
+                }}
+              />
+              <GenericButton
+                type="button"
+                sx={{ width: '8rem' }}
+                title="Next"
+                onClick={() => {
+                  dispatch(nextPage())
+                }}
+              />
+            </ButtonWrapper>
           </FormContainer>
         </FormProvider>
       </Wrapper>
@@ -151,17 +144,31 @@ const PayType = () => {
 
 export default PayType
 
-const FormContainer = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-`
+// const FormContainer = styled.form`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   height: 100%;
+// `
 
 const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4rem;
+`
+
+const FPStyles = styled.div<{ disabled: boolean }>`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  opacity: ${(props) => (props.disabled ? '0.5' : '1')};
+`
+
+const PRStyles = styled.div<{ disabled: boolean }>`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  opacity: ${(props) => (props.disabled ? '0.5' : '1')};
 `
 
 const LocoSelect = styled.select`

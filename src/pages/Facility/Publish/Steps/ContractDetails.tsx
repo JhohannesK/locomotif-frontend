@@ -18,134 +18,140 @@ const ContractDetails = () => {
           Contract Details
         </p>
         <FormProvider {...methods}>
-          <FormContainer action="">
-            <div>
-              <InputBoxLabels>What type of Contract is it?</InputBoxLabels>
-              <RadioGroup
-                aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="Replacing someone who's leaving"
-                name="radio-buttons-group"
-              >
-                <FormControlLabel
-                  label="Replacing someone who's leaving"
-                  value={"Replacing someone who's leaving"}
-                  control={
-                    <Radio
-                      icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                      checkedIcon={
-                        <CheckedRadioBtn
-                          outerRadius="1.1rem"
-                          innerRadius=".5rem"
-                        />
-                      }
-                    />
-                  }
-                />
-                <FormControlLabel
-                  label="This is a new job"
-                  value={'This is a new job'}
-                  control={
-                    <Radio
-                      icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                      checkedIcon={
-                        <CheckedRadioBtn
-                          outerRadius="1.1rem"
-                          innerRadius=".5rem"
-                        />
-                      }
-                    />
-                  }
-                />
-                <FormControlLabel
-                  label="Temporary Position"
-                  value={'Temporary Position'}
-                  control={
-                    <Radio
-                      icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                      checkedIcon={
-                        <CheckedRadioBtn
-                          outerRadius="1.1rem"
-                          innerRadius=".5rem"
-                        />
-                      }
-                    />
-                  }
-                />
-              </RadioGroup>
-            </div>
-
-            <div
-              style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
-            >
-              <InputBoxLabels>
-                What's the contract duration? (Only for temporary contracts)
-              </InputBoxLabels>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <InputWrapper>
-                  <InputLabel>Months</InputLabel>
-                  <LocoInput type="number" max={7} />
-                </InputWrapper>
-                <InputWrapper>
-                  <InputLabel>Days</InputLabel>
-                  <LocoInput type="number" max={31} maxLength={2} />
-                </InputWrapper>
+          <FormContainer>
+            <FormWrapper>
+              <div>
+                <InputBoxLabels>What type of Contract is it?</InputBoxLabels>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="Replacing someone who's leaving"
+                  name="radio-buttons-group"
+                >
+                  <FormControlLabel
+                    label="Replacing someone who's leaving"
+                    value={"Replacing someone who's leaving"}
+                    control={
+                      <Radio
+                        icon={<RadioBtn height="1.5rem" width="1.5rem" />}
+                        checkedIcon={
+                          <CheckedRadioBtn
+                            outerRadius="1.1rem"
+                            innerRadius=".5rem"
+                          />
+                        }
+                      />
+                    }
+                  />
+                  <FormControlLabel
+                    label="This is a new job"
+                    value={'This is a new job'}
+                    control={
+                      <Radio
+                        icon={<RadioBtn height="1.5rem" width="1.5rem" />}
+                        checkedIcon={
+                          <CheckedRadioBtn
+                            outerRadius="1.1rem"
+                            innerRadius=".5rem"
+                          />
+                        }
+                      />
+                    }
+                  />
+                  <FormControlLabel
+                    label="Temporary Position"
+                    value={'Temporary Position'}
+                    control={
+                      <Radio
+                        icon={<RadioBtn height="1.5rem" width="1.5rem" />}
+                        checkedIcon={
+                          <CheckedRadioBtn
+                            outerRadius="1.1rem"
+                            innerRadius=".5rem"
+                          />
+                        }
+                      />
+                    }
+                  />
+                </RadioGroup>
               </div>
-            </div>
 
-            <div>
-              <InputBoxLabels>What's the working patter?</InputBoxLabels>
-              <RadioGroup
-                aria-labelledby="demo-radio-buttons-group-label"
-                defaultValue="Full time"
-                name="radio-buttons-group"
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1rem',
+                }}
               >
-                <FormControlLabel
-                  label="Full time"
-                  value={'Full time'}
-                  control={
-                    <Radio
-                      icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                      checkedIcon={
-                        <CheckedRadioBtn
-                          outerRadius="1.1rem"
-                          innerRadius=".5rem"
-                        />
-                      }
-                    />
-                  }
-                />
-                <FormControlLabel
-                  label="Part time"
-                  value={'Part time'}
-                  control={
-                    <Radio
-                      icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                      checkedIcon={
-                        <CheckedRadioBtn
-                          outerRadius="1.1rem"
-                          innerRadius=".5rem"
-                        />
-                      }
-                    />
-                  }
-                />
-                <FormControlLabel
-                  label="Flexible hours"
-                  value={'Flexible hours'}
-                  control={
-                    <Radio
-                      icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                      checkedIcon={
-                        <CheckedRadioBtn
-                          outerRadius="1.1rem"
-                          innerRadius=".5rem"
-                        />
-                      }
-                    />
-                  }
-                />
-              </RadioGroup>
-            </div>
+                <InputBoxLabels>
+                  What's the contract duration? (Only for temporary contracts)
+                </InputBoxLabels>
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <InputWrapper>
+                    <InputLabel>Months</InputLabel>
+                    <LocoInput type="number" max={7} />
+                  </InputWrapper>
+                  <InputWrapper>
+                    <InputLabel>Days</InputLabel>
+                    <LocoInput type="number" max={31} maxLength={2} />
+                  </InputWrapper>
+                </div>
+              </div>
+
+              <div>
+                <InputBoxLabels>What's the working patter?</InputBoxLabels>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="Full time"
+                  name="radio-buttons-group"
+                >
+                  <FormControlLabel
+                    label="Full time"
+                    value={'Full time'}
+                    control={
+                      <Radio
+                        icon={<RadioBtn height="1.5rem" width="1.5rem" />}
+                        checkedIcon={
+                          <CheckedRadioBtn
+                            outerRadius="1.1rem"
+                            innerRadius=".5rem"
+                          />
+                        }
+                      />
+                    }
+                  />
+                  <FormControlLabel
+                    label="Part time"
+                    value={'Part time'}
+                    control={
+                      <Radio
+                        icon={<RadioBtn height="1.5rem" width="1.5rem" />}
+                        checkedIcon={
+                          <CheckedRadioBtn
+                            outerRadius="1.1rem"
+                            innerRadius=".5rem"
+                          />
+                        }
+                      />
+                    }
+                  />
+                  <FormControlLabel
+                    label="Flexible hours"
+                    value={'Flexible hours'}
+                    control={
+                      <Radio
+                        icon={<RadioBtn height="1.5rem" width="1.5rem" />}
+                        checkedIcon={
+                          <CheckedRadioBtn
+                            outerRadius="1.1rem"
+                            innerRadius=".5rem"
+                          />
+                        }
+                      />
+                    }
+                  />
+                </RadioGroup>
+              </div>
+            </FormWrapper>
             <ButtonWrapper>
               <GenericButton
                 type="button"
@@ -179,6 +185,14 @@ const ContractDetails = () => {
 export default ContractDetails
 
 const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 4rem;
+`
+
+const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4rem;

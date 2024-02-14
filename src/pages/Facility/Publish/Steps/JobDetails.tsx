@@ -5,12 +5,10 @@ import {
   CheckedRadioBtn,
   GenericButton,
   GenericInput,
-  GenericSelect,
   RadioBtn,
 } from '../../../../_shared'
 import { InputBoxLabels } from '../../../auth/signin/styles'
-import Checkbox from '@mui/material/Checkbox'
-import { FormControlLabel, RadioGroup } from '@mui/material'
+import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { nextPage } from '../../../../redux/slices/appSlice'
 
@@ -25,19 +23,18 @@ const JobDetails = () => {
           <FormContainer action="">
             <div>
               <InputBoxLabels>Job title</InputBoxLabels>
-              <GenericSelect
-                data={['Surgeon', 'Doctor']}
-                name="Job title"
+              <GenericInput
+                name="Jobtitle"
                 label=""
                 placeholder="Surgeon"
-                sx={{ borderRadius: '0.5rem' }}
+                sx={{ borderRadius: '0.5rem', width: '100%' }}
               />
             </div>
             <div>
               <InputBoxLabels>Job Description</InputBoxLabels>
               <GenericInput
                 type="multiline-input"
-                name="Job title"
+                name="jobTitle_desc"
                 label=""
                 placeholder="200 characters allowed"
                 rows={8}
@@ -57,7 +54,7 @@ const JobDetails = () => {
                   label="Replacing someone who's leaving"
                   value={"Replacing someone who's leaving"}
                   control={
-                    <Checkbox
+                    <Radio
                       icon={<RadioBtn height="1.5rem" width="1.5rem" />}
                       checkedIcon={
                         <CheckedRadioBtn
@@ -72,7 +69,7 @@ const JobDetails = () => {
                   label="This is a new job"
                   value={'This is a new job'}
                   control={
-                    <Checkbox
+                    <Radio
                       icon={<RadioBtn height="1.5rem" width="1.5rem" />}
                       checkedIcon={
                         <CheckedRadioBtn
@@ -87,7 +84,7 @@ const JobDetails = () => {
                   label="Temporary Position"
                   value={'Temporary Position'}
                   control={
-                    <Checkbox
+                    <Radio
                       icon={<RadioBtn height="1.5rem" width="1.5rem" />}
                       checkedIcon={
                         <CheckedRadioBtn

@@ -13,7 +13,6 @@ export enum TJobSteps {
   'Location',
   'Personel Specification',
   'Professional Registration',
-  'Contact Details',
   'Recruiter Information',
   'Preview Posting',
 }
