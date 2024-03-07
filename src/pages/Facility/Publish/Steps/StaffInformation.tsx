@@ -1,94 +1,115 @@
-import {
-  CheckedRadioBtn,
-  GenericButton,
-  GenericInput,
-  RadioBtn,
-} from '../../../../_shared'
+import { CheckedRadioBtn, GenericButton, RadioBtn } from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
-import { ButtonWrapper, Container, Wrapper } from './JobDetails'
-import LocoDropdown from '../../../../_shared/components/Dropdown'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
-import { InputBoxLabels } from '../../../auth/signin/styles'
 import { FormProvider, useForm } from 'react-hook-form'
 import React from 'react'
+import LocoSelect from '../../../../_shared/components/inputs/LocoSelect'
+
+type StaffInformationProps =
+  | 'medicalList'
+  | 'AlliedHealthList'
+  | 'AdministativeList'
+  | 'NursesAndMidwiferyList'
+  | 'EstatesAndAncillaryList'
+  | ''
 
 const StaffInformation = () => {
   const dispatch = useAppDispatch()
   const methods = useForm()
-  const [value, setValue] = React.useState('')
+  const [value, setValue] = React.useState<StaffInformationProps>('')
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value)
+    setValue((event.target as HTMLInputElement).value as StaffInformationProps)
   }
+
   return (
-    <Container>
-      <Wrapper style={{ height: '100%' }}>
+    <div className="details-container border">
+      <div className="details-container__wrapper">
         <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
           Staff Information
         </p>
         <FormProvider {...methods}>
-          <form
-            style={{
-              display: 'flex',
-              gap: '2rem',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              height: '100%',
-            }}
-          >
+          <form className="form-control">
             <RadioGroup
-              sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
               aria-labelledby="demo-radio-buttons-group-label"
+              defaultValue="Replacing someone who's leaving"
               name="radio-buttons-group"
               value={value}
               onChange={handleChange}
             >
-              <LocoDropdown items={medicalList} title="Medical" />
-              <LocoDropdown
-                items={AlliedHealthList}
-                title="Allied and Health Professionals"
-              />
-              <LocoDropdown
-                items={AdministativeList}
-                title="Administative and Support Staff"
-              />
-              <LocoDropdown
-                items={NursesAndMidwiferyList}
-                title="Nurses and Midwifery"
-              />
-              <LocoDropdown
-                items={EstatesAndAncillaryList}
-                title="Nurses and Midwifery"
-              />
               <FormControlLabel
-                label={'Cleaner'}
-                value={'Cleaner'}
+                label="Medicals"
+                value={'medicalList'}
                 control={
                   <Radio
-                    icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                    checkedIcon={
-                      <CheckedRadioBtn
-                        outerRadius="1.1rem"
-                        innerRadius=".5rem"
-                      />
-                    }
+                    icon={<RadioBtn />}
+                    checkedIcon={<CheckedRadioBtn />}
                   />
                 }
               />
-              {/* TODO: When the user selects any option, display that option in the input box and make input readonly */}
-              <div>
-                <InputBoxLabels>Area of work</InputBoxLabels>
-                <GenericInput
-                  name="area"
-                  placeholder="Surgoen"
-                  sx={{ width: '100%' }}
-                  value={value}
-                />
-              </div>
+              <FormControlLabel
+                label="Allied and Health Professionals"
+                value={'AlliedHealthList'}
+                control={
+                  <Radio
+                    icon={<RadioBtn />}
+                    checkedIcon={<CheckedRadioBtn />}
+                  />
+                }
+              />
+              <FormControlLabel
+                label="Administative and Support Staff"
+                value={'AdministativeList'}
+                control={
+                  <Radio
+                    icon={<RadioBtn />}
+                    checkedIcon={<CheckedRadioBtn />}
+                  />
+                }
+              />
+              <FormControlLabel
+                label="Nurses and Midwifery"
+                value={'NursesAndMidwiferyList'}
+                control={
+                  <Radio
+                    icon={<RadioBtn />}
+                    checkedIcon={<CheckedRadioBtn />}
+                  />
+                }
+              />
+              <FormControlLabel
+                label="Estates and Ancillary"
+                value={'EstatesAndAncillaryList'}
+                control={
+                  <Radio
+                    icon={<RadioBtn />}
+                    checkedIcon={<CheckedRadioBtn />}
+                  />
+                }
+              />
             </RadioGroup>
-            <ButtonWrapper>
+            <div className="lg:w-96">
+              <LocoSelect
+                name=""
+                placeholder="Select area of work..."
+                options={
+                  value === 'medicalList'
+                    ? medicalList
+                    : value === 'AlliedHealthList'
+                      ? AlliedHealthList
+                      : value === 'AdministativeList'
+                        ? AdministativeList
+                        : value === 'NursesAndMidwiferyList'
+                          ? NursesAndMidwiferyList
+                          : value === 'EstatesAndAncillaryList'
+                            ? EstatesAndAncillaryList
+                            : []
+                }
+              />
+            </div>
+            <div className="btn-group">
               <GenericButton
                 type="button"
                 sx={{
@@ -110,11 +131,11 @@ const StaffInformation = () => {
                   dispatch(nextPage())
                 }}
               />
-            </ButtonWrapper>
+            </div>
           </form>
         </FormProvider>
-      </Wrapper>
-    </Container>
+      </div>
+    </div>
   )
 }
 
@@ -167,5 +188,6 @@ const EstatesAndAncillaryList = [
   'Laundry',
   'Maintenance',
   'Security',
+  'Cleaner',
   'Driver',
 ]

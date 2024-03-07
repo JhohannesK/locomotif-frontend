@@ -1,8 +1,6 @@
 import { FormProvider, useForm } from 'react-hook-form'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
-import { ButtonWrapper, Container, FormContainer, Wrapper } from './JobDetails'
-import { InputBoxLabels } from '../../../auth/signin/styles'
-import { GenericButton, GenericInput } from '../../../../_shared'
+import { GenericButton, Input } from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 
@@ -10,52 +8,34 @@ const RecruiterInformation = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
   return (
-    <Container>
-      <Wrapper style={{ height: '100%' }}>
+    <div className="border details-container">
+      <div className="details-container__wrapper">
         <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
           Recruiter Information
         </p>
         <FormProvider {...methods}>
-          <FormContainer style={{ marginBottom: '3rem' }}>
+          <form className="form-control">
             <div
               style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
             >
               <div>
-                <InputBoxLabels>Name</InputBoxLabels>
-                <GenericInput
-                  name="name"
-                  placeholder="Name"
-                  sx={{ width: '100%' }}
-                />
+                <div>Name</div>
+                <Input name="" placeholder="Name" />
               </div>
               <div>
-                <InputBoxLabels>Job Title(Optional)</InputBoxLabels>
-                <GenericInput
-                  name="title"
-                  placeholder="Your job title"
-                  sx={{ width: '100%' }}
-                />
+                <div>Job Title(Optional)</div>
+                <Input name="" placeholder="Your job title" />
               </div>
               <div>
-                <InputBoxLabels>Email Address</InputBoxLabels>
-                <GenericInput
-                  placeholder="someone@gmail.com"
-                  name="email"
-                  sx={{ width: '100%' }}
-                  type="email"
-                />
+                <div>Email Address</div>
+                <Input name="" placeholder="someone@gmail.com" type="email" />
               </div>
               <div>
-                <InputBoxLabels>Telephone number</InputBoxLabels>
-                <GenericInput
-                  name="tel"
-                  placeholder="0342342343"
-                  type="tel"
-                  sx={{ width: '100%' }}
-                />
+                <div>Telephone number</div>
+                <Input name="" placeholder="0342342343" type="tel" />
               </div>
             </div>
-            <ButtonWrapper>
+            <div className="btn-group">
               <GenericButton
                 type="button"
                 sx={{
@@ -77,11 +57,11 @@ const RecruiterInformation = () => {
                   dispatch(nextPage())
                 }}
               />
-            </ButtonWrapper>
-          </FormContainer>
+            </div>
+          </form>
         </FormProvider>
-      </Wrapper>
-    </Container>
+      </div>
+    </div>
   )
 }
 

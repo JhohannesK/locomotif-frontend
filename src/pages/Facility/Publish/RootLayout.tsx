@@ -1,7 +1,6 @@
 import { useAppSelector } from '../../../redux/hooks/hook'
 import { TJobSteps } from '../../../types'
 import { ConditionRenderComponent } from '../../../utils/ConditionRender'
-import Layout from '../Layout'
 import JobPublishingSteps from '../components/JobPublishingSteps'
 import PrevPostings from '../components/PrevPostings'
 import JobLayout from './Layout'
@@ -14,6 +13,7 @@ import PreviewPosting from './Steps/PreviewPosting'
 import ProfessionalRegistration from './Steps/ProfessionalRegistration'
 import StaffInformation from './Steps/StaffInformation'
 import RecruiterInformation from './Steps/RecruiterInformation'
+import Layout from '../Layout'
 
 const RootLayout = () => {
   return (

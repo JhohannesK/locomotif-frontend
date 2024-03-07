@@ -1,5 +1,3 @@
-import styled from 'styled-components'
-import { colors } from '../../../colors'
 import { Avatar } from '@mui/material'
 import { BiStar } from 'react-icons/bi'
 import GeneralButton from '../../../_shared/components/button/Button'
@@ -8,73 +6,33 @@ import LocoProgressBars from '../../../_shared/components/ProgressBar'
 const ProfileCard = () => {
   const progressValue: number = 78
   return (
-    <Container>
-      <Wrapper>
+    <div className="flex flex-col items-center justify-center border bg-white max-w-[26rem] rounded-xl border-border-tertiary shadow-lg">
+      <div className="p-4 flex flex-col gap-2 items-center justify-center">
         <Avatar sx={{ height: '6rem', width: '6rem', fontWeight: 'bold' }}>
           GM
         </Avatar>
-        <NameContainer>
-          <HospitalName>Lister Hospital</HospitalName>
-          <div>
+        <div className="w-full flex flex-col items-center">
+          <div className="font-bold text-xl">Lister Hospital</div>
+          <div className="flex flex-row gap-1 opacity-60">
             Cardiac hospital <span>|</span> <BiStar color="yellow" /> 4.7{' '}
           </div>
-        </NameContainer>
-        <CompletionContainer>
-          <CompletionText>
+        </div>
+        <div className="flex flex-col gap-2 mt-3">
+          <div className="text-base opacity-60">
             Complete Profile in order to start posting jobs
-          </CompletionText>
+          </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
             <LocoProgressBars value={progressValue} />
-            <p>{progressValue}%</p>
+            <p className="opacity-60">{progressValue}%</p>
           </div>
-        </CompletionContainer>
+        </div>
         <GeneralButton
-          sx={{ width: '100%', paddingX: '10px', borderRadius: '10px' }}
+          sx={{ width: '100%', paddingX: '10px' }}
           title="Setup Profile"
         />
-      </Wrapper>
-    </Container>
+      </div>
+    </div>
   )
 }
 
 export default ProfileCard
-
-const Container = styled.div`
-  background: white;
-  max-width: 20rem;
-  width: 100%;
-  border: 1px solid ${colors.border.timberwolf};
-  border-radius: 10px;
-`
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-`
-
-const HospitalName = styled.div`
-  font-size: 1.2rem;
-  font-weight: bold;
-`
-
-const NameContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: center;
-`
-
-const CompletionContainer = styled.div`
-  width: 100%;
-`
-
-const CompletionText = styled.p`
-  font-size: 0.9rem;
-  color: #00000099;
-  text-align: center;
-  padding-bottom: 15px;
-`

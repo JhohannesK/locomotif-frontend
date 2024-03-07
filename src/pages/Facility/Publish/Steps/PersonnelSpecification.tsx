@@ -3,23 +3,21 @@ import { GenericButton, GenericInput } from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
-import { ButtonWrapper, Container, FormContainer, Wrapper } from './JobDetails'
-import { InputBoxLabels } from '../../../auth/signin/styles'
-import styled from 'styled-components'
+import { Input } from '@mui/base'
 
 const PersonnelSpecification = () => {
   const dispatch = useAppDispatch()
   const methods = useForm()
   return (
-    <Container>
-      <Wrapper>
+    <div className="details-container border">
+      <div className="details-container__wrapper" style={{ height: '100%' }}>
         <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
           Personnel Specification
         </p>
         <FormProvider {...methods}>
-          <FormContainer style={{ paddingBottom: '10px' }}>
+          <form className="form-control" style={{ paddingBottom: '10px' }}>
             <div>
-              <InputBoxLabels>Enter Job Qualification</InputBoxLabels>
+              <div>Enter Job Qualification</div>
               <p style={{ fontSize: '14px' }}>
                 list your essential criteria for the job qualification.
               </p>
@@ -28,12 +26,12 @@ const PersonnelSpecification = () => {
                 name="Job title"
                 label=""
                 placeholder="200 characters allowed"
-                rows={8}
+                rows={5}
                 sx={{ borderRadius: '0.5rem' }}
               />
             </div>
             <div>
-              <InputBoxLabels>Enter Addition Needed</InputBoxLabels>
+              <div>Enter Addition Needed</div>
               {/* <p style={{ fontSize: '14px' }}>
                 list your essential criteria for the job qualification.
               </p> */}
@@ -42,27 +40,23 @@ const PersonnelSpecification = () => {
                 name="Job title"
                 label=""
                 placeholder="200 characters allowed"
-                rows={8}
+                rows={5}
                 sx={{ borderRadius: '0.5rem' }}
               />
             </div>
             {/* TODO:Add supporting document later */}
-            <div
-              style={{ display: 'flex', flexDirection: 'column', gap: '.2rem' }}
-            >
-              <InputBoxLabels>Supporting Document</InputBoxLabels>
+            <div className="flex flex-col gap-3">
+              <div>Supporting Document</div>
               <p style={{ fontSize: '14px', maxWidth: '20rem' }}>
                 Do you want to upload any supporting documents that will give
                 more info to applicants
               </p>
-              <GenericInput
+              <Input
                 type="file"
                 name="Job title"
-                label=""
                 placeholder="200 characters allowed"
-                sx={{ borderRadius: '0.5rem', width: '20rem' }}
               />
-              <PdfWrapper style={{}}>
+              <div className="flex gap-3 items-center">
                 <GenericButton
                   type="button"
                   sx={{
@@ -78,9 +72,9 @@ const PersonnelSpecification = () => {
                   sx={{ width: '8rem' }}
                   title="Add Pdf"
                 />
-              </PdfWrapper>
+              </div>
             </div>
-            <ButtonWrapper>
+            <div className="btn-group">
               <GenericButton
                 type="button"
                 sx={{
@@ -102,20 +96,12 @@ const PersonnelSpecification = () => {
                   dispatch(nextPage())
                 }}
               />
-            </ButtonWrapper>
-          </FormContainer>
+            </div>
+          </form>
         </FormProvider>
-      </Wrapper>
-    </Container>
+      </div>
+    </div>
   )
 }
 
 export default PersonnelSpecification
-
-const PdfWrapper = styled(ButtonWrapper)`
-  justify-content: flex-start;
-  padding-top: 5px;
-  @media screen and (max-width: 680px) {
-    justify-content: center;
-  }
-`

@@ -1,7 +1,5 @@
 import Header from '../components/Header'
-import styled from 'styled-components'
 import HeaderBtns from '../components/HeaderBtns'
-import Constants from '../../../utils/constants'
 
 const JobLayout = ({
   steppers,
@@ -13,59 +11,24 @@ const JobLayout = ({
   jobDetails: JSX.Element
 }) => {
   return (
-    <Container>
-      <StepsAndDetails>
+    <div className="flex items-start gap-10 max-w-[1700px] mx-auto">
+      <div className="flex flex-col gap-10 w-full">
         <div>
           <Header />
         </div>
-        <InnerContainer>
-          <StepperContainer style={{ minWidth: '19rem', maxHeight: '50rem' }}>
-            {steppers}
-          </StepperContainer>
-          <div style={{ width: '100%' }}>{jobDetails}</div>
-        </InnerContainer>
-      </StepsAndDetails>
-      <PrevStyles>
+        <div className="flex gap-10 h-full">
+          <div className="hidden lg:flex w-[28rem]">
+            <div className="w-full">{steppers}</div>
+          </div>
+          <div className="h-full w-full">{jobDetails}</div>
+        </div>
+      </div>
+      <div className="hidden xl:flex flex-col h-full gap-10 w-[25rem]">
         <HeaderBtns />
         <div>{prevPosting}</div>
-      </PrevStyles>
-    </Container>
+      </div>
+    </div>
   )
 }
 
 export default JobLayout
-
-export const Container = styled.div`
-  display: flex;
-  width: 100%;
-  max-width: 1500px;
-  margin: 2rem auto;
-`
-
-const PrevStyles = styled.div`
-  display: none;
-  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_M_PX} {
-    display: flex;
-  }
-  flex-direction: column;
-  gap: 1rem;
-`
-
-const StepsAndDetails = styled.div`
-  display: flex;
-  padding: 0 1.5rem;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-`
-
-const InnerContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-`
-const StepperContainer = styled.div`
-  display: none;
-  ${Constants.LAYOUT.MEDIA_QUERIES.LAPTOP_PX} {
-    display: flex;
-  }
-`

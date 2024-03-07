@@ -1,17 +1,14 @@
 import { FormProvider, useForm } from 'react-hook-form'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
-import { ButtonWrapper, Container, FormContainer, Wrapper } from './JobDetails'
-import { InputBoxLabels } from '../../../auth/signin/styles'
 import {
   CheckedRadioBtn,
   GenericButton,
-  GenericInput,
+  Input,
   RadioBtn,
 } from '../../../../_shared'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { colors } from '../../../../colors'
-import styled from 'styled-components'
 import React from 'react'
 
 const ProfessionalRegistration = () => {
@@ -19,62 +16,48 @@ const ProfessionalRegistration = () => {
   const dispatch = useAppDispatch()
   const [value, setValue] = React.useState('no')
   return (
-    <Container>
-      <Wrapper style={{ height: '100%' }}>
+    <div className="border details-container">
+      <div className="details-container__wrapper">
         <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
           Professional registration
         </p>
         <FormProvider {...methods}>
-          <FormContainer>
-            <FormWrapper>
+          <form className="form-control">
+            <div className="flex flex-col gap-7">
               <div>
                 <div>
-                  <InputBoxLabels>
-                    Does the job require current professional registration?
-                  </InputBoxLabels>
-                  <RadioGroup
-                    aria-labelledby="label-for-yes-no"
-                    name="radio-buttons-group"
-                    onChange={(e) => setValue(e.target.value)}
-                    value={value}
-                  >
-                    <FormControlLabel
-                      label="Yes"
-                      value={'yes'}
-                      control={
-                        <Radio
-                          icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                          checkedIcon={
-                            <CheckedRadioBtn
-                              outerRadius="1.1rem"
-                              innerRadius=".5rem"
-                            />
-                          }
-                        />
-                      }
-                    />
-                    <FormControlLabel
-                      label="No"
-                      value={'no'}
-                      control={
-                        <Radio
-                          icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                          checkedIcon={
-                            <CheckedRadioBtn
-                              outerRadius="1.1rem"
-                              innerRadius=".5rem"
-                            />
-                          }
-                        />
-                      }
-                    />
-                  </RadioGroup>
+                  Does the job require current professional registration?
                 </div>
+                <RadioGroup
+                  aria-labelledby="label-for-yes-no"
+                  name="radio-buttons-group"
+                  onChange={(e) => setValue(e.target.value)}
+                  value={value}
+                >
+                  <FormControlLabel
+                    label="Yes"
+                    value={'yes'}
+                    control={
+                      <Radio
+                        icon={<RadioBtn />}
+                        checkedIcon={<CheckedRadioBtn />}
+                      />
+                    }
+                  />
+                  <FormControlLabel
+                    label="No"
+                    value={'no'}
+                    control={
+                      <Radio
+                        icon={<RadioBtn />}
+                        checkedIcon={<CheckedRadioBtn />}
+                      />
+                    }
+                  />
+                </RadioGroup>
               </div>
-              <PreAppStyles disabled={value === 'no'}>
-                <InputBoxLabels>
-                  Select your pre-application questions
-                </InputBoxLabels>
+              <div>
+                <div>Select your pre-application questions</div>
                 <RadioGroup
                   aria-labelledby="label-for-yes-no"
                   name="radio-buttons-group"
@@ -82,70 +65,40 @@ const ProfessionalRegistration = () => {
                 >
                   <FormControlLabel
                     label={
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <span>Do you have a </span>
-                        <GenericInput
-                          name="qualif"
-                          placeholder="Surgeon"
-                          disabled={value === 'no'}
-                        />
-                        <span> qualification or the equivalent?</span>
+                      <div className="flex items-center gap-2">
+                        <div>Do you have a </div>
+                        <Input name="" placeholder="" />
+                        <div> qualification or the equivalent?</div>
                       </div>
                     }
                     value={'q'}
                     control={
                       <Radio
-                        icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                        checkedIcon={
-                          <CheckedRadioBtn
-                            outerRadius="1.1rem"
-                            innerRadius=".5rem"
-                          />
-                        }
+                        icon={<RadioBtn />}
+                        checkedIcon={<CheckedRadioBtn />}
                       />
                     }
                   />
                   <FormControlLabel
                     label={
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <span>Do you have a </span>
-                        <GenericInput
-                          name="qualif"
-                          placeholder="Surgeon"
-                          disabled={value === 'no'}
-                        />
-                        <span> qualification or the equivalent?</span>
+                      <div className="flex items-center gap-2">
+                        <div>Do you have a </div>
+                        <Input name="" placeholder="Surgeon" />
+                        <div> qualification or the equivalent?</div>
                       </div>
                     }
                     value={'t'}
                     control={
                       <Radio
-                        icon={<RadioBtn height="1.5rem" width="1.5rem" />}
-                        checkedIcon={
-                          <CheckedRadioBtn
-                            outerRadius="1.1rem"
-                            innerRadius=".5rem"
-                          />
-                        }
+                        icon={<RadioBtn />}
+                        checkedIcon={<CheckedRadioBtn />}
                       />
                     }
                   />
                 </RadioGroup>
-              </PreAppStyles>
-            </FormWrapper>
-            <ButtonWrapper>
+              </div>
+            </div>
+            <div className="btn-group">
               <GenericButton
                 type="button"
                 sx={{
@@ -167,26 +120,26 @@ const ProfessionalRegistration = () => {
                   dispatch(nextPage())
                 }}
               />
-            </ButtonWrapper>
-          </FormContainer>
+            </div>
+          </form>
         </FormProvider>
-      </Wrapper>
-    </Container>
+      </div>
+    </div>
   )
 }
 
 export default ProfessionalRegistration
 
-const FormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 2rem;
-`
+// const FormWrapper = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 2rem;
+//   margin-top: 2rem;
+// `
 
-const PreAppStyles = styled.div<{ disabled: boolean }>`
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
-`
+// const PreAppStyles = styled.div<{ disabled: boolean }>`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 0.2rem;
+//   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+// `

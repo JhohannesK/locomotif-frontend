@@ -1,6 +1,4 @@
-import styled from 'styled-components'
 import Radiobtn from '../../../_shared/components/Radiobtn'
-import { colors } from '../../../colors'
 import GeneralButton from '../../../_shared/components/button/Button'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks/hook'
 import { CheckedRadioBtn } from '../../../_shared'
@@ -15,7 +13,7 @@ const steps = [
   'Personel Specification',
   'Professional Registration',
   'Recruiter Information',
-  'Preview Posing',
+  'Preview Posting',
 ]
 
 const JobPublishingSteps = () => {
@@ -54,63 +52,33 @@ const JobPublishingSteps = () => {
   }
 
   return (
-    <Container>
-      <Wrapper>
-        <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
-          Job Publishing Steps
-        </p>
-        {steps.map((step, index) => {
-          return (
-            <StepRow
-              key={index}
-              onClick={() => {
-                onHandleClick(index)
-                // dispatch(moveToPage({activeJobPublishingStep: index}))
-              }}
-              disabled={onDisable(index)}
-            >
-              {!onDisable(index) ? (
-                <CheckedRadioBtn outerRadius="1.5rem" innerRadius=".5rem" />
-              ) : (
-                <Radiobtn height="1.5rem" width="1.5rem" />
-              )}
-              <p>{step}</p>
-            </StepRow>
-          )
-        })}
+    <div className="flex flex-col gap-4 border border-border-tertiary rounded-lg bg-white">
+      <div className="flex flex-col gap-4 items-start p-4">
+        <p className="font-bold text-[1.5rem]">Job Publishing Steps</p>
+        <div className="flex flex-col items-start justify-start gap-4">
+          {steps.map((step, index) => {
+            return (
+              <button
+                className="flex flex-row items-center justify-start gap-4"
+                key={index}
+                onClick={() => {
+                  onHandleClick(index)
+                  // dispatch(moveToPage({activeJobPublishingStep: index}))
+                }}
+                // disabled={onDisable(index)}
+              >
+                {!onDisable(index) ? <CheckedRadioBtn /> : <Radiobtn />}
+                <p className="flex items-start justify-start text-start">
+                  {step}
+                </p>
+              </button>
+            )
+          })}
+        </div>
         <GeneralButton sx={{ width: '100%' }} title="Submit" />
-      </Wrapper>
-    </Container>
+      </div>
+    </div>
   )
 }
 
 export default JobPublishingSteps
-
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  border: 1px solid ${colors.border.timberwolf};
-  border-radius: 0.5rem;
-  box-shadow: 0px 2px 2px rgba(87, 86, 86, 0.25);
-  max-width: 25rem;
-  background: ${colors.background.white};
-`
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding: 1rem;
-`
-
-export const StepRow = styled.button`
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  align-items: center;
-  margin-bottom: 0.3rem;
-  background: transparent;
-  border: none;
-  /* TODO: Use default pointer when not active */
-  cursor: pointer;
-`

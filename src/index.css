@@ -2,6 +2,49 @@
   
   src: url(/fonts/Roboto/Roboto-Regular.ttf);
 } */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #0e6655;
+  --white: #ffffff;
+  --whiteSmoke: #f8f8f8;
+  --timberwolf: #d1d1d1;
+  --antiflashWhite: #ededed;
+  --danger: #ea5455;
+  --night: '#0C120C';
+}
+
+@layer {
+  #root {
+    @apply flex flex-col min-h-screen bg-red-500;
+  }
+
+  .btn-group {
+    @apply flex items-end flex-1 justify-end gap-3;
+  }
+
+  .details-container {
+    @apply w-full min-h-[80dvh] flex flex-col max-h-[900px] lg:min-h-[676px] lg:max-h-[70dvh] overflow-y-auto bg-white border border-border-tertiary rounded-lg;
+  }
+
+  .details-container__wrapper {
+    @apply p-5 flex flex-col gap-5 flex-grow;
+  }
+
+  .form-control {
+    @apply flex flex-col flex-grow gap-7;
+  }
+
+  .auth-container {
+    @apply w-full md:w-[35rem];
+  }
+
+  .auth-container__wrapper {
+    @apply p-4 flex;
+  }
+}
 
 body,
 html {

@@ -1,19 +1,11 @@
 import { colors } from '../../../../colors'
-import {
-  AuthUpperContent,
-  AuthContainer,
-  AuthButton,
-  AuthFields,
-  AuthContent,
-  AuthFieldsLabel,
-} from '../../../../_shared/auth_styles'
 import { LoadingButton } from '@mui/lab'
-import GeneralInput from '../../../../_shared/components/inputs/Input'
-import { GenericButton, Toast } from '../../../../_shared'
+import { GenericButton, Input, Toast } from '../../../../_shared'
 import usePersonnelSignup from '../hook/usePersonnelSignup'
 import { FormProvider } from 'react-hook-form'
 import React from 'react'
 import { PersonnelCreateAccount } from '../../_types'
+import PasswordInput from '../../../../_shared/components/inputs/PasswordInput'
 
 const SignUp = ({
   handleActiveState,
@@ -30,47 +22,48 @@ const SignUp = ({
   }
 
   return (
-    <>
+    <div className="auth-container">
       {mutation.isError && (
         <Toast open={mutation.isError} type="error" children={error} />
       )}
-      <AuthContainer>
+      <div className="auth-container__wrapper">
         <FormProvider {...methods}>
-          <AuthContent onSubmit={methods.handleSubmit(onSubmit)}>
-            <AuthUpperContent>
-              <h1>Create Your Account</h1>
-              <p>Please input your details as specified below</p>
-            </AuthUpperContent>
-            <AuthFields>
-              <AuthFieldsLabel>First Name</AuthFieldsLabel>
-              <GeneralInput name="first_name" placeholder="Curtis" />
-              <AuthFieldsLabel>Last Name</AuthFieldsLabel>
-              <GeneralInput name="last_name" placeholder="Jackson" />
-              <AuthFieldsLabel>Other Names</AuthFieldsLabel>
-              <GeneralInput name="other_names" placeholder="Lamptey-Odin" />
-              <AuthFieldsLabel>Email address</AuthFieldsLabel>
-              <GeneralInput
-                name="email"
-                placeholder="e.g. Averywilson64@gmail.com"
-              />
-              <AuthFieldsLabel>Password</AuthFieldsLabel>
-              <GeneralInput
-                name="password"
-                type="password"
-                // icon={<FiKey />}
-                placeholder="*********"
-              />
-              <AuthFieldsLabel>Confirm Password</AuthFieldsLabel>
-              <GeneralInput
-                name="confirmPassword"
-                type="password"
-                // icon={<FiKey />}
-                placeholder="*********"
-                sx={{ marginBottom: '20px' }}
-              />
-            </AuthFields>
+          <form
+            className="form-control"
+            onSubmit={methods.handleSubmit(onSubmit)}
+          >
+            <div>
+              <h1 className="text-4xl font-bold">Create Your Account</h1>
+              <p className="text-sm opacity-60">
+                Please input your details as specified below
+              </p>
+            </div>
 
-            <AuthButton>
+            <div>
+              <p>First Name</p>
+              <Input name="first_name" placeholder="Curtis" />
+            </div>
+            <div>
+              <p>Last Name</p>
+              <Input name="last_name" placeholder="Jackson" />
+            </div>
+            <div>
+              <p>Other Names</p>
+              <Input name="other_names" placeholder="Lamptey-Odin" />
+            </div>
+            <div>
+              <p>Email address</p>
+              <Input name="email" placeholder="e.g. Averywilson64@gmail.com" />
+            </div>
+            <div>
+              <p>Password</p>
+              <PasswordInput name="password" placeholder="*********" />
+            </div>
+            <div>
+              <p>Confirm Password</p>
+              <PasswordInput name="confirmPassword" placeholder="*********" />
+            </div>
+            <div>
               {mutation.isPending ? (
                 <LoadingButton
                   loading
@@ -97,11 +90,11 @@ const SignUp = ({
                   size="large"
                 />
               )}
-            </AuthButton>
-          </AuthContent>
+            </div>
+          </form>
         </FormProvider>
-      </AuthContainer>
-    </>
+      </div>
+    </div>
   )
 }
 

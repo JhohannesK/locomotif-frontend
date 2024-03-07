@@ -2,38 +2,34 @@ import { createBrowserRouter } from 'react-router-dom'
 import Constants from './utils/constants'
 import App from './App'
 export const routhPaths = Constants.ROUTES
-import PersonnelSignup from './pages/auth/personnel'
-import FacilitySignUp from './pages/auth/facility'
-import SignIn from './pages/auth/signin/signin'
-import LandingPage from './pages/landing-page/landingPage'
+import SignIn from './pages/auth/signin/Signin'
+import LandingPage from './pages/auth/shared/GetStarted'
 import PageNotFound from './pages/Page-not-found/page_not_found'
-import Posting from './pages/Personnel/posting/Posting'
-import PersonnelLayout from './_shared/Layout/Layout'
-import FindJob from './pages/Personnel/personnel-home-page/find-job'
-import ApplicationsPage from './pages/Personnel/personnel-applications-page/applicationsPage/applicationsPage'
 import Overview from './pages/Facility/Overview/Overview'
-import JobDetails from './pages/Facility/Publish/RootLayout'
+import RootLayout from './pages/Facility/Publish/RootLayout'
+import FacilitySignUp from './pages/auth/facility/Facility-SignUp'
+import PersonnelSignup from './pages/auth/personnel/Personnel-Signup'
 
-const personnel = [
-  {
-    path: routhPaths.PAGES.PERSONNEL.personnel,
-    element: <PersonnelLayout />,
-    children: [
-      {
-        path: routhPaths.PAGES.PERSONNEL.personnel_findJob,
-        element: <FindJob />,
-      },
-      {
-        path: routhPaths.PAGES.PERSONNEL.post,
-        element: <Posting />,
-      },
-      {
-        path: routhPaths.PAGES.PERSONNEL.personnel_applications_page,
-        element: <ApplicationsPage />,
-      },
-    ],
-  },
-]
+// const personnel = [
+//   {
+//     path: routhPaths.PAGES.PERSONNEL.personnel,
+//     element: <PersonnelLayout />,
+//     children: [
+//       {
+//         path: routhPaths.PAGES.PERSONNEL.personnel_findJob,
+//         element: <FindJob />,
+//       },
+//       {
+//         path: routhPaths.PAGES.PERSONNEL.post,
+//         element: <Posting />,
+//       },
+//       {
+//         path: routhPaths.PAGES.PERSONNEL.personnel_applications_page,
+//         element: <ApplicationsPage />,
+//       },
+//     ],
+//   },
+// ]
 
 const facility = [
   {
@@ -48,7 +44,7 @@ const facility = [
   },
   {
     path: routhPaths.PAGES.FACILITY.publish,
-    element: <JobDetails />,
+    element: <RootLayout />,
   },
 ]
 
@@ -72,7 +68,7 @@ const auth = [
 ]
 
 const routes = createBrowserRouter([
-  ...personnel,
+  // ...personnel,
   ...facility,
   ...auth,
   {
