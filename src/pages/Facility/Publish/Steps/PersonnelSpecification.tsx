@@ -4,10 +4,28 @@ import { colors } from '../../../../colors'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { Input } from '@mui/base'
+import { FacilityType, IState } from '../../../../redux/slices/_types'
+import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
+import React from 'react'
+import { formData } from '../../../../utils/constants'
 
 const PersonnelSpecification = () => {
   const dispatch = useAppDispatch()
   const methods = useForm()
+
+  const getFormValues = (): FacilityType => {
+    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
+    if (!storedValue) return formData
+    return storedValue.publish_form_state as FacilityType
+  }
+
+  const [values, setValue] = React.useState<FacilityType>(getFormValues)
+  console.log('🚀 ~ JobDetails ~ values:', values)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target
+
+    setValue({ ...values, [name]: value })
+  }
   return (
     <div className="details-container border">
       <div className="details-container__wrapper" style={{ height: '100%' }}>
@@ -23,7 +41,8 @@ const PersonnelSpecification = () => {
               </p>
               <GenericInput
                 type="multiline-input"
-                name="Job title"
+                name="qualification"
+                onChange={handleChange}
                 label=""
                 placeholder="200 characters allowed"
                 rows={5}
@@ -37,7 +56,8 @@ const PersonnelSpecification = () => {
               </p> */}
               <GenericInput
                 type="multiline-input"
-                name="Job title"
+                name="additional_information"
+                onChange={handleChange}
                 label=""
                 placeholder="200 characters allowed"
                 rows={5}

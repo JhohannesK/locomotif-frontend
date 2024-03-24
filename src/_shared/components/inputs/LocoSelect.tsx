@@ -16,25 +16,35 @@ import clsx from 'clsx'
 import { PopupContext } from '@mui/base/Unstable_Popup'
 import { CssTransition } from '@mui/base/Transitions'
 import { CgArrowAlignV } from 'react-icons/cg'
+import { useFormContext } from 'react-hook-form'
 
 export default function LocoSelect({
   options,
   placeholder,
   defaultOption,
   name,
+  value,
+  // onChange,
 }: {
   options: string[]
   placeholder?: string
   defaultOption?: string
   name: string
+  value?: string | null
+  onChange?: (name: string, value: string) => void
 }) {
   // Replace this with your app logic for determining dark modes
   //   const isDarkMode = useIsDarkMode()
-
+  const { setValue } = useFormContext()
   return (
     <div className={'w-full '}>
       <Select
         name={name}
+        value={value}
+        onChange={(_, newValue) => {
+          setValue(name, newValue)
+          // onChange(name, newValue)
+        }}
         defaultValue={defaultOption}
         placeholder={placeholder}
       >

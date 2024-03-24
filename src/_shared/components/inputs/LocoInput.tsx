@@ -3,22 +3,35 @@ import * as React from 'react'
 import { Input as BaseInput, InputProps } from '@mui/base/Input'
 import { useTheme } from '@mui/system'
 import clsx from 'clsx'
+import { Controller } from 'react-hook-form'
 
 export default function LocoInput({
   placeholder,
   type,
+  value,
+  onChange,
   name,
 }: {
   placeholder: string
   type?: React.HTMLInputTypeAttribute
   name: string
+  value?: string
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
   return (
-    <Input
+    <Controller
       name={name}
-      type={type}
-      aria-label={'Loco input'}
-      placeholder={placeholder}
+      render={({ field }) => (
+        <Input
+          {...field}
+          value={value}
+          onChange={onChange}
+          name={name}
+          type={type}
+          aria-label={'Loco input'}
+          placeholder={placeholder}
+        />
+      )}
     />
   )
 }

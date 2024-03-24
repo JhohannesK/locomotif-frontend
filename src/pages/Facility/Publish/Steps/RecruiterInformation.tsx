@@ -3,10 +3,28 @@ import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { GenericButton, Input } from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
+import { FacilityType, IState } from '../../../../redux/slices/_types'
+import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
+import React from 'react'
+import { formData } from '../../../../utils/constants'
 
 const RecruiterInformation = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
+
+  const getFormValues = (): FacilityType => {
+    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
+    if (!storedValue) return formData
+    return storedValue.publish_form_state as FacilityType
+  }
+
+  const [values, setValue] = React.useState<FacilityType>(getFormValues)
+  console.log('🚀 ~ JobDetails ~ values:', values)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target
+
+    setValue({ ...values, [name]: value })
+  }
   return (
     <div className="border details-container">
       <div className="details-container__wrapper">
@@ -20,7 +38,7 @@ const RecruiterInformation = () => {
             >
               <div>
                 <div>Name</div>
-                <Input name="" placeholder="Name" />
+                <Input onChange={handleChange} name="" placeholder="Name" />
               </div>
               <div>
                 <div>Job Title(Optional)</div>

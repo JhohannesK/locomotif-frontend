@@ -14,11 +14,13 @@ export const saveToLocalStorage = <T>({
   }
 }
 
-export const loadFromLocalStorage = ({ key }: { key: string }) => {
+export const loadFromLocalStorage = (key: string) => {
   try {
     const serializedState = localStorage.getItem(key)
     if (serializedState === null) return false
-    return JSON.parse(serializedState)
+
+    const state: unknown = JSON.parse(serializedState)
+    return state as typeof state
   } catch (e) {
     console.log(e)
     return undefined

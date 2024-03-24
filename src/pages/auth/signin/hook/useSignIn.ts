@@ -1,9 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-
-axios.defaults.withCredentials = true
 
 const schema = z.object({
   email: z.string().min(3),

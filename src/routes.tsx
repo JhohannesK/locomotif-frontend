@@ -2,13 +2,13 @@ import { createBrowserRouter } from 'react-router-dom'
 import Constants from './utils/constants'
 import App from './App'
 export const routhPaths = Constants.ROUTES
-import SignIn from './pages/auth/signin/Signin'
 import LandingPage from './pages/auth/shared/GetStarted'
 import PageNotFound from './pages/Page-not-found/page_not_found'
 import Overview from './pages/Facility/Overview/Overview'
 import RootLayout from './pages/Facility/Publish/RootLayout'
 import FacilitySignUp from './pages/auth/facility/Facility-SignUp'
 import PersonnelSignup from './pages/auth/personnel/Personnel-Signup'
+import SignIn from './pages/auth/signin/Signin'
 
 // const personnel = [
 //   {

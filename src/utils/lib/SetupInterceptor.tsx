@@ -1,11 +1,22 @@
 import axios, { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Constants from './constants'
+import Constants from '../constants'
 
-export const useSetupInterceptor = () => {
+export const Api = axios.create({
+  baseURL: Constants.BaseURL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+
+const SetupInterceptor = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate()
 
-  axios.interceptors.response.use(
+  Api.interceptors.request.use(async (config) => {
+    return config
+  })
+
+  Api.interceptors.response.use(
     (response) => response,
     (error: AxiosError) => {
       if (axios.isAxiosError(error)) {
@@ -15,10 +26,8 @@ export const useSetupInterceptor = () => {
           const { status } = axiosError.response
 
           if (status === 404) {
-            // console.log('Redirecting to 404 page');
             navigate(Constants.ROUTES.PAGENOTFOUND)
           } else if (status === 401) {
-            // console.log('Redirecting to login page');
             navigate(Constants.ROUTES.AUTH.signin)
           }
         }
@@ -26,4 +35,8 @@ export const useSetupInterceptor = () => {
       return Promise.reject(error)
     }
   )
+
+  return <>{children} </>
 }
+
+export { SetupInterceptor }

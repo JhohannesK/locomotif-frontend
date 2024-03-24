@@ -1,10 +1,13 @@
 import SignIn from './pages/auth/signin/Signin'
+import { SetupInterceptor } from './utils/lib/SetupInterceptor'
 
 function App() {
   return (
-    <div className="h-screen">
-      <SignIn />
-    </div>
+    <SetupInterceptor>
+      <div className="h-screen">
+        <SignIn />
+      </div>
+    </SetupInterceptor>
   )
 }
 

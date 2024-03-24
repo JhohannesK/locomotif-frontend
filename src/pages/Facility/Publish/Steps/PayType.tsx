@@ -6,13 +6,29 @@ import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import React from 'react'
 import { colors } from '../../../../colors'
 import LocoSelect from '../../../../_shared/components/inputs/LocoSelect'
+import { FacilityType, IState } from '../../../../redux/slices/_types'
+import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
+import { formData } from '../../../../utils/constants'
 
 const PayType = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
-  const [value, setValue] = React.useState('')
-  const isFPDisabled = value !== 'FP'
-  const isPRDisabled = value !== 'PR'
+
+  const getFormValues = (): FacilityType => {
+    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
+    if (!storedValue) return formData
+    return storedValue.publish_form_state as FacilityType
+  }
+
+  const [values, setValue] = React.useState<FacilityType>(getFormValues)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target
+
+    setValue({ ...values, [name]: value })
+  }
+  const isFPDisabled = values.payment_type !== 'FIXED'
+  const isPRDisabled = values.payment_type !== 'RANGE'
+
   return (
     <div className="border details-container">
       {/* FIXME: fix layout on mobile */}
@@ -26,13 +42,13 @@ const PayType = () => {
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="FP"
-                name="radio-buttons-group"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
+                name="payment_type"
+                value={values.payment_type}
+                onChange={handleChange}
               >
                 <FormControlLabel
                   label="Fixed pay"
-                  value={'FP'}
+                  value={'FIXED'}
                   control={
                     <Radio
                       icon={<RadioBtn />}
@@ -42,7 +58,7 @@ const PayType = () => {
                 />
                 <FormControlLabel
                   label="Pay Range"
-                  value={'PR'}
+                  value={'RANGE'}
                   control={
                     <Radio
                       icon={<RadioBtn />}
@@ -52,7 +68,7 @@ const PayType = () => {
                 />
               </RadioGroup>
             </div>
-            <div className={`${value !== 'FP' ? 'opacity-25' : ''}`}>
+            <div className={`${isFPDisabled ? 'opacity-25' : ''}`}>
               <div>Fixed Pay Amount</div>
               <div style={{ display: 'flex', gap: '1rem' }}>
                 <div className="w-24">
@@ -73,7 +89,7 @@ const PayType = () => {
                 </div>
               </div>
             </div>
-            <div className={`${value !== 'PR' ? 'opacity-25' : ''}`}>
+            <div className={`${isPRDisabled ? 'opacity-25' : ''}`}>
               <div>Pay Range Amount</div>
               <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
                 <div className="flex items-center gap-2">

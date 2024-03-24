@@ -10,6 +10,7 @@ const GeneralInput = ({
   rows,
   InputProps,
   disabled,
+  onChange,
 }: GeneralInputType) => {
   const {
     control,
@@ -28,9 +29,9 @@ const GeneralInput = ({
             id="outlined-multiline-static"
             label=""
             multiline
+            onChange={onChange}
             placeholder={placeholder}
             rows={rows ?? 4}
-            defaultValue=" "
             disabled={disabled}
             value={value}
             fullWidth

@@ -5,14 +5,26 @@ import { colors } from '../../../../colors'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import React from 'react'
+import { FacilityType, IState } from '../../../../redux/slices/_types'
+import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
+import { formData } from '../../../../utils/constants'
 
 const ContractDetails = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
-  const [value, setValue] = React.useState('')
 
+  const getFormValues = (): FacilityType => {
+    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
+    if (!storedValue) return formData
+    return storedValue.publish_form_state as FacilityType
+  }
+
+  const [values, setValue] = React.useState<FacilityType>(getFormValues)
+  console.log('🚀 ~ JobDetails ~ values:', values)
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value)
+    const { name, value } = event.target
+
+    setValue({ ...values, [name]: value })
   }
 
   return (
@@ -28,13 +40,13 @@ const ContractDetails = () => {
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="Replacing someone who's leaving"
-                name="radio-buttons-group"
-                value={value}
+                name="contract_type"
+                value={values.contract_type}
                 onChange={handleChange}
               >
                 <FormControlLabel
-                  label="Replacing someone who's leaving"
-                  value={"Replacing someone who's leaving"}
+                  label="Permanent"
+                  value={'PERMANENT'}
                   control={
                     <Radio
                       icon={<RadioBtn />}
@@ -43,18 +55,8 @@ const ContractDetails = () => {
                   }
                 />
                 <FormControlLabel
-                  label="This is a new job"
-                  value={'This is a new job'}
-                  control={
-                    <Radio
-                      icon={<RadioBtn />}
-                      checkedIcon={<CheckedRadioBtn />}
-                    />
-                  }
-                />
-                <FormControlLabel
-                  label="Temporary Position"
-                  value={'Temporary Position'}
+                  label="Locum"
+                  value={'LOCUM'}
                   control={
                     <Radio
                       icon={<RadioBtn />}
@@ -66,8 +68,9 @@ const ContractDetails = () => {
             </div>
 
             <div
-              className={`${value !== 'Temporary Position' ? 'opacity-25' : ''} "flex flex-col gap-3"`}
+              className={`${values.contract_type !== 'LOCUM' ? 'opacity-25' : ''} "flex flex-col gap-3"`}
             >
+              {/* TODO: Paul said I should use the ISO format for the duration:: day.js has duration api */}
               <div>
                 What's the contract duration? (Only for temporary contracts)
               </div>
@@ -80,7 +83,7 @@ const ContractDetails = () => {
                     className="border border-border-tertiary rounded-lg w-16 pl-1 py-1"
                     type="number"
                     max={7}
-                    disabled={value !== 'Temporary Position'}
+                    disabled={values.contract_type !== 'LOCUM'}
                   />
                 </div>
                 <div className="flex gap-2 items-center">
@@ -92,7 +95,7 @@ const ContractDetails = () => {
                     type="number"
                     max={31}
                     maxLength={2}
-                    disabled={value !== 'Temporary Position'}
+                    disabled={values.contract_type !== 'LOCUM'}
                   />
                 </div>
               </div>
@@ -103,7 +106,9 @@ const ContractDetails = () => {
               <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="Full time"
-                name="radio-buttons-group"
+                name="contract_working_pattern"
+                value={values.contract_working_pattern}
+                onChange={handleChange}
               >
                 <FormControlLabel
                   label={
@@ -115,7 +120,7 @@ const ContractDetails = () => {
                       </p>
                     </div>
                   }
-                  value={'Full time'}
+                  value={'FULL_TIME'}
                   control={
                     <Radio
                       icon={<RadioBtn />}
@@ -133,7 +138,7 @@ const ContractDetails = () => {
                       </p>
                     </div>
                   }
-                  value={'Part time'}
+                  value={'PART_TIME'}
                   control={
                     <Radio
                       icon={<RadioBtn />}
@@ -150,7 +155,7 @@ const ContractDetails = () => {
                       </p>
                     </div>
                   }
-                  value={'Flexible hours'}
+                  value={'FLEXIBLE_HOURS'}
                   control={
                     <Radio
                       icon={<RadioBtn />}

@@ -24,6 +24,7 @@ export type GeneralInputType = {
   disabled?: boolean
   rows?: number
   InputProps?: object
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export type GeneralBtnProps = {

@@ -6,22 +6,30 @@ import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { FormProvider, useForm } from 'react-hook-form'
 import React from 'react'
 import LocoSelect from '../../../../_shared/components/inputs/LocoSelect'
-
-type StaffInformationProps =
-  | 'medicalList'
-  | 'AlliedHealthList'
-  | 'AdministativeList'
-  | 'NursesAndMidwiferyList'
-  | 'EstatesAndAncillaryList'
-  | ''
+import { FacilityType, IState } from '../../../../redux/slices/_types'
+import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
+import { formData } from '../../../../utils/constants'
 
 const StaffInformation = () => {
   const dispatch = useAppDispatch()
   const methods = useForm()
-  const [value, setValue] = React.useState<StaffInformationProps>('')
 
+  const getFormValues = (): FacilityType => {
+    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
+    if (!storedValue) return formData
+    return storedValue.publish_form_state as FacilityType
+  }
+
+  const [values, setValue] = React.useState<FacilityType>(getFormValues)
+  console.log('🚀 ~ JobDetails ~ values:', values)
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value as StaffInformationProps)
+    const { name, value } = event.target
+
+    setValue({ ...values, [name]: value })
+  }
+
+  const handleSelectChange = (name: string, value: string) => {
+    setValue({ ...values, [name]: value })
   }
 
   return (
@@ -35,13 +43,13 @@ const StaffInformation = () => {
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="Replacing someone who's leaving"
-              name="radio-buttons-group"
-              value={value}
+              name="required_staff_group"
+              value={values.required_staff_group}
               onChange={handleChange}
             >
               <FormControlLabel
                 label="Medicals"
-                value={'medicalList'}
+                value={'MEDICAL'}
                 control={
                   <Radio
                     icon={<RadioBtn />}
@@ -51,7 +59,7 @@ const StaffInformation = () => {
               />
               <FormControlLabel
                 label="Allied and Health Professionals"
-                value={'AlliedHealthList'}
+                value={'ALLIED_AND_HEALTH_PROFESSIONALS'}
                 control={
                   <Radio
                     icon={<RadioBtn />}
@@ -61,7 +69,7 @@ const StaffInformation = () => {
               />
               <FormControlLabel
                 label="Administative and Support Staff"
-                value={'AdministativeList'}
+                value={'ADMINISTRATIVE'}
                 control={
                   <Radio
                     icon={<RadioBtn />}
@@ -71,7 +79,7 @@ const StaffInformation = () => {
               />
               <FormControlLabel
                 label="Nurses and Midwifery"
-                value={'NursesAndMidwiferyList'}
+                value={'NURSES_AND_MIDWIFERY'}
                 control={
                   <Radio
                     icon={<RadioBtn />}
@@ -81,7 +89,7 @@ const StaffInformation = () => {
               />
               <FormControlLabel
                 label="Estates and Ancillary"
-                value={'EstatesAndAncillaryList'}
+                value={'ESTATES_AND_ANCILLARY'}
                 control={
                   <Radio
                     icon={<RadioBtn />}
@@ -92,18 +100,22 @@ const StaffInformation = () => {
             </RadioGroup>
             <div className="lg:w-96">
               <LocoSelect
-                name=""
+                name="required_area_of_work"
                 placeholder="Select area of work..."
+                value={values.required_area_of_work}
+                onChange={handleSelectChange}
                 options={
-                  value === 'medicalList'
+                  values.required_staff_group === 'MEDICAL'
                     ? medicalList
-                    : value === 'AlliedHealthList'
+                    : values.required_staff_group ===
+                        'ALLIED_AND_HEALTH_PROFESSIONALS'
                       ? AlliedHealthList
-                      : value === 'AdministativeList'
+                      : values.required_staff_group === 'ADMINISTRATIVE'
                         ? AdministativeList
-                        : value === 'NursesAndMidwiferyList'
+                        : values.required_staff_group === 'NURSES_AND_MIDWIFERY'
                           ? NursesAndMidwiferyList
-                          : value === 'EstatesAndAncillaryList'
+                          : values.required_staff_group ===
+                              'ESTATES_AND_ANCILLARY'
                             ? EstatesAndAncillaryList
                             : []
                 }

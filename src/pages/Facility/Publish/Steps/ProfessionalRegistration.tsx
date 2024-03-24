@@ -10,11 +10,26 @@ import {
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { colors } from '../../../../colors'
 import React from 'react'
+import { FacilityType, IState } from '../../../../redux/slices/_types'
+import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
+import { formData } from '../../../../utils/constants'
 
 const ProfessionalRegistration = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
-  const [value, setValue] = React.useState('no')
+  const getFormValues = (): FacilityType => {
+    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
+    if (!storedValue) return formData
+    return storedValue.publish_form_state as FacilityType
+  }
+
+  const [values, setValue] = React.useState<FacilityType>(getFormValues)
+  console.log('🚀 ~ JobDetails ~ values:', values)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target
+
+    setValue({ ...values, [name]: value })
+  }
   return (
     <div className="border details-container">
       <div className="details-container__wrapper">
@@ -30,13 +45,13 @@ const ProfessionalRegistration = () => {
                 </div>
                 <RadioGroup
                   aria-labelledby="label-for-yes-no"
-                  name="radio-buttons-group"
-                  onChange={(e) => setValue(e.target.value)}
-                  value={value}
+                  name="pr_required"
+                  onChange={handleChange}
+                  value={values.pr_required}
                 >
                   <FormControlLabel
                     label="Yes"
-                    value={'yes'}
+                    value={'YES'}
                     control={
                       <Radio
                         icon={<RadioBtn />}
@@ -46,7 +61,7 @@ const ProfessionalRegistration = () => {
                   />
                   <FormControlLabel
                     label="No"
-                    value={'no'}
+                    value={'NO'}
                     control={
                       <Radio
                         icon={<RadioBtn />}
@@ -58,6 +73,8 @@ const ProfessionalRegistration = () => {
               </div>
               <div>
                 <div>Select your pre-application questions</div>
+                {/* TODO: Confirm what the backend takes */}
+                {/* FIXME: Make user select a radio btn before abling the input */}
                 <RadioGroup
                   aria-labelledby="label-for-yes-no"
                   name="radio-buttons-group"
@@ -67,7 +84,12 @@ const ProfessionalRegistration = () => {
                     label={
                       <div className="flex items-center gap-2">
                         <div>Do you have a </div>
-                        <Input name="" placeholder="" />
+                        <Input
+                          value={values.pre_application_questions}
+                          onChange={handleChange}
+                          name=""
+                          placeholder=""
+                        />
                         <div> qualification or the equivalent?</div>
                       </div>
                     }
