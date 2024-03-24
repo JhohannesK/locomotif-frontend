@@ -13,7 +13,7 @@ const GeneralButton = ({
   return (
     <Button
       variant={variantText}
-      sx={{ ...sx }}
+      sx={{ ...sx, height: '40px' }}
       size={size}
       onClick={onClick}
       type={type}

@@ -1,61 +1,59 @@
 import { FormProvider, useForm } from 'react-hook-form'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
-import { ButtonWrapper, Container, FormContainer, Wrapper } from './JobDetails'
-import { InputBoxLabels } from '../../../auth/signin/styles'
-import { GenericButton, GenericInput } from '../../../../_shared'
+import { GenericButton, Input } from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
+import { FacilityType, IState } from '../../../../redux/slices/_types'
+import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
+import React from 'react'
+import { formData } from '../../../../utils/constants'
 
 const RecruiterInformation = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
+
+  const getFormValues = (): FacilityType => {
+    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
+    if (!storedValue) return formData
+    return storedValue.publish_form_state as FacilityType
+  }
+
+  const [values, setValue] = React.useState<FacilityType>(getFormValues)
+  console.log('🚀 ~ JobDetails ~ values:', values)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target
+
+    setValue({ ...values, [name]: value })
+  }
   return (
-    <Container>
-      <Wrapper style={{ height: '100%' }}>
+    <div className="border details-container">
+      <div className="details-container__wrapper">
         <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>
           Recruiter Information
         </p>
         <FormProvider {...methods}>
-          <FormContainer style={{ marginBottom: '3rem' }}>
+          <form className="form-control">
             <div
               style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
             >
               <div>
-                <InputBoxLabels>Name</InputBoxLabels>
-                <GenericInput
-                  name="name"
-                  placeholder="Name"
-                  sx={{ width: '100%' }}
-                />
+                <div>Name</div>
+                <Input onChange={handleChange} name="" placeholder="Name" />
               </div>
               <div>
-                <InputBoxLabels>Job Title(Optional)</InputBoxLabels>
-                <GenericInput
-                  name="title"
-                  placeholder="Your job title"
-                  sx={{ width: '100%' }}
-                />
+                <div>Job Title(Optional)</div>
+                <Input name="" placeholder="Your job title" />
               </div>
               <div>
-                <InputBoxLabels>Email Address</InputBoxLabels>
-                <GenericInput
-                  placeholder="someone@gmail.com"
-                  name="email"
-                  sx={{ width: '100%' }}
-                  type="email"
-                />
+                <div>Email Address</div>
+                <Input name="" placeholder="someone@gmail.com" type="email" />
               </div>
               <div>
-                <InputBoxLabels>Telephone number</InputBoxLabels>
-                <GenericInput
-                  name="tel"
-                  placeholder="0342342343"
-                  type="tel"
-                  sx={{ width: '100%' }}
-                />
+                <div>Telephone number</div>
+                <Input name="" placeholder="0342342343" type="tel" />
               </div>
             </div>
-            <ButtonWrapper>
+            <div className="btn-group">
               <GenericButton
                 type="button"
                 sx={{
@@ -77,11 +75,11 @@ const RecruiterInformation = () => {
                   dispatch(nextPage())
                 }}
               />
-            </ButtonWrapper>
-          </FormContainer>
+            </div>
+          </form>
         </FormProvider>
-      </Wrapper>
-    </Container>
+      </div>
+    </div>
   )
 }
 

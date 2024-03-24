@@ -1,3 +1,5 @@
+import { FacilityType } from '../redux/slices/_types'
+
 const Constants = {
   BaseURL: 'https://locomotif-backend.onrender.com/api/',
   DevBaseURL: 'https://locomotif-backend-pr-65.onrender.com/api/',
@@ -122,6 +124,46 @@ const Constants = {
     PERSONNEL_PROFILE: 'personnelProfile',
     ACTIVENAV: 'activeNav',
     POSTINGID: 'postingId',
+    FACILITY_FORM_DATA: 'f-FormData',
+  },
+}
+
+export const formData: FacilityType = {
+  id: 1,
+  recruiter_contact: null,
+  location: null,
+  title: 'Test posting 1',
+  description: 'Test posting 1 description',
+  advertisement_reason: 'TEMPORARY',
+  contract_type: 'LOCUM',
+  contract_duration: null,
+  contract_working_pattern: null,
+  created_at: '2024-02-26T08:04:39.749059Z',
+  payment_type: null,
+  payment_billing_cylce: null,
+  payment_fixed_amount: null,
+  payment_max_amount: null,
+  payment_min_amount: null,
+  payment_currency: 'GHS',
+  qualifications: null,
+  additional_information: null,
+  supporting_document: null,
+  pr_required: null,
+  pre_application_questions: 'null',
+  how_to_apply: null,
+  required_staff_group: null,
+  required_area_of_work: null,
+  status: 'DRAFT',
+  facility: {
+    user: 1,
+    name: 'Korle Bu Teaching Hospital',
+    bio: '',
+    telephone: '',
+    verified: false,
+    country: '',
+    region: '',
+    city: '',
+    digital_address: '',
   },
 }
 

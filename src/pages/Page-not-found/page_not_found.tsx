@@ -1,65 +1,52 @@
-import {
-  Contents,
-  DescriptionBox,
-  IconWrapper,
-  Info,
-  InfoBox,
-  InfoBoxContainer,
-  Logo,
-  MainWrapper,
-  Title,
-} from './styles'
 import page_not_found from '../../_shared/assets/page_not_found.svg'
 import { GenericButton } from '../../_shared'
 import { GoCheckCircleFill } from 'react-icons/go'
 
 function PageNotFound() {
   return (
-    <MainWrapper>
-      <Contents>
-        <Logo>Loco</Logo>
-        <DescriptionBox>
+    <div className="flex items-center justify-center h-screen">
+      <div className="px-3 py-5">
+        <p className="text-4xl text-center sm:text-7xl font-bold relative z-20 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-background-primary py-8">
+          Loco
+        </p>
+        <div className="flex flex-col gap-3 items-center justify-center">
           <img src={page_not_found} alt={'page not found'} />
-          <Title>Oops, Page not found</Title>
-          <InfoBoxContainer>
-            <InfoBox>
-              <IconWrapper>
+          <div>Oops, Page not found</div>
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <div>
                 <GoCheckCircleFill />
-              </IconWrapper>
-              <Info>
-                The URL is mistyped or contains a typographical error.
-              </Info>
-            </InfoBox>
-            <InfoBox>
-              <IconWrapper>
-                {' '}
+              </div>
+              <div>The URL is mistyped or contains a typographical error.</div>
+            </div>
+            <div className="flex items-center gap-2">
+              <div>
                 <GoCheckCircleFill />
-              </IconWrapper>
-              <Info>The webpage or resource has been moved or deleted. </Info>
-            </InfoBox>
-            <InfoBox>
-              <IconWrapper>
-                {' '}
+              </div>
+              <p>The webpage or resource has been moved or deleted. </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <div>
                 <GoCheckCircleFill />
-              </IconWrapper>
-              <Info>The server is temporarily or permanently down. </Info>
-            </InfoBox>
-            <InfoBox>
-              <IconWrapper>
-                {' '}
+              </div>
+              <div>The server is temporarily or permanently down. </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <div>
                 <GoCheckCircleFill />
-              </IconWrapper>
-              <Info>The server is misconfigured. </Info>
-            </InfoBox>
-          </InfoBoxContainer>
+              </div>
+              <p>The server is misconfigured. </p>
+            </div>
+          </div>
           <GenericButton
             title="Back To Homepage"
             sx={{ width: '100%' }}
             size="large"
           />
-        </DescriptionBox>
-      </Contents>
-    </MainWrapper>
+        </div>
+      </div>
+    </div>
+    // <div>adfadsf</div>
   )
 }
 
