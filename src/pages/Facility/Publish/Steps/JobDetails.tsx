@@ -14,6 +14,7 @@ import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 import React from 'react'
 import { FacilityType, IState } from '../../../../redux/slices/_types'
 import { formData } from '../../../../utils/constants'
+import { createFacilityPost } from '../../../../redux/slices/apis/facilityThunk'
 
 const JobDetails = () => {
   const methods = useForm()
@@ -119,6 +120,7 @@ const JobDetails = () => {
                 title="Next"
                 onClick={() => {
                   dispatch(nextPage())
+                  dispatch(createFacilityPost({ publish_form_state: values }))
                 }}
               />
             </div>

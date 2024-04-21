@@ -10,8 +10,6 @@ import { useDispatch } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 import { schema, defaultValues, Schema } from '../schema/validation'
 
-axios.defaults.withCredentials = true
-
 const useFacilitySignUp = () => {
   const [error, setError] = useState<string>('')
 
@@ -45,6 +43,7 @@ const useFacilitySignUp = () => {
         name: data.name,
       },
     }
+    console.log('🚀 ~ onSubmit ~ payload:', payload)
 
     mutation.mutate(payload)
   }

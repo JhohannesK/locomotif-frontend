@@ -6,7 +6,10 @@ export const createFacilityPost = createAsyncThunk<IState, IState>(
   'facility/createFacilityPost',
   async (data, { rejectWithValue, fulfillWithValue }) => {
     try {
-      const response = await Api.post('/facility', data).then((res) => res.data)
+      const response = await Api.post(
+        '/postings/',
+        data.publish_form_state
+      ).then((res) => res.data)
       fulfillWithValue(data)
       return response
     } catch (error) {

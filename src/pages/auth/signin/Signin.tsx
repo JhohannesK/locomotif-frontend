@@ -1,20 +1,20 @@
 import { FormProvider } from 'react-hook-form'
 import { GenericButton, Input, Toast } from '../../../_shared'
-import useSignIn, { PersonnelLoginSchema } from './hook/useSignIn'
+import useSignIn from './hook/useSignIn'
 import { colors } from '../../../colors'
 import googleLogo from '../../../_shared/assets/google_logo.png'
 import routes from '../../../routes'
 import Constants from '../../../utils/constants'
-import { login } from '../slice/authSlice'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { LoadingButton } from '@mui/lab'
 import PasswordInput from '../../../_shared/components/inputs/PasswordInput'
-import { useAppDispatch, useAppSelector } from '../../../redux/hooks/hook'
+import { useAppSelector } from '../../../redux/hooks/hook'
 
 const SignIn = () => {
-  const { methods } = useSignIn()
-  const dispatch = useAppDispatch()
+  const { methods, onSubmit } = useSignIn()
+  console.log('🚀 ~ SignIn ~ methods:', methods.watch())
+
   const { isLoading, isLoggedIn, user_role, errorMessage } = useAppSelector(
     (state) => state.auth
   )
@@ -29,9 +29,6 @@ const SignIn = () => {
     }
   }, [isLoggedIn, user_role, navigate])
 
-  const onSubmit = (data: PersonnelLoginSchema) => {
-    dispatch(login(data))
-  }
   return (
     <>
       {errorMessage && (
@@ -59,12 +56,15 @@ const SignIn = () => {
               >
                 <div className="w-full flex flex-col gap-2">
                   <p>Email Address</p>
-                  <Input name="email" placeholder="Your email address" />
+                  <Input
+                    placeholder="Your email address"
+                    {...methods.register('email')}
+                  />
                 </div>
                 <div className="w-full flex flex-col gap-2">
                   <p>Password</p>
                   <PasswordInput
-                    name="password"
+                    {...methods.register('password')}
                     placeholder="Enter your password"
                   />
                 </div>
@@ -74,7 +74,7 @@ const SignIn = () => {
                     sx={{
                       backgroundColor: colors.button.pineGreen,
                       width: '100%',
-                      height: '50px',
+                      height: '40px',
                     }}
                   ></LoadingButton>
                 ) : (

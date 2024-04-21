@@ -17,9 +17,10 @@ const FacilityCreateAccount = ({
     confirmPassword: string
   }) => void
 }) => {
-  const { methods } = useFacilitySignUp()
+  const { methods, onSubmit } = useFacilitySignUp()
+  console.log('🚀 ~ methods:', methods.watch())
 
-  const onSubmit = (data: {
+  const onsubmit = (data: {
     name: string
     email: string
     password: string
@@ -29,6 +30,7 @@ const FacilityCreateAccount = ({
     handleUserData(data)
   }
 
+  console.log('🚀 ~ onsubmit:', onsubmit)
   return (
     <div className="auth-container">
       <div className="auth-container__wrapper">
@@ -45,29 +47,40 @@ const FacilityCreateAccount = ({
               <div>
                 <div>Facility Name</div>
                 <Input
-                  name="facilityName"
+                  {...methods.register('name', { required: true })}
                   placeholder="Korle-Bu Teaching Hospital"
                 />
               </div>
-              <div>
+              {/* <div>
                 <div>Mobile Number</div>
-                <Input name="phone" type="tel" placeholder="+233 345 2353 5" />
-              </div>
+                <Input
+                  // {...methods.register('phone')}
+                  name="phone"
+                  type="tel"
+                  placeholder="+233 345 2353 5"
+                />
+              </div> */}
               <div>
                 <div>Email Address</div>
                 <Input
-                  name="email"
+                  {...methods.register('email', { required: true })}
                   type="email"
                   placeholder="e.g. korlebuteachinghospital@gmail.com"
                 />
               </div>
               <div>
                 <div>Password</div>
-                <PasswordInput name="password" placeholder="*********" />
+                <PasswordInput
+                  {...methods.register('password', { required: true })}
+                  placeholder="*********"
+                />
               </div>
               <div>
                 <div>Confirm Password</div>
-                <PasswordInput name="confirmPassword" placeholder="*********" />
+                <PasswordInput
+                  {...methods.register('confirmPassword', { required: true })}
+                  placeholder="*********"
+                />
               </div>
             </div>
             <div className="flex flex-col gap-4">
@@ -88,6 +101,7 @@ const FacilityCreateAccount = ({
                   },
                 }}
                 size="large"
+                type="submit"
               />
               <div className="w-full flex items-center justify-center gap-1">
                 <div className="w-full h-[1px] bg-zinc-400"></div>

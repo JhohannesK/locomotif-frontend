@@ -2,6 +2,7 @@ import axios, { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../constants'
 
+axios.defaults.withCredentials = true
 export const Api = axios.create({
   baseURL: Constants.BaseURL,
   headers: {

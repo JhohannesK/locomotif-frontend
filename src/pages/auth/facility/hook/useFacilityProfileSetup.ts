@@ -10,8 +10,6 @@ import { useDispatch } from 'react-redux'
 import { setActiveSidebar } from '../../../../redux/slices/appSlice'
 import { ProfileSchema, profileSchema } from '../schema/validation'
 
-axios.defaults.withCredentials = true
-
 const useFacilityProfileSetup = () => {
   const [error, setError] = useState<string>('')
 

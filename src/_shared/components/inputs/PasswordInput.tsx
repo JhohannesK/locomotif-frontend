@@ -6,22 +6,34 @@ import clsx from 'clsx'
 import { IconButton, InputAdornment } from '@mui/material'
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md'
 
-export default function PasswordInput({
-  placeholder,
-  name,
-}: {
-  placeholder: string
-  name: string
-}) {
+const PasswordInput = React.forwardRef(function PasswordInput(
+  {
+    placeholder,
+    name,
+    onChange,
+    value,
+  }: {
+    placeholder: string
+    name: string
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    value?: string
+  },
+  ref
+) {
   return (
     <Input
+      ref={ref as React.RefObject<HTMLInputElement>}
+      onChange={onChange}
       name={name}
+      value={value}
       className="relative"
       aria-label="Demo input"
       placeholder={placeholder}
     />
   )
-}
+})
+
+export default PasswordInput
 
 function useIsDarkMode() {
   const theme = useTheme()

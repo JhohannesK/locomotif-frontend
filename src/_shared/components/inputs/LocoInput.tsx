@@ -3,38 +3,38 @@ import * as React from 'react'
 import { Input as BaseInput, InputProps } from '@mui/base/Input'
 import { useTheme } from '@mui/system'
 import clsx from 'clsx'
-import { Controller } from 'react-hook-form'
+// import { Controller, useFormContext } from 'react-hook-form'
 
-export default function LocoInput({
-  placeholder,
-  type,
-  value,
-  onChange,
-  name,
-}: {
-  placeholder: string
-  type?: React.HTMLInputTypeAttribute
-  name: string
-  value?: string
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-}) {
+const LocoInput = React.forwardRef(function LocoInput(
+  {
+    placeholder,
+    type,
+    value,
+    onChange,
+    name,
+  }: {
+    placeholder: string
+    type?: React.HTMLInputTypeAttribute
+    name: string
+    value?: string
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  },
+  ref
+) {
   return (
-    <Controller
+    <Input
+      value={value}
+      onChange={onChange}
+      ref={ref as React.RefObject<HTMLInputElement>}
       name={name}
-      render={({ field }) => (
-        <Input
-          {...field}
-          value={value}
-          onChange={onChange}
-          name={name}
-          type={type}
-          aria-label={'Loco input'}
-          placeholder={placeholder}
-        />
-      )}
+      type={type}
+      aria-label={'Loco input'}
+      placeholder={placeholder}
     />
   )
-}
+})
+
+export default LocoInput
 
 function useIsDarkMode() {
   const theme = useTheme()
