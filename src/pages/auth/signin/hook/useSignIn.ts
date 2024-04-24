@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { login } from '../../slice/authSlice'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
+import { useNavigate } from 'react-router-dom'
+import Constants from '../../../../utils/constants'
 
 const schema = z.object({
   email: z.string().min(3),
@@ -14,6 +16,7 @@ export type LoginSchema = z.infer<typeof schema>
 
 const useSignIn = () => {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const defaultValues: LoginSchema = {
     email: '',
     password: '',
@@ -28,6 +31,10 @@ const useSignIn = () => {
     mutationFn: async (data: LoginSchema) =>
       dispatch(login({ email: data.email, password: data.password })),
   })
+
+  if (mutation.isSuccess) {
+    navigate(Constants.ROUTES.PAGES.FACILITY.publish)
+  }
 
   const onSubmit = (data: LoginSchema) => {
     console.log(data)

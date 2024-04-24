@@ -125,6 +125,7 @@ const Constants = {
     ACTIVENAV: 'activeNav',
     POSTINGID: 'postingId',
     FACILITY_FORM_DATA: 'f-FormData',
+    TOKEN: 'lmtf-token',
   },
 }
 
