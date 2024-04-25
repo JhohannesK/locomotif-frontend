@@ -61,7 +61,11 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
               >
                 {/* <AiOutlineCheckCircle /> */}
 
-                {activeSidebar === index ? <CheckedRadioBtn /> : <RadioBtn />}
+                {activeSidebar === index ? (
+                  <CheckedRadioBtn isWhite />
+                ) : (
+                  <RadioBtn />
+                )}
                 <div className="flex flex-col items-start">
                   <div className="text-lg">{step.title}</div>
                   <div className="text-sm opacity-60">{step.subTitle}</div>

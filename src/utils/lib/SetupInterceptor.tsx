@@ -40,6 +40,7 @@ const SetupInterceptor = ({ children }: { children: React.ReactNode }) => {
     } catch (error) {
       // Handle token refresh error, e.g., redirect to login page
       console.error('Token refresh failed:', error)
+      // navigate(Constants.ROUTES.AUTH.signin)
       throw error
     }
   }

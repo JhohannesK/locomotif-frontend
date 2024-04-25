@@ -27,7 +27,6 @@ const JobDetails = () => {
   }
 
   const [values, setValue] = React.useState<FacilityType>(getFormValues)
-  console.log('🚀 ~ JobDetails ~ values:', values)
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
 
