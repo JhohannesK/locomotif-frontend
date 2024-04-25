@@ -44,7 +44,7 @@ const SignIn = () => {
           <div className="flex flex-col gap-6 items-center justify-center xl:w-[30rem]">
             {/* <p>Loco</p> */}
             <div className="flex items-center justify-center flex-col">
-              <p className="font-bold text-3xl">Welcome To Locomotif!</p>
+              <p className="font-bold text-4xl">Welcome To Locomotif!</p>
               <p className="opacity-60">
                 Please input your log in details as specified below
               </p>

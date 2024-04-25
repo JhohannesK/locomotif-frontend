@@ -4,6 +4,7 @@ import { RootState } from '../../../redux/store'
 import axios, { AxiosResponse } from 'axios'
 import Constants from '../../../utils/constants'
 import { saveToLocalStorage } from '../../../redux/hooks/middleware'
+import { Api } from '../../../utils/lib/SetupInterceptor'
 
 const initialState: UserAuthType = {
   user_role: {
@@ -64,16 +65,21 @@ export const logoutPersonnel = createAsyncThunk<
   }
 })
 
+interface IResLogin {
+  access_token: string
+  access_token_expires_in: number
+  refresh_token: string
+  refresh_token_expires_in: number
+  user_role: UserAuthState
+}
+
 export const login = createAsyncThunk<
-  { user_role: UserAuthState },
+  IResLogin,
   { email: string; password: string },
   { state: RootState }
 >('auth/login', async (data, { rejectWithValue, dispatch }) => {
   try {
-    const response: {
-      user_role: UserAuthState
-    } = await axios
-      .post(`${Constants.BaseURL}auth/login/`, data)
+    const response: IResLogin = await Api.post(`/auth/login/`, data)
       .then((res: AxiosResponse) => {
         return res.data
       })
@@ -105,6 +111,13 @@ const authSlice = createSlice({
       saveToLocalStorage({
         state: { user_role: action.payload.user_role, isLoggedIn: true },
         key: Constants.LOCALSTORAGE_KEYS.PERSONNEL_AUTH,
+      })
+      saveToLocalStorage({
+        key: Constants.LOCALSTORAGE_KEYS.TOKEN,
+        state: {
+          accessToken: action.payload.access_token,
+          refreshToken: action.payload.refresh_token,
+        },
       })
     })
     builder.addCase(login.pending, (state) => {
