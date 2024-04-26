@@ -1,5 +1,13 @@
 import { Button } from '@mui/material'
 import { GeneralBtnProps } from '../../@types'
+import React from 'react'
+import { cn } from '../../../utils/cn'
+
+interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    GeneralBtnProps {
+  className?: string
+}
 
 const GeneralButton = ({
   variantText,
@@ -8,8 +16,10 @@ const GeneralButton = ({
   size,
   icon,
   onClick,
+  className,
   type = 'submit',
-}: GeneralBtnProps) => {
+  disabled,
+}: ButtonProps) => {
   return (
     <Button
       variant={variantText}
@@ -17,7 +27,9 @@ const GeneralButton = ({
       size={size}
       onClick={onClick}
       type={type}
+      disabled={disabled}
       startIcon={icon}
+      className={cn(className, 'w-full')}
     >
       {title}
     </Button>

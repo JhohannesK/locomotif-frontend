@@ -6,7 +6,7 @@ import LandingPage from './pages/auth/shared/GetStarted'
 import PageNotFound from './pages/Page-not-found/page_not_found'
 import Overview from './pages/Facility/Overview/Overview'
 import RootLayout from './pages/Facility/Publish/RootLayout'
-import FacilitySignUp from './pages/auth/facility/Facility-SignUp'
+import FacilitySignUp from './pages/auth/facility/FacilitySignUp'
 import PersonnelSignup from './pages/auth/personnel/Personnel-Signup'
 import SignIn from './pages/auth/signin/Signin'
 

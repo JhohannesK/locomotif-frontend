@@ -54,7 +54,7 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
             {steps.map((step, index) => (
               <button
                 tabIndex={index}
-                // disabled={onDisable(index)}
+                disabled={onDisable(index)}
                 key={index}
                 onClick={() => onHandleClick(index)}
                 className={

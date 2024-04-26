@@ -63,26 +63,32 @@ const Constants = {
       {
         title: 'Personnel or Facility',
         subTitle: 'Join us as a Personnel or Facility',
+        key: 'F/P',
       },
       {
         title: 'Create an account',
         subTitle: 'Create an account to get started',
+        key: 'Create Account',
       },
       {
         title: 'Terms and Conditions',
         subTitle: 'Accept our terms and conditions',
+        key: 'Terms and Conditions',
       },
       {
         title: 'Create Profile',
         subTitle: 'Provide us with your details',
+        key: 'Create Profile',
       },
       {
         title: 'Upload your CV',
         subTitle: 'Upload your CV and other documents',
+        key: 'Upload CV',
       },
       {
         title: 'Completed',
         subTitle: 'You are all set',
+        key: 'Completed',
       },
     ],
 
@@ -90,22 +96,26 @@ const Constants = {
       {
         title: 'Personnel or Facility',
         subTitle: 'Join us as a Personnel or Facility',
+        key: 'F/P',
       },
       {
         title: 'Create an account',
         subTitle: 'Create an account to get started',
+        key: 'Create Account',
       },
-      {
-        title: 'Terms and Conditions',
-        subTitle: 'Accept our terms and conditions',
-      },
+      // {
+      //   title: 'Terms and Conditions',
+      //   subTitle: 'Accept our terms and conditions',
+      // },
       {
         title: 'Create Profile',
         subTitle: 'Setup your facility profile page',
+        key: 'Create Profile',
       },
       {
         title: 'Completed',
         subTitle: 'You are all set',
+        key: 'Completed',
       },
     ],
   },

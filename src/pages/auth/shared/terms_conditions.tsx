@@ -14,6 +14,7 @@ const TermsAndConditions = () => {
       name: '',
       email: '',
       password: '',
+      check: false,
       confirmPassword: '',
     })
   }

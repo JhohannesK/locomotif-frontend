@@ -1,6 +1,7 @@
 export interface IStep {
   title: string
   subTitle: string
+  key: string
 }
 
 export type Steps = Array<IStep>

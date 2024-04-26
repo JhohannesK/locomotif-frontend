@@ -11,7 +11,6 @@ const Radiobtn = ({ isWhite }: { isWhite?: boolean }) => {
 }
 
 export const RadioBtnActive = ({ isWhite }: { isWhite?: boolean }) => {
-  console.log('🚀 ~ RadioBtnActive ~ isWhite:', isWhite)
   return (
     <div
       className={
