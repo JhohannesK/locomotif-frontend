@@ -33,7 +33,7 @@ const useSignIn = () => {
   })
 
   if (mutation.isSuccess) {
-    navigate(Constants.ROUTES.PAGES.FACILITY.publish)
+    navigate(Constants.ROUTES.PAGES.FACILITY.facility)
   }
 
   const onSubmit = (data: LoginSchema) => {

@@ -16,3 +16,10 @@ export enum TJobSteps {
   'Recruiter Information',
   'Preview Posting',
 }
+
+export enum TFacilityAuthSteps {
+  'F/P',
+  'Create Account',
+  'Create Profile',
+  'Completed',
+}

@@ -33,14 +33,12 @@ export type GeneralBtnProps = {
     ButtonPropsVariantOverrides
   >
   sx?: SxProps
-  title: string
-  type?: 'submit' | 'button'
+  // title: string
   size?: OverridableStringUnion<
     'small' | 'medium' | 'large',
     ButtonPropsSizeOverrides
   >
   icon?: React.ReactNode
-  onClick?: () => void
 }
 
 export interface SelectProps {

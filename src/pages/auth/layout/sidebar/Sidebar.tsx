@@ -54,17 +54,21 @@ const Sidebar = ({ steps }: { steps: Steps }) => {
             {steps.map((step, index) => (
               <button
                 tabIndex={index}
-                // disabled={onDisable(index)}
+                disabled={onDisable(index)}
                 key={index}
                 onClick={() => onHandleClick(index)}
-                className={`${onDisable(index) ? 'opacity-25' : ''} "flex items-center gap-3 justify-start"`}
+                className={
+                  `${onDisable(index) ? 'opacity-25' : ''}` +
+                  ' ' +
+                  'flex items-center gap-3 justify-start'
+                }
               >
                 {/* <AiOutlineCheckCircle /> */}
 
                 {activeSidebar === index ? (
                   <CheckedRadioBtn isWhite />
                 ) : (
-                  <RadioBtn />
+                  <RadioBtn isWhite />
                 )}
                 <div className="flex flex-col items-start">
                   <div className="text-lg">{step.title}</div>

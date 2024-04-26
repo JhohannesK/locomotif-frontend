@@ -4,6 +4,8 @@ import useFacilitySignUp from '../hook/useFacilitySignUp'
 import { colors } from '../../../../colors'
 import google_logo from '../../../../_shared/assets/google_logo.png'
 import PasswordInput from '../../../../_shared/components/inputs/PasswordInput'
+import { FormControlLabel } from '@mui/material'
+import LocoCheckbox from '../../../../_shared/components/Checkbox'
 
 const FacilityCreateAccount = ({
   handleActiveState,
@@ -83,9 +85,16 @@ const FacilityCreateAccount = ({
                 />
               </div>
             </div>
+            <div>
+              <FormControlLabel
+                control={<LocoCheckbox name="check" />}
+                label="Agree to the terms and conditions."
+              />
+            </div>
             <div className="flex flex-col gap-4">
               <GenericButton
                 title="Sign Up"
+                disabled={methods.getValues().check === false}
                 sx={{
                   backgroundColor: colors.button.pineGreen,
                   width: '100%',

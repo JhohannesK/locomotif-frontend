@@ -9,6 +9,7 @@ export const schema = z
       .nonempty({ message: 'Password is required' })
       .min(8, { message: 'Password must be at least 8 characters' }),
     confirmPassword: z.string().min(8).max(100),
+    check: z.boolean(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Passwords do not match',
@@ -22,6 +23,7 @@ export const defaultValues: Schema = {
   password: '',
   email: '',
   confirmPassword: '',
+  check: false,
 }
 
 export const profileSchema = z.object({
