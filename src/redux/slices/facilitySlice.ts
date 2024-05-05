@@ -1,20 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { IState } from './_types'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { Ilocation, IRecruiterContact, IState } from './_types'
 import { createFacilityPost, updateFacilityPost } from './apis/facilityThunk'
+import React from 'react'
 
 const initialState: IState = {
   publish_form_state: {
     id: 1,
     recruiter_contact: null,
-    location: {
-      id: 0,
-      address_line_1: '',
-      address_line_2: '',
-      city: '',
-      country: '',
-      region: '',
-      digital_address: '',
-    },
+    location: null,
     title: '',
     description: '',
     advertisement_reason: 'TEMPORARY',
@@ -23,7 +16,7 @@ const initialState: IState = {
     contract_working_pattern: null,
     created_at: '',
     payment_type: null,
-    payment_billing_cylce: null,
+    payment_billing_cylce: 'YEAR',
     payment_fixed_amount: null,
     payment_max_amount: null,
     payment_min_amount: null,
@@ -59,6 +52,61 @@ export const facilitySlice = createSlice({
     setStatusCodeToDef: (state) => {
       state.status_code = '001'
     },
+    handleChange: (
+      state,
+      action: PayloadAction<React.ChangeEvent<HTMLInputElement>>
+    ) => {
+      const { name, value } = action.payload.target
+
+      if (
+        name === 'country' ||
+        name === 'region' ||
+        name === 'city' ||
+        name === 'digital_address' ||
+        name.includes('address')
+      ) {
+        state.publish_form_state.location = {
+          ...state.publish_form_state.location,
+          [name]: value,
+        } as Ilocation
+      } else {
+        state.publish_form_state = {
+          ...state.publish_form_state,
+          [name]: value,
+        }
+      }
+    },
+    handleSelectChange: (
+      state,
+      action: PayloadAction<{ name: string; value: string }>
+    ) => {
+      const { name, value } = action.payload
+      if (
+        name === 'contract_duration' ||
+        name === 'payment_billing_cylce' ||
+        name === 'payment_currency'
+      ) {
+        state.publish_form_state = {
+          ...state.publish_form_state,
+          [name]: value,
+        }
+        return
+      }
+      state.publish_form_state.location = {
+        ...state.publish_form_state.location,
+        [name]: value,
+      } as Ilocation
+    },
+    handleRecruiterContactChange: (
+      state,
+      action: PayloadAction<React.ChangeEvent<HTMLInputElement>>
+    ) => {
+      const { name, value } = action.payload.target
+      state.publish_form_state.recruiter_contact = {
+        ...state.publish_form_state.recruiter_contact,
+        [name]: value,
+      } as IRecruiterContact
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(createFacilityPost.fulfilled, (state, action) => {
@@ -72,4 +120,9 @@ export const facilitySlice = createSlice({
   },
 })
 
-export const { setStatusCodeToDef } = facilitySlice.actions
+export const {
+  setStatusCodeToDef,
+  handleChange,
+  handleSelectChange,
+  handleRecruiterContactChange,
+} = facilitySlice.actions

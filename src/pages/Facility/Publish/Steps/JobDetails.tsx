@@ -10,17 +10,19 @@ import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { nextPage } from '../../../../redux/slices/appSlice'
 import { colors } from '../../../../colors'
-import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
-import React, { useEffect } from 'react'
-import { FacilityType, IState } from '../../../../redux/slices/_types'
-import { formData } from '../../../../utils/constants'
 import { createFacilityPost } from '../../../../redux/slices/apis/facilityThunk'
-import { setStatusCodeToDef } from '../../../../redux/slices/facilitySlice'
+import {
+  handleChange,
+  setStatusCodeToDef,
+} from '../../../../redux/slices/facilitySlice'
+import { useEffect } from 'react'
 
 const JobDetails = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
-  const statusCode = useAppSelector((state) => state.facility.status_code)
+  const { status_code: statusCode, publish_form_state: values } =
+    useAppSelector((state) => state.facility)
+  console.log('🚀 ~ JobDetails ~ values:', values)
 
   useEffect(() => {
     if (statusCode === '000') {
@@ -31,19 +33,6 @@ const JobDetails = () => {
       dispatch(setStatusCodeToDef())
     }
   }, [statusCode, dispatch])
-
-  const getFormValues = (): FacilityType => {
-    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
-    if (!storedValue) return formData
-    return storedValue.publish_form_state as FacilityType
-  }
-
-  const [values, setValue] = React.useState<FacilityType>(getFormValues)
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-
-    setValue({ ...values, [name]: value })
-  }
 
   return (
     <div className="border details-container">
@@ -56,7 +45,7 @@ const JobDetails = () => {
               <Input
                 value={values?.title}
                 name="title"
-                onChange={handleChange}
+                onChange={(e) => dispatch(handleChange(e))}
                 placeholder="What's the job title"
               />
             </div>
@@ -65,8 +54,8 @@ const JobDetails = () => {
               <GenericInput
                 type="multiline-input"
                 name="description"
-                value={values.description}
-                onChange={handleChange}
+                value={values?.description}
+                onChange={(e) => dispatch(handleChange(e))}
                 label=""
                 placeholder="200 characters allowed"
                 rows={6}
@@ -80,7 +69,7 @@ const JobDetails = () => {
                 defaultValue="Replacing someone who's leaving"
                 name="advertisement_reason"
                 value={values.advertisement_reason}
-                onChange={handleChange}
+                onChange={(e) => dispatch(handleChange(e))}
               >
                 <FormControlLabel
                   label="Replacing someone who's leaving"

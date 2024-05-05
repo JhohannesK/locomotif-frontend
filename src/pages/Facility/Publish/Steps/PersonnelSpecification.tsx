@@ -4,42 +4,27 @@ import { colors } from '../../../../colors'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { Input } from '@mui/base'
-import { FacilityType, IState } from '../../../../redux/slices/_types'
-import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 import React from 'react'
-import { formData } from '../../../../utils/constants'
 import { updateFacilityPost } from '@/redux/slices/apis/facilityThunk'
-import { setStatusCodeToDef } from '@/redux/slices/facilitySlice'
+import { handleChange, setStatusCodeToDef } from '@/redux/slices/facilitySlice'
 
 const PersonnelSpecification = () => {
   const dispatch = useAppDispatch()
   const methods = useForm()
-  const statusCode = useAppSelector((state) => state.facility.status_code)
+  const { status_code, publish_form_state: values } = useAppSelector(
+    (state) => state.facility
+  )
 
   React.useEffect(() => {
-    if (statusCode === '000') {
+    if (status_code === '000') {
       dispatch(nextPage())
     }
 
     return () => {
       dispatch(setStatusCodeToDef())
     }
-  }, [statusCode, dispatch])
+  }, [status_code, dispatch])
 
-  const getFormValues = (): FacilityType => {
-    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
-    if (!storedValue) return formData
-    return storedValue.publish_form_state as FacilityType
-  }
-
-  const [values, setValue] = React.useState<FacilityType>(getFormValues)
-  console.log('🚀 ~ PersonnelSpecification ~ values:', values)
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-
-    setValue({ ...values, [name]: value })
-  }
   return (
     <div className="details-container border">
       <div className="details-container__wrapper" style={{ height: '100%' }}>
@@ -56,7 +41,7 @@ const PersonnelSpecification = () => {
               <GenericInput
                 type="multiline-input"
                 name="qualification"
-                onChange={handleChange}
+                onChange={(e) => dispatch(handleChange(e))}
                 label=""
                 placeholder="200 characters allowed"
                 rows={5}
@@ -71,7 +56,7 @@ const PersonnelSpecification = () => {
               <GenericInput
                 type="multiline-input"
                 name="additional_information"
-                onChange={handleChange}
+                onChange={(e) => dispatch(handleChange(e))}
                 label=""
                 placeholder="200 characters allowed"
                 rows={5}

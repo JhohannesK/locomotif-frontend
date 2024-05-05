@@ -5,31 +5,19 @@ import { colors } from '../../../../colors'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import React from 'react'
-import { FacilityType, IState } from '../../../../redux/slices/_types'
-import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
-import { formData } from '../../../../utils/constants'
 import { formatISODuration, getMonth } from 'date-fns'
 import { updateFacilityPost } from '@/redux/slices/apis/facilityThunk'
-import { setStatusCodeToDef } from '@/redux/slices/facilitySlice'
+import {
+  handleChange,
+  handleSelectChange,
+  setStatusCodeToDef,
+} from '@/redux/slices/facilitySlice'
 
 const ContractDetails = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
-  const statusCode = useAppSelector((state) => state.facility.status_code)
-
-  const getFormValues = (): FacilityType => {
-    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
-    if (!storedValue) return formData
-    return storedValue.publish_form_state as FacilityType
-  }
-
-  const [values, setValue] = React.useState<FacilityType>(getFormValues)
-  console.log('🚀 ~ JobDetails ~ values:', values)
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-
-    setValue({ ...values, [name]: value })
-  }
+  const { status_code: statusCode, publish_form_state: values } =
+    useAppSelector((state) => state.facility)
 
   const [month, setMonth] = React.useState<number>(6)
   const [day, setDay] = React.useState<number>(0)
@@ -47,14 +35,14 @@ const ContractDetails = () => {
   React.useEffect(() => {
     const duration = formatISODuration({ months: month, days: day })
     console.log('🚀 ~ React.useEffect ~ duration:', duration)
-    setValue({ ...values, contract_duration: duration })
+    // setValue({ ...values, contract_duration: duration })
+    dispatch(handleSelectChange({ name: 'contract_duration', value: duration }))
     // TODO: Convert duration to months and days
     const aa = getMonth(duration)
     console.log('🚀 ~ React.useEffect ~ aa:', aa)
 
     return () => {}
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [month, day])
+  }, [month, day, dispatch])
 
   return (
     <div className="border details-container">
@@ -70,8 +58,8 @@ const ContractDetails = () => {
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="Replacing someone who's leaving"
                 name="contract_type"
-                value={values.contract_type}
-                onChange={handleChange}
+                value={values?.contract_type}
+                onChange={(e) => dispatch(handleChange(e))}
               >
                 <FormControlLabel
                   label="Permanent"
@@ -140,7 +128,7 @@ const ContractDetails = () => {
                 defaultValue="Full time"
                 name="contract_working_pattern"
                 value={values.contract_working_pattern}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e)}
               >
                 <FormControlLabel
                   label={

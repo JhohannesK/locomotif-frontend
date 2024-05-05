@@ -4,17 +4,19 @@ import { colors } from '../../../../colors'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import CountrySelect from '../../../../_shared/components/inputs/CountrySelect'
-import { FacilityType, IState } from '../../../../redux/slices/_types'
-import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 import React from 'react'
-import { formData } from '../../../../utils/constants'
 import { updateFacilityPost } from '@/redux/slices/apis/facilityThunk'
-import { setStatusCodeToDef } from '@/redux/slices/facilitySlice'
+import {
+  handleChange,
+  handleSelectChange,
+  setStatusCodeToDef,
+} from '@/redux/slices/facilitySlice'
 
 const Location = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
-  const statusCode = useAppSelector((state) => state.facility.status_code)
+  const { status_code: statusCode, publish_form_state: values } =
+    useAppSelector((state) => state.facility)
 
   React.useEffect(() => {
     if (statusCode === '000') {
@@ -26,27 +28,6 @@ const Location = () => {
     }
   }, [statusCode, dispatch])
 
-  const getFormValues = (): FacilityType => {
-    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
-    if (!storedValue) return formData
-    return storedValue.publish_form_state as FacilityType
-  }
-
-  const [values, setValue] = React.useState<FacilityType>(getFormValues)
-  console.log('🚀 ~ Location ~ values:', values)
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-
-    setValue({
-      ...values,
-      location: {
-        ...values.location,
-        [name]: value,
-      },
-    })
-  }
-
   return (
     <div className="border details-container">
       <div className="details-container__wrapper" style={{ height: '100%' }}>
@@ -56,15 +37,14 @@ const Location = () => {
             <div className="w-full">
               <div>Country</div>
               <CountrySelect
-                value={values.location.country}
+                value={values?.location?.country}
                 onChange={(_, newValue) => {
-                  setValue({
-                    ...values,
-                    location: {
-                      ...values.location,
-                      country: newValue as string,
-                    },
-                  })
+                  dispatch(
+                    handleSelectChange({
+                      name: 'country',
+                      value: newValue as string,
+                    })
+                  )
                 }}
                 name="country"
               />
@@ -72,8 +52,8 @@ const Location = () => {
             <div>
               <div>Address line 1</div>
               <Input
-                value={values.location.address_line_1}
-                onChange={handleChange}
+                value={values?.location?.address_line_1}
+                onChange={(e) => dispatch(handleChange(e))}
                 name="address_line_1"
                 placeholder="Address line 1"
               />
@@ -81,8 +61,8 @@ const Location = () => {
             <div>
               <div>Address line 2(optional)</div>
               <Input
-                value={values.location.address_line_2}
-                onChange={handleChange}
+                value={values?.location?.address_line_2}
+                onChange={(e) => dispatch(handleChange(e))}
                 name="address_line_2"
                 placeholder="Address line 2"
               />
@@ -91,8 +71,8 @@ const Location = () => {
               <div>Town or city Address</div>
               <Input
                 name="city"
-                value={values.location.city}
-                onChange={handleChange}
+                value={values?.location?.city}
+                onChange={(e) => dispatch(handleChange(e))}
                 placeholder="Town or city"
               />
             </div>
@@ -100,8 +80,8 @@ const Location = () => {
               <div>Region Address (option)</div>
               <Input
                 name="region"
-                value={values.location.region}
-                onChange={handleChange}
+                value={values?.location?.region}
+                onChange={(e) => dispatch(handleChange(e))}
                 placeholder="Region"
               />
             </div>
@@ -109,8 +89,8 @@ const Location = () => {
               <div>Digital Address</div>
               <Input
                 name="digital_address"
-                value={values.location.digital_address}
-                onChange={handleChange}
+                value={values?.location?.digital_address}
+                onChange={(e) => dispatch(handleChange(e))}
                 placeholder="Digital Address"
               />
             </div>

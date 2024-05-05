@@ -10,40 +10,26 @@ import {
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { colors } from '../../../../colors'
 import React from 'react'
-import { FacilityType, IState } from '../../../../redux/slices/_types'
-import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
-import { formData } from '../../../../utils/constants'
-import { setStatusCodeToDef } from '@/redux/slices/facilitySlice'
+import { handleChange, setStatusCodeToDef } from '@/redux/slices/facilitySlice'
 import { updateFacilityPost } from '@/redux/slices/apis/facilityThunk'
 
 const ProfessionalRegistration = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
-  const statusCode = useAppSelector((state) => state.facility.status_code)
+  const { status_code, publish_form_state: values } = useAppSelector(
+    (state) => state.facility
+  )
 
   React.useEffect(() => {
-    if (statusCode === '000') {
+    if (status_code === '000') {
       dispatch(nextPage())
     }
 
     return () => {
       dispatch(setStatusCodeToDef())
     }
-  }, [statusCode, dispatch])
+  }, [status_code, dispatch])
 
-  const getFormValues = (): FacilityType => {
-    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
-    if (!storedValue) return formData
-    return storedValue.publish_form_state as FacilityType
-  }
-
-  const [values, setValue] = React.useState<FacilityType>(getFormValues)
-  console.log('🚀 ~ JobDetails ~ values:', values)
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-
-    setValue({ ...values, [name]: value })
-  }
   return (
     <div className="border details-container">
       <div className="details-container__wrapper">
@@ -60,7 +46,7 @@ const ProfessionalRegistration = () => {
                 <RadioGroup
                   aria-labelledby="label-for-yes-no"
                   name="pr_required"
-                  onChange={handleChange}
+                  onChange={(e) => dispatch(handleChange(e))}
                   value={values.pr_required}
                 >
                   <FormControlLabel
@@ -102,7 +88,7 @@ const ProfessionalRegistration = () => {
                         <div>Do you have a </div>
                         <Input
                           value={values.pre_application_questions}
-                          onChange={handleChange}
+                          onChange={(e) => dispatch(handleChange(e))}
                           name=""
                           placeholder=""
                         />

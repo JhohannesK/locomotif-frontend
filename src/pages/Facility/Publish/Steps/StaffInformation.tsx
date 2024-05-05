@@ -4,18 +4,20 @@ import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { FormProvider, useForm } from 'react-hook-form'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import LocoSelect from '../../../../_shared/components/inputs/LocoSelect'
-import { FacilityType, IState } from '../../../../redux/slices/_types'
-import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
-import { formData } from '../../../../utils/constants'
 import { updateFacilityPost } from '../../../../redux/slices/apis/facilityThunk'
-import { setStatusCodeToDef } from '../../../../redux/slices/facilitySlice'
+import {
+  handleChange,
+  handleSelectChange,
+  setStatusCodeToDef,
+} from '../../../../redux/slices/facilitySlice'
 
 const StaffInformation = () => {
   const dispatch = useAppDispatch()
   const methods = useForm()
-  const statusCode = useAppSelector((state) => state.facility.status_code)
+  const { status_code: statusCode, publish_form_state: values } =
+    useAppSelector((state) => state.facility)
 
   useEffect(() => {
     if (statusCode === '000') {
@@ -26,21 +28,6 @@ const StaffInformation = () => {
       dispatch(setStatusCodeToDef())
     }
   }, [statusCode, dispatch])
-
-  const getFormValues = (): FacilityType => {
-    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
-    if (!storedValue) return formData
-    return storedValue.publish_form_state as FacilityType
-  }
-
-  const [values, setValue] = React.useState<FacilityType>(getFormValues)
-  console.log('🚀 ~ StaffInformation ~ values:', values)
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-
-    setValue({ ...values, [name]: value })
-  }
 
   return (
     <div className="details-container border">
@@ -55,7 +42,7 @@ const StaffInformation = () => {
               defaultValue="Replacing someone who's leaving"
               name="required_staff_group"
               value={values.required_staff_group}
-              onChange={handleChange}
+              onChange={(e) => dispatch(handleChange(e))}
             >
               <FormControlLabel
                 label="Medicals"
@@ -114,13 +101,22 @@ const StaffInformation = () => {
                 placeholder="Select area of work..."
                 value={values.required_area_of_work}
                 onChange={(_, newValue) => {
-                  setValue({
-                    ...values,
-                    required_area_of_work: (newValue as string)
-                      .toUpperCase()
-                      .split(' ')
-                      .join('_'),
-                  })
+                  // setValue({
+                  //   ...values,
+                  //   required_area_of_work: (newValue as string)
+                  //     .toUpperCase()
+                  //     .split(' ')
+                  //     .join('_'),
+                  // })
+                  dispatch(
+                    handleSelectChange({
+                      name: 'required_area_of_work',
+                      value: (newValue as string)
+                        .toUpperCase()
+                        .split(' ')
+                        .join('_'),
+                    })
+                  )
                   methods.setValue('required_area_of_work', newValue)
                 }}
                 options={
@@ -214,7 +210,7 @@ const NursesAndMidwiferyList = [
   'Medial & Dental',
   'Nurses & Midwifery',
   'Special Nurses',
-  'Nurst assistant',
+  'Nurse assistant',
 ]
 
 const EstatesAndAncillaryList = [

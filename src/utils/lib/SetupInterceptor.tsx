@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 // import { useNavigate } from 'react-router-dom'
 import Constants from '../constants'
 import {
@@ -66,10 +66,11 @@ const SetupInterceptor = ({ children }: { children: React.ReactNode }) => {
 
   Api.interceptors.response.use(
     (response) => response,
-    async (error: AxiosError) => {
+    async (error) => {
       const originalRequest = error.config
 
-      if (error?.response?.status === 401) {
+      if (error?.response?.status === 401 && !originalRequest?._retry) {
+        originalRequest._retry = true
         console.log('Token expired, refreshing token')
         try {
           const accessToken = await refreshToken()

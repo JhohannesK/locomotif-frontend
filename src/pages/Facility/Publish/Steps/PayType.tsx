@@ -1,31 +1,35 @@
 import { FormProvider, useForm } from 'react-hook-form'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { CheckedRadioBtn, GenericButton, RadioBtn } from '../../../../_shared'
-import { useAppDispatch } from '../../../../redux/hooks/hook'
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import React from 'react'
 import { colors } from '../../../../colors'
 import LocoSelect from '../../../../_shared/components/inputs/LocoSelect'
-import { FacilityType, IState } from '../../../../redux/slices/_types'
-import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
-import { formData } from '../../../../utils/constants'
+import {
+  handleChange,
+  handleSelectChange,
+  setStatusCodeToDef,
+} from '@/redux/slices/facilitySlice'
+import { updateFacilityPost } from '@/redux/slices/apis/facilityThunk'
 
 const PayType = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
+  const { status_code, publish_form_state: values } = useAppSelector(
+    (state) => state.facility
+  )
 
-  const getFormValues = (): FacilityType => {
-    const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
-    if (!storedValue) return formData
-    return storedValue.publish_form_state as FacilityType
-  }
+  React.useEffect(() => {
+    if (status_code === '000') {
+      dispatch(nextPage())
+    }
 
-  const [values, setValue] = React.useState<FacilityType>(getFormValues)
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
+    return () => {
+      dispatch(setStatusCodeToDef())
+    }
+  }, [status_code, dispatch])
 
-    setValue({ ...values, [name]: value })
-  }
   const isFPDisabled = values.payment_type !== 'FIXED'
   const isPRDisabled = values.payment_type !== 'RANGE'
 
@@ -44,7 +48,7 @@ const PayType = () => {
                 defaultValue="FP"
                 name="payment_type"
                 value={values.payment_type}
-                onChange={handleChange}
+                onChange={(e) => dispatch(handleChange(e))}
               >
                 <FormControlLabel
                   label="Fixed pay"
@@ -72,19 +76,44 @@ const PayType = () => {
               <div>Fixed Pay Amount</div>
               <div style={{ display: 'flex', gap: '1rem' }}>
                 <div className="w-24">
-                  <LocoSelect name="" options={currency} defaultOption="GHS" />
+                  <LocoSelect
+                    name="payment_currency"
+                    value={values?.payment_currency}
+                    onChange={(_, newValue) => {
+                      dispatch(
+                        handleSelectChange({
+                          name: 'payment_currency',
+                          value: newValue as string,
+                        })
+                      )
+                    }}
+                    options={currency}
+                    defaultOption="GHS"
+                  />
                 </div>
                 <input
                   className="border border-border-tertiary rounded-lg w-20 pl-1 py-1"
                   type="number"
+                  name="payment_fixed_amount"
+                  value={Number(values?.payment_fixed_amount)}
+                  onChange={(e) => dispatch(handleChange(e))}
                   max={7}
                   disabled={isFPDisabled}
                 />
                 <div className="w-24">
                   <LocoSelect
-                    name=""
-                    options={currencyType}
-                    defaultOption={currencyType[0]}
+                    name="payment_billing_cylce"
+                    options={payment_billing_cylce}
+                    value={values?.payment_billing_cylce}
+                    onChange={(_, newValue) => {
+                      dispatch(
+                        handleSelectChange({
+                          name: 'payment_billing_cylce',
+                          value: newValue as string,
+                        })
+                      )
+                    }}
+                    defaultOption={payment_billing_cylce[0]}
                   />
                 </div>
               </div>
@@ -95,15 +124,27 @@ const PayType = () => {
                 <div className="flex items-center gap-2">
                   <div className="w-24">
                     <LocoSelect
-                      name=""
+                      name="payment_currency"
                       options={currency}
                       defaultOption="GHS"
+                      value={values?.payment_currency}
+                      onChange={(_, newValue) => {
+                        dispatch(
+                          handleSelectChange({
+                            name: 'payment_currency',
+                            value: newValue as string,
+                          })
+                        )
+                      }}
                     />
                   </div>
                   From
                   <input
                     className="border border-border-tertiary rounded-lg w-20 pl-1 py-1"
                     type="number"
+                    name="payment_min_amount"
+                    value={Number(values?.payment_min_amount)}
+                    onChange={(e) => dispatch(handleChange(e))}
                     max={7}
                     disabled={isPRDisabled}
                   />
@@ -113,14 +154,26 @@ const PayType = () => {
                   <input
                     className="border border-border-tertiary rounded-lg w-20 pl-1 py-1"
                     type="number"
+                    name="payment_max_amount"
+                    value={Number(values?.payment_max_amount)}
+                    onChange={(e) => dispatch(handleChange(e))}
                     max={7}
                     disabled={isPRDisabled}
                   />
                   <div className="w-24">
                     <LocoSelect
                       name=""
-                      options={currencyType}
-                      defaultOption={currencyType[0]}
+                      options={payment_billing_cylce}
+                      defaultOption={payment_billing_cylce[0]}
+                      value={values?.payment_billing_cylce}
+                      onChange={(_, newValue) => {
+                        dispatch(
+                          handleSelectChange({
+                            name: 'payment_billing_cylce',
+                            value: newValue as string,
+                          })
+                        )
+                      }}
                     />
                   </div>
                 </div>
@@ -146,7 +199,12 @@ const PayType = () => {
               sx={{ width: '8rem' }}
               title="Next"
               onClick={() => {
-                dispatch(nextPage())
+                dispatch(
+                  updateFacilityPost({
+                    publish_form_state: values,
+                    status_code: '001',
+                  })
+                )
               }}
             />
           </div>
@@ -160,4 +218,4 @@ export default PayType
 
 const currency = ['GHS', 'USD', 'GBP', 'EUR', 'CAD', 'AUD']
 
-const currencyType = ['Year', 'Month', 'Week', 'Day', 'Hour', 'Shift']
+const payment_billing_cylce = ['DAY', 'MONTH', 'WEEK', 'YEAR']

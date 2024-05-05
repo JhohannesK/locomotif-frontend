@@ -31,7 +31,7 @@ export type PersonnelProfileType = {
 
 export type UserAuthState = 'facility' | 'personnel'
 
-interface location {
+export interface Ilocation {
   id: number
   country: string
   address_line_1: string
@@ -41,7 +41,7 @@ interface location {
   digital_address: string
 }
 
-interface RecruiterContact {
+export interface IRecruiterContact {
   id: number
   name: string
   title: string
@@ -51,8 +51,8 @@ interface RecruiterContact {
 
 export type FacilityType = {
   id: number
-  recruiter_contact: RecruiterContact | null
-  location: location
+  recruiter_contact: IRecruiterContact | null
+  location: Ilocation | null
   title: string
   description: string
   advertisement_reason: 'NEW_ROLE' | 'TEMPORARY' | 'REPLACEMENT'
@@ -62,12 +62,12 @@ export type FacilityType = {
   created_at: string
   payment_type: 'FIXED' | 'RANGE' | null
   payment_billing_cylce: 'YEAR' | 'MONTH' | 'WEEK' | 'DAY' | null
-  payment_fixed_amount: null
-  payment_max_amount: null
-  payment_min_amount: null
+  payment_fixed_amount: null | string
+  payment_max_amount: null | string
+  payment_min_amount: null | string
   qualifications: 'string' | null
   additional_information: null
-  payment_currency: 'GHS' | 'GBP' | 'USD'
+  payment_currency: 'GHS' | 'GBP' | 'USD' | null
   supporting_document: null
   pr_required: 'YES' | 'NO' | null
   pre_application_questions: string | undefined

@@ -30,7 +30,12 @@ export default function CountrySelect({
       placeholder="Select country…"
     >
       {countries.map((country) => (
-        <Option key={country.code} value={country.code} label={country.label}>
+        <Option
+          key={country.code}
+          value={country.code}
+          className="flex gap-2"
+          label={country.label}
+        >
           <img
             loading="lazy"
             width={20}
