@@ -23,7 +23,7 @@ export const updateFacilityPost = createAsyncThunk<IState, IState>(
   async (data, { rejectWithValue, fulfillWithValue }) => {
     try {
       const response = await Api.put(
-        `/postings/`,
+        `/postings/${data.publish_form_state.id}`,
         data.publish_form_state
       ).then((res) => res.data)
       fulfillWithValue(data)

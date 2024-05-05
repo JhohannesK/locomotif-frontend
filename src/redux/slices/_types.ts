@@ -31,15 +31,33 @@ export type PersonnelProfileType = {
 
 export type UserAuthState = 'facility' | 'personnel'
 
+interface location {
+  id: number
+  country: string
+  address_line_1: string
+  address_line_2: string
+  city: string
+  region: string
+  digital_address: string
+}
+
+interface RecruiterContact {
+  id: number
+  name: string
+  title: string
+  email: string
+  phone_number: string
+}
+
 export type FacilityType = {
   id: number
-  recruiter_contact: Array<string> | null
-  location: Array<string> | null
+  recruiter_contact: RecruiterContact | null
+  location: location
   title: string
   description: string
   advertisement_reason: 'NEW_ROLE' | 'TEMPORARY' | 'REPLACEMENT'
   contract_type: 'LOCUM' | 'PERMANENT' | null
-  contract_duration: '' | null
+  contract_duration: string | null
   contract_working_pattern: 'FULL_TIME' | 'PART_TIME' | 'FLEXIBLE_TIME' | null
   created_at: string
   payment_type: 'FIXED' | 'RANGE' | null
@@ -61,7 +79,7 @@ export type FacilityType = {
     | 'ADMINISTRATIVE'
     | 'ESTATES_AND_ANCILLARY'
     | null
-  required_area_of_work: null
+  required_area_of_work: null | string
   status: string
   facility: {
     user: number
@@ -78,4 +96,5 @@ export type FacilityType = {
 
 export interface IState {
   publish_form_state: FacilityType
+  status_code: '000' | '001' // use 000 for sucess and 001 for errors; default is 001
 }

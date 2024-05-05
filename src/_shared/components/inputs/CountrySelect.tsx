@@ -5,10 +5,30 @@ import { styled } from '@mui/system'
 import { CgArrowAlignV } from 'react-icons/cg'
 import countries from '../../../utils/module/countries.json'
 
-export default function CountrySelect({ name }: { name: string }) {
+export default function CountrySelect({
+  name,
+  value,
+  onChange,
+}: {
+  name: string
+  value?: string
+  onChange?: (
+    event:
+      | React.MouseEvent<Element, MouseEvent>
+      | React.KeyboardEvent<Element>
+      | React.FocusEvent<Element, Element>
+      | null,
+    value: unknown | null
+  ) => void
+}) {
   return (
     // @ts-expect-error Screams because buttons are not allowed to have placeholder
-    <Select name={name} placeholder="Select country…">
+    <Select
+      value={value}
+      onChange={onChange}
+      name={name}
+      placeholder="Select country…"
+    >
       {countries.map((country) => (
         <Option key={country.code} value={country.code} label={country.label}>
           <img

@@ -13,7 +13,6 @@ import { useAppSelector } from '../../../redux/hooks/hook'
 
 const SignIn = () => {
   const { methods, onSubmit } = useSignIn()
-  console.log('🚀 ~ SignIn ~ methods:', methods.watch())
 
   const { isLoading, isLoggedIn, user_role, errorMessage } = useAppSelector(
     (state) => state.auth

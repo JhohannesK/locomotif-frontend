@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from 'react-hook-form'
-import { useAppDispatch } from '../../../../redux/hooks/hook'
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { GenericButton, Input } from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
@@ -7,10 +7,23 @@ import { FacilityType, IState } from '../../../../redux/slices/_types'
 import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 import React from 'react'
 import { formData } from '../../../../utils/constants'
+import { setStatusCodeToDef } from '@/redux/slices/facilitySlice'
+import { updateFacilityPost } from '@/redux/slices/apis/facilityThunk'
 
 const RecruiterInformation = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
+  const statusCode = useAppSelector((state) => state.facility.status_code)
+
+  React.useEffect(() => {
+    if (statusCode === '000') {
+      dispatch(nextPage())
+    }
+
+    return () => {
+      dispatch(setStatusCodeToDef())
+    }
+  }, [statusCode, dispatch])
 
   const getFormValues = (): FacilityType => {
     const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
@@ -72,7 +85,12 @@ const RecruiterInformation = () => {
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {
-                  dispatch(nextPage())
+                  dispatch(
+                    updateFacilityPost({
+                      publish_form_state: values,
+                      status_code: '001',
+                    })
+                  )
                 }}
               />
             </div>

@@ -1,18 +1,31 @@
 import { CheckedRadioBtn, GenericButton, RadioBtn } from '../../../../_shared'
 import { colors } from '../../../../colors'
-import { useAppDispatch } from '../../../../redux/hooks/hook'
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { FormProvider, useForm } from 'react-hook-form'
-import React from 'react'
+import React, { useEffect } from 'react'
 import LocoSelect from '../../../../_shared/components/inputs/LocoSelect'
 import { FacilityType, IState } from '../../../../redux/slices/_types'
 import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 import { formData } from '../../../../utils/constants'
+import { updateFacilityPost } from '../../../../redux/slices/apis/facilityThunk'
+import { setStatusCodeToDef } from '../../../../redux/slices/facilitySlice'
 
 const StaffInformation = () => {
   const dispatch = useAppDispatch()
   const methods = useForm()
+  const statusCode = useAppSelector((state) => state.facility.status_code)
+
+  useEffect(() => {
+    if (statusCode === '000') {
+      dispatch(nextPage())
+    }
+
+    return () => {
+      dispatch(setStatusCodeToDef())
+    }
+  }, [statusCode, dispatch])
 
   const getFormValues = (): FacilityType => {
     const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
@@ -21,14 +34,11 @@ const StaffInformation = () => {
   }
 
   const [values, setValue] = React.useState<FacilityType>(getFormValues)
-  console.log('🚀 ~ JobDetails ~ values:', values)
+  console.log('🚀 ~ StaffInformation ~ values:', values)
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
 
-    setValue({ ...values, [name]: value })
-  }
-
-  const handleSelectChange = (name: string, value: string) => {
     setValue({ ...values, [name]: value })
   }
 
@@ -103,7 +113,16 @@ const StaffInformation = () => {
                 name="required_area_of_work"
                 placeholder="Select area of work..."
                 value={values.required_area_of_work}
-                onChange={handleSelectChange}
+                onChange={(_, newValue) => {
+                  setValue({
+                    ...values,
+                    required_area_of_work: (newValue as string)
+                      .toUpperCase()
+                      .split(' ')
+                      .join('_'),
+                  })
+                  methods.setValue('required_area_of_work', newValue)
+                }}
                 options={
                   values.required_staff_group === 'MEDICAL'
                     ? medicalList
@@ -140,7 +159,12 @@ const StaffInformation = () => {
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {
-                  dispatch(nextPage())
+                  dispatch(
+                    updateFacilityPost({
+                      publish_form_state: values,
+                      status_code: '001',
+                    })
+                  )
                 }}
               />
             </div>
@@ -173,7 +197,6 @@ const AlliedHealthList = [
   'Podiatrists',
   'Speech pathologists',
   'Hospital Assistants',
-  'Radiographer',
   'Laboratory Scientist',
   'Anesthetist',
   'Physician’s assistants',

@@ -2,10 +2,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { login } from '../../slice/authSlice'
 import { useAppDispatch } from '../../../../redux/hooks/hook'
 import { useNavigate } from 'react-router-dom'
 import Constants from '../../../../utils/constants'
+import { login } from '../../../../redux/slices/authSlice'
 
 const schema = z.object({
   email: z.string().min(3),
@@ -37,7 +37,6 @@ const useSignIn = () => {
   }
 
   const onSubmit = (data: LoginSchema) => {
-    console.log(data)
     mutation.mutate(data)
   }
 

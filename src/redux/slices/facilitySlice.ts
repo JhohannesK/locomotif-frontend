@@ -1,19 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { IState } from './_types'
-import { createFacilityPost } from './apis/facilityThunk'
+import { createFacilityPost, updateFacilityPost } from './apis/facilityThunk'
 
 const initialState: IState = {
   publish_form_state: {
     id: 1,
     recruiter_contact: null,
-    location: null,
-    title: 'Test posting 1',
-    description: 'Test posting 1 description',
+    location: {
+      id: 0,
+      address_line_1: '',
+      address_line_2: '',
+      city: '',
+      country: '',
+      region: '',
+      digital_address: '',
+    },
+    title: '',
+    description: '',
     advertisement_reason: 'TEMPORARY',
     contract_type: null,
     contract_duration: null,
     contract_working_pattern: null,
-    created_at: '2024-02-26T08:04:39.749059Z',
+    created_at: '',
     payment_type: null,
     payment_billing_cylce: null,
     payment_fixed_amount: null,
@@ -31,7 +39,7 @@ const initialState: IState = {
     status: 'DRAFT',
     facility: {
       user: 1,
-      name: 'Korle Bu Teaching Hospital',
+      name: '',
       bio: '',
       telephone: '',
       verified: false,
@@ -41,18 +49,27 @@ const initialState: IState = {
       digital_address: '',
     },
   },
+  status_code: '001',
 }
 
-const facilitySlice = createSlice({
+export const facilitySlice = createSlice({
   name: 'facility',
   initialState,
-  reducers: {},
+  reducers: {
+    setStatusCodeToDef: (state) => {
+      state.status_code = '001'
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(createFacilityPost.fulfilled, (state, action) => {
       state.publish_form_state = action.payload.publish_form_state
+      state.status_code = '000'
+    })
+    builder.addCase(updateFacilityPost.fulfilled, (state, action) => {
+      state.publish_form_state = action.payload.publish_form_state
+      state.status_code = '000'
     })
   },
 })
 
-// export const {} = facilitySlice.actions
-export const facilityReducer = facilitySlice.reducer
+export const { setStatusCodeToDef } = facilitySlice.actions

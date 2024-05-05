@@ -7,18 +7,30 @@ import {
   RadioBtn,
 } from '../../../../_shared'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
-import { useAppDispatch } from '../../../../redux/hooks/hook'
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { nextPage } from '../../../../redux/slices/appSlice'
 import { colors } from '../../../../colors'
 import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FacilityType, IState } from '../../../../redux/slices/_types'
 import { formData } from '../../../../utils/constants'
 import { createFacilityPost } from '../../../../redux/slices/apis/facilityThunk'
+import { setStatusCodeToDef } from '../../../../redux/slices/facilitySlice'
 
 const JobDetails = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
+  const statusCode = useAppSelector((state) => state.facility.status_code)
+
+  useEffect(() => {
+    if (statusCode === '000') {
+      dispatch(nextPage())
+    }
+
+    return () => {
+      dispatch(setStatusCodeToDef())
+    }
+  }, [statusCode, dispatch])
 
   const getFormValues = (): FacilityType => {
     const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
@@ -42,7 +54,7 @@ const JobDetails = () => {
             <div>
               <div>Job title</div>
               <Input
-                value={values.title}
+                value={values?.title}
                 name="title"
                 onChange={handleChange}
                 placeholder="What's the job title"
@@ -118,8 +130,12 @@ const JobDetails = () => {
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {
-                  dispatch(nextPage())
-                  dispatch(createFacilityPost({ publish_form_state: values }))
+                  dispatch(
+                    createFacilityPost({
+                      publish_form_state: values,
+                      status_code: '001',
+                    })
+                  )
                 }}
               />
             </div>

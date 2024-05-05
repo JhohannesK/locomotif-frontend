@@ -14,8 +14,8 @@ export const Api = axios.create({
 })
 
 interface IToken {
-  accessToken: string
-  refreshToken: string
+  access: string
+  refresh: string
 }
 
 const SetupInterceptor = ({ children }: { children: React.ReactNode }) => {
@@ -27,16 +27,19 @@ const SetupInterceptor = ({ children }: { children: React.ReactNode }) => {
 
   const refreshToken = async () => {
     try {
-      const response = await Api.post('/refresh-token', {
-        refreshToken: token.refreshToken,
-      })
-      const { accessToken, newRefreshToken } = response.data
+      console.log('refreshing token')
+      const response = await axios
+        .post(`${Constants.BaseURL}auth/token/refresh/`, {
+          refresh: token.refresh,
+        })
+        .then((res) => res.data)
+      const { access, refresh } = response
       saveToLocalStorage({
         key: Constants.LOCALSTORAGE_KEYS.TOKEN,
-        state: { accessToken, refreshToken: newRefreshToken },
+        state: { access, refresh },
       })
-
-      return accessToken
+      console.log('saved to local storage', access)
+      return access
     } catch (error) {
       // Handle token refresh error, e.g., redirect to login page
       console.error('Token refresh failed:', error)
@@ -49,7 +52,7 @@ const SetupInterceptor = ({ children }: { children: React.ReactNode }) => {
     async (config) => {
       try {
         console.log('hitting here')
-        config.headers.Authorization = `Bearer ${token.accessToken}`
+        config.headers.Authorization = `Bearer ${token.access}`
       } catch (error) {
         console.error('Token refresh failed:', error)
       }
@@ -66,13 +69,14 @@ const SetupInterceptor = ({ children }: { children: React.ReactNode }) => {
     async (error: AxiosError) => {
       const originalRequest = error.config
 
-      if (error?.response?.status === 401 && !originalRequest?.timeout) {
+      if (error?.response?.status === 401) {
         console.log('Token expired, refreshing token')
         try {
           const accessToken = await refreshToken()
           if (!originalRequest) {
             throw new Error('Original request configuration is missing')
           }
+          console.log('coming back here')
           originalRequest.headers.Authorization = `Bearer ${accessToken}`
 
           return Api(originalRequest)

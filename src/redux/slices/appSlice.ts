@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { AppState } from '../@types'
-import { RootState } from '../store'
 import { TJobSteps } from '../../types'
+import { RootState } from '../store'
 
 const initialState: AppState = {
   activeSidebar: 1,

@@ -2,16 +2,20 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { CheckedRadioBtn, GenericButton, RadioBtn } from '../../../../_shared'
 import { colors } from '../../../../colors'
-import { useAppDispatch } from '../../../../redux/hooks/hook'
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import React from 'react'
 import { FacilityType, IState } from '../../../../redux/slices/_types'
 import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 import { formData } from '../../../../utils/constants'
+import { formatISODuration, getMonth } from 'date-fns'
+import { updateFacilityPost } from '@/redux/slices/apis/facilityThunk'
+import { setStatusCodeToDef } from '@/redux/slices/facilitySlice'
 
 const ContractDetails = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
+  const statusCode = useAppSelector((state) => state.facility.status_code)
 
   const getFormValues = (): FacilityType => {
     const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
@@ -26,6 +30,31 @@ const ContractDetails = () => {
 
     setValue({ ...values, [name]: value })
   }
+
+  const [month, setMonth] = React.useState<number>(6)
+  const [day, setDay] = React.useState<number>(0)
+
+  React.useEffect(() => {
+    if (statusCode === '000') {
+      dispatch(nextPage())
+    }
+
+    return () => {
+      dispatch(setStatusCodeToDef())
+    }
+  }, [statusCode, dispatch])
+
+  React.useEffect(() => {
+    const duration = formatISODuration({ months: month, days: day })
+    console.log('🚀 ~ React.useEffect ~ duration:', duration)
+    setValue({ ...values, contract_duration: duration })
+    // TODO: Convert duration to months and days
+    const aa = getMonth(duration)
+    console.log('🚀 ~ React.useEffect ~ aa:', aa)
+
+    return () => {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [month, day])
 
   return (
     <div className="border details-container">
@@ -70,33 +99,36 @@ const ContractDetails = () => {
             <div
               className={`${values.contract_type !== 'LOCUM' ? 'opacity-25' : ''} "flex flex-col gap-3"`}
             >
-              {/* TODO: Paul said I should use the ISO format for the duration:: day.js has duration api */}
               <div>
                 What's the contract duration? (Only for temporary contracts)
               </div>
               <div style={{ display: 'flex', gap: '1rem' }}>
                 <div className="flex gap-2 items-center">
-                  <div className="bg-background-secondary rounded-lg p-2">
-                    Months
-                  </div>
                   <input
+                    value={month}
                     className="border border-border-tertiary rounded-lg w-16 pl-1 py-1"
+                    onChange={(e) => setMonth(parseInt(e.target.value))}
                     type="number"
                     max={7}
                     disabled={values.contract_type !== 'LOCUM'}
                   />
+                  <div className="bg-background-secondary rounded-lg p-2">
+                    Month(s)
+                  </div>
                 </div>
                 <div className="flex gap-2 items-center">
-                  <div className="bg-background-secondary rounded-lg p-2">
-                    Days
-                  </div>
                   <input
                     className="border border-border-tertiary rounded-lg w-16 pl-1 py-1"
                     type="number"
+                    value={day}
+                    onChange={(e) => setDay(parseInt(e.target.value))}
                     max={31}
                     maxLength={2}
                     disabled={values.contract_type !== 'LOCUM'}
                   />
+                  <div className="bg-background-secondary rounded-lg p-2">
+                    Day(s)
+                  </div>
                 </div>
               </div>
             </div>
@@ -185,7 +217,12 @@ const ContractDetails = () => {
               sx={{ width: '8rem' }}
               title="Next"
               onClick={() => {
-                dispatch(nextPage())
+                dispatch(
+                  updateFacilityPost({
+                    publish_form_state: values,
+                    status_code: '001',
+                  })
+                )
               }}
             />
           </div>

@@ -1,5 +1,5 @@
+import { cn } from '@/utils/lib'
 import { Checkbox, CheckboxProps } from '@mui/material'
-import { cn } from '../../utils/cn'
 import { Controller, useFormContext } from 'react-hook-form'
 
 interface ICheckboxProps extends CheckboxProps {

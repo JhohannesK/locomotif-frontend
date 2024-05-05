@@ -1,7 +1,7 @@
 import { Button } from '@mui/material'
 import { GeneralBtnProps } from '../../@types'
 import React from 'react'
-import { cn } from '../../../utils/cn'
+import { cn } from '@/utils/lib'
 
 interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,

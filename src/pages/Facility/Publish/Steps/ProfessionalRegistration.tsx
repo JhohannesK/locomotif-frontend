@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from 'react-hook-form'
-import { useAppDispatch } from '../../../../redux/hooks/hook'
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import {
   CheckedRadioBtn,
@@ -13,10 +13,24 @@ import React from 'react'
 import { FacilityType, IState } from '../../../../redux/slices/_types'
 import { loadFromLocalStorage } from '../../../../redux/hooks/middleware'
 import { formData } from '../../../../utils/constants'
+import { setStatusCodeToDef } from '@/redux/slices/facilitySlice'
+import { updateFacilityPost } from '@/redux/slices/apis/facilityThunk'
 
 const ProfessionalRegistration = () => {
   const methods = useForm()
   const dispatch = useAppDispatch()
+  const statusCode = useAppSelector((state) => state.facility.status_code)
+
+  React.useEffect(() => {
+    if (statusCode === '000') {
+      dispatch(nextPage())
+    }
+
+    return () => {
+      dispatch(setStatusCodeToDef())
+    }
+  }, [statusCode, dispatch])
+
   const getFormValues = (): FacilityType => {
     const storedValue = loadFromLocalStorage('FACILITY_FORM_DATA') as IState
     if (!storedValue) return formData
@@ -71,7 +85,9 @@ const ProfessionalRegistration = () => {
                   />
                 </RadioGroup>
               </div>
-              <div>
+              <div
+                className={`${values?.pr_required === 'YES' ? 'block' : 'hidden'}`}
+              >
                 <div>Select your pre-application questions</div>
                 {/* TODO: Confirm what the backend takes */}
                 {/* FIXME: Make user select a radio btn before abling the input */}
@@ -139,7 +155,12 @@ const ProfessionalRegistration = () => {
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {
-                  dispatch(nextPage())
+                  dispatch(
+                    updateFacilityPost({
+                      publish_form_state: values,
+                      status_code: '001',
+                    })
+                  )
                 }}
               />
             </div>

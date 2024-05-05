@@ -7,8 +7,8 @@ import { RouterProvider } from 'react-router-dom'
 import routes from './routes.tsx'
 import { Provider } from 'react-redux'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import store from './redux/store.ts'
 import { SetupInterceptor } from './utils/lib/SetupInterceptor.tsx'
+import store from './redux/store.ts'
 
 export const queryClient = new QueryClient()
 
