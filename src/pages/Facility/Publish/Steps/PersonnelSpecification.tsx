@@ -42,6 +42,7 @@ const PersonnelSpecification = () => {
                 type="multiline-input"
                 name="qualification"
                 onChange={(e) => dispatch(handleChange(e))}
+                value={values?.qualifications ?? ''}
                 label=""
                 placeholder="200 characters allowed"
                 rows={5}
@@ -57,6 +58,7 @@ const PersonnelSpecification = () => {
                 type="multiline-input"
                 name="additional_information"
                 onChange={(e) => dispatch(handleChange(e))}
+                value={values?.additional_information ?? ''}
                 label=""
                 placeholder="200 characters allowed"
                 rows={5}
@@ -110,6 +112,9 @@ const PersonnelSpecification = () => {
               />
               <GenericButton
                 type="button"
+                disabled={
+                  !values.qualifications || !values.additional_information
+                }
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {

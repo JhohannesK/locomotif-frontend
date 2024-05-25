@@ -182,6 +182,7 @@ const PayType = () => {
           </form>
           <div className="btn-group">
             <GenericButton
+              disabled={!values?.payment_type}
               type="button"
               sx={{
                 width: '8rem',

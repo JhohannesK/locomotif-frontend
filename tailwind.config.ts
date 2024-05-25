@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { default as flattenColorPalette } from 'tailwindcss/lib/util/flattenColorPalette'
-// import defaultTheme from "tailwindcss/defaultTheme";
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 import svgToDataUri from 'mini-svg-data-uri'
 
@@ -16,6 +16,7 @@ export default {
       center: true,
       padding: '2rem',
       screens: {
+        ...defaultTheme.screens,
         '2xl': '1400px',
       },
     },

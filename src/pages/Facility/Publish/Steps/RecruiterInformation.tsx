@@ -4,7 +4,10 @@ import { GenericButton, Input } from '../../../../_shared'
 import { colors } from '../../../../colors'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import React from 'react'
-import { handleChange, setStatusCodeToDef } from '@/redux/slices/facilitySlice'
+import {
+  handleRecruiterContactChange,
+  setStatusCodeToDef,
+} from '@/redux/slices/facilitySlice'
 import { updateFacilityPost } from '@/redux/slices/apis/facilityThunk'
 
 const RecruiterInformation = () => {
@@ -39,7 +42,7 @@ const RecruiterInformation = () => {
                 <div>Name</div>
                 <Input
                   value={values.recruiter_contact?.name}
-                  onChange={(e) => dispatch(handleChange(e))}
+                  onChange={(e) => dispatch(handleRecruiterContactChange(e))}
                   name="name"
                   placeholder="Name"
                 />
@@ -48,7 +51,7 @@ const RecruiterInformation = () => {
                 <div>Job Title(Optional)</div>
                 <Input
                   value={values.recruiter_contact?.title}
-                  onChange={(e) => dispatch(handleChange(e))}
+                  onChange={(e) => dispatch(handleRecruiterContactChange(e))}
                   name="title"
                   placeholder="Your job title"
                 />
@@ -57,7 +60,7 @@ const RecruiterInformation = () => {
                 <div>Email Address</div>
                 <Input
                   value={values.recruiter_contact?.email}
-                  onChange={(e) => dispatch(handleChange(e))}
+                  onChange={(e) => dispatch(handleRecruiterContactChange(e))}
                   name="email"
                   placeholder="someone@gmail.com"
                   type="email"
@@ -67,7 +70,7 @@ const RecruiterInformation = () => {
                 <div>Telephone number</div>
                 <Input
                   value={values.recruiter_contact?.phone_number}
-                  onChange={(e) => dispatch(handleChange(e))}
+                  onChange={(e) => dispatch(handleRecruiterContactChange(e))}
                   name="phone_number"
                   placeholder="0342342343"
                   type="tel"
@@ -90,6 +93,12 @@ const RecruiterInformation = () => {
               />
               <GenericButton
                 type="button"
+                disabled={
+                  !values.recruiter_contact?.name ||
+                  !values.recruiter_contact?.email ||
+                  !values.recruiter_contact?.phone_number ||
+                  !values.recruiter_contact?.title
+                }
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {

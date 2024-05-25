@@ -110,6 +110,12 @@ const Location = () => {
               }}
             />
             <GenericButton
+              disabled={
+                !values?.location?.country ||
+                !values?.location?.address_line_1 ||
+                !values?.location?.city ||
+                !values?.location?.digital_address
+              }
               type="button"
               sx={{ width: '8rem' }}
               title="Next"

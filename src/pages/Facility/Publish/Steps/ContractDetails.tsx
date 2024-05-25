@@ -203,6 +203,9 @@ const ContractDetails = () => {
             <GenericButton
               type="button"
               sx={{ width: '8rem' }}
+              disabled={
+                !values?.contract_type || !values?.contract_working_pattern
+              }
               title="Next"
               onClick={() => {
                 dispatch(

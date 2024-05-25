@@ -152,7 +152,7 @@ const StaffInformation = () => {
               />
               <GenericButton
                 type="button"
-                // disabled={!values?.required_area_of_work}
+                disabled={!values?.required_area_of_work}
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {
