@@ -9,7 +9,6 @@ import {
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { nextPage } from '../../../../redux/slices/appSlice'
-import { colors } from '../../../../colors'
 import { createFacilityPost } from '../../../../redux/slices/apis/facilityThunk'
 import {
   handleChange,
@@ -68,7 +67,7 @@ const JobDetails = () => {
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="Replacing someone who's leaving"
                 name="advertisement_reason"
-                value={values.advertisement_reason}
+                value={values?.advertisement_reason}
                 onChange={(e) => dispatch(handleChange(e))}
               >
                 <FormControlLabel
@@ -104,7 +103,7 @@ const JobDetails = () => {
               </RadioGroup>
             </div>
             <div className="btn-group">
-              <GenericButton
+              {/* <GenericButton
                 type="button"
                 sx={{
                   width: '8rem',
@@ -113,8 +112,13 @@ const JobDetails = () => {
                   color: `${colors.text.pineGreen}`,
                 }}
                 title="Previous"
-              />
+              /> */}
               <GenericButton
+                disabled={
+                  !values?.title ||
+                  !values?.description ||
+                  !values?.advertisement_reason
+                }
                 type="button"
                 sx={{ width: '8rem' }}
                 title="Next"

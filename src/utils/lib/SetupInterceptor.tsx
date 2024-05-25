@@ -25,14 +25,23 @@ const SetupInterceptor = ({ children }: { children: React.ReactNode }) => {
     Constants.LOCALSTORAGE_KEYS.TOKEN
   ) as IToken
 
+  console.log('🚀 ~ SetupInterceptor ~ token:', token)
   const refreshToken = async () => {
     try {
+      const token = loadFromLocalStorage(
+        Constants.LOCALSTORAGE_KEYS.TOKEN
+      ) as IToken
+      console.log('🚀 ~ refreshToken ~ token:', token)
       console.log('refreshing token')
       const response = await axios
         .post(`${Constants.BaseURL}auth/token/refresh/`, {
           refresh: token.refresh,
         })
         .then((res) => res.data)
+        .catch((error) => {
+          console.error('Token refresh failed:', error)
+          throw error
+        })
       const { access, refresh } = response
       saveToLocalStorage({
         key: Constants.LOCALSTORAGE_KEYS.TOKEN,
@@ -51,6 +60,10 @@ const SetupInterceptor = ({ children }: { children: React.ReactNode }) => {
   Api.interceptors.request.use(
     async (config) => {
       try {
+        const token = loadFromLocalStorage(
+          Constants.LOCALSTORAGE_KEYS.TOKEN
+        ) as IToken
+        console.log('🚀 ~ token:', token)
         console.log('hitting here')
         config.headers.Authorization = `Bearer ${token.access}`
       } catch (error) {

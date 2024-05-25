@@ -76,7 +76,6 @@ const ProfessionalRegistration = () => {
               >
                 <div>Select your pre-application questions</div>
                 {/* TODO: Confirm what the backend takes */}
-                {/* FIXME: Make user select a radio btn before abling the input */}
                 <RadioGroup
                   aria-labelledby="label-for-yes-no"
                   name="radio-buttons-group"

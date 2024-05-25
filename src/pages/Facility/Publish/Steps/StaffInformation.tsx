@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../../../redux/hooks/hook'
 import { nextPage, prevPage } from '../../../../redux/slices/appSlice'
 import { FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { FormProvider, useForm } from 'react-hook-form'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import LocoSelect from '../../../../_shared/components/inputs/LocoSelect'
 import { updateFacilityPost } from '../../../../redux/slices/apis/facilityThunk'
 import {
@@ -14,6 +14,7 @@ import {
 } from '../../../../redux/slices/facilitySlice'
 
 const StaffInformation = () => {
+  const [work, setWork] = useState('')
   const dispatch = useAppDispatch()
   const methods = useForm()
   const { status_code: statusCode, publish_form_state: values } =
@@ -41,7 +42,7 @@ const StaffInformation = () => {
               aria-labelledby="demo-radio-buttons-group-label"
               defaultValue="Replacing someone who's leaving"
               name="required_staff_group"
-              value={values.required_staff_group}
+              value={values?.required_staff_group}
               onChange={(e) => dispatch(handleChange(e))}
             >
               <FormControlLabel
@@ -99,37 +100,36 @@ const StaffInformation = () => {
               <LocoSelect
                 name="required_area_of_work"
                 placeholder="Select area of work..."
-                value={values.required_area_of_work}
+                value={work}
                 onChange={(_, newValue) => {
-                  // setValue({
-                  //   ...values,
-                  //   required_area_of_work: (newValue as string)
-                  //     .toUpperCase()
-                  //     .split(' ')
-                  //     .join('_'),
-                  // })
                   dispatch(
                     handleSelectChange({
                       name: 'required_area_of_work',
-                      value: (newValue as string)
-                        .toUpperCase()
-                        .split(' ')
-                        .join('_'),
+                      value:
+                        newValue !== null
+                          ? (newValue as string).length > 0
+                            ? (newValue as string)
+                                .toUpperCase()
+                                .split(' ')
+                                .join('_')
+                            : ''
+                          : '',
                     })
                   )
+                  setWork(newValue as string)
                   methods.setValue('required_area_of_work', newValue)
                 }}
                 options={
-                  values.required_staff_group === 'MEDICAL'
+                  values?.required_staff_group === 'MEDICAL'
                     ? medicalList
-                    : values.required_staff_group ===
+                    : values?.required_staff_group ===
                         'ALLIED_AND_HEALTH_PROFESSIONALS'
                       ? AlliedHealthList
-                      : values.required_staff_group === 'ADMINISTRATIVE'
+                      : values?.required_staff_group === 'ADMINISTRATIVE'
                         ? AdministativeList
                         : values.required_staff_group === 'NURSES_AND_MIDWIFERY'
                           ? NursesAndMidwiferyList
-                          : values.required_staff_group ===
+                          : values?.required_staff_group ===
                               'ESTATES_AND_ANCILLARY'
                             ? EstatesAndAncillaryList
                             : []
@@ -152,6 +152,7 @@ const StaffInformation = () => {
               />
               <GenericButton
                 type="button"
+                // disabled={!values?.required_area_of_work}
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {

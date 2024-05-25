@@ -1,6 +1,8 @@
 import { Avatar } from '@mui/material'
 import { AiOutlineMail } from 'react-icons/ai'
 import { BiBell } from 'react-icons/bi'
+import LocoDropdown from '../components/Dropdown'
+import { CreditCard, LogOut, UserIcon } from 'lucide-react'
 
 const Navbar = () => {
   return (
@@ -24,16 +26,35 @@ const Navbar = () => {
           <div className="flex flex-row gap-3 items-center justify-center">
             <AiOutlineMail className="text-2xl opacity-60" />
             <BiBell className="text-2xl opacity-60" />
-            <Avatar
-              sx={{
-                height: '2rem',
-                width: '2rem',
-                fontWeight: 'bold',
-                fontSize: '12px',
-              }}
-            >
-              GM
-            </Avatar>
+            <LocoDropdown
+              trigger={
+                <Avatar
+                  sx={{
+                    height: '2rem',
+                    width: '2rem',
+                    fontWeight: 'bold',
+                    fontSize: '12px',
+                  }}
+                >
+                  GM
+                </Avatar>
+              }
+              label="My account"
+              menuItem={[
+                <>
+                  <UserIcon className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </>,
+                <>
+                  <CreditCard className="mr-2 h-4 w-4" />
+                  <span>Billing</span>
+                </>,
+                <>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Logout</span>
+                </>,
+              ]}
+            />
           </div>
         </div>
       </div>

@@ -98,7 +98,7 @@ const ContractDetails = () => {
                     onChange={(e) => setMonth(parseInt(e.target.value))}
                     type="number"
                     max={7}
-                    disabled={values.contract_type !== 'LOCUM'}
+                    disabled={values?.contract_type !== 'LOCUM'}
                   />
                   <div className="bg-background-secondary rounded-lg p-2">
                     Month(s)
@@ -112,7 +112,7 @@ const ContractDetails = () => {
                     onChange={(e) => setDay(parseInt(e.target.value))}
                     max={31}
                     maxLength={2}
-                    disabled={values.contract_type !== 'LOCUM'}
+                    disabled={values?.contract_type !== 'LOCUM'}
                   />
                   <div className="bg-background-secondary rounded-lg p-2">
                     Day(s)
@@ -127,8 +127,8 @@ const ContractDetails = () => {
                 aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="Full time"
                 name="contract_working_pattern"
-                value={values.contract_working_pattern}
-                onChange={(e) => handleChange(e)}
+                value={values?.contract_working_pattern ?? ''}
+                onChange={(e) => dispatch(handleChange(e))}
               >
                 <FormControlLabel
                   label={

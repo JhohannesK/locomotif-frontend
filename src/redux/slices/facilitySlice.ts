@@ -10,7 +10,7 @@ const initialState: IState = {
     location: null,
     title: '',
     description: '',
-    advertisement_reason: 'TEMPORARY',
+    advertisement_reason: 'REPLACEMENT',
     contract_type: null,
     contract_duration: null,
     contract_working_pattern: null,
@@ -84,7 +84,8 @@ export const facilitySlice = createSlice({
       if (
         name === 'contract_duration' ||
         name === 'payment_billing_cylce' ||
-        name === 'payment_currency'
+        name === 'payment_currency' ||
+        name === 'required_area_of_work'
       ) {
         state.publish_form_state = {
           ...state.publish_form_state,

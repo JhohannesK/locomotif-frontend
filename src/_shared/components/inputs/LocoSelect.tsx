@@ -20,7 +20,6 @@ import { CgArrowAlignV } from 'react-icons/cg'
 export default function LocoSelect({
   options,
   placeholder,
-  defaultOption,
   name,
   value,
   onChange,
@@ -47,7 +46,7 @@ export default function LocoSelect({
         name={name}
         value={value}
         onChange={onChange}
-        defaultValue={defaultOption}
+        // defaultValue={defaultOption}
         placeholder={placeholder}
       >
         {options.map((option, index) => {

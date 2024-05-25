@@ -1,43 +1,37 @@
-// import { FormControlLabel, Radio } from '@mui/material'
-// import { CheckedRadioBtn, RadioBtn } from '..'
-// import { IoIosArrowDown, IoIosArrowForward } from 'react-icons/io'
-// import { useState } from 'react'
+import React from 'react'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu'
 
-const LocoDropdown = () => {
-  // const [open, setOpen] = useState(false)
-
+const LocoDropdown = ({
+  trigger,
+  label,
+  menuItem,
+}: {
+  trigger: React.ReactNode
+  label: React.ReactNode
+  menuItem: React.ReactNode[]
+}) => {
   return (
-    // <div className="flex flex-col gap-3 cursor-pointer w-full  mt-3">
-    //   <HeaderArrow onClick={() => setOpen(!open)}>
-    //     <div>
-    //       <p style={{ fontSize: '18px' }}>{title}</p>
-    //     </div>
-    //     <div>{open ? <IoIosArrowDown /> : <IoIosArrowForward />}</div>
-    //   </HeaderArrow>
-    //   <div className={`${open ? 'flex' : 'hidden'}`}>
-    // {/* <RadioGroup
-    //   aria-labelledby="demo-radio-buttons-group-label"
-    //   defaultValue="Full time"
-    //   name="radio-buttons-group"
-    // > */}
-    // <div
-    //   style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
-    // >
-    //   {items.map((item, index) => (
-    //     <FormControlLabel
-    //       key={index}
-    //       label={item}
-    //       value={item}
-    //       control={
-    //         <Radio icon={<RadioBtn />} checkedIcon={<CheckedRadioBtn />} />
-    //       }
-    //     />
-    //   ))}
-    // </div>
-    // {/* </RadioGroup> */}
-    //   </div>
-    // </div>
-    <>asdf</>
+    <DropdownMenu>
+      <DropdownMenuTrigger>{trigger}</DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>{label}</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        {menuItem.map((item, index) => (
+          <DropdownMenuItem key={index}>{item}</DropdownMenuItem>
+        ))}
+        {/* <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem>Billing</DropdownMenuItem>
+        <DropdownMenuItem>Team</DropdownMenuItem>
+        <DropdownMenuItem>Subscription</DropdownMenuItem> */}
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }
 

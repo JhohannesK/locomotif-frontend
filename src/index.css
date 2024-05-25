@@ -104,6 +104,10 @@
   .auth-container__wrapper {
     @apply p-4 flex;
   }
+
+  .grid-view-template {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+  }
 }
 
 body,
