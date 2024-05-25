@@ -120,15 +120,30 @@ const Constants = {
     ],
   },
 
-  NAVBAR: {
-    Personnel: {
-      FINDJOB: 'Find Jobs',
-      APPLICATIONS: 'Applications',
-      PROFILE: 'Profile',
-      FINDFACILITY: 'Find Facility',
+  FACILITYNAVLINKS: [
+    {
+      name: 'Overview',
+      to: '/facility',
     },
-  },
-
+    {
+      name: 'Applications',
+      to: '/applications',
+    },
+    {
+      name: 'Analysis',
+      to: '/applications',
+    },
+    {
+      name: 'Profile',
+      to: '/applications',
+    },
+  ],
+  PERSONNELNAVLINKS: [
+    {
+      name: 'Find Job',
+      to: '/find-job',
+    },
+  ],
   LOCALSTORAGE_KEYS: {
     PERSONNEL_AUTH: 'personnelAuth',
     PERSONNEL_PROFILE: 'personnelProfile',

@@ -18,6 +18,7 @@ export const theme = createTheme({
           animationDuration: '2000s',
           width: 'fit-content',
           padding: 0,
+          border: '1px solid',
           margin: 0,
           '&:hover': {
             background: colors.button.pineGreen,

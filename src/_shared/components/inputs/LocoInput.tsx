@@ -3,7 +3,6 @@ import * as React from 'react'
 import { Input as BaseInput, InputProps } from '@mui/base/Input'
 import { useTheme } from '@mui/system'
 import clsx from 'clsx'
-// import { Controller, useFormContext } from 'react-hook-form'
 
 const LocoInput = React.forwardRef(function LocoInput(
   {
@@ -11,6 +10,7 @@ const LocoInput = React.forwardRef(function LocoInput(
     type,
     value,
     onChange,
+    className,
     name,
   }: {
     placeholder: string
@@ -18,6 +18,7 @@ const LocoInput = React.forwardRef(function LocoInput(
     name: string
     value?: string
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    className?: string
   },
   ref
 ) {
@@ -27,6 +28,7 @@ const LocoInput = React.forwardRef(function LocoInput(
       onChange={onChange}
       ref={ref as React.RefObject<HTMLInputElement>}
       name={name}
+      className={className}
       type={type}
       aria-label={'Loco input'}
       placeholder={placeholder}
@@ -45,7 +47,6 @@ const resolveSlotProps = (fn: any, args: any) =>
   typeof fn === 'function' ? fn(args) : fn
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  // Replace this with your app logic for determining dark modes
   const isDarkMode = useIsDarkMode()
 
   return (
@@ -63,6 +64,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           return {
             ...resolvedSlotProps,
             className: clsx(
+              props.className,
               'w-full text-sm font-normal h-10 font-sans leading-5 px-3 py-2 rounded-lg shadow-md shadow-slate-100 focus:shadow-outline-purple focus:shadow-lg border border-solid border-slate-300 hover:border-border-active focus:border-border-active bg-white dark:bg-slate-900 text-slate-900 focus-visible:outline-0',
               resolvedSlotProps?.className
             ),

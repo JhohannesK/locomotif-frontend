@@ -9,27 +9,28 @@ import RootLayout from './pages/Facility/Publish/RootLayout'
 import FacilitySignUp from './pages/auth/facility/FacilitySignUp'
 import PersonnelSignup from './pages/auth/personnel/Personnel-Signup'
 import SignIn from './pages/auth/signin/Signin'
+import FindJobpage from './pages/Personnels/FindJob/FindJobpage'
 
-// const personnel = [
-//   {
-//     path: routhPaths.PAGES.PERSONNEL.personnel,
-//     element: <PersonnelLayout />,
-//     children: [
-//       {
-//         path: routhPaths.PAGES.PERSONNEL.personnel_findJob,
-//         element: <FindJob />,
-//       },
-//       {
-//         path: routhPaths.PAGES.PERSONNEL.post,
-//         element: <Posting />,
-//       },
-//       {
-//         path: routhPaths.PAGES.PERSONNEL.personnel_applications_page,
-//         element: <ApplicationsPage />,
-//       },
-//     ],
-//   },
-// ]
+const personnel = [
+  {
+    path: routhPaths.PAGES.PERSONNEL.personnel,
+    element: <FindJobpage />,
+    children: [
+      {
+        path: routhPaths.PAGES.PERSONNEL.personnel_findJob,
+        element: <FindJobpage />,
+      },
+      // {
+      //   path: routhPaths.PAGES.PERSONNEL.post,
+      //   element: <Posting />,
+      // },
+      // {
+      //   path: routhPaths.PAGES.PERSONNEL.personnel_applications_page,
+      //   element: <ApplicationsPage />,
+      // },
+    ],
+  },
+]
 
 const facility = [
   {
@@ -68,7 +69,7 @@ const auth = [
 ]
 
 const routes = createBrowserRouter([
-  // ...personnel,
+  ...personnel,
   ...facility,
   ...auth,
   {

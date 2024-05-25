@@ -5,9 +5,7 @@ import { cn } from '@/utils/lib'
 
 interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    GeneralBtnProps {
-  className?: string
-}
+    GeneralBtnProps {}
 
 const GeneralButton = ({
   variantText,
@@ -20,6 +18,7 @@ const GeneralButton = ({
   type = 'submit',
   disabled,
 }: ButtonProps) => {
+  console.log(className)
   return (
     <Button
       variant={variantText}
@@ -29,7 +28,7 @@ const GeneralButton = ({
       type={type}
       disabled={disabled}
       startIcon={icon}
-      className={cn(className, 'w-full')}
+      className={cn('w-full', className)}
     >
       {title}
     </Button>

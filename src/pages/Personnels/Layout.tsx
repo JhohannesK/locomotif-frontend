@@ -1,14 +1,17 @@
-import React from 'react'
-import Navbar from '../../_shared/navbar/Navbar'
-import Constants from '@/utils/constants'
 import AviDropdown from '@/_shared/navbar/FacilityAvi'
+import Navbar from '@/_shared/navbar/Navbar'
+import Constants from '@/utils/constants'
 import { CreditCard, LogOut, UserIcon } from 'lucide-react'
+import React from 'react'
+import { useLocation } from 'react-router-dom'
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const PersonnelRootLayout = ({ children }: { children: React.ReactNode }) => {
+  const pathname = useLocation().pathname
+  console.log('🚀 ~ PersonnelRootLayout ~ pathname:', pathname)
   return (
-    <div className="flex flex-col h-screen bg-background-secondary">
+    <main className="flex flex-col h-screen bg-background-secondary">
       <Navbar
-        navlinks={Constants.FACILITYNAVLINKS}
+        navlinks={Constants.PERSONNELNAVLINKS}
         aviDropdown={
           <AviDropdown
             menu={[
@@ -28,9 +31,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           />
         }
       />
-      <div className="p-2 lg:p-10 bg-background-secondary">{children}</div>
-    </div>
+      <div className="p-8 lg:p-10 bg-background-secondary"> {children}</div>
+    </main>
   )
 }
 
-export default Layout
+export default PersonnelRootLayout
