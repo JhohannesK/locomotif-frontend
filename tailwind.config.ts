@@ -41,7 +41,7 @@ export default {
         },
         text: {
           primary: 'var(--night)',
-          secondary: 'var(--pineGreen)',
+          secondary: 'var(--primary)',
           tertiary: 'var(--platinum)',
           quaternary: 'var(--white)',
           quinary: 'var(--inactive)',

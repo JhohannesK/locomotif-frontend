@@ -1,5 +1,5 @@
-import page_not_found from '../../_shared/assets/page_not_found.svg'
-import { GenericButton } from '../../_shared'
+import page_not_found from '../../assets/page_not_found.svg'
+import { GenericButton } from '../..'
 import { GoCheckCircleFill } from 'react-icons/go'
 
 function PageNotFound() {

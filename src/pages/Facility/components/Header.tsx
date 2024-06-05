@@ -5,11 +5,11 @@ import { HiOutlineMenuAlt3 } from 'react-icons/hi'
 
 const Header = () => {
   const navigate = useNavigate()
-  const { facility } = Constants.ROUTES.PAGES.FACILITY
+  const { overview } = Constants.ROUTES.PAGES.FACILITY
   return (
     <div className="flex items-center gap-3 h-[3rem]">
       <div
-        onClick={() => navigate(facility)}
+        onClick={() => navigate(overview)}
         className="flex bg-white h-[3rem] w-[3rem] rounded-full items-center justify-center cursor-pointer shadow-md border border-border-tertiary"
       >
         <IoIosArrowBack size={30} />

@@ -3,13 +3,14 @@ import Constants from './utils/constants'
 import App from './App'
 export const routhPaths = Constants.ROUTES
 import LandingPage from './pages/auth/shared/GetStarted'
-import PageNotFound from './pages/Page-not-found/page_not_found'
+import PageNotFound from './_shared/components/cards/page_not_found'
 import Overview from './pages/Facility/Overview/Overview'
 import RootLayout from './pages/Facility/Publish/RootLayout'
 import FacilitySignUp from './pages/auth/facility/FacilitySignUp'
 import PersonnelSignup from './pages/auth/personnel/Personnel-Signup'
 import SignIn from './pages/auth/signin/Signin'
 import FindJobpage from './pages/Personnels/FindJob/FindJobpage'
+import FacilityRootLayout from './pages/Facility/Layout'
 
 const personnel = [
   {
@@ -35,17 +36,17 @@ const personnel = [
 const facility = [
   {
     path: routhPaths.PAGES.FACILITY.facility,
-    element: <Overview />,
+    element: <FacilityRootLayout />,
     children: [
       {
-        path: routhPaths.PAGES.FACILITY.facility,
+        path: routhPaths.PAGES.FACILITY.overview,
         element: <Overview />,
       },
+      {
+        path: routhPaths.PAGES.FACILITY.publish,
+        element: <RootLayout />,
+      },
     ],
-  },
-  {
-    path: routhPaths.PAGES.FACILITY.publish,
-    element: <RootLayout />,
   },
 ]
 

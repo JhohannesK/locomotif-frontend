@@ -13,21 +13,18 @@ import PreviewPosting from './Steps/PreviewPosting'
 import ProfessionalRegistration from './Steps/ProfessionalRegistration'
 import StaffInformation from './Steps/StaffInformation'
 import RecruiterInformation from './Steps/RecruiterInformation'
-import Layout from '../Layout'
 
 const RootLayout = () => {
   return (
-    <Layout>
-      <JobLayout
-        steppers={<JobPublishingSteps />}
-        jobDetails={<ConponentToRender />}
-        prevPosting={<PrevPostings />}
-      />
-    </Layout>
+    <JobLayout
+      steppers={<JobPublishingSteps />}
+      jobDetails={<ComponentToRender />}
+      prevPosting={<PrevPostings />}
+    />
   )
 }
 
-const ConponentToRender = () => {
+const ComponentToRender = () => {
   const active = useAppSelector((state) => state.app.activeJobPublishingStep)
 
   return (
