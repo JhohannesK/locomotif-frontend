@@ -37,6 +37,7 @@ const facility = [
   {
     path: routhPaths.PAGES.FACILITY.facility,
     element: <FacilityRootLayout />,
+    errorElement: <PageNotFound />,
     children: [
       {
         path: routhPaths.PAGES.FACILITY.overview,
@@ -76,14 +77,6 @@ const routes = createBrowserRouter([
   {
     path: routhPaths.root,
     element: <App />,
-  },
-  {
-    path: routhPaths.PAGENOTFOUND,
-    element: <PageNotFound />,
-  },
-  {
-    path: '*',
-    element: <PageNotFound />,
   },
 ])
 
