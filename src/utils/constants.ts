@@ -10,7 +10,6 @@ const Constants = {
   ROUTES: {
     root: '/',
     GetStarted: '/get-started',
-    PAGENOTFOUND: '/404',
     AUTH: {
       signin: '/signin',
       FACILITY: {
@@ -23,8 +22,11 @@ const Constants = {
     PAGES: {
       FACILITY: {
         facility: '/facility',
-        overview: '/facility/overview',
-        publish: '/facility/create/post',
+        overview: 'overview',
+        publish: '/facility/overview/create/post',
+        application: 'applications',
+        analysis: 'analysis',
+        profile: 'profile',
       },
       PERSONNEL: {
         personnel: '/personnel',
@@ -124,19 +126,19 @@ const Constants = {
   FACILITYNAVLINKS: [
     {
       name: 'Overview',
-      to: '/facility/overview',
+      to: 'overview',
     },
     {
       name: 'Applications',
-      to: '/facility/applications',
+      to: 'applications',
     },
     {
       name: 'Analysis',
-      to: '/applications',
+      to: 'analysis',
     },
     {
       name: 'Profile',
-      to: '/applications',
+      to: 'profile',
     },
   ],
   PERSONNELNAVLINKS: [

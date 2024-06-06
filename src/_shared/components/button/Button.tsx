@@ -18,7 +18,6 @@ const GeneralButton = ({
   type = 'submit',
   disabled,
 }: ButtonProps) => {
-  console.log(className)
   return (
     <Button
       variant={variantText}

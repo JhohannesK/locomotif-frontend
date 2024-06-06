@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, RouteObject } from 'react-router-dom'
 import Constants from './utils/constants'
 import App from './App'
 export const routhPaths = Constants.ROUTES
@@ -31,27 +31,39 @@ const personnel = [
       // },
     ],
   },
-]
+] satisfies RouteObject[]
 
-const facility = [
+const facility: RouteObject[] = [
   {
-    path: routhPaths.PAGES.FACILITY.facility,
+    path: '/facility',
     element: <FacilityRootLayout />,
     errorElement: <PageNotFound />,
     children: [
       {
-        path: routhPaths.PAGES.FACILITY.overview,
+        path: 'overview',
         element: <Overview />,
       },
       {
-        path: routhPaths.PAGES.FACILITY.publish,
+        path: 'facility/overview/create/post',
         element: <RootLayout />,
+      },
+      {
+        path: 'application',
+        element: <div>hello application</div>,
+      },
+      {
+        path: 'analysis',
+        element: <div>hello analysis</div>,
+      },
+      {
+        path: 'profile',
+        element: <div>hello profile</div>,
       },
     ],
   },
 ]
 
-const auth = [
+const auth: RouteObject[] = [
   {
     path: routhPaths.GetStarted,
     element: <LandingPage />,
@@ -70,14 +82,17 @@ const auth = [
   },
 ]
 
-const routes = createBrowserRouter([
-  ...personnel,
-  ...facility,
-  ...auth,
-  {
-    path: routhPaths.root,
-    element: <App />,
-  },
-])
+const routes = createBrowserRouter(
+  [
+    ...personnel,
+    ...facility,
+    ...auth,
+    {
+      path: routhPaths.root,
+      element: <App />,
+    },
+  ],
+  {}
+)
 
 export default routes
