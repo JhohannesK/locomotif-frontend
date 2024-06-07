@@ -2,9 +2,9 @@ import Navbar from '../../_shared/navbar/Navbar'
 import Constants from '@/utils/constants'
 import AviDropdown from '@/_shared/navbar/FacilityAvi'
 import { CreditCard, LogOut, UserIcon } from 'lucide-react'
-import { Outlet } from 'react-router-dom'
+import React from 'react'
 
-const FacilityRootLayout = () => {
+const FacilityRootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex flex-col h-screen bg-background-secondary">
       <Navbar
@@ -28,9 +28,7 @@ const FacilityRootLayout = () => {
           />
         }
       />
-      <div className="p-2 lg:p-10 bg-background-secondary">
-        <Outlet />
-      </div>
+      <div className="p-2 lg:p-10 bg-background-secondary">{children}</div>
     </div>
   )
 }

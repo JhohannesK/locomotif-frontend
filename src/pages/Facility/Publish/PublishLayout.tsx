@@ -3,7 +3,7 @@ import { TJobSteps } from '../../../types'
 import { ConditionRenderComponent } from '../../../utils/ConditionRender'
 import JobPublishingSteps from '../components/JobPublishingSteps'
 import PrevPostings from '../components/PrevPostings'
-import JobLayout from './Layout'
+import JobLayout from './LayoutTemplate'
 import ContractDetails from './Steps/ContractDetails'
 import JobDetails from './Steps/JobDetails'
 import Location from './Steps/Location'
@@ -13,14 +13,17 @@ import PreviewPosting from './Steps/PreviewPosting'
 import ProfessionalRegistration from './Steps/ProfessionalRegistration'
 import StaffInformation from './Steps/StaffInformation'
 import RecruiterInformation from './Steps/RecruiterInformation'
+import FacilityRootLayout from '../Layout'
 
-const RootLayout = () => {
+const PublishLayout = () => {
   return (
-    <JobLayout
-      steppers={<JobPublishingSteps />}
-      jobDetails={<ComponentToRender />}
-      prevPosting={<PrevPostings />}
-    />
+    <FacilityRootLayout>
+      <JobLayout
+        steppers={<JobPublishingSteps />}
+        jobDetails={<ComponentToRender />}
+        prevPosting={<PrevPostings />}
+      />
+    </FacilityRootLayout>
   )
 }
 
@@ -72,4 +75,4 @@ const ComponentToRender = () => {
   )
 }
 
-export default RootLayout
+export default PublishLayout

@@ -1,83 +1,85 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom'
 import Constants from './utils/constants'
 import App from './App'
-export const routhPaths = Constants.ROUTES
 import LandingPage from './pages/auth/shared/GetStarted'
-import PageNotFound from './_shared/components/cards/page_not_found'
 import Overview from './pages/Facility/Overview/Overview'
-import RootLayout from './pages/Facility/Publish/RootLayout'
+import RootLayout from './pages/Facility/Publish/PublishLayout'
 import FacilitySignUp from './pages/auth/facility/FacilitySignUp'
 import PersonnelSignup from './pages/auth/personnel/Personnel-Signup'
 import SignIn from './pages/auth/signin/Signin'
 import FindJobpage from './pages/Personnels/FindJob/FindJobpage'
-import FacilityRootLayout from './pages/Facility/Layout'
+import Applications from './pages/Facility/Applications/Applications'
+import Analysis from './pages/Facility/Analysis/Analysis'
+import Profile from './pages/Facility/Profile/Profile'
+
+export const routePath = Constants.ROUTES
 
 const personnel = [
   {
-    path: routhPaths.PAGES.PERSONNEL.personnel,
+    path: routePath.PAGES.PERSONNEL.personnel,
     element: <FindJobpage />,
     children: [
       {
-        path: routhPaths.PAGES.PERSONNEL.personnel_findJob,
+        path: routePath.PAGES.PERSONNEL.personnel_findJob,
         element: <FindJobpage />,
       },
       // {
-      //   path: routhPaths.PAGES.PERSONNEL.post,
+      //   path: routePath.PAGES.PERSONNEL.post,
       //   element: <Posting />,
       // },
       // {
-      //   path: routhPaths.PAGES.PERSONNEL.personnel_applications_page,
+      //   path: routePath.PAGES.PERSONNEL.personnel_applications_page,
       //   element: <ApplicationsPage />,
       // },
     ],
   },
 ] satisfies RouteObject[]
 
+const facilityRoutePath = routePath.PAGES.FACILITY
+
 const facility: RouteObject[] = [
+  // {
+  //   path: '/facility',
+  //   element: <FacilityRootLayout />,
+  //   errorElement: <PageNotFound />,
+  // },
   {
-    path: '/facility',
-    element: <FacilityRootLayout />,
-    errorElement: <PageNotFound />,
-    children: [
-      {
-        path: 'overview',
-        element: <Overview />,
-      },
-      {
-        path: 'facility/overview/create/post',
-        element: <RootLayout />,
-      },
-      {
-        path: 'application',
-        element: <div>hello application</div>,
-      },
-      {
-        path: 'analysis',
-        element: <div>hello analysis</div>,
-      },
-      {
-        path: 'profile',
-        element: <div>hello profile</div>,
-      },
-    ],
+    path: facilityRoutePath.overview,
+    element: <Overview />,
+  },
+  {
+    path: facilityRoutePath.publish,
+    element: <RootLayout />,
+  },
+  {
+    path: facilityRoutePath.application,
+    element: <Applications />,
+  },
+  {
+    path: facilityRoutePath.analysis,
+    element: <Analysis />,
+  },
+  {
+    path: facilityRoutePath.profile,
+    element: <Profile />,
   },
 ]
 
 const auth: RouteObject[] = [
   {
-    path: routhPaths.GetStarted,
+    path: routePath.GetStarted,
     element: <LandingPage />,
   },
   {
-    path: routhPaths.AUTH.signin,
+    path: routePath.AUTH.signin,
     element: <SignIn />,
   },
   {
-    path: routhPaths.AUTH.FACILITY.facility_signup,
+    path: routePath.AUTH.FACILITY.facility_signup,
     element: <FacilitySignUp />,
   },
   {
-    path: routhPaths.AUTH.PERSONNEL.personnel_signup,
+    path: routePath.AUTH.PERSONNEL.personnel_signup,
     element: <PersonnelSignup />,
   },
 ]
@@ -88,7 +90,7 @@ const routes = createBrowserRouter(
     ...facility,
     ...auth,
     {
-      path: routhPaths.root,
+      path: routePath.root,
       element: <App />,
     },
   ],

@@ -22,11 +22,11 @@ const Constants = {
     PAGES: {
       FACILITY: {
         facility: '/facility',
-        overview: 'overview',
+        overview: '/facility/overview',
         publish: '/facility/overview/create/post',
-        application: 'applications',
-        analysis: 'analysis',
-        profile: 'profile',
+        application: '/facility/applications',
+        analysis: '/facility/analysis',
+        profile: '/facility/profile',
       },
       PERSONNEL: {
         personnel: '/personnel',
@@ -126,19 +126,19 @@ const Constants = {
   FACILITYNAVLINKS: [
     {
       name: 'Overview',
-      to: 'overview',
+      to: '/facility/overview',
     },
     {
       name: 'Applications',
-      to: 'applications',
+      to: '/facility/applications',
     },
     {
       name: 'Analysis',
-      to: 'analysis',
+      to: '/facility/analysis',
     },
     {
       name: 'Profile',
-      to: 'profile',
+      to: '/facility/profile',
     },
   ],
   PERSONNELNAVLINKS: [
