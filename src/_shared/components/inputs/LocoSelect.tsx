@@ -16,6 +16,7 @@ import clsx from 'clsx'
 import { PopupContext } from '@mui/base/Unstable_Popup'
 import { CssTransition } from '@mui/base/Transitions'
 import { CgArrowAlignV } from 'react-icons/cg'
+import { cn } from '@/utils/lib'
 
 export default function LocoSelect({
   options,
@@ -23,12 +24,14 @@ export default function LocoSelect({
   name,
   value,
   onChange,
+  className,
 }: {
   options: string[]
   placeholder?: string
   defaultOption?: string
   name: string
   value?: string | null
+  className?: string
   onChange?: (
     event:
       | React.MouseEvent<Element, MouseEvent>
@@ -41,7 +44,7 @@ export default function LocoSelect({
   // Replace this with your app logic for determining dark modes
   //   const isDarkMode = useIsDarkMode()
   return (
-    <div className={'w-full '}>
+    <div className={cn('w-full', className)}>
       <Select
         name={name}
         value={value}

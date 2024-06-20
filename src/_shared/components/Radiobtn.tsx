@@ -1,29 +1,48 @@
-const Radiobtn = ({ isWhite }: { isWhite?: boolean }) => {
+import { cn } from '@/utils/lib'
+
+const Radiobtn = ({
+  isWhite,
+  className,
+}: {
+  isWhite?: boolean
+  className?: string
+}) => {
   return (
     <div
       className={
         `${isWhite ? 'border-border-tertiary' : 'border-border-active'}` +
         ' ' +
-        'h-[2rem] w-[2rem] border-2 rounded-full'
+        cn('h-[2rem] w-[2rem] border-2 rounded-full', className)
       }
     ></div>
   )
 }
 
-export const RadioBtnActive = ({ isWhite }: { isWhite?: boolean }) => {
+export const RadioBtnActive = ({
+  isWhite,
+  innerClassName,
+  outerClassName,
+}: {
+  isWhite?: boolean
+  outerClassName?: string
+  innerClassName?: string
+}) => {
   return (
     <div
       className={
         `${isWhite ? 'border-border-tertiary' : 'border-border-active'}` +
         ' ' +
-        'h-[2rem] w-[2rem] border-2 rounded-full flex items-center justify-center'
+        cn(
+          'h-[2rem] w-[2rem] border-2 rounded-full flex items-center justify-center',
+          outerClassName
+        )
       }
     >
       <div
         className={
           `${isWhite ? 'bg-background-secondary' : 'bg-background-primary '}` +
           ' ' +
-          'h-[.7rem] w-[.7rem] rounded-full'
+          cn('h-[.7rem] w-[.7rem] rounded-full', innerClassName)
         }
       ></div>
     </div>

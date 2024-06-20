@@ -8,9 +8,9 @@ import FacilitySignUp from './pages/auth/facility/FacilitySignUp'
 import PersonnelSignup from './pages/auth/personnel/Personnel-Signup'
 import SignIn from './pages/auth/signin/Signin'
 import FindJobpage from './pages/Personnels/FindJob/FindJobpage'
-import Applications from './pages/Facility/Applications/Applications'
 import Analysis from './pages/Facility/Analysis/Analysis'
 import Profile from './pages/Facility/Profile/Profile'
+import MyPostings from './pages/Facility/MyPostings/MyPostings'
 
 export const routePath = Constants.ROUTES
 
@@ -52,8 +52,8 @@ const facility: RouteObject[] = [
     element: <RootLayout />,
   },
   {
-    path: facilityRoutePath.application,
-    element: <Applications />,
+    path: facilityRoutePath.myPosting,
+    element: <MyPostings />,
   },
   {
     path: facilityRoutePath.analysis,

@@ -21,10 +21,10 @@ const Constants = {
     },
     PAGES: {
       FACILITY: {
-        facility: '/facility',
+        facility: '/facility/overview',
         overview: '/facility/overview',
         publish: '/facility/overview/create/post',
-        application: '/facility/applications',
+        myPosting: '/facility/my-postings',
         analysis: '/facility/analysis',
         profile: '/facility/profile',
       },
@@ -129,8 +129,8 @@ const Constants = {
       to: '/facility/overview',
     },
     {
-      name: 'Applications',
-      to: '/facility/applications',
+      name: 'My Postings',
+      to: '/facility/my-postings',
     },
     {
       name: 'Analysis',

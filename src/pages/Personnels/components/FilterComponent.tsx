@@ -19,18 +19,18 @@ const FilterComponent = () => {
           <div className="flex flex-col gap-3">
             <h2 className="text-lg font-bold">Job Type</h2>
             <div className="flex items-center space-x-2">
-              <Checkbox id="terms" />
+              <Checkbox id="full_time" />
               <label
-                htmlFor="terms"
+                htmlFor="full_time"
                 className="opacity-70 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 Full time offer
               </label>
             </div>
             <div className="flex items-center space-x-2">
-              <Checkbox id="terms" />
+              <Checkbox id="part_time" />
               <label
-                htmlFor="terms"
+                htmlFor="part_time"
                 className="opacity-70 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 Part time offer
@@ -41,18 +41,18 @@ const FilterComponent = () => {
           <div className="flex flex-col gap-3">
             <h2 className="text-lg font-bold">Shift Type</h2>
             <div className="flex items-center space-x-2">
-              <Checkbox id="terms" />
+              <Checkbox id="morning" />
               <label
-                htmlFor="terms"
+                htmlFor="morning"
                 className="opacity-70 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 Morning
               </label>
             </div>
             <div className="flex items-center space-x-2">
-              <Checkbox id="terms" />
+              <Checkbox id="afternoon" />
               <label
-                htmlFor="terms"
+                htmlFor="afternoon"
                 className="opacity-70 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 Afternoon
@@ -63,27 +63,27 @@ const FilterComponent = () => {
           <div className="flex flex-col gap-3">
             <h2 className="text-lg font-bold">Speciality</h2>
             <div className="flex items-center space-x-2">
-              <Checkbox id="terms" />
+              <Checkbox id="cardio" />
               <label
-                htmlFor="terms"
+                htmlFor="cardio"
                 className="opacity-70 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 Cardiologist
               </label>
             </div>
             <div className="flex items-center space-x-2">
-              <Checkbox id="terms" />
+              <Checkbox id="nursing" />
               <label
-                htmlFor="terms"
+                htmlFor="nursing"
                 className="opacity-70 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 Nursing
               </label>
             </div>
             <div className="flex items-center space-x-2">
-              <Checkbox id="terms" />
+              <Checkbox id="nursing2" />
               <label
-                htmlFor="terms"
+                htmlFor="nursing2"
                 className="opacity-70 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
                 Nursing
