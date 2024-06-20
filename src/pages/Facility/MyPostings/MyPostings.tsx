@@ -2,18 +2,13 @@ import FacilityRootLayout from '../Layout'
 import postings from '@/pages/mocks/postings.json'
 import Header from './Header'
 
-async function getData(): Promise<Posting[]> {
-  return postings as Posting[]
-}
-const data = await getData()
-
 const MyPostings = () => {
   return (
     <FacilityRootLayout>
       <div className="max-w-[1400px] mx-auto">
         <Header />
         <div>
-          {data.map((posting) => {
+          {postings.map((posting) => {
             return (
               <div key={posting.id} className="px-2 py-5 border-b">
                 <h1 className="text-2xl">{posting.title}</h1>
@@ -29,7 +24,7 @@ const MyPostings = () => {
 
 export default MyPostings
 
-interface Posting {
+export interface Posting {
   id: string
   required_role: Array<string>
   title: string
