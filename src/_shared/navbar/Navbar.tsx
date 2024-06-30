@@ -2,7 +2,7 @@ import { AiOutlineMail } from 'react-icons/ai'
 import { BiBell } from 'react-icons/bi'
 
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from '@tanstack/react-router'
 
 const Navbar = ({
   aviDropdown,
@@ -19,17 +19,19 @@ const Navbar = ({
         </div>
         <div className="hidden lg:flex flex-row gap-4">
           {navlinks.map((link, index: number) => (
-            <NavLink
+            <Link
               to={link.to}
-              key={index}
-              className={({ isActive }) => {
-                return isActive
-                  ? 'text-lg font-bold text-text-secondary hover:text-background-primary'
-                  : 'text-lg font-bold text-black hover:text-background-primary'
+              activeProps={{
+                className:
+                  'text-lg font-bold text-text-secondary hover:text-background-primary',
               }}
+              key={index}
+              className={
+                'text-lg font-bold text-black hover:text-background-primary'
+              }
             >
               {link.name}
-            </NavLink>
+            </Link>
           ))}
         </div>
         <div>

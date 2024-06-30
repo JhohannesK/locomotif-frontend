@@ -1,4 +1,4 @@
-import SignIn from './pages/auth/signin/Signin'
+import SignIn from './container/auth/shared/signin/Signin'
 
 function App() {
   return (

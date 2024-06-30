@@ -1,7 +1,6 @@
 import { CgDanger } from 'react-icons/cg'
 import GeneralButton from '../button/Button'
-import { useNavigate } from 'react-router-dom'
-import Constants from '@/utils/constants'
+import { useNavigate } from '@tanstack/react-router'
 
 const EmptyState = () => {
   const navigate = useNavigate()
@@ -24,7 +23,7 @@ const EmptyState = () => {
         <GeneralButton
           title="Get Started"
           className="mt-5"
-          onClick={() => navigate(Constants.ROUTES.PAGES.FACILITY.publish)}
+          onClick={() => navigate({ to: '/facility' })}
         />
       </div>
     </div>
