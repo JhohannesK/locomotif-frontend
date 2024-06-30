@@ -3,12 +3,12 @@ import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material'
 import { VscSettings } from 'react-icons/vsc'
 import FilterBy from './FilterBy'
 
-const Header = () => {
+const Header = ({ count }: { count: number }) => {
   return (
     <div className="w-full flex flex-col border-b pb-5">
       <h1 className="text-5xl font-semibold">My Postings</h1>
       <Accordion className="bg-transparent shadow-none">
-        <div className="mt-5 flex items-center justify-between gap-5 ">
+        <div className="mt-5 flex flex-col lg:flex-row items-center justify-between gap-5 ">
           <div className="flex items-center gap-4">
             <Input
               className="rounded-full w-96"
@@ -19,10 +19,11 @@ const Header = () => {
               //   expandIcon={<MoreVertical />}
               aria-controls="panel1-content"
               id="panel1-header"
-              className="flex items-center gap-2 cursor-pointer"
             >
-              <VscSettings className="rotate-90 h-5 w-5" />
-              <p className="text-primary">Filters</p>
+              <div className="flex items-center gap-2 cursor-pointer">
+                <VscSettings className="rotate-90 h-5 w-5" />
+                <p className="text-primary">Filters</p>
+              </div>
             </AccordionSummary>
           </div>
           <div className="flex items-center gap-4">
@@ -57,6 +58,7 @@ const Header = () => {
               options={['Ascending', 'Descending']}
               defaultOption="GHS"
             />
+            <p className="opacity-80">{count} total</p>
           </div>
         </div>
         <AccordionDetails>

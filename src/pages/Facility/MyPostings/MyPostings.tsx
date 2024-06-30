@@ -6,11 +6,14 @@ const MyPostings = () => {
   return (
     <FacilityRootLayout>
       <div className="max-w-[1400px] mx-auto">
-        <Header />
+        <Header count={postings.length} />
         <div>
           {postings.map((posting) => {
             return (
-              <div key={posting.id} className="px-2 py-5 border-b">
+              <div
+                key={posting.id}
+                className="px-2 py-5 border-b cursor-pointer"
+              >
                 <h1 className="text-2xl">{posting.title}</h1>
                 <p>{posting.description}</p>
               </div>
