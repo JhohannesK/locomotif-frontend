@@ -24,6 +24,7 @@
     "@radix-ui/react-select": "^2.0.0",
     "@reduxjs/toolkit": "^2.2.3",
     "@tanstack/react-query": "^5.29.2",
+    "@tanstack/react-router": "^1.43.3",
     "@tanstack/react-table": "^8.17.3",
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
@@ -46,6 +47,8 @@
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.3.4",
+    "@tanstack/router-devtools": "^1.43.3",
+    "@tanstack/router-plugin": "^1.43.1",
     "@types/node": "^20.12.7",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
