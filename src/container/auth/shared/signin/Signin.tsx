@@ -22,7 +22,7 @@ const SignIn = () => {
   useEffect(() => {
     if (isLoggedIn) {
       if (user_role.user_role == Constants.PERSONNEL) {
-        navigate({ to: Constants.ROUTES.PAGES.PERSONNEL.personnel_findJob })
+        navigate({ to: '/personnel' })
       }
     }
   }, [isLoggedIn, user_role, navigate])

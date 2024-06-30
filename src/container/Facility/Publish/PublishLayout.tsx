@@ -13,17 +13,16 @@ import PreviewPosting from './Steps/PreviewPosting'
 import ProfessionalRegistration from './Steps/ProfessionalRegistration'
 import StaffInformation from './Steps/StaffInformation'
 import RecruiterInformation from './Steps/RecruiterInformation'
-import FacilityRootLayout from '../Layout'
 
 const PublishLayout = () => {
   return (
-    <FacilityRootLayout>
+    <div>
       <JobLayout
         steppers={<JobPublishingSteps />}
         jobDetails={<ComponentToRender />}
         prevPosting={<PrevPostings />}
       />
-    </FacilityRootLayout>
+    </div>
   )
 }
 

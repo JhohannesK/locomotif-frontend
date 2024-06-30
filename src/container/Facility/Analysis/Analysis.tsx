@@ -1,7 +1,5 @@
-import FacilityRootLayout from '../Layout'
-
 const Analysis = () => {
-  return <FacilityRootLayout>hello analysis</FacilityRootLayout>
+  return <div>hello analysis</div>
 }
 
 export default Analysis

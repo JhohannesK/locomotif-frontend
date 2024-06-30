@@ -148,7 +148,7 @@ const authSlice = createSlice({
     builder.addCase(logoutPersonnel.fulfilled, () => {
       localStorage.removeItem(Constants.LOCALSTORAGE_KEYS.PERSONNEL_AUTH)
       localStorage.removeItem(Constants.LOCALSTORAGE_KEYS.PERSONNEL_PROFILE)
-      window.location.href = Constants.ROUTES.AUTH.signin
+      window.location.href = '/'
     })
     builder.addCase(logoutPersonnel.pending, (state) => {
       state.isLogoutLoading = true

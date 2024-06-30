@@ -2,10 +2,10 @@ import { GenericButton } from '../../../_shared'
 import { colors } from '../../../colors'
 import success_img from '../../../_shared/assets/success.png'
 // import Constants from '../../../utils/constants'
-// import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@tanstack/react-router'
 
 const CompletedSuccess = () => {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   return (
     <div className="auth-container">
       <div className="auth-container__wrapper flex-col items-center">
@@ -37,7 +37,7 @@ const CompletedSuccess = () => {
             marginTop: '2rem',
           }}
           size="large"
-          // onClick={() => navigate(Constants.ROUTES.PAGES.FACILITY.facility)}
+          onClick={() => navigate({ to: '/facility/overview' })}
         />
       </div>
     </div>

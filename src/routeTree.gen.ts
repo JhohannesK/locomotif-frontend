@@ -14,26 +14,31 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as PersonnelImport } from './routes/personnel'
-import { Route as FacilityImport } from './routes/facility'
 import { Route as IndexImport } from './routes/index'
+import { Route as PersonnelLayoutImport } from './routes/personnel/_layout'
 import { Route as LocomotifGetStartedImport } from './routes/locomotif/get-started'
+import { Route as FacilityLayoutImport } from './routes/facility/_layout'
 import { Route as LocomotifAuthLayoutImport } from './routes/locomotif/auth/_layout'
+import { Route as FacilityLayoutPublishImport } from './routes/facility/_layout.publish'
+import { Route as FacilityLayoutOverviewImport } from './routes/facility/_layout.overview'
+import { Route as FacilityLayoutMypostingsImport } from './routes/facility/_layout.mypostings'
 import { Route as LocomotifAuthLayoutPersonnelSignUpImport } from './routes/locomotif/auth/_layout.personnel-sign-up'
 import { Route as LocomotifAuthLayoutFacilitySignUpImport } from './routes/locomotif/auth/_layout.facility-sign-up'
 
 // Create Virtual Routes
 
+const FacilityImport = createFileRoute('/facility')()
 const LocomotifAuthImport = createFileRoute('/locomotif/auth')()
 
 // Create/Update Routes
 
-const PersonnelRoute = PersonnelImport.update({
-  path: '/personnel',
+const FacilityRoute = FacilityImport.update({
+  path: '/facility',
   getParentRoute: () => rootRoute,
 } as any)
 
-const FacilityRoute = FacilityImport.update({
-  path: '/facility',
+const PersonnelRoute = PersonnelImport.update({
+  path: '/personnel',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -47,14 +52,39 @@ const LocomotifAuthRoute = LocomotifAuthImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const PersonnelLayoutRoute = PersonnelLayoutImport.update({
+  id: '/_layout',
+  getParentRoute: () => PersonnelRoute,
+} as any)
+
 const LocomotifGetStartedRoute = LocomotifGetStartedImport.update({
   path: '/locomotif/get-started',
   getParentRoute: () => rootRoute,
 } as any)
 
+const FacilityLayoutRoute = FacilityLayoutImport.update({
+  id: '/_layout',
+  getParentRoute: () => FacilityRoute,
+} as any)
+
 const LocomotifAuthLayoutRoute = LocomotifAuthLayoutImport.update({
   id: '/_layout',
   getParentRoute: () => LocomotifAuthRoute,
+} as any)
+
+const FacilityLayoutPublishRoute = FacilityLayoutPublishImport.update({
+  path: '/publish',
+  getParentRoute: () => FacilityLayoutRoute,
+} as any)
+
+const FacilityLayoutOverviewRoute = FacilityLayoutOverviewImport.update({
+  path: '/overview',
+  getParentRoute: () => FacilityLayoutRoute,
+} as any)
+
+const FacilityLayoutMypostingsRoute = FacilityLayoutMypostingsImport.update({
+  path: '/mypostings',
+  getParentRoute: () => FacilityLayoutRoute,
 } as any)
 
 const LocomotifAuthLayoutPersonnelSignUpRoute =
@@ -80,13 +110,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/facility': {
-      id: '/facility'
-      path: '/facility'
-      fullPath: '/facility'
-      preLoaderRoute: typeof FacilityImport
-      parentRoute: typeof rootRoute
-    }
     '/personnel': {
       id: '/personnel'
       path: '/personnel'
@@ -94,12 +117,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PersonnelImport
       parentRoute: typeof rootRoute
     }
+    '/facility': {
+      id: '/facility'
+      path: '/facility'
+      fullPath: '/facility'
+      preLoaderRoute: typeof FacilityImport
+      parentRoute: typeof rootRoute
+    }
+    '/facility/_layout': {
+      id: '/facility/_layout'
+      path: '/facility'
+      fullPath: '/facility'
+      preLoaderRoute: typeof FacilityLayoutImport
+      parentRoute: typeof FacilityRoute
+    }
     '/locomotif/get-started': {
       id: '/locomotif/get-started'
       path: '/locomotif/get-started'
       fullPath: '/locomotif/get-started'
       preLoaderRoute: typeof LocomotifGetStartedImport
       parentRoute: typeof rootRoute
+    }
+    '/personnel/_layout': {
+      id: '/personnel/_layout'
+      path: ''
+      fullPath: '/personnel'
+      preLoaderRoute: typeof PersonnelLayoutImport
+      parentRoute: typeof PersonnelImport
+    }
+    '/facility/_layout/mypostings': {
+      id: '/facility/_layout/mypostings'
+      path: '/mypostings'
+      fullPath: '/facility/mypostings'
+      preLoaderRoute: typeof FacilityLayoutMypostingsImport
+      parentRoute: typeof FacilityLayoutImport
+    }
+    '/facility/_layout/overview': {
+      id: '/facility/_layout/overview'
+      path: '/overview'
+      fullPath: '/facility/overview'
+      preLoaderRoute: typeof FacilityLayoutOverviewImport
+      parentRoute: typeof FacilityLayoutImport
+    }
+    '/facility/_layout/publish': {
+      id: '/facility/_layout/publish'
+      path: '/publish'
+      fullPath: '/facility/publish'
+      preLoaderRoute: typeof FacilityLayoutPublishImport
+      parentRoute: typeof FacilityLayoutImport
     }
     '/locomotif/auth': {
       id: '/locomotif/auth'
@@ -136,8 +201,14 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
-  FacilityRoute,
-  PersonnelRoute,
+  PersonnelRoute: PersonnelRoute.addChildren({}),
+  FacilityRoute: FacilityRoute.addChildren({
+    FacilityLayoutRoute: FacilityLayoutRoute.addChildren({
+      FacilityLayoutMypostingsRoute,
+      FacilityLayoutOverviewRoute,
+      FacilityLayoutPublishRoute,
+    }),
+  }),
   LocomotifGetStartedRoute,
   LocomotifAuthRoute: LocomotifAuthRoute.addChildren({
     LocomotifAuthLayoutRoute: LocomotifAuthLayoutRoute.addChildren({
@@ -156,8 +227,8 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/facility",
         "/personnel",
+        "/facility",
         "/locomotif/get-started",
         "/locomotif/auth"
       ]
@@ -165,14 +236,45 @@ export const routeTree = rootRoute.addChildren({
     "/": {
       "filePath": "index.tsx"
     },
-    "/facility": {
-      "filePath": "facility.tsx"
-    },
     "/personnel": {
-      "filePath": "personnel.tsx"
+      "filePath": "personnel.tsx",
+      "children": [
+        "/personnel/_layout"
+      ]
+    },
+    "/facility": {
+      "filePath": "facility",
+      "children": [
+        "/facility/_layout"
+      ]
+    },
+    "/facility/_layout": {
+      "filePath": "facility/_layout.tsx",
+      "parent": "/facility",
+      "children": [
+        "/facility/_layout/mypostings",
+        "/facility/_layout/overview",
+        "/facility/_layout/publish"
+      ]
     },
     "/locomotif/get-started": {
       "filePath": "locomotif/get-started.tsx"
+    },
+    "/personnel/_layout": {
+      "filePath": "personnel/_layout.tsx",
+      "parent": "/personnel"
+    },
+    "/facility/_layout/mypostings": {
+      "filePath": "facility/_layout.mypostings.tsx",
+      "parent": "/facility/_layout"
+    },
+    "/facility/_layout/overview": {
+      "filePath": "facility/_layout.overview.tsx",
+      "parent": "/facility/_layout"
+    },
+    "/facility/_layout/publish": {
+      "filePath": "facility/_layout.publish.tsx",
+      "parent": "/facility/_layout"
     },
     "/locomotif/auth": {
       "filePath": "locomotif/auth",

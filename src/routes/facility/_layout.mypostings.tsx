@@ -1,7 +1,17 @@
-import postings from '@/mocks/postings.json'
-import Header from './Header'
+import { createFileRoute } from '@tanstack/react-router'
 
-const MyPostings = () => {
+import postings from '@/mocks/postings.json'
+import Header from '@/container/Facility/MyPostings/Header'
+
+export const Route = createFileRoute('/facility/_layout/mypostings')({
+  component: () => (
+    <div>
+      <MyPostings />
+    </div>
+  ),
+})
+
+function MyPostings() {
   return (
     <div>
       <div className="max-w-[1400px] mx-auto">
@@ -23,8 +33,6 @@ const MyPostings = () => {
     </div>
   )
 }
-
-export default MyPostings
 
 export interface Posting {
   id: string

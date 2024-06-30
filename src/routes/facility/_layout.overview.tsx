@@ -1,12 +1,17 @@
-import ProfileCard from '../components/ProfileCard'
-import ApplicationUpdate from './ApplicationUpdate'
-import CreatePostCard from '../components/CreatePostCard'
-import FacilityRootLayout from '../Layout'
 // import EmptyState from '@/_shared/components/cards/EmptyState'
+
+import CreatePostCard from '@/container/Facility/components/CreatePostCard'
+import ProfileCard from '@/container/Facility/components/ProfileCard'
+import ApplicationUpdate from '@/container/Facility/Overview/ApplicationUpdate'
+import { createFileRoute } from '@tanstack/react-router'
+
+export const Route = createFileRoute('/facility/_layout/overview')({
+  component: () => <Overview />,
+})
 
 function Overview() {
   return (
-    <FacilityRootLayout>
+    <div>
       <div className="flex flex-col md:flex-row gap-10 max-w-[1700px] mx-auto">
         <div className="flex flex-col gap-3 items-center md:items-start">
           <ProfileCard />
@@ -19,7 +24,7 @@ function Overview() {
         </div> */}
         </div>
       </div>
-    </FacilityRootLayout>
+    </div>
   )
 }
 

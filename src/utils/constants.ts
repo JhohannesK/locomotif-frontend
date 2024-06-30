@@ -7,58 +7,6 @@ const Constants = {
   PERSONNEL: 'personnel',
   FACILITY: 'facility',
 
-  ROUTES: {
-    root: '/',
-    GetStarted: '/get-started',
-    AUTH: {
-      signin: '/signin',
-      FACILITY: {
-        facility_signup: '/facility/signup',
-      },
-      PERSONNEL: {
-        personnel_signup: '/personnel/signup',
-      },
-    },
-    PAGES: {
-      FACILITY: {
-        facility: '/facility/overview',
-        overview: '/facility/overview',
-        publish: '/facility/overview/create/post',
-        myPosting: '/facility/my-postings',
-        analysis: '/facility/analysis',
-        profile: '/facility/profile',
-      },
-      PERSONNEL: {
-        personnel: '/personnel',
-        personnel_findJob: '/personnel/find-job',
-        personnel_applications_page: '/personnel/applications-page',
-        post: '/personnel/post',
-      },
-    },
-  },
-
-  LAYOUT: {
-    MEDIA_QUERIES: {
-      MOBILE_SM: '@media only screen and (max-width: 480px)',
-      MOBILE: '@media only screen and (max-width: 819px)',
-      TABLET:
-        '@media only screen and (min-width: 820px) and (max-width: 1200px)',
-      SMALL_PX: '@media only screen and (min-width: 418px)',
-      TABLET_480_PX: '@media only screen and (min-width: 480px)',
-      TABLET_580_PX: '@media only screen and (max-width: 580px)',
-      TABLET_PX: '@media only screen and (min-width: 768px)',
-      TABLET_PX_2:
-        '@media only screen and (min-width: 768px) and (max-width: 1024px)',
-      TABLET_PX_3: '@media only screen and  (max-width: 1023px)',
-      TABLET_MOBILE_PX: '@media only screen and (max-width: 768px)',
-
-      LAPTOP_PX: '@media only screen and (min-width: 1024px) ',
-      LAPTOP_M_PX: '@media only screen and (min-width: 1360px) ',
-      LAPTOP_L_PX: '@media only screen and (min-width: 1440px)',
-      LAPTOP_L_PX_MAX: '@media only screen and (max-width: 1440px)',
-    },
-  },
-
   isMenuOpen: true,
 
   SIDEBAR: {
@@ -130,7 +78,7 @@ const Constants = {
     },
     {
       name: 'My Postings',
-      to: '/facility/my-postings',
+      to: '/facility/mypostings',
     },
     {
       name: 'Analysis',

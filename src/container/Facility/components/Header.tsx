@@ -1,14 +1,12 @@
 import { IoIosArrowBack } from 'react-icons/io'
-import Constants from '../../../utils/constants'
 import { HiOutlineMenuAlt3 } from 'react-icons/hi'
 import { Link } from '@tanstack/react-router'
 
 const Header = () => {
-  const { overview } = Constants.ROUTES.PAGES.FACILITY
   return (
     <div className="flex items-center gap-3 h-[3rem]">
       <Link
-        to={overview}
+        to={'/facility/overview'}
         className="flex bg-white h-[3rem] w-[3rem] rounded-full items-center justify-center cursor-pointer shadow-md border border-border-tertiary"
       >
         <IoIosArrowBack size={30} />

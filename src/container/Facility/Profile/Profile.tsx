@@ -1,7 +1,5 @@
-import FacilityRootLayout from '../Layout'
-
 const Profile = () => {
-  return <FacilityRootLayout>hello profile</FacilityRootLayout>
+  return <div>hello profile</div>
 }
 
 export default Profile

@@ -1,10 +1,15 @@
-import Navbar from '../../_shared/navbar/Navbar'
-import Constants from '@/utils/constants'
 import AviDropdown from '@/_shared/navbar/FacilityAvi'
+import Navbar from '@/_shared/navbar/Navbar'
+import Constants from '@/utils/constants'
+import { createFileRoute, Outlet } from '@tanstack/react-router'
 import { CreditCard, LogOut, UserIcon } from 'lucide-react'
-import React from 'react'
 
-const FacilityRootLayout = ({ children }: { children: React.ReactNode }) => {
+export const Route = createFileRoute('/facility/_layout')({
+  component: FacilityRootLayout,
+  notFoundComponent: () => <div>Not Found</div>,
+})
+
+function FacilityRootLayout() {
   return (
     <div className="flex flex-col h-screen bg-background-secondary">
       <Navbar
@@ -28,7 +33,9 @@ const FacilityRootLayout = ({ children }: { children: React.ReactNode }) => {
           />
         }
       />
-      <div className="p-2 lg:p-10 bg-background-secondary">{children}</div>
+      <div className="p-2 lg:p-10 bg-background-secondary">
+        <Outlet />
+      </div>
     </div>
   )
 }
