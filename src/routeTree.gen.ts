@@ -22,8 +22,10 @@ import { Route as LocomotifAuthLayoutImport } from './routes/locomotif/auth/_lay
 import { Route as FacilityLayoutPublishImport } from './routes/facility/_layout.publish'
 import { Route as FacilityLayoutOverviewImport } from './routes/facility/_layout.overview'
 import { Route as FacilityLayoutMypostingsImport } from './routes/facility/_layout.mypostings'
+import { Route as FacilityLayoutMypostingsIndexImport } from './routes/facility/_layout.mypostings.index'
 import { Route as LocomotifAuthLayoutPersonnelSignUpImport } from './routes/locomotif/auth/_layout.personnel-sign-up'
 import { Route as LocomotifAuthLayoutFacilitySignUpImport } from './routes/locomotif/auth/_layout.facility-sign-up'
+import { Route as FacilityLayoutMypostingsPostIdImport } from './routes/facility/_layout.mypostings.$postId'
 
 // Create Virtual Routes
 
@@ -87,6 +89,12 @@ const FacilityLayoutMypostingsRoute = FacilityLayoutMypostingsImport.update({
   getParentRoute: () => FacilityLayoutRoute,
 } as any)
 
+const FacilityLayoutMypostingsIndexRoute =
+  FacilityLayoutMypostingsIndexImport.update({
+    path: '/',
+    getParentRoute: () => FacilityLayoutMypostingsRoute,
+  } as any)
+
 const LocomotifAuthLayoutPersonnelSignUpRoute =
   LocomotifAuthLayoutPersonnelSignUpImport.update({
     path: '/personnel-sign-up',
@@ -97,6 +105,12 @@ const LocomotifAuthLayoutFacilitySignUpRoute =
   LocomotifAuthLayoutFacilitySignUpImport.update({
     path: '/facility-sign-up',
     getParentRoute: () => LocomotifAuthLayoutRoute,
+  } as any)
+
+const FacilityLayoutMypostingsPostIdRoute =
+  FacilityLayoutMypostingsPostIdImport.update({
+    path: '/$postId',
+    getParentRoute: () => FacilityLayoutMypostingsRoute,
   } as any)
 
 // Populate the FileRoutesByPath interface
@@ -180,6 +194,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocomotifAuthLayoutImport
       parentRoute: typeof LocomotifAuthRoute
     }
+    '/facility/_layout/mypostings/$postId': {
+      id: '/facility/_layout/mypostings/$postId'
+      path: '/$postId'
+      fullPath: '/facility/mypostings/$postId'
+      preLoaderRoute: typeof FacilityLayoutMypostingsPostIdImport
+      parentRoute: typeof FacilityLayoutMypostingsImport
+    }
     '/locomotif/auth/_layout/facility-sign-up': {
       id: '/locomotif/auth/_layout/facility-sign-up'
       path: '/facility-sign-up'
@@ -194,6 +215,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocomotifAuthLayoutPersonnelSignUpImport
       parentRoute: typeof LocomotifAuthLayoutImport
     }
+    '/facility/_layout/mypostings/': {
+      id: '/facility/_layout/mypostings/'
+      path: '/'
+      fullPath: '/facility/mypostings/'
+      preLoaderRoute: typeof FacilityLayoutMypostingsIndexImport
+      parentRoute: typeof FacilityLayoutMypostingsImport
+    }
   }
 }
 
@@ -204,7 +232,10 @@ export const routeTree = rootRoute.addChildren({
   PersonnelRoute: PersonnelRoute.addChildren({}),
   FacilityRoute: FacilityRoute.addChildren({
     FacilityLayoutRoute: FacilityLayoutRoute.addChildren({
-      FacilityLayoutMypostingsRoute,
+      FacilityLayoutMypostingsRoute: FacilityLayoutMypostingsRoute.addChildren({
+        FacilityLayoutMypostingsPostIdRoute,
+        FacilityLayoutMypostingsIndexRoute,
+      }),
       FacilityLayoutOverviewRoute,
       FacilityLayoutPublishRoute,
     }),
@@ -266,7 +297,11 @@ export const routeTree = rootRoute.addChildren({
     },
     "/facility/_layout/mypostings": {
       "filePath": "facility/_layout.mypostings.tsx",
-      "parent": "/facility/_layout"
+      "parent": "/facility/_layout",
+      "children": [
+        "/facility/_layout/mypostings/$postId",
+        "/facility/_layout/mypostings/"
+      ]
     },
     "/facility/_layout/overview": {
       "filePath": "facility/_layout.overview.tsx",
@@ -290,6 +325,10 @@ export const routeTree = rootRoute.addChildren({
         "/locomotif/auth/_layout/personnel-sign-up"
       ]
     },
+    "/facility/_layout/mypostings/$postId": {
+      "filePath": "facility/_layout.mypostings.$postId.tsx",
+      "parent": "/facility/_layout/mypostings"
+    },
     "/locomotif/auth/_layout/facility-sign-up": {
       "filePath": "locomotif/auth/_layout.facility-sign-up.tsx",
       "parent": "/locomotif/auth/_layout"
@@ -297,6 +336,10 @@ export const routeTree = rootRoute.addChildren({
     "/locomotif/auth/_layout/personnel-sign-up": {
       "filePath": "locomotif/auth/_layout.personnel-sign-up.tsx",
       "parent": "/locomotif/auth/_layout"
+    },
+    "/facility/_layout/mypostings/": {
+      "filePath": "facility/_layout.mypostings.index.tsx",
+      "parent": "/facility/_layout/mypostings"
     }
   }
 }

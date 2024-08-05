@@ -1,5 +1,6 @@
 import postings from '@/mocks/postings.json'
 import Header from './Header'
+import { ArrowRight } from 'lucide-react'
 
 const MyPostings = () => {
   return (
@@ -13,8 +14,17 @@ const MyPostings = () => {
                 key={posting.id}
                 className="px-2 py-5 border-b cursor-pointer"
               >
-                <h1 className="text-2xl">{posting.title}</h1>
-                <p>{posting.description}</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h1 className="text-2xl">{posting.title}</h1>
+                    <p className="bg-gray-200 max-w-fit py-1 px-2 rounded-full text-xs">
+                      {posting.location}
+                    </p>
+                  </div>
+                  <div>
+                    <ArrowRight size={24} />
+                  </div>
+                </div>
               </div>
             )
           })}
@@ -30,6 +40,7 @@ export interface Posting {
   id: string
   required_role: Array<string>
   title: string
+  location: string
   description: string
   full_time: boolean
   rate_per_month: number

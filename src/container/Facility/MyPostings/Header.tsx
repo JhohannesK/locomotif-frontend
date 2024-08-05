@@ -9,7 +9,7 @@ const Header = ({ count }: { count: number }) => {
       <h1 className="text-5xl font-semibold">My Postings</h1>
       <Accordion className="bg-transparent shadow-none">
         <div className="mt-5 flex flex-col lg:flex-row items-center justify-between gap-5 ">
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
             <Input
               className="rounded-full w-96"
               placeholder="Search"
@@ -58,7 +58,7 @@ const Header = ({ count }: { count: number }) => {
               options={['Ascending', 'Descending']}
               defaultOption="GHS"
             />
-            <p className="opacity-80">{count} total</p>
+            <p className="opacity-80 hidden sm:inline-flex">{count} total</p>
           </div>
         </div>
         <AccordionDetails>
