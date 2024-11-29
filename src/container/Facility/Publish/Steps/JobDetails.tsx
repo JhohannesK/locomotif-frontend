@@ -123,6 +123,7 @@ const JobDetails = () => {
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {
+                  dispatch(nextPage())
                   dispatch(
                     createFacilityPost({
                       publish_form_state: values,

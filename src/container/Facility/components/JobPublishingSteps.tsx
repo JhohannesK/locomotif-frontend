@@ -63,7 +63,7 @@ const JobPublishingSteps = () => {
                 key={index}
                 onClick={() => {
                   onHandleClick(index)
-                  // dispatch(moveToPage({activeJobPublishingStep: index}))
+                  dispatch(moveToPage({ activeJobPublishingStep: index }))
                 }}
                 // disabled={onDisable(index)}
               >

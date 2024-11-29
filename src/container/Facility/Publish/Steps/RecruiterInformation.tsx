@@ -102,6 +102,7 @@ const RecruiterInformation = () => {
                 sx={{ width: '8rem' }}
                 title="Next"
                 onClick={() => {
+                  dispatch(nextPage())
                   dispatch(
                     updateFacilityPost({
                       publish_form_state: values,

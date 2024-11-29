@@ -208,6 +208,7 @@ const ContractDetails = () => {
               }
               title="Next"
               onClick={() => {
+                dispatch(nextPage())
                 dispatch(
                   updateFacilityPost({
                     publish_form_state: values,

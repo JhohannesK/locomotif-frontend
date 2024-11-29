@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-// import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@tanstack/react-router'
 // import Constants from '../../../../utils/constants'
 
 const schema = z.object({
@@ -16,7 +16,7 @@ export type LoginSchema = z.infer<typeof schema>
 
 const useSignIn = () => {
   const dispatch = useAppDispatch()
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   const defaultValues: LoginSchema = {
     email: '',
     password: '',
@@ -37,6 +37,9 @@ const useSignIn = () => {
   }
 
   const onSubmit = (data: LoginSchema) => {
+    navigate({
+      to: '/facility/overview',
+    })
     mutation.mutate(data)
   }
 
