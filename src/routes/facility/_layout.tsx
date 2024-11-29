@@ -1,7 +1,7 @@
 import AviDropdown from '@/_shared/navbar/FacilityAvi'
 import Navbar from '@/_shared/navbar/Navbar'
 import Constants from '@/utils/constants'
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet, useNavigate } from '@tanstack/react-router'
 import { CreditCard, LogOut, UserIcon } from 'lucide-react'
 
 export const Route = createFileRoute('/facility/_layout')({
@@ -10,6 +10,7 @@ export const Route = createFileRoute('/facility/_layout')({
 })
 
 function FacilityRootLayout() {
+  const navigate = useNavigate()
   return (
     <div className="flex flex-col h-screen bg-background-secondary">
       <Navbar
@@ -25,10 +26,17 @@ function FacilityRootLayout() {
                 <CreditCard className="mr-2 h-4 w-4" />
                 <span>Billing</span>
               </>,
-              <>
+              <div
+                className="flex"
+                onClick={() =>
+                  navigate({
+                    to: '/',
+                  })
+                }
+              >
                 <LogOut className="mr-2 h-4 w-4" />
                 <span>Logout</span>
-              </>,
+              </div>,
             ]}
           />
         }
